@@ -2,7 +2,6 @@ import * as beacon from '@airgap/beacon-sdk';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MonacoEditorComponent, MonacoEditorConstructionOptions, MonacoEditorLoaderService, MonacoStandaloneCodeEditor } from '@materia-ui/ngx-monaco-editor';
 import * as ts from "typescript";
-import { libs } from '../../types';
 
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
@@ -71,19 +70,6 @@ export class CodeEditorComponent implements OnInit {
     // monaco.languages.typescript.javascriptDefaults.addExtraLib(lib, uri.toString());
     // monaco.editor.createModel(lib, "typescript", uri);
 
-    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-      target: monaco.languages.typescript.ScriptTarget.ES2017,
-      allowNonTsExtensions: true,
-      moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
-      module: monaco.languages.typescript.ModuleKind.ESNext,
-      typeRoots: ["node_modules/@types"]
-    });
-
-    libs.forEach(lib => {
-      const MONACO_LIB_PREFIX = 'file:///node_modules/';
-      const path = `${MONACO_LIB_PREFIX}${lib.name}`;
-      monaco.languages.typescript.typescriptDefaults.addExtraLib(lib.dts, path);
-    })
 
     // const libs = [{
     //   name: '@airgap/beacon-sdk/index.d.ts',
@@ -109,7 +95,7 @@ export class CodeEditorComponent implements OnInit {
     editor.setModel(monaco.editor.createModel(
       this.code,
       'typescript',
-      monaco.Uri.parse('file:///main.ts')
+      monaco.Uri.parse(`file:///main-${Math.random()}.ts`)
     ))
 
     console.log(editor.getValue())
