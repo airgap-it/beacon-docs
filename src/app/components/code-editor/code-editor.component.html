@@ -1,0 +1,7 @@
+<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+
+<button (click)="execute()">RUN</button>
+<button (click)="resetAndExecute()">RESET & RUN</button>
+
+<p>Result:</p>
+<pre>{{result}}</pre>
