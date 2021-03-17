@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 
-import { } from '../examples/request-permissions'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { } from '../examples/request-permissions'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MonacoEditorModule
+    MonacoEditorModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
