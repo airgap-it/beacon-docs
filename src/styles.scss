@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+$list-group-item-padding-y: 0.375rem;
+$list-group-item-padding-x: 1rem;
+$list-group-border-width: 0;
+$list-group-active-color: var(--primary);
+$list-group-active-bg: var(--light);
+$list-group-bg: transparent;
+
+.list-group-item {
+  margin: 0.25rem 0;
+  border-radius: 8px !important;
+}
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

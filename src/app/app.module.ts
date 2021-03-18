@@ -7,21 +7,18 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CodeEditorComponent
-  ],
+  declarations: [AppComponent, CodeEditorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MonacoEditorModule,
-    NgbModule
+    NgbCollapse,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
