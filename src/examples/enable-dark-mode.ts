@@ -10,8 +10,8 @@ import { ColorMode, DAppClient } from "@airgap/beacon-sdk";
     await dAppClient.setColorMode(ColorMode.DARK)
     console.log('Setting colorMode to Dark')
 
-    const permissions = await dAppClient.requestPermissions()
+    const result = await dAppClient.requestPermissions()
 
-    console.log('Permissions', permissions.address)
+    console.log('Permissions', result.address)
     /// END
 })

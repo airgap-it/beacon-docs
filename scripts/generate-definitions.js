@@ -1,24 +1,8 @@
 const fs = require('fs');
-const p = require("path");
+const getFilesRecursively = require('./get-files-in-folder')
 
-const isDirectory = path => fs.statSync(path).isDirectory();
-const getDirectories = path =>
-fs.readdirSync(path).map(name => p.join(path, name)).filter(isDirectory);
-
-const isFile = path => fs.statSync(path).isFile();  
-const getFiles = path =>
-fs.readdirSync(path).map(name => p.join(path, name)).filter(isFile);
-
-const getFilesRecursively = (path) => {
-    let dirs = getDirectories(path);
-    let files = dirs
-        .map(dir => getFilesRecursively(dir)) // go through each directory
-        .reduce((a,b) => a.concat(b), []);    // map returns a 2d array (array of file arrays) so flatten
-    return files.concat(getFiles(path)).filter(file => file.endsWith('.d.ts'));
-};
-
-const dirs = getFilesRecursively('./node_modules/@airgap/beacon-sdk/dist/cjs/')
-dirs.push(...getFilesRecursively('./node_modules/@taquito/'))
+const files = getFilesRecursively('./node_modules/@airgap/beacon-sdk/dist/cjs/').filter(file => file.endsWith('.d.ts'))
+files.push(...getFilesRecursively('./node_modules/@taquito/').filter(file => file.endsWith('.d.ts')))
 
 const getFile = (filename) => {
     const text = fs.readFileSync(filename, { encoding: 'utf8' })
@@ -26,7 +10,7 @@ const getFile = (filename) => {
     return text
 }
 
-const outArray = dirs.map(dir => ({
+const outArray = files.map(dir => ({
     name: dir.substring(13).split('/dist/cjs/').join('/').split('/taquito/dist/types/').join('/'),
     dts: getFile(dir)
 }))

@@ -1,13 +1,10 @@
-const fs = require('fs')
+const fs = require('fs');
+const getFilesRecursively = require('./get-files-in-folder')
 
 const START_STR = '/// START'
 const END_STR = '/// END'
 
 const keepBetween = (text, start, end) => {
-    // console.log('')
-    // console.log('')
-    // console.log('')
-    // console.log('checking', text)
     let cleanText = ''
 
     const startPos = text.indexOf(start)
@@ -16,7 +13,6 @@ const keepBetween = (text, start, end) => {
         cleanText += text.substring(startPos + start.length, endPos)
         cleanText += keepBetween(text.substring(endPos + end.length), start, end)
     }
-
 
     return cleanText
 }
@@ -33,23 +29,11 @@ const getFile = (filename) => {
     }).join('\n').trim()
 }
 
-const files = [
-    'request-permissions',
-    'read-previous-state',
-    'send-operation',
-    'connect-to-testnet',
-    'enable-dark-mode',
-    // 'contract-call',
-    // 'handle-error-response',
-
-    // //
-    // 'subscribe-to-events',
-    // 'custom-block-explorer',
-]
+const files = getFilesRecursively('./src/examples/').filter(file => file.endsWith('.ts'))
 
 const data = files.map(f => ({
-    name: f,
-    value: getFile('./src/examples/' + f + '.ts')
+    name: f.slice('src/examples/'.length, -3),
+    value: getFile(f)
 }))
 
 fs.writeFileSync('./src/app/samples.ts', `export const samples = ${JSON.stringify(data)}`)

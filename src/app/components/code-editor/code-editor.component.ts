@@ -3,6 +3,10 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MonacoEditorComponent, MonacoEditorConstructionOptions, MonacoEditorLoaderService, MonacoStandaloneCodeEditor } from '@materia-ui/ngx-monaco-editor';
 import * as ts from "typescript";
 
+import * as taquito from '@taquito/taquito'
+import * as taquitoWallet from '@taquito/beacon-wallet'
+
+
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
 }
@@ -31,9 +35,7 @@ export class CodeEditorComponent implements OnInit {
 
   result: string = ''
 
-  constructor(private monacoLoaderService: MonacoEditorLoaderService) {
-    this.monacoLoaderService.isMonacoLoaded$
-      .subscribe(() => { console.log('IS LOADED'); })
+  constructor() {
 
     setTimeout(() => {
       this.editorInit(this.monacoComponent?.editor)
@@ -120,17 +122,26 @@ export class CodeEditorComponent implements OnInit {
     console.log('processed', myCode)
     myCode = replaceAll(myCode, 'console.log(', 'progress(')
     let code = ts.transpile(`({
-      run: async (beacon: string, progress: any): string => {
+      run: async (beacon: any, taquito: any, taquitoWallet: any, progress: any): string => {
         Object.keys(beacon).forEach(key => {
           window[key] = beacon[key]
         })
-        console.log(beacon)
-        return (async () => {${myCode}})()
+        Object.keys(taquito).forEach(key => {
+          window[key] = taquito[key]
+        })
+        Object.keys(taquitoWallet).forEach(key => {
+          window[key] = taquitoWallet[key]
+        })
+        return (async () => {${myCode};
+        if (typeof variable !== 'undefined') {
+          return result
+        }
+        })()
       })`);
     let runnable: any
     try {
       runnable = eval(code);
-      runnable.run(beacon, myLog).then((result: string) => { console.log(result); this.result += '\n' + JSON.stringify(result, null, 2) }).catch((err: any) => { console.warn(err); this.result = JSON.stringify(err, null, 2) });
+      runnable.run(beacon, taquito, taquitoWallet, myLog).then((result: string) => { console.log(result); this.result += '\n' + JSON.stringify(result, null, 2) }).catch((err: any) => { console.warn(err); this.result = JSON.stringify(err, null, 2) });
     } catch (e) {
       this.result = e
     }

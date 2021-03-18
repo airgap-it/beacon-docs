@@ -7,8 +7,12 @@ import { DAppClient } from "@airgap/beacon-sdk";
     // Create a new DAppClient instance
     const dAppClient = new DAppClient({ name: 'Beacon Docs' })
 
-    const permissions = await dAppClient.requestPermissions()
+    try {
+        const permissions = await dAppClient.requestPermissions()
+        console.log('Got permissions', permissions.address)
+    } catch (error) {
+        console.log('Got error:', error)
+    }
 
-    console.log('Got permissions', permissions.address)
     /// END
 })

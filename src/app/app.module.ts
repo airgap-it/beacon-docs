@@ -8,9 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { DetailComponent } from './pages/detail/detail.component';
+import { NavElementComponent } from './components/nav-element/nav-element.component';
 
 @NgModule({
-  declarations: [AppComponent, CodeEditorComponent],
+  declarations: [AppComponent, CodeEditorComponent, DetailComponent, NavElementComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
