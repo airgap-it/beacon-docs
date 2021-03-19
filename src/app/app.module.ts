@@ -10,9 +10,10 @@ import { CodeEditorComponent } from './components/code-editor/code-editor.compon
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailComponent } from './pages/detail/detail.component';
 import { NavElementComponent } from './components/nav-element/nav-element.component';
+import { MarkdownComponent } from './components/markdown/markdown.component';
 
 @NgModule({
-  declarations: [AppComponent, CodeEditorComponent, DetailComponent, NavElementComponent],
+  declarations: [AppComponent, CodeEditorComponent, DetailComponent, NavElementComponent, MarkdownComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
