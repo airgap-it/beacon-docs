@@ -3,19 +3,15 @@ title: Getting Started
 slug: /
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import { RunnableCode } from "../src/components/RunnableCode";
+import { examples } from "./examples.ts";
 
-<Tabs
-  defaultValue="beacon"
-  values={[
-    { label: 'Beacon', value: 'beacon', },
-    { label: 'Taquito', value: 'taquito', }
-  ]
-}>
-<TabItem value="beacon">
+Test
+
+<RunnableCode beacon={examples} taquito="test">
 
 <!-- embedme ../examples/request-permissions-beacon.ts -->
+
 ```ts
 /// START
 import { DAppClient } from "@airgap/beacon-sdk";
@@ -33,14 +29,14 @@ import { DAppClient } from "@airgap/beacon-sdk";
         console.log('Got error:', error)
     }
 
+    const result = 'test'
+
     /// END
 })
 ```
 
-</TabItem>
-<TabItem value="taquito">
-
 <!-- embedme ../examples/request-permissions-taquito.ts -->
+
 ```ts
 /// START
 import { TezosToolkit } from "@taquito/taquito";
@@ -51,7 +47,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
     /// START
     // Create a new DAppClient instance
     const Tezos = new TezosToolkit('https://mainnet-tezos.giganode.io')
-    const wallet = new BeaconWallet({ name: 'Beacon Docs' }) // Takes the same arguments as the DAppClient constructor
+    const wallet = new BeaconWallet({ name: 'Beacon Docs Taquito' }) // Takes the same arguments as the DAppClient constructor
 
     Tezos.setWalletProvider(wallet)
 
@@ -67,11 +63,6 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 })
 ```
 
-</TabItem>
-</Tabs>
+</RunnableCode>
 
-:::tip My tip
-
-Use this awesome feature option
-
-:::
+I can write **Markdown** alongside my _JSX_!

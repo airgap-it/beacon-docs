@@ -14,5 +14,7 @@ import { DAppClient } from "@airgap/beacon-sdk";
         console.log('Got error:', error)
     }
 
+    const result = 'test'
+
     /// END
 })

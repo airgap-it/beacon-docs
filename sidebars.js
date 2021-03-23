@@ -11,20 +11,18 @@ module.exports = {
         "markdown-features",
         "thank-you",
       ],
-      collapsed: false
+      collapsed: false,
     },
     {
       type: "category",
       label: "Examples",
-      items: [
-        "live",
-      ],
-      collapsed: false
+      items: ["live"],
+      collapsed: false,
     },
     {
-      type: 'link',
-      label: 'Custom Label', // The label that should be displayed (string).
-      href: 'https://example.com' // The target URL (string).
-    }
+      type: "link",
+      label: "Custom Label", // The label that should be displayed (string).
+      href: "https://example.com", // The target URL (string).
+    },
   ],
 };

@@ -7,7 +7,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
     /// START
     // Create a new DAppClient instance
     const Tezos = new TezosToolkit('https://mainnet-tezos.giganode.io')
-    const wallet = new BeaconWallet({ name: 'Beacon Docs' }) // Takes the same arguments as the DAppClient constructor
+    const wallet = new BeaconWallet({ name: 'Beacon Docs Taquito' }) // Takes the same arguments as the DAppClient constructor
 
     Tezos.setWalletProvider(wallet)
 
