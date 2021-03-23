@@ -12,7 +12,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "embed-code": "embedme docs/**/*.mdx"
+    "embed-code": "node scripts/copy-examples.js && embedme docs/**/*.mdx"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^2.2.2",

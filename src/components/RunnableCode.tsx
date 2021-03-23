@@ -51,9 +51,9 @@ const removeImports = (code: string) => {
 };
 
 const run = (rawCode: string, updateOutput: (str: string) => void) => {
+  let code = rawCode;
+  console.log("rawCode", code);
   let res;
-
-  let cleanText = keepBetween(rawCode, START_STR, END_STR);
 
   const myLog = (...args: any[]) => {
     console.log("MY LOG");
@@ -62,10 +62,11 @@ const run = (rawCode: string, updateOutput: (str: string) => void) => {
     console.log(...args);
   };
 
-  cleanText = replaceAll(cleanText, "console.log(", "progress(");
-  const cleanCode = removeImports(cleanText);
-  console.log("cleanCode", cleanCode);
-  let code = ts.transpile(`({
+  code = replaceAll(code, "console.log(", "progress(");
+  console.log("processed code1", code);
+  code = removeImports(code);
+  console.log("processed code2", code);
+  code = ts.transpile(`({
     run: async (beacon: any, taquito: any, taquitoWallet: any, progress: any): string => {
       Object.keys(beacon).forEach(key => {
         window[key] = beacon[key]
@@ -76,7 +77,7 @@ const run = (rawCode: string, updateOutput: (str: string) => void) => {
       Object.keys(taquitoWallet).forEach(key => {
         window[key] = taquitoWallet[key]
       })
-      return (async () => {${cleanCode};
+      return (async () => {${code};
       if (typeof variable !== 'undefined') {
         return result
       }

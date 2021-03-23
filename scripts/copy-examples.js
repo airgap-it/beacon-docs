@@ -1,0 +1,52 @@
+const fs = require("fs");
+const getFilesRecursively = require("./get-files-in-folder");
+
+const START_STR = "/// START";
+const END_STR = "/// END";
+
+const keepBetween = (text, start, end) => {
+  let cleanText = "";
+
+  const startPos = text.indexOf(start);
+  const endPos = text.indexOf(end);
+  if (startPos >= 0 && endPos >= 0) {
+    cleanText += text.substring(startPos + start.length, endPos);
+    cleanText += keepBetween(text.substring(endPos + end.length), start, end);
+  }
+
+  return cleanText;
+};
+
+const getFile = (filename) => {
+  const text = fs.readFileSync(filename, { encoding: "utf8" });
+  const cleanText = keepBetween(text, START_STR, END_STR);
+
+  const lines = cleanText.split("\n");
+
+  return lines
+    .map((l) => {
+      return l.startsWith("    ") ? l.substr(4) : l;
+    })
+    .join("\n")
+    .trim();
+};
+
+const files = getFilesRecursively("./src/examples/").filter((file) =>
+  file.endsWith(".ts")
+);
+
+const data = files.map((f) => ({
+  name: f.slice("src/examples/".length),
+  value: getFile(f),
+}));
+
+data.forEach((element) => {
+  fs.writeFileSync("./examples/" + element.name, element.value, {
+    encoding: "utf8",
+  });
+});
+
+// fs.writeFileSync(
+//   "./src/app/samples.ts",
+//   `export const samples = ${JSON.stringify(data)}`
+// );
