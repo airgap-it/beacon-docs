@@ -1,12 +1,8 @@
-// import * as beacon from "@airgap/beacon-sdk";
+import * as beacon from "@airgap/beacon-sdk";
 import * as ts from "typescript";
 
-// import * as taquito from "@taquito/taquito";
-// import * as taquitoWallet from "@taquito/beacon-wallet";
-
-let beacon = "";
-let taquito = "";
-let taquitoWallet = "";
+import * as taquito from "@taquito/taquito";
+import * as taquitoWallet from "@taquito/beacon-wallet";
 
 import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
@@ -126,8 +122,8 @@ const Child = ({ code }) => {
   };
   const reset = async () => {
     console.log("RESETTING");
-    const dAppClient = new beacon.DAppClient({ name: "a" });
-    await dAppClient.destroy();
+    // const dAppClient = new DAppClient({ name: "a" });
+    // await dAppClient.destroy();
   };
 
   return (
