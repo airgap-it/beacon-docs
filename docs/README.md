@@ -1,6 +1,5 @@
 ---
 title: "Introduction"
-slug: /
 ---
 
 Beacon is the implementation of the [tzip-10 proposal](https://gitlab.com/tzip/tzip/tree/master/proposals/tzip-10), which describes an interaction standard between a wallet and a dApp.
