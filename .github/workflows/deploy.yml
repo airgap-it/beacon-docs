@@ -43,4 +43,4 @@ jobs:
           git init
           git add -A
           git commit -m 'chore(docs): including latest changes'
-          git push -f https://git:${GITHUB_TOKEN}@github.com/airgap-it/beacon-sdk.git master:gh-pages
+          git push -f https://git:${GITHUB_TOKEN}@github.com/airgap-it/beacon-docs.git main:gh-pages
