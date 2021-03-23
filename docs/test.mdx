@@ -1,0 +1,66 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="beacon"
+  values={[
+    { label: 'Beacon', value: 'beacon', },
+    { label: 'Taquito', value: 'taquito', }
+  ]
+}>
+<TabItem value="beacon">
+
+<!-- embedme ../examples/request-permissions-beacon.ts -->
+```ts
+/// START
+import { DAppClient } from "@airgap/beacon-sdk";
+/// END
+
+(async () => {
+    /// START
+    // Create a new DAppClient instance
+    const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+
+    try {
+        const permissions = await dAppClient.requestPermissions()
+        console.log('Got permissions', permissions.address)
+    } catch (error) {
+        console.log('Got error:', error)
+    }
+
+    /// END
+})
+```
+
+</TabItem>
+<TabItem value="taquito">
+
+<!-- embedme ../examples/request-permissions-taquito.ts -->
+```ts
+/// START
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+/// END
+
+(async () => {
+    /// START
+    // Create a new DAppClient instance
+    const Tezos = new TezosToolkit('https://mainnet-tezos.giganode.io')
+    const wallet = new BeaconWallet({ name: 'Beacon Docs' }) // Takes the same arguments as the DAppClient constructor
+
+    Tezos.setWalletProvider(wallet)
+
+    try {
+        await wallet.requestPermissions()
+        const address = await wallet.getPKH()
+        console.log('Got permissions', address)
+    } catch (error) {
+        console.log('Got error:', error)
+    }
+
+    /// END
+})
+```
+
+</TabItem>
+</Tabs>
