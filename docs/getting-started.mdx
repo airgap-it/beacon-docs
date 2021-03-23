@@ -7,7 +7,7 @@ import { RunnableCode } from "../src/components/RunnableCode";
 
 Test
 
-<RunnableCode taquito="test">
+<RunnableCode>
 
 <!-- embedme ../examples/request-permissions-beacon.ts -->
 
@@ -15,16 +15,16 @@ Test
 import { DAppClient } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
-const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
 try {
-    const permissions = await dAppClient.requestPermissions()
-    console.log('Got permissions', permissions.address)
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions", permissions.address);
 } catch (error) {
-    console.log('Got error:', error)
+  console.log("Got error:", error);
 }
 
-const result = 'test'
+const result = "test";
 ```
 
 <!-- embedme ../examples/request-permissions-taquito.ts -->
@@ -34,17 +34,17 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
 // Create a new DAppClient instance
-const Tezos = new TezosToolkit('https://mainnet-tezos.giganode.io')
-const wallet = new BeaconWallet({ name: 'Beacon Docs Taquito' }) // Takes the same arguments as the DAppClient constructor
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" }); // Takes the same arguments as the DAppClient constructor
 
-Tezos.setWalletProvider(wallet)
+Tezos.setWalletProvider(wallet);
 
 try {
-    await wallet.requestPermissions()
-    const address = await wallet.getPKH()
-    console.log('Got permissions', address)
+  await wallet.requestPermissions();
+  const address = await wallet.getPKH();
+  console.log("Got permissions", address);
 } catch (error) {
-    console.log('Got error:', error)
+  console.log("Got error:", error);
 }
 ```
 

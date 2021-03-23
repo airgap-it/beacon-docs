@@ -1,8 +1,12 @@
-import * as beacon from "@airgap/beacon-sdk";
+// import * as beacon from "@airgap/beacon-sdk";
 import * as ts from "typescript";
 
-import * as taquito from "@taquito/taquito";
-import * as taquitoWallet from "@taquito/beacon-wallet";
+// import * as taquito from "@taquito/taquito";
+// import * as taquitoWallet from "@taquito/beacon-wallet";
+
+let beacon = "";
+let taquito = "";
+let taquitoWallet = "";
 
 import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
@@ -149,10 +153,10 @@ const Child = ({ code }) => {
 };
 
 export const RunnableCode = ({ children, color, beacon, taquito }) => {
-  console.log("children", children);
-  console.log("color", color);
-  console.log("beacon", beacon);
-  console.log("taquito", taquito);
+  // console.log("children", children);
+  // console.log("color", color);
+  // console.log("beacon", beacon);
+  // console.log("taquito", taquito);
   return (
     <Tabs
       defaultValue="1"
@@ -162,9 +166,11 @@ export const RunnableCode = ({ children, color, beacon, taquito }) => {
       ]}
     >
       <TabItem value="1">
+        test
         <Child code={children[0]} />
       </TabItem>
       <TabItem value="2">
+        test
         <Child code={children[1]} />
       </TabItem>
     </Tabs>
