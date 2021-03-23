@@ -35,6 +35,7 @@ jobs:
           node-version: '12.x'
       - name: Build
         run: |
+          npm ci
           npm run build
           cd build
           git config --global user.email "support+actions@github.com"
