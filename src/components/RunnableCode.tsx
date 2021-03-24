@@ -109,7 +109,8 @@ const run = (rawCode: string, updateOutput: (str: string) => void) => {
 };
 
 const Child = ({ code }) => {
-  const [output, setOutput] = useState("Test");
+  const [started, setStarted] = useState(false);
+  const [output, setOutput] = useState("");
 
   const updateOutput = (str: string) => {
     console.log("UPDATE CALLED");
@@ -118,17 +119,30 @@ const Child = ({ code }) => {
 
   const execute = () => {
     console.log("CODE");
+    setStarted(true);
     run(code.props.children.props.children, updateOutput);
   };
   const reset = async () => {
     console.log("RESETTING");
+    clear();
     // const dAppClient = new DAppClient({ name: "a" });
     // await dAppClient.destroy();
+  };
+  const clear = async () => {
+    setOutput("");
+    setStarted(false);
   };
 
   return (
     <>
       {code}
+      <button
+        onClick={() => {
+          execute();
+        }}
+      >
+        EXECUTE
+      </button>
       <button
         onClick={() => {
           reset();
@@ -138,12 +152,12 @@ const Child = ({ code }) => {
       </button>
       <button
         onClick={() => {
-          execute();
+          clear();
         }}
       >
-        EXECUTE
+        CLEAR OUTPUT
       </button>
-      <pre>{output}</pre>
+      {started ? <pre>{output ? output : "Waiting for output..."}</pre> : ""}
     </>
   );
 };
@@ -162,11 +176,9 @@ export const RunnableCode = ({ children, color, beacon, taquito }) => {
       ]}
     >
       <TabItem value="1">
-        test
         <Child code={children[0]} />
       </TabItem>
       <TabItem value="2">
-        test
         <Child code={children[1]} />
       </TabItem>
     </Tabs>

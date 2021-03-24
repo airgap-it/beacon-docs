@@ -9,7 +9,7 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "airgap-it",
   projectName: "beacon-docs",
-  themes: ['@docusaurus/theme-live-codeblock'],
+  themes: ["@docusaurus/theme-live-codeblock"],
   themeConfig: {
     navbar: {
       title: "Beacon Docs",
@@ -85,14 +85,12 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/airgap-it/beacon-docs/edit/main/",
+          editUrl: "https://github.com/airgap-it/beacon-docs/edit/main/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/airgap-it/beacon-docs/edit/main/",
+          editUrl: "https://github.com/airgap-it/beacon-docs/edit/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

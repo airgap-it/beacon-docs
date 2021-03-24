@@ -1,0 +1,52 @@
+---
+title: Example
+---
+
+import { RunnableCode } from "../../src/components/RunnableCode";
+
+You can pass a number of options when creating a DAppClient instance. The only required one is the `name`. It will be used to identify your DApp in the Wallet.
+
+For more options, see [DAppClientOptions](typedoc.walletbeacon.io/DAppClientOptions) // TODO
+
+<RunnableCode>
+
+<!-- embedme ../../examples/getting-started-example.beacon.ts -->
+
+```ts
+import { DAppClient } from "@airgap/beacon-sdk";
+
+// Create a new DAppClient instance
+const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+
+try {
+    const permissions = await dAppClient.requestPermissions()
+    console.log('Got permissions', permissions.address)
+} catch (error) {
+    console.log('Got error:', error)
+}
+
+const result = 'test'
+```
+
+<!-- embedme ../../examples/getting-started-example.taquito.ts -->
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+// Create a new DAppClient instance
+const Tezos = new TezosToolkit('https://mainnet-tezos.giganode.io')
+const wallet = new BeaconWallet({ name: 'Beacon Docs Taquito' }) // Takes the same arguments as the DAppClient constructor
+
+Tezos.setWalletProvider(wallet)
+
+try {
+    await wallet.requestPermissions()
+    const address = await wallet.getPKH()
+    console.log('Got permissions', address)
+} catch (error) {
+    console.log('Got error:', error)
+}
+```
+
+</RunnableCode>

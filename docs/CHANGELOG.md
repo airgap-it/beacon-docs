@@ -1,5 +1,3 @@
-# Changelog
-
 ## 2.2.1 (2021-02-08)
 
 #### Fixes
@@ -34,18 +32,18 @@ The `beacon-sdk` will now also listen to the `beaconSdkDebugEnabled` variable on
 
 ```ts
 const client = new DAppClient({
-  name: 'My Sample DApp',
+  name: "My Sample DApp",
   disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
   eventHandlers: {
     // To keep the pairing alert, we have to add the following default event handlers back
     [BeaconEvent.PAIR_INIT]: {
-      handler: defaultEventCallbacks.PAIR_INIT
+      handler: defaultEventCallbacks.PAIR_INIT,
     },
     [BeaconEvent.PAIR_SUCCESS]: {
-      handler: defaultEventCallbacks.PAIR_SUCCESS
-    }
-  }
-})
+      handler: defaultEventCallbacks.PAIR_SUCCESS,
+    },
+  },
+});
 ```
 
 - **Alert**: A click outside the alert will now dismiss the alert

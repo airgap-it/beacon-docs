@@ -2,23 +2,35 @@ module.exports = {
   docs: [
     {
       type: "category",
-      label: "Getting Started",
+      label: "Beacon",
       items: [
-        "getting-started",
-        "create-a-page",
-        "create-a-document",
-        "create-a-blog-post",
-        "markdown-features",
-        "thank-you",
+        "beacon/introduction",
+        "beacon/design-principles",
+        "beacon/contributing",
+        "beacon/wallets",
       ],
+      collapsed: true,
+    },
+    {
+      type: "category",
+      label: "Getting Started",
+      items: ["getting-started/installation", "getting-started/example"],
       collapsed: false,
     },
     {
       type: "category",
-      label: "Examples",
-      items: ["live"],
-      collapsed: false,
+      label: "Guides",
+      items: ["guides/getting-started"],
+      collapsed: true,
     },
+    {
+      type: "category",
+      label: "Advanced",
+      items: ["advanced/ui-elements"],
+      collapsed: true,
+    },
+    "FAQ",
+    "CHANGELOG",
     {
       type: "link",
       label: "Custom Label", // The label that should be displayed (string).
