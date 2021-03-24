@@ -26,7 +26,22 @@ module.exports = {
     {
       type: "category",
       label: "Advanced",
-      items: ["advanced/ui-elements"],
+      items: [
+        "advanced/ui-elements",
+        {
+          type: "category",
+          label: "Flows",
+          items: [
+            "advanced/flows/connection",
+            "advanced/flows/extension-communication",
+            "advanced/flows/ledger-extension",
+            "advanced/flows/local-mnemonic",
+            "advanced/flows/p2p-direct",
+            "advanced/flows/p2p-extension",
+          ],
+          collapsed: true,
+        },
+      ],
       collapsed: true,
     },
     "FAQ",

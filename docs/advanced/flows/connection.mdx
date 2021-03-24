@@ -1,6 +1,11 @@
-## Communication
+---
+title: Connection
+---
 
-```mermaid
+import Mermaid from "@theme/Mermaid";
+
+<Mermaid
+  chart={`
 graph LR
     Z[dApp] --> Y{Extension installed?}
     subgraph Beacon SDK
@@ -11,4 +16,5 @@ graph LR
       X -- No --> D[Ledger / Mnemonic]
       Y -- Yes --> X{Wallet Paired?}
     end
-```
+`}
+/>
