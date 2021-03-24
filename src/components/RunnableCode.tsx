@@ -169,16 +169,17 @@ export const RunnableCode = ({ children, color, beacon, taquito }) => {
   // console.log("taquito", taquito);
   return (
     <Tabs
-      defaultValue="1"
+      groupId="beaconOrTaquito"
+      defaultValue="beacon"
       values={[
-        { label: "Beacon", value: "1" },
-        { label: "Taquito", value: "2" },
+        { label: "Beacon", value: "beacon" },
+        { label: "Taquito", value: "taquito" },
       ]}
     >
-      <TabItem value="1">
+      <TabItem value="beacon">
         <Child code={children[0]} />
       </TabItem>
-      <TabItem value="2">
+      <TabItem value="taquito">
         <Child code={children[1]} />
       </TabItem>
     </Tabs>
