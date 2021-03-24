@@ -40,8 +40,14 @@ const data = files.map((f) => ({
   value: getFile(f),
 }));
 
+const OUT_FOLDER = "./build-examples/";
+
+try {
+  fs.mkdirSync(OUT_FOLDER);
+} catch (e) {}
+
 data.forEach((element) => {
-  fs.writeFileSync("./examples/" + element.name, element.value, {
+  fs.writeFileSync(OUT_FOLDER + element.name, element.value, {
     encoding: "utf8",
   });
 });
