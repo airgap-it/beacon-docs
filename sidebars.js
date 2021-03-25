@@ -20,7 +20,15 @@ module.exports = {
     {
       type: "category",
       label: "Guides",
-      items: ["guides/getting-started"],
+      items: [
+        "guides/getting-started",
+        "guides/read-previous-state",
+        "guides/disconnecting-a-wallet",
+        "guides/network",
+        "guides/simple-contract-call",
+        "guides/fa1.2-transfer",
+        "guides/fa2-transfer",
+      ],
       collapsed: true,
     },
     {

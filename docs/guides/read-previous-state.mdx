@@ -1,0 +1,49 @@
+---
+title: Read Previous State
+---
+
+import { RunnableCode } from "../../src/components/RunnableCode";
+
+<RunnableCode>
+
+<!-- embedme ../../build-examples/read-previous-state.beacon.ts -->
+
+```ts
+import { DAppClient } from "@airgap/beacon-sdk";
+
+// Create a new DAppClient instance
+const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+
+const activeAccount = await dAppClient.getActiveAccount()
+if (activeAccount) {
+    // User already has account connected, everything is ready
+    // You can now do an operation request, sign request, or send another permission request to switch wallet
+    console.log('Already connected: ', activeAccount.address)
+} else {
+    const permissions = await dAppClient.requestPermissions()
+    console.log('New connection: ', permissions.address)
+}
+```
+
+<!-- embedme ../../build-examples/read-previous-state.taquito.ts -->
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+// Create a new DAppClient instance
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" }); // Takes the same arguments as the DAppClient constructor
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  await wallet.requestPermissions();
+  const address = await wallet.getPKH();
+  console.log("Got permissions", address);
+} catch (error) {
+  console.log("Got error:", error);
+}
+```
+
+</RunnableCode>

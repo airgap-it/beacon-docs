@@ -125,8 +125,8 @@ const Child = ({ code }) => {
   const reset = async () => {
     console.log("RESETTING");
     clear();
-    // const dAppClient = new DAppClient({ name: "a" });
-    // await dAppClient.destroy();
+    const dAppClient = new beacon.DAppClient({ name: "a" });
+    await dAppClient.destroy();
   };
   const clear = async () => {
     setOutput("");
