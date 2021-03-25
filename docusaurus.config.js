@@ -3,7 +3,7 @@ module.exports = {
   title: "Beacon Docs",
   tagline: "Connecting dApps with wallets.",
   url: "https://airgap-it.github.io",
-  baseUrl: "/beacon-docs/",
+  baseUrl: "/",
   onBrokenLinks: "warn", // TODO: throw
   onBrokenMarkdownLinks: "warn", // TODO: throw
   favicon: "img/favicon.ico",
@@ -19,12 +19,17 @@ module.exports = {
       },
       items: [
         {
-          to: "docs/",
-          activeBasePath: "docs",
-          label: "Docs",
+          type: "doc",
           position: "left",
+          docId: "getting-started/simple-example",
+          label: "Docs",
         },
-        { to: "blog", label: "Blog", position: "left" },
+        {
+          type: "doc",
+          position: "left",
+          docId: "wallet/getting-started",
+          label: "Wallet",
+        },
         {
           href: "https://github.com/airgap-it/beacon-sdk",
           label: "GitHub",
@@ -83,12 +88,8 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          editUrl: "https://github.com/airgap-it/beacon-docs/edit/main/",
-        },
-        blog: {
-          showReadingTime: true,
           // Please change this to your repo.
           editUrl: "https://github.com/airgap-it/beacon-docs/edit/main/",
         },

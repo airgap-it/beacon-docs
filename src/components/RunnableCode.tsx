@@ -7,6 +7,7 @@ import * as taquitoWallet from "@taquito/beacon-wallet";
 import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import BrowserWindow from "./BrowserWindow/BrowserWindow";
 
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
@@ -50,7 +51,7 @@ const removeImports = (code: string) => {
     .join("\n");
 };
 
-const run = (rawCode: string, updateOutput: (str: string) => void) => {
+const run = (rawCode: string, appendOutput: (str: string) => void) => {
   let code = rawCode;
   console.log("rawCode", code);
   let res;
@@ -58,7 +59,7 @@ const run = (rawCode: string, updateOutput: (str: string) => void) => {
   const myLog = (...args: any[]) => {
     console.log("MY LOG");
     res += "\n" + args.join(" ");
-    updateOutput(res);
+    appendOutput(res);
     console.log(...args);
   };
 
@@ -92,16 +93,16 @@ const run = (rawCode: string, updateOutput: (str: string) => void) => {
       .then((result: string) => {
         console.log("RESULT", result);
         res += "\n" + JSON.stringify(result, null, 2);
-        updateOutput(res);
+        appendOutput(res);
       })
       .catch((err: any) => {
         console.warn(err);
         res = JSON.stringify(err, null, 2);
-        updateOutput(res);
+        appendOutput(res);
       });
   } catch (e) {
     res = e;
-    updateOutput(e);
+    appendOutput(e);
     console.error(e);
   }
   console.log("res", res);
@@ -117,10 +118,11 @@ const Child = ({ code }) => {
     setOutput(output + "\n" + str);
   };
 
-  const execute = () => {
+  const execute = async () => {
     console.log("CODE");
     setStarted(true);
-    run(code.props.children.props.children, updateOutput);
+    await run(code.props.children.props.children, updateOutput);
+    console.log("CODE EXECUTION DONE");
   };
   const reset = async () => {
     console.log("RESETTING");
@@ -136,28 +138,37 @@ const Child = ({ code }) => {
   return (
     <>
       {code}
-      <button
-        onClick={() => {
-          execute();
-        }}
-      >
-        EXECUTE
-      </button>
-      <button
-        onClick={() => {
-          reset();
-        }}
-      >
-        RESET
-      </button>
-      <button
-        onClick={() => {
-          clear();
-        }}
-      >
-        CLEAR OUTPUT
-      </button>
-      {started ? <pre>{output ? output : "Waiting for output..."}</pre> : ""}
+      <BrowserWindow minHeight="" url="https://example.com">
+        <button
+          onClick={() => {
+            execute();
+          }}
+        >
+          EXECUTE
+        </button>
+        <button
+          onClick={() => {
+            reset();
+          }}
+        >
+          RESET
+        </button>
+        <button
+          onClick={() => {
+            clear();
+          }}
+        >
+          CLEAR OUTPUT
+        </button>
+        {started ? (
+          <>
+            <p>Output:</p>
+            <pre>{output ? output : "Waiting for output..."}</pre>
+          </>
+        ) : (
+          ""
+        )}
+      </BrowserWindow>
     </>
   );
 };

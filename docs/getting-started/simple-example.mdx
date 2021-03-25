@@ -1,5 +1,5 @@
 ---
-title: Example
+title: Simple Example
 ---
 
 import { RunnableCode } from "../../src/components/RunnableCode";
@@ -9,46 +9,28 @@ The following example will show:
 1. How to connect a user to his wallet
 2. How to re-use an existing connection after a page refreshed
 3. How to send an operation request
-4. How to "disconnect" a wallet
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/getting-started-example.beacon.ts -->
+<!-- embedme ../../build-examples/example-simple.beacon.ts -->
 
 ```ts
-import { ColorMode, DAppClient, Network, NetworkType, TezosOperationType } from "@airgap/beacon-sdk";
-
-// Set the network (Mainnet is default)
-const network: Network = { type: NetworkType.MAINNET }
+import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
-const dAppClient = new DAppClient({ name: 'Beacon Docs', preferredNetwork: network.type })
+const dAppClient = new DAppClient({ name: 'Beacon Docs' })
 
 let myAddress: string | undefined
-
-// OPTIONAL: Set the color mode
-// Read the current theme of the docs page from local storage. This depends on your dApp state
-const theme = localStorage.getItem('theme')
-await dAppClient.setColorMode(theme === 'dark' ? ColorMode.DARK : ColorMode.LIGHT)
 
 // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
 const activeAccount = await dAppClient.getActiveAccount()
 if (activeAccount) {
-    // If there is an active account, the user has previously 
+    // If defined, the user is connected to a wallet.
     // You can now do an operation request, sign request, or send another permission request to switch wallet
     console.log('Already connected: ', activeAccount.address)
-
-    // You probably want to show the address in your UI somewhere.
     myAddress = activeAccount.address
 } else {
-    // The user is NOT connected to a wallet.
-
-    // The following permission request should not be called on pageload,
-    // it should be triggered when the user clicks on a "connect" button on your page.
-    // This will trigger the pairing alert UI where the user can select which wallet to pair.
-    const permissions = await dAppClient.requestPermissions({
-        network: network
-    })
+    const permissions = await dAppClient.requestPermissions()
     console.log('New connection: ', permissions.address)
     myAddress = permissions.address
 }
@@ -64,18 +46,9 @@ const response = await dAppClient.requestOperation({
 })
 
 console.log('Operation Hash: ', response.transactionHash)
-
-// Let's generate a link to see the transaction on a block explorer
-const explorerLink = await dAppClient.blockExplorer.getTransactionLink(response.transactionHash, network)
-
-console.log('Block Explorer:', explorerLink)
-
-// If you want to "disconnect" a wallet, clear the active account.
-// This means the next time the active account is checked or a permission request is triggered, it will be like it's the users first interaction.
-await dAppClient.clearActiveAccount()
 ```
 
-<!-- embedme ../../build-examples/getting-started-example.taquito.ts -->
+<!-- embedme ../../build-examples/example-simple.taquito.ts -->
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";

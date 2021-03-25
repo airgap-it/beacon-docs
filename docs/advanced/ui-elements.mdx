@@ -4,6 +4,7 @@ title: UI Elements
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import BrowserWindow from "../../src/components/BrowserWindow/BrowserWindow";
 
 :::caution
 We strongly recommend keeping the default UI Elements.
@@ -31,13 +32,24 @@ It handles a lot of cases that are not obvious at first glance. If you really mu
 <TabItem value="desktop">
 
 On desktop there is only one view with some wallets and the QR code.
+
+<BrowserWindow url="https://mydapp.com">
+
 ![Beacon Pairing](../../static/img/beacon-pairing-ui.png)
+
+</BrowserWindow>
 
 </TabItem>
 <TabItem value="ios">
 
 On iOS, each mobile and webapp has its own entry because the device doesn't allow selection of a specific if multiple apps are installed.
+
+<BrowserWindow url="https://mydapp.com">
+
 ![Beacon Pairing](../../static/img/beacon-ios-pairing.png)
+
+</BrowserWindow>
+
 ![Beacon Pairing](../../static/img/beacon-ios-pairing-2.png)
 
 </TabItem>
@@ -51,19 +63,35 @@ On Android, there is one link for all mobile apps because the device lets you ch
 </Tabs>
 
 2. Every message sent by the dApp should trigger a persistent element on screen, indicating that a request is in progress.
-   ![Beacon Loading](../../static/img/beacon-loading.gif)
 
-   - If no message has been received for a certain amount of time (eg. 5 seconds), the UI should indicate that there are potential connection issues.
-     The dApp should **NOT** do any automatic action at this point, because some delays are normal, especially when working with wallets that communicate
-     over the P2P network.
-   - In the UI element that is shown, the user **SHOULD** have the option to **reset** his connection, meaning to disconnect a wallet. This will abort the whole
-     flow. The user can start the action again, which will now trigger a new "pairing" alert because the previous connection was reset.
-     ![Beacon Loading Open](../../static/img/beacon-loading-open.gif)
+<BrowserWindow url="https://mydapp.com">
+
+![Beacon Loading](../../static/img/beacon-loading.gif)
+
+</BrowserWindow>
+
+- If no message has been received for a certain amount of time (eg. 5 seconds), the UI should indicate that there are potential connection issues.
+  The dApp should **NOT** do any automatic action at this point, because some delays are normal, especially when working with wallets that communicate
+  over the P2P network.
+- In the UI element that is shown, the user **SHOULD** have the option to **reset** his connection, meaning to disconnect a wallet. This will abort the whole
+  flow. The user can start the action again, which will now trigger a new "pairing" alert because the previous connection was reset.
+
+<BrowserWindow url="https://mydapp.com">
+
+![Beacon Loading Open](../../static/img/beacon-loading-open.gif)
+
+</BrowserWindow>
+
 
 3. Once the Wallet receives the request, it will immediately send back an **Acknowledgement Message**.
    When this message is received in the dApp, the dApp knows that the connection is still valid and the user can handle the request.
    The persistent UI element that is shown on screen should now be updated, indicating that we are waiting for user input on the wallet.
-   ![Beacon Awaiting](../../static/img/beacon-awaiting.gif)
+
+<BrowserWindow url="https://mydapp.com">
+
+![Beacon Awaiting](../../static/img/beacon-awaiting.gif)
+
+</BrowserWindow>
 
 4. When the response is received, the persistent element can be removed again and the successful (or error) response can be displayed to the user and the application flow can be continued.
 

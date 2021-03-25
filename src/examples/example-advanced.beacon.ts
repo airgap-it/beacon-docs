@@ -20,7 +20,7 @@ import { ColorMode, DAppClient, Network, NetworkType, TezosOperationType } from 
     // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
     const activeAccount = await dAppClient.getActiveAccount()
     if (activeAccount) {
-        // If there is an active account, the user has previously 
+        // If defined, the user is connected to a wallet.
         // You can now do an operation request, sign request, or send another permission request to switch wallet
         console.log('Already connected: ', activeAccount.address)
 

@@ -31,9 +31,16 @@ const getFile = (filename) => {
     .trim();
 };
 
-const files = getFilesRecursively("./src/examples/").filter((file) =>
-  file.endsWith(".ts")
-);
+const allFiles = getFilesRecursively("./src/examples/");
+
+// Delete .js files because they are only generated to check if the typescript code is correct
+allFiles
+  .filter((file) => file.endsWith(".js"))
+  .forEach((file) => {
+    fs.unlinkSync(file);
+  });
+
+const files = allFiles.filter((file) => file.endsWith(".ts"));
 
 const data = files.map((f) => ({
   name: f.slice("src/examples/".length),

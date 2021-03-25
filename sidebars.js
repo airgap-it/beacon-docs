@@ -3,18 +3,17 @@ module.exports = {
     {
       type: "category",
       label: "Beacon",
-      items: [
-        "beacon/introduction",
-        "beacon/design-principles",
-        "beacon/contributing",
-        "beacon/wallets",
-      ],
+      items: ["beacon/introduction", "beacon/contributing", "beacon/wallets"],
       collapsed: true,
     },
     {
       type: "category",
       label: "Getting Started",
-      items: ["getting-started/installation", "getting-started/example"],
+      items: [
+        "getting-started/installation",
+        "getting-started/simple-example",
+        "getting-started/advanced-example",
+      ],
       collapsed: false,
     },
     {
@@ -60,4 +59,5 @@ module.exports = {
       href: "https://example.com", // The target URL (string).
     },
   ],
+  wallet: ["wallet/getting-started"],
 };

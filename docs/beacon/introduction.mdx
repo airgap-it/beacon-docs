@@ -7,3 +7,17 @@ Beacon is the implementation of the [tzip-10 proposal](https://gitlab.com/tzip/t
 A dApp impelementing the [beacon-sdk](https://github.com/airgap-it/beacon-sdk) can build up a channel and send messages over a peer to peer communication layer to a wallet. This allows for a communication for example of a mobile wallet with a desktop application. The requests of the dApp are sent to the wallet, signed and returned to the application. The `beacon-sdk` can also communicate to chrome extensions if compatible ones are installed.
 
 The `beacon-sdk` should allow developers to integrate this functionality with minimal coding, but still be customizable to support more complex flows.
+
+## Design Principles
+
+The `beacon-sdk` handles almost everything for you, but is still customizable if needed.
+It detects whether or not a browser extension is installed, tracks what connections have been established and the accounts that have been shared with the dApp.
+
+Generally, you only have to initialize a DAppClient instance (see [Getting Started](/docs/getting-started/example)), the rest should be handled for you.
+Refer to the [examples](/docs/guides/getting-started) section for some common use cases.
+
+## Default UI Elements
+
+The `beacon-sdk` includes default UI elements for pairing wallets and show the status of a request.
+**We highly discourage the overwriting of the default UI elements.**
+You can read more details about this in the [UI Elements](/docs/advanced/ui-elements) section.
