@@ -13,22 +13,6 @@ function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
 }
 
-const START_STR: string = "/// START";
-const END_STR: string = "/// END";
-
-const keepBetween = (text: string, start: string, end: string) => {
-  let cleanText = "";
-
-  const startPos = text.indexOf(start);
-  const endPos = text.indexOf(end);
-  if (startPos >= 0 && endPos >= 0) {
-    cleanText += text.substring(startPos + start.length, endPos);
-    cleanText += keepBetween(text.substring(endPos + end.length), start, end);
-  }
-
-  return cleanText;
-};
-
 const removeImports = (code: string) => {
   const lines = code.split("\n");
   let include = true;
@@ -53,20 +37,14 @@ const removeImports = (code: string) => {
 
 const run = (rawCode: string, appendOutput: (str: string) => void) => {
   let code = rawCode;
-  console.log("rawCode", code);
-  let res;
 
   const myLog = (...args: any[]) => {
-    console.log("MY LOG");
-    res += "\n" + args.join(" ");
-    appendOutput(res);
+    appendOutput(args.join(" "));
     console.log(...args);
   };
 
   code = replaceAll(code, "console.log(", "progress(");
-  console.log("processed code1", code);
   code = removeImports(code);
-  console.log("processed code2", code);
   code = ts.transpile(`({
     run: async (beacon: any, taquito: any, taquitoWallet: any, progress: any): string => {
       Object.keys(beacon).forEach(key => {
@@ -78,61 +56,68 @@ const run = (rawCode: string, appendOutput: (str: string) => void) => {
       Object.keys(taquitoWallet).forEach(key => {
         window[key] = taquitoWallet[key]
       })
-      return (async () => {${code};
-      if (typeof variable !== 'undefined') {
-        return result
-      }
+      return (async () => {
+        ${code};
+        if (typeof result !== 'undefined') {
+          return result
+        }
       })()
     })`);
   let runnable: any;
   // console.log("TRANSPILED code", code);
-  try {
-    runnable = eval(code);
-    runnable
-      .run(beacon, taquito, taquitoWallet, myLog)
-      .then((result: string) => {
-        console.log("RESULT", result);
-        res += "\n" + JSON.stringify(result, null, 2);
-        appendOutput(res);
-      })
-      .catch((err: any) => {
-        console.warn(err);
-        res = JSON.stringify(err, null, 2);
-        appendOutput(res);
-      });
-  } catch (e) {
-    res = e;
-    appendOutput(e);
-    console.error(e);
-  }
-  console.log("res", res);
-  return res;
+  return new Promise((resolve) => {
+    try {
+      runnable = eval(code);
+      runnable
+        .run(beacon, taquito, taquitoWallet, myLog)
+        .then((result: string) => {
+          if (result) {
+            appendOutput("Returned:\n" + JSON.stringify(result, null, 2));
+          }
+          resolve(result);
+        })
+        .catch((err: any) => {
+          console.warn(err);
+          appendOutput(JSON.stringify(err, null, 2));
+          resolve(err);
+        });
+    } catch (e) {
+      appendOutput(e);
+      console.error(e);
+      resolve(e);
+    }
+  });
 };
 
+enum ExecutionState {
+  INIT,
+  STARTED,
+  ENDED,
+}
+
 const Child = ({ code }) => {
-  const [started, setStarted] = useState(false);
+  const [executionState, setExecutionState] = useState(ExecutionState.INIT);
   const [output, setOutput] = useState("");
 
   const updateOutput = (str: string) => {
-    console.log("UPDATE CALLED");
-    setOutput(output + "\n" + str);
+    console.log("UPDATING STRING WITH", str);
+    const newOutput = output + "\n" + str;
+    setOutput(newOutput.trim());
   };
 
   const execute = async () => {
-    console.log("CODE");
-    setStarted(true);
+    setExecutionState(ExecutionState.STARTED);
     await run(code.props.children.props.children, updateOutput);
-    console.log("CODE EXECUTION DONE");
+    setExecutionState(ExecutionState.ENDED);
   };
   const reset = async () => {
-    console.log("RESETTING");
     clear();
-    const dAppClient = new beacon.DAppClient({ name: "a" });
+    const dAppClient = new beacon.DAppClient({ name: "Cleanup" });
     await dAppClient.destroy();
   };
   const clear = async () => {
     setOutput("");
-    setStarted(false);
+    setExecutionState(ExecutionState.INIT);
   };
 
   return (
@@ -160,10 +145,13 @@ const Child = ({ code }) => {
         >
           CLEAR OUTPUT
         </button>
-        {started ? (
+        {executionState !== ExecutionState.INIT ? (
           <>
             <p>Output:</p>
             <pre>{output ? output : "Waiting for output..."}</pre>
+            {executionState === ExecutionState.STARTED
+              ? "Executing... (should be animated loader)"
+              : ""}
           </>
         ) : (
           ""
