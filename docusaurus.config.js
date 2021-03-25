@@ -1,3 +1,5 @@
+const path = require("path");
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Beacon Docs",
@@ -99,4 +101,5 @@ module.exports = {
       },
     ],
   ],
+  plugins: [path.join(__dirname, "/plugins/monaco-editor")],
 };

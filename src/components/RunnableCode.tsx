@@ -9,6 +9,8 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
 
+import Editor from "./editor";
+
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
 }
@@ -121,8 +123,24 @@ const Child = ({ code }) => {
     setExecutionState(ExecutionState.INIT);
   };
 
+  const editorLayout = {
+    width: 800,
+    height: 500,
+  };
+  const input = code.props.children.props.children;
+  const setInput = (input: string) => {
+    console.log("set input", input);
+  };
+
   return (
     <>
+      <Editor
+        {...editorLayout}
+        language="typescript"
+        value={input}
+        onChange={setInput}
+        options={{ minimap: { enabled: false }, wordWrap: "on" }}
+      />
       {code}
       <BrowserWindow minHeight="" url="https://example.com">
         <button
