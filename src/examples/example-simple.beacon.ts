@@ -14,11 +14,11 @@ import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
     if (activeAccount) {
         // If defined, the user is connected to a wallet.
         // You can now do an operation request, sign request, or send another permission request to switch wallet
-        console.log('Already connected: ', activeAccount.address)
+        console.log('Already connected:', activeAccount.address)
         myAddress = activeAccount.address
     } else {
         const permissions = await dAppClient.requestPermissions()
-        console.log('New connection: ', permissions.address)
+        console.log('New connection:', permissions.address)
         myAddress = permissions.address
     }
 

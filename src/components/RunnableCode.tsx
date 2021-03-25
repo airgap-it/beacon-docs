@@ -35,8 +35,14 @@ const removeImports = (code: string) => {
     .join("\n");
 };
 
-const run = (rawCode: string, appendOutput: (str: string) => void) => {
+const run = (rawCode: string, setOutput: (str: string) => void) => {
   let code = rawCode;
+
+  let output = "";
+  const appendOutput = (str: string) => {
+    output += "\n" + str;
+    setOutput(output.trim());
+  };
 
   const myLog = (...args: any[]) => {
     appendOutput(args.join(" "));
@@ -99,15 +105,10 @@ const Child = ({ code }) => {
   const [executionState, setExecutionState] = useState(ExecutionState.INIT);
   const [output, setOutput] = useState("");
 
-  const updateOutput = (str: string) => {
-    console.log("UPDATING STRING WITH", str);
-    const newOutput = output + "\n" + str;
-    setOutput(newOutput.trim());
-  };
-
   const execute = async () => {
+    await clear();
     setExecutionState(ExecutionState.STARTED);
-    await run(code.props.children.props.children, updateOutput);
+    await run(code.props.children.props.children, setOutput);
     setExecutionState(ExecutionState.ENDED);
   };
   const reset = async () => {
@@ -148,7 +149,11 @@ const Child = ({ code }) => {
         {executionState !== ExecutionState.INIT ? (
           <>
             <p>Output:</p>
-            <pre>{output ? output : "Waiting for output..."}</pre>
+            <pre>
+              {output || executionState === ExecutionState.ENDED
+                ? output
+                : "Waiting for output..."}
+            </pre>
             {executionState === ExecutionState.STARTED
               ? "Executing... (should be animated loader)"
               : ""}

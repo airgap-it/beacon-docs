@@ -10,7 +10,7 @@ import { DAppClient } from "@airgap/beacon-sdk";
     try {
         console.log('Requesting permissions...')
         const permissions = await dAppClient.requestPermissions()
-        console.log('Got permissions', permissions.address)
+        console.log('Got permissions:', permissions.address)
     } catch (error) {
         console.log('Got error:', error)
     }

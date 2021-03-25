@@ -14,7 +14,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
     try {
         await wallet.requestPermissions()
         const address = await wallet.getPKH()
-        console.log('Got permissions', address)
+        console.log('Got permissions:', address)
     } catch (error) {
         console.log('Got error:', error)
     }

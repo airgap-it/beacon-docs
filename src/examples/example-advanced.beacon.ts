@@ -22,7 +22,7 @@ import { ColorMode, DAppClient, Network, NetworkType, TezosOperationType } from 
     if (activeAccount) {
         // If defined, the user is connected to a wallet.
         // You can now do an operation request, sign request, or send another permission request to switch wallet
-        console.log('Already connected: ', activeAccount.address)
+        console.log('Already connected:', activeAccount.address)
 
         // You probably want to show the address in your UI somewhere.
         myAddress = activeAccount.address
@@ -49,7 +49,7 @@ import { ColorMode, DAppClient, Network, NetworkType, TezosOperationType } from 
         }]
     })
 
-    console.log('Operation Hash: ', response.transactionHash)
+    console.log('Operation Hash:', response.transactionHash)
 
     // Let's generate a link to see the transaction on a block explorer
     const explorerLink = await dAppClient.blockExplorer.getTransactionLink(response.transactionHash, network)

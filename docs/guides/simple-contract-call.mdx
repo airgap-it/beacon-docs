@@ -18,10 +18,10 @@ const activeAccount = await dAppClient.getActiveAccount()
 if (activeAccount) {
     // User already has account connected, everything is ready
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log('Already connected: ', activeAccount.address)
+    console.log('Already connected:', activeAccount.address)
 } else {
     const permissions = await dAppClient.requestPermissions()
-    console.log('New connection: ', permissions.address)
+    console.log('New connection:', permissions.address)
 }
 
 const TZ_BUTTON_COLORS_CONTRACT = 'KT1RPW5kTX6WFxg8JK34rGEU24gqEEudyfvz'
