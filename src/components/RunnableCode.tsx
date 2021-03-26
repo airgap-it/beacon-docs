@@ -158,29 +158,32 @@ const Child = ({ code }) => {
       )}
       <BrowserWindow minHeight="" url="https://example.com">
         <button
+          className="button button--primary margin-right--xs"
           onClick={() => {
             execute();
           }}
         >
-          EXECUTE
+          Run Code
         </button>
         <button
+          className="button button--secondary margin-right--xs"
           onClick={() => {
             reset();
           }}
         >
-          RESET
+          Reset
         </button>
         <button
+          className="button button--secondary"
           onClick={() => {
             clear();
           }}
         >
-          CLEAR OUTPUT
+          Clear Output
         </button>
         {executionState !== ExecutionState.INIT ? (
           <>
-            <p>Output:</p>
+            <h4 className="margin-vert--md">Output</h4>
             <pre>
               {output || executionState === ExecutionState.ENDED
                 ? output

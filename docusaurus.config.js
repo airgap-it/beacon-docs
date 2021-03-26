@@ -14,7 +14,6 @@ module.exports = {
   themes: ["@docusaurus/theme-live-codeblock"],
   themeConfig: {
     navbar: {
-      title: "Beacon Docs",
       logo: {
         alt: "Beacon Logo",
         src: "img/logo.svg",
@@ -49,6 +48,10 @@ module.exports = {
               label: "Getting Started",
               to: "docs/",
             },
+            {
+              label: "Typedoc Reference",
+              href: "https://typedocs.walletbeacon.io",
+            },
           ],
         },
         {
@@ -66,23 +69,35 @@ module.exports = {
               label: "Twitter",
               href: "https://twitter.com/airgap_it",
             },
+            {
+              label: "Blog",
+              href: "https://medium.com/airgap-it",
+            },
           ],
         },
         {
-          title: "More",
+          title: "Beacon Components",
           items: [
             {
-              label: "Blog",
-              to: "blog", // TODO
+              label: "Beacon SDK",
+              href: "https://github.com/airgap-it/beacon-sdk",
             },
             {
-              label: "GitHub",
-              href: "https://github.com/airgap-it/beacon-sdk",
+              label: "Beacon Android SDK",
+              href: "https://github.com/airgap-it/beacon-android-sdk",
+            },
+            {
+              label: "Beacon iOS SDK",
+              href: "https://github.com/airgap-it/beacon-ios-sdk",
+            },
+            {
+              label: "Beacon Node",
+              href: "https://github.com/airgap-it/beacon-node",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`, // TODO
+      copyright: `Copyright © ${new Date().getFullYear()} Papers AG - Open Source MIT License`, // TODO
     },
   },
   presets: [
