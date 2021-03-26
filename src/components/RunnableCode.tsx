@@ -8,7 +8,6 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
-
 import Editor from "./editor";
 
 function replaceAll(string: string, search: string, replace: string) {
@@ -106,6 +105,7 @@ enum ExecutionState {
 const Child = ({ code }) => {
   const [executionState, setExecutionState] = useState(ExecutionState.INIT);
   const [output, setOutput] = useState("");
+  const [readonly, setReadonly] = useState(true);
 
   const execute = async () => {
     await clear();
@@ -122,6 +122,9 @@ const Child = ({ code }) => {
     setOutput("");
     setExecutionState(ExecutionState.INIT);
   };
+  const toggleReadonly = async () => {
+    setReadonly(!readonly);
+  };
 
   const editorLayout = {
     width: 800,
@@ -134,14 +137,25 @@ const Child = ({ code }) => {
 
   return (
     <>
-      <Editor
-        {...editorLayout}
-        language="typescript"
-        value={input}
-        onChange={setInput}
-        options={{ minimap: { enabled: false }, wordWrap: "on" }}
-      />
-      {code}
+      <button
+        onClick={() => {
+          toggleReadonly();
+        }}
+      >
+        Toggle Readonly
+      </button>
+
+      {readonly ? (
+        code
+      ) : (
+        <Editor
+          {...editorLayout}
+          language="typescript"
+          value={input}
+          onChange={setInput}
+          options={{ minimap: { enabled: false }, wordWrap: "on" }}
+        />
+      )}
       <BrowserWindow minHeight="" url="https://example.com">
         <button
           onClick={() => {
