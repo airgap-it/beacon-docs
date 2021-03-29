@@ -65,5 +65,5 @@ module.exports = {
       href: "https://example.com", // The target URL (string).
     },
   ],
-  wallet: ["wallet/getting-started"],
+  wallet: ["wallet/getting-started", "wallet/security"],
 };
