@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
-import Editor from "./editor";
+import Monaco from "./Monaco";
 
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
@@ -148,7 +148,7 @@ const Child = ({ code }) => {
       {readonly ? (
         code
       ) : (
-        <Editor
+        <Monaco
           {...editorLayout}
           language="typescript"
           value={input}

@@ -3,7 +3,7 @@ import useThemeContext from "@theme/hooks/useThemeContext";
 
 const MonacoEditor = lazy(() => import("react-monaco-editor"));
 
-function Editor(props) {
+function Monaco(props) {
   const { isDarkTheme } = useThemeContext();
 
   function onEditorWillMount(monaco) {
@@ -34,4 +34,4 @@ function Editor(props) {
   );
 }
 
-export default Editor;
+export default Monaco;

@@ -3,7 +3,12 @@ module.exports = {
     {
       type: "category",
       label: "Beacon",
-      items: ["beacon/introduction", "beacon/contributing", "beacon/wallets"],
+      items: [
+        "beacon/introduction",
+        "beacon/contributing",
+        "beacon/wallets",
+        "beacon/security-audit",
+      ],
       collapsed: true,
     },
     {
@@ -27,6 +32,7 @@ module.exports = {
         "guides/simple-contract-call",
         "guides/fa1.2-transfer",
         "guides/fa2-transfer",
+        "guides/standalone-delegation",
       ],
       collapsed: true,
     },
@@ -59,5 +65,5 @@ module.exports = {
       href: "https://example.com", // The target URL (string).
     },
   ],
-  wallet: ["wallet/getting-started"],
+  wallet: ["wallet/getting-started", "wallet/security"],
 };
