@@ -31,6 +31,7 @@ module.exports = {
           docId: "wallet/getting-started",
           label: "Wallet",
         },
+        { to: "playground/", label: "Playground", position: "right" },
         {
           href: "https://github.com/airgap-it/beacon-sdk",
           label: "GitHub",
