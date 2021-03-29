@@ -3,29 +3,34 @@ title: Getting Started
 slug: /
 ---
 
-import { RunnableCode } from "../../src/components/RunnableCode";
+import { RunnableCode } from "@site/src/components/RunnableCode";
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/request-permissions-beacon.ts -->
+<!-- embedme ../../build-examples/request-permissions.beacon.ts -->
 
 ```ts
-import { DAppClient } from "@airgap/beacon-sdk";
+import { DAppClient, PermissionScope } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
 const dAppClient = new DAppClient({ name: 'Beacon Docs' })
 
+// You can request specific permissions if you want
+const scopes: PermissionScope[] = [
+    PermissionScope.OPERATION_REQUEST,
+    PermissionScope.SIGN,
+]
+
 try {
-    const permissions = await dAppClient.requestPermissions()
-    console.log('Got permissions', permissions.address)
+    console.log('Requesting permissions...')
+    const permissions = await dAppClient.requestPermissions({ scopes })
+    console.log('Got permissions:', permissions.address)
 } catch (error) {
     console.log('Got error:', error)
 }
-
-const result = 'test'
 ```
 
-<!-- embedme ../../build-examples/request-permissions-taquito.ts -->
+<!-- embedme ../../build-examples/request-permissions.taquito.ts -->
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -40,7 +45,7 @@ Tezos.setWalletProvider(wallet)
 try {
     await wallet.requestPermissions()
     const address = await wallet.getPKH()
-    console.log('Got permissions', address)
+    console.log('Got permissions:', address)
 } catch (error) {
     console.log('Got error:', error)
 }

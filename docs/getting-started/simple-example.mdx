@@ -2,11 +2,11 @@
 title: Simple Example
 ---
 
-import { RunnableCode } from "../../src/components/RunnableCode";
+import { RunnableCode } from "@site/src/components/RunnableCode";
 
 The following example will show:
 
-1. How to connect a user to his wallet
+1. How to connect a dApp to a wallet
 2. How to re-use an existing connection after a page refreshed
 3. How to send an operation request
 
@@ -18,34 +18,36 @@ The following example will show:
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
-const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-let myAddress: string | undefined
+let myAddress: string | undefined;
 
 // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
-const activeAccount = await dAppClient.getActiveAccount()
+const activeAccount = await dAppClient.getActiveAccount();
 if (activeAccount) {
-    // If defined, the user is connected to a wallet.
-    // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log('Already connected:', activeAccount.address)
-    myAddress = activeAccount.address
+  // If defined, the user is connected to a wallet.
+  // You can now do an operation request, sign request, or send another permission request to switch wallet
+  console.log("Already connected:", activeAccount.address);
+  myAddress = activeAccount.address;
 } else {
-    const permissions = await dAppClient.requestPermissions()
-    console.log('New connection:', permissions.address)
-    myAddress = permissions.address
+  const permissions = await dAppClient.requestPermissions();
+  console.log("New connection:", permissions.address);
+  myAddress = permissions.address;
 }
 
 // At this point we are connected to an account.
 // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
 const response = await dAppClient.requestOperation({
-    operationDetails: [{
-        kind: TezosOperationType.TRANSACTION,
-        destination: myAddress, // Send to ourselves
-        amount: '1' // Amount in mutez, the smallest unit in Tezos
-    }]
-})
+  operationDetails: [
+    {
+      kind: TezosOperationType.TRANSACTION,
+      destination: myAddress, // Send to ourselves
+      amount: "1", // Amount in mutez, the smallest unit in Tezos
+    },
+  ],
+});
 
-console.log('Operation Hash: ', response.transactionHash)
+console.log("Operation Hash: ", response.transactionHash);
 ```
 
 <!-- embedme ../../build-examples/example-simple.taquito.ts -->
@@ -55,17 +57,17 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
 // Create a new DAppClient instance
-const Tezos = new TezosToolkit('https://mainnet-tezos.giganode.io')
-const wallet = new BeaconWallet({ name: 'Beacon Docs Taquito' }) // Takes the same arguments as the DAppClient constructor
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" }); // Takes the same arguments as the DAppClient constructor
 
-Tezos.setWalletProvider(wallet)
+Tezos.setWalletProvider(wallet);
 
 try {
-    await wallet.requestPermissions()
-    const address = await wallet.getPKH()
-    console.log('Got permissions:', address)
+  await wallet.requestPermissions();
+  const address = await wallet.getPKH();
+  console.log("Got permissions:", address);
 } catch (error) {
-    console.log('Got error:', error)
+  console.log("Got error:", error);
 }
 ```
 

@@ -108,6 +108,7 @@ import {
   DAppClient,
   defaultEventCallbacks,
 } from "@airgap/beacon-sdk";
+
 const dAppClient = new DAppClient({
   name: "My Sample DApp",
   disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
@@ -121,6 +122,7 @@ const dAppClient = new DAppClient({
     },
   },
 });
+
 try {
   console.log("Requesting permissions...");
   const permissions = await dAppClient.requestPermissions();
@@ -138,6 +140,7 @@ import {
   DAppClient,
   defaultEventCallbacks,
 } from "@airgap/beacon-sdk";
+
 const dAppClient = new DAppClient({
   name: "My Sample DApp",
   disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
@@ -151,6 +154,7 @@ const dAppClient = new DAppClient({
     },
   },
 });
+
 try {
   console.log("Requesting permissions...");
   const permissions = await dAppClient.requestPermissions();
