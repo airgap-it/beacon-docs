@@ -4,11 +4,11 @@ title: UI Elements
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import BrowserWindow from "../../src/components/BrowserWindow/BrowserWindow";
+import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
 
 :::caution
 We strongly recommend keeping the default UI Elements.
-Consistent UI helps users to interact more easily with different dApps.
+Consistent UI helps users to interact with different dApps more easily.
 :::
 
 // TODO: Resize images
@@ -82,7 +82,6 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 </BrowserWindow>
 
-
 3. Once the Wallet receives the request, it will immediately send back an **Acknowledgement Message**.
    When this message is received in the dApp, the dApp knows that the connection is still valid and the user can handle the request.
    The persistent UI element that is shown on screen should now be updated, indicating that we are waiting for user input on the wallet.
@@ -97,4 +96,68 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 ## Overwriting Default UI elements
 
-// TODO
+import { RunnableCode } from "@site/src/components/RunnableCode";
+
+<RunnableCode>
+
+<!-- embedme ../../build-examples/disable-all-ui.beacon.ts -->
+
+```ts
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+} from "@airgap/beacon-sdk";
+const dAppClient = new DAppClient({
+  name: "My Sample DApp",
+  disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
+  eventHandlers: {
+    // To keep the pairing alert, we have to add the following default event handlers back
+    [BeaconEvent.PAIR_INIT]: {
+      handler: defaultEventCallbacks.PAIR_INIT,
+    },
+    [BeaconEvent.PAIR_SUCCESS]: {
+      handler: defaultEventCallbacks.PAIR_SUCCESS,
+    },
+  },
+});
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.log("Got error:", error);
+}
+```
+
+<!-- embedme ../../build-examples/disable-all-ui.beacon.ts -->
+
+```ts
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+} from "@airgap/beacon-sdk";
+const dAppClient = new DAppClient({
+  name: "My Sample DApp",
+  disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
+  eventHandlers: {
+    // To keep the pairing alert, we have to add the following default event handlers back
+    [BeaconEvent.PAIR_INIT]: {
+      handler: defaultEventCallbacks.PAIR_INIT,
+    },
+    [BeaconEvent.PAIR_SUCCESS]: {
+      handler: defaultEventCallbacks.PAIR_SUCCESS,
+    },
+  },
+});
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.log("Got error:", error);
+}
+```
+
+</RunnableCode>
