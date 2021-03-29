@@ -6,8 +6,8 @@ module.exports = {
   tagline: "Connecting dApps with wallets.",
   url: "https://docs.walletbeacon.io",
   baseUrl: "/",
-  onBrokenLinks: "warn", // TODO: throw
-  onBrokenMarkdownLinks: "warn", // TODO: throw
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   favicon: "img/favicon.ico",
   organizationName: "airgap-it",
   projectName: "beacon-docs",
