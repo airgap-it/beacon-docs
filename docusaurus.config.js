@@ -47,7 +47,7 @@ module.exports = {
           items: [
             {
               label: "Getting Started",
-              to: "docs/",
+              to: "/",
             },
             {
               label: "Typedoc Reference",
