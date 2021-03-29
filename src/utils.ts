@@ -5,48 +5,48 @@ import * as taquito from "@taquito/taquito";
 import * as taquitoWallet from "@taquito/beacon-wallet";
 
 function replaceAll(string: string, search: string, replace: string) {
-    return string.split(search).join(replace);
+  return string.split(search).join(replace);
 }
 
 const removeImports = (code: string) => {
-    const lines = code.split("\n");
-    let include = true;
+  const lines = code.split("\n");
+  let include = true;
 
-    return lines
-        .map((l) => {
-            if (l.trim().startsWith("import")) {
-                include = false;
-            }
+  return lines
+    .map((l) => {
+      if (l.trim().startsWith("import")) {
+        include = false;
+      }
 
-            const out = include ? l : undefined;
+      const out = include ? l : undefined;
 
-            if (l.indexOf("@airgap/beacon-sdk") >= 0 || l.indexOf("@taquito") >= 0) {
-                include = true;
-            }
+      if (l.indexOf("@airgap/beacon-sdk") >= 0 || l.indexOf("@taquito") >= 0) {
+        include = true;
+      }
 
-            return out;
-        })
-        .filter((l) => !!l)
-        .join("\n");
+      return out;
+    })
+    .filter((l) => !!l)
+    .join("\n");
 };
 
 export const runBeaconCode = (rawCode: string, setOutput: (str: string) => void) => {
-    let code = rawCode;
+  let code = rawCode;
 
-    let output = "";
-    const appendOutput = (str: string) => {
-        output += "\n" + str;
-        setOutput(output.trim());
-    };
+  let output = "";
+  const appendOutput = (str: string) => {
+    output += "\n" + str;
+    setOutput(output.trim());
+  };
 
-    const myLog = (...args: any[]) => {
-        appendOutput(args.join(" "));
-        console.log(...args);
-    };
+  const myLog = (...args: any[]) => {
+    appendOutput(args.join(" "));
+    console.log(...args);
+  };
 
-    code = replaceAll(code, "console.log(", "progress(");
-    code = removeImports(code);
-    code = ts.transpile(`({
+  code = replaceAll(code, "console.log(", "progress(");
+  code = removeImports(code);
+  code = ts.transpile(`({
       run: async (beacon: any, taquito: any, taquitoWallet: any, progress: any): string => {
         Object.keys(beacon).forEach(key => {
           window[key] = beacon[key]
@@ -58,34 +58,37 @@ export const runBeaconCode = (rawCode: string, setOutput: (str: string) => void)
           window[key] = taquitoWallet[key]
         })
         return (async () => {
+          window.fetch = () => Promise.reject('FETCH API DISABLED')
+          window.XMLHttpRequest = {}
+
           ${code};
           if (typeof result !== 'undefined') {
             return result
           }
         })()
       })`);
-    let runnable: any;
-    // console.log("TRANSPILED code", code);
-    return new Promise((resolve) => {
-        try {
-            runnable = eval(code);
-            runnable
-                .run(beacon, taquito, taquitoWallet, myLog)
-                .then((result: string) => {
-                    if (result) {
-                        appendOutput("Returned:\n" + JSON.stringify(result, null, 2));
-                    }
-                    resolve(result);
-                })
-                .catch((err: any) => {
-                    console.warn(err);
-                    appendOutput(JSON.stringify(err, null, 2));
-                    resolve(err);
-                });
-        } catch (e) {
-            appendOutput(e);
-            console.error(e);
-            resolve(e);
-        }
-    });
+  let runnable: any;
+  // console.log("TRANSPILED code", code);
+  return new Promise((resolve) => {
+    try {
+      runnable = eval(code);
+      runnable
+        .run(beacon, taquito, taquitoWallet, myLog)
+        .then((result: string) => {
+          if (result) {
+            appendOutput("Returned:\n" + JSON.stringify(result, null, 2));
+          }
+          resolve(result);
+        })
+        .catch((err: any) => {
+          console.warn(err);
+          appendOutput(JSON.stringify(err, null, 2));
+          resolve(err);
+        });
+    } catch (e) {
+      appendOutput(e);
+      console.error(e);
+      resolve(e);
+    }
+  });
 };

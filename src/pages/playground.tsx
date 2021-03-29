@@ -4,6 +4,9 @@ import Layout from "@theme/Layout";
 import useWindowSize from "@site/src/hooks/useWindowSize";
 import Monaco from "@site/src/components/Monaco";
 import styles from "./styles.module.css";
+import { ExecutionState } from "../ExecutionState";
+import { runBeaconCode } from "../utils";
+import { DAppClient } from "@airgap/beacon-sdk";
 
 function Playground() {
   if (typeof window === "undefined") {
@@ -15,13 +18,12 @@ function Playground() {
 
   const [input, setInput] = useState(initialCode);
   const [output, setOutput] = useState("");
+  const [executionState, setExecutionState] = useState(ExecutionState.INIT);
 
   const windowSize = useWindowSize();
 
   const inputChanged = (str) => {
     setInput(str);
-    console.log(btoa(str));
-    setOutput(str);
   };
 
   const headerLayout = {
@@ -51,26 +53,35 @@ function Playground() {
     },
   };
 
-  const run = () => {
-    console.log("EXECUTING", input);
+  const execute = async () => {
+    if (executionState === ExecutionState.STARTED) {
+      return;
+    }
+    await clear();
+    setExecutionState(ExecutionState.STARTED);
+    await runBeaconCode(input, setOutput);
+    setExecutionState(ExecutionState.ENDED);
   };
-
-  function toShareUrl(str: string) {
-    return `${window.location.host}/beacon-docs/playground?code=${btoa(str)}`;
-  }
+  const reset = async () => {
+    clear();
+    const dAppClient = new DAppClient({ name: "Cleanup" });
+    await dAppClient.destroy();
+  };
+  const clear = async () => {
+    setOutput("");
+    setExecutionState(ExecutionState.INIT);
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
-    run();
-  }
-
-  function handleClickRun() {
-    run();
+    execute();
   }
 
   function handleClickShare() {
-    const url = toShareUrl(input);
+    const url = `${window.location.host}/playground?code=${btoa(input)}`;
+
     console.log("URL", url);
+
     navigator.clipboard
       .writeText(url)
       .catch((err) => console.error("Failed to copy to url!", err));
@@ -84,9 +95,23 @@ function Playground() {
           className={classnames(styles.argsInputContainer)}
         >
           <button
-            onClick={handleClickRun}
+            onClick={execute}
             className={classnames(styles.argsIconContainer)}
-          ></button>
+          >
+            Run Code
+          </button>
+          <button
+            onClick={reset}
+            className={classnames(styles.argsIconContainer)}
+          >
+            Reset
+          </button>
+          <button
+            onClick={clear}
+            className={classnames(styles.argsIconContainer)}
+          >
+            Clear Output
+          </button>
         </form>
         <button onClick={handleClickShare}>
           Share Code (Copy to Clipboard)

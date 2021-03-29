@@ -7,12 +7,7 @@ import BrowserWindow from "./BrowserWindow/BrowserWindow";
 import Monaco from "./Monaco";
 import LoadingAnimation from "./LoadingAnimation";
 import { runBeaconCode } from "../utils";
-
-enum ExecutionState {
-  INIT,
-  STARTED,
-  ENDED,
-}
+import { ExecutionState } from "../ExecutionState";
 
 const Child = ({ code }) => {
   const [executionState, setExecutionState] = useState(ExecutionState.INIT);
