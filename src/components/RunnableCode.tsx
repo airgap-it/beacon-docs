@@ -142,6 +142,7 @@ const Child = ({ code }) => {
   return (
     <>
       <button
+        className="button button--secondary"
         onClick={() => {
           toggleReadonly();
         }}
@@ -192,12 +193,15 @@ const Child = ({ code }) => {
               {output || executionState === ExecutionState.ENDED
                 ? output
                 : "Waiting for output..."}
+              {executionState === ExecutionState.STARTED ? (
+                <>
+                  <br />
+                  <LoadingAnimation />
+                </>
+              ) : (
+                ""
+              )}
             </pre>
-            {executionState === ExecutionState.STARTED ? (
-              <LoadingAnimation />
-            ) : (
-              ""
-            )}
           </>
         ) : (
           ""
