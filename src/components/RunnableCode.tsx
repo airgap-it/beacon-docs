@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
-import Editor from "./editor";
+import Editor from "./Editor";
 import LoadingAnimation from "./LoadingAnimation";
 
 function replaceAll(string: string, search: string, replace: string) {
