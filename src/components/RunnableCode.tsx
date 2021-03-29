@@ -9,6 +9,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
 import Editor from "./editor";
+import LoadingAnimation from "./LoadingAnimation";
 
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);
@@ -105,9 +106,12 @@ enum ExecutionState {
 const Child = ({ code }) => {
   const [executionState, setExecutionState] = useState(ExecutionState.INIT);
   const [output, setOutput] = useState("");
-  const [readonly, setReadonly] = useState(true);
+  const [readonly, setReadonly] = useState(false);
 
   const execute = async () => {
+    if (executionState === ExecutionState.STARTED) {
+      return;
+    }
     await clear();
     setExecutionState(ExecutionState.STARTED);
     await run(code.props.children.props.children, setOutput);
@@ -189,9 +193,11 @@ const Child = ({ code }) => {
                 ? output
                 : "Waiting for output..."}
             </pre>
-            {executionState === ExecutionState.STARTED
-              ? "Executing... (should be animated loader)"
-              : ""}
+            {executionState === ExecutionState.STARTED ? (
+              <LoadingAnimation />
+            ) : (
+              ""
+            )}
           </>
         ) : (
           ""
