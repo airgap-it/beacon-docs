@@ -4,8 +4,8 @@ const path = require("path");
 module.exports = {
   title: "Beacon Docs",
   tagline: "Connecting dApps with wallets.",
-  url: "https://airgap-it.github.io",
-  baseUrl: "/beacon-docs/",
+  url: "https://docs.walletbeacon.io",
+  baseUrl: "/",
   onBrokenLinks: "warn", // TODO: throw
   onBrokenMarkdownLinks: "warn", // TODO: throw
   favicon: "img/favicon.ico",
