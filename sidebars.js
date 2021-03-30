@@ -26,9 +26,12 @@ module.exports = {
       label: "Guides",
       items: [
         "guides/getting-started",
-        "guides/read-previous-state",
+        "guides/active-account",
         "guides/disconnecting-a-wallet",
         "guides/network",
+        "guides/request-permissions",
+        "guides/sign-payload",
+        "guides/broadcast-request",
         "guides/simple-contract-call",
         "guides/fa1.2-transfer",
         "guides/fa2-transfer",

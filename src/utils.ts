@@ -30,7 +30,10 @@ const removeImports = (code: string) => {
     .join("\n");
 };
 
-export const runBeaconCode = (rawCode: string, setOutput: (str: string) => void) => {
+export const runBeaconCode = (
+  rawCode: string,
+  setOutput: (str: string) => void
+) => {
   let code = rawCode;
 
   let output = "";
@@ -91,4 +94,12 @@ export const runBeaconCode = (rawCode: string, setOutput: (str: string) => void)
       resolve(e);
     }
   });
+};
+
+export const copyShareUrl = (input: string) => {
+  const url = `${window.location.host}/playground?code=${btoa(input)}`;
+
+  navigator.clipboard
+    .writeText(url)
+    .catch((err) => console.error("Failed to copy to url!", err));
 };

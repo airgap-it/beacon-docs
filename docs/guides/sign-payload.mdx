@@ -1,5 +1,5 @@
 ---
-title: Broadcast Request
+title: Sign Payload
 ---
 
 import { RunnableCode } from "@site/src/components/RunnableCode";
@@ -12,14 +12,14 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
-const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
 const response = await dAppClient.requestSignPayload({
-    signingType: SigningType.RAW,
-    payload: 'any string that will be signed'
-})
+  signingType: SigningType.RAW,
+  payload: "any string that will be signed",
+});
 
-console.log(`Signature: ${response.signature}`)
+console.log(`Signature: ${response.signature}`);
 ```
 
 <!-- embedme ../../build-examples/sign-payload-raw.taquito.ts -->

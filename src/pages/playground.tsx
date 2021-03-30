@@ -5,8 +5,25 @@ import useWindowSize from "@site/src/hooks/useWindowSize";
 import Monaco from "@site/src/components/Monaco";
 import styles from "./styles.module.css";
 import { ExecutionState } from "../ExecutionState";
-import { runBeaconCode } from "../utils";
+import { copyShareUrl, runBeaconCode } from "../utils";
 import { DAppClient } from "@airgap/beacon-sdk";
+
+const defaultCode = `import { DAppClient } from "@airgap/beacon-sdk";
+
+// Create a new DAppClient instance
+const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+
+const activeAccount = await dAppClient.getActiveAccount()
+if (activeAccount) {
+    // User already has account connected, everything is ready
+    // You can now do an operation request, sign request, or send another permission request to switch wallet
+    console.log('Already connected:', activeAccount.address)
+    return activeAccount
+} else {
+    const permissions = await dAppClient.requestPermissions()
+    console.log('New connection:', permissions.address)
+    return permissions
+}`;
 
 function Playground() {
   if (typeof window === "undefined") {
@@ -14,7 +31,9 @@ function Playground() {
   }
 
   const urlParams = new URLSearchParams(window.location.search);
-  const initialCode = urlParams.has("code") ? atob(urlParams.get("code")) : "";
+  const initialCode = urlParams.has("code")
+    ? atob(urlParams.get("code"))
+    : defaultCode;
 
   const [input, setInput] = useState(initialCode);
   const [output, setOutput] = useState("");
@@ -30,7 +49,7 @@ function Playground() {
     height: 100,
   };
 
-  const editorWidthRatio = 2 / 3;
+  const editorWidthRatio = 3 / 5;
   const editorLayout = {
     xs: {
       width: windowSize.width,
@@ -78,13 +97,7 @@ function Playground() {
   }
 
   function handleClickShare() {
-    const url = `${window.location.host}/playground?code=${btoa(input)}`;
-
-    console.log("URL", url);
-
-    navigator.clipboard
-      .writeText(url)
-      .catch((err) => console.error("Failed to copy to url!", err));
+    copyShareUrl(input);
   }
 
   return (

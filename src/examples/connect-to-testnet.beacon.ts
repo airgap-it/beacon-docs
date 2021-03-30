@@ -2,20 +2,23 @@
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 /// END
 
-(async () => {
-    /// START
-    // Create a new DAppClient instance
-    // We set the preferred network to "EDONET"
-    // The "preferred network" will make the connection is sent to the correct URL
-    const dAppClient = new DAppClient({ name: 'Beacon Docs', preferredNetwork: NetworkType.EDONET })
+async () => {
+  /// START
+  // Create a new DAppClient instance
+  // We set the preferred network to "EDONET"
+  // The "preferred network" will make the connection is sent to the correct URL
+  const dAppClient = new DAppClient({
+    name: "Beacon Docs",
+    preferredNetwork: NetworkType.EDONET,
+  });
 
-    const result = await dAppClient.requestPermissions({
-        network: {
-            type: NetworkType.EDONET // Try: NetworkType.DELPHINET
-        }
-    })
+  const result = await dAppClient.requestPermissions({
+    network: {
+      type: NetworkType.EDONET, // Try: NetworkType.DELPHINET
+    },
+  });
 
-    console.log(`Connected to ${result.address} on ${result.network.type}`)
+  console.log(`Connected to ${result.address} on ${result.network.type}`);
 
-    /// END
-})
+  /// END
+};

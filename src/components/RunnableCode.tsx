@@ -6,7 +6,7 @@ import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
 import Monaco from "./Monaco";
 import LoadingAnimation from "./LoadingAnimation";
-import { runBeaconCode } from "../utils";
+import { copyShareUrl, runBeaconCode } from "../utils";
 import { ExecutionState } from "../ExecutionState";
 
 const Child = ({ code }) => {
@@ -14,13 +14,15 @@ const Child = ({ code }) => {
   const [output, setOutput] = useState("");
   const [readonly, setReadonly] = useState(true);
 
+  let runnableCode = code.props.children.props.children;
+
   const execute = async () => {
     if (executionState === ExecutionState.STARTED) {
       return;
     }
     await clear();
     setExecutionState(ExecutionState.STARTED);
-    await runBeaconCode(code.props.children.props.children, setOutput);
+    await runBeaconCode(runnableCode, setOutput);
     setExecutionState(ExecutionState.ENDED);
   };
   const reset = async () => {
@@ -35,14 +37,18 @@ const Child = ({ code }) => {
   const toggleReadonly = async () => {
     setReadonly(!readonly);
   };
+  const handleShareUrl = async () => {
+    copyShareUrl(runnableCode);
+  };
 
+  const numberOfLines = 1 + runnableCode.split("\n").length;
   const editorLayout = {
     width: 800,
-    height: 500,
+    height: 18 * numberOfLines,
   };
-  const input = code.props.children.props.children;
+
   const setInput = (input: string) => {
-    console.log("set input", input);
+    runnableCode = input;
   };
 
   return (
@@ -53,19 +59,31 @@ const Child = ({ code }) => {
         <Monaco
           {...editorLayout}
           language="typescript"
-          value={input}
+          value={runnableCode}
           onChange={setInput}
-          options={{ minimap: { enabled: false }, wordWrap: "on" }}
+          options={{
+            scrollBeyondLastLine: false,
+            minimap: { enabled: false },
+            wordWrap: "on",
+          }}
         />
       )}
 
       <button
-        className="button button--secondary margin-bottom--lg"
+        className="button button--secondary margin-bottom--lg margin-right--xs"
         onClick={() => {
           toggleReadonly();
         }}
       >
         {readonly ? "Edit Code" : "Show Example"}
+      </button>
+      <button
+        className="button button--secondary margin-bottom--lg"
+        onClick={() => {
+          handleShareUrl();
+        }}
+      >
+        Copy Share URL
       </button>
       <BrowserWindow minHeight="" url="https://example.com">
         <button
