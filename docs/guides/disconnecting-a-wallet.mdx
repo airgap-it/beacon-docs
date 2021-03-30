@@ -6,24 +6,23 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/network-mainnet-with-url.beacon.ts -->
+<!-- embedme ../../build-examples/disconnect-wallet.beacon.ts -->
 
 ```ts
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
+import { DAppClient } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
+await new Promise((res) => setTimeout(res, 1000));
 
-// Mainnet with different rpcUrl
-const result = await dAppClient.requestPermissions({
-  network: {
-    type: NetworkType.MAINNET,
-    rpcUrl: "https://mainnet-tezos.giganode.io/",
-  },
+dAppClient.clearActiveAccount().then(async () => {
+  const account = await dAppClient.getActiveAccount();
+
+  console.log("Active Account", account);
 });
 ```
 
-<!-- embedme ../../build-examples/network-mainnet-with-url.taquito.ts -->
+<!-- embedme ../../build-examples/disconnect-wallet.taquito.ts -->
 
 ```ts
 

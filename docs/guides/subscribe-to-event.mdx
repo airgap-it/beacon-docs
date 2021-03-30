@@ -1,0 +1,59 @@
+---
+title: Subscribe To Event
+---
+
+import { RunnableCode } from "@site/src/components/RunnableCode";
+
+<RunnableCode>
+
+<!-- embedme ../../build-examples/subscribe-to-event.beacon.ts -->
+
+```ts
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+  P2PPairingRequest,
+  PostMessagePairingRequest,
+  NetworkType,
+} from "@airgap/beacon-sdk";
+
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+});
+await dAppClient.setActiveAccount(undefined);
+
+setTimeout(async () => {
+  console.log(await dAppClient.getActiveAccount());
+
+  dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
+    console.debug(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+    console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+  });
+
+  await dAppClient.requestPermissions();
+}, 1000);
+```
+
+<!-- embedme ../../build-examples/subscribe-to-event.taquito.ts -->
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+// Create a new DAppClient instance
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" }); // Takes the same arguments as the DAppClient constructor
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  await wallet.requestPermissions();
+  const address = await wallet.getPKH();
+  console.log("Got permissions", address);
+} catch (error) {
+  console.log("Got error:", error);
+}
+```
+
+</RunnableCode>
