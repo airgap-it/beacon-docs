@@ -1,15 +1,14 @@
 /// START
-import {
-  BeaconEvent,
-  DAppClient,
-  defaultEventCallbacks,
-} from "@airgap/beacon-sdk";
+import { BeaconEvent, defaultEventCallbacks } from "@airgap/beacon-sdk";
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
 /// END
 
 async () => {
   /// START
-  const dAppClient = new DAppClient({
-    name: "Beacon Docs",
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({
+    name: "Beacon Docs Taquito",
     disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
     eventHandlers: {
       // To keep the pairing alert, we have to add the following default event handlers back
@@ -22,12 +21,15 @@ async () => {
     },
   });
 
+  Tezos.setWalletProvider(wallet);
+
   try {
-    console.log("Requesting permissions...");
-    const permissions = await dAppClient.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    await wallet.requestPermissions();
+    const address = await wallet.getPKH();
+    console.log("Got permissions:", address);
   } catch (error) {
     console.log("Got error:", error);
   }
+
   /// END
 };

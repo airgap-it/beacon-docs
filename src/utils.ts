@@ -43,8 +43,14 @@ export const runBeaconCode = (
   };
 
   const myLog = (...args: any[]) => {
-    appendOutput(args.join(" "));
-    console.log(...args);
+    console.log("CODE_RUNNER:", ...args);
+    appendOutput(
+      args
+        .map((arg) =>
+          typeof arg === "object" ? JSON.stringify(arg, null, 2) : arg
+        )
+        .join(" ")
+    );
   };
 
   code = replaceAll(code, "console.log(", "progress(");
@@ -97,7 +103,7 @@ export const runBeaconCode = (
 };
 
 export const copyShareUrl = (input: string) => {
-  const url = `${window.location.host}/playground?code=${btoa(input)}`;
+  const url = `https://${window.location.host}/playground?code=${btoa(input)}`;
 
   navigator.clipboard
     .writeText(url)

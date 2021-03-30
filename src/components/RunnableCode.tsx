@@ -10,11 +10,12 @@ import { copyShareUrl, runBeaconCode } from "../utils";
 import { ExecutionState } from "../ExecutionState";
 
 const Child = ({ code }) => {
+  const [runnableCode, setRunnableCode] = useState<string>(
+    code.props.children.props.children
+  );
   const [executionState, setExecutionState] = useState(ExecutionState.INIT);
   const [output, setOutput] = useState("");
   const [readonly, setReadonly] = useState(true);
-
-  let runnableCode = code.props.children.props.children;
 
   const execute = async () => {
     if (executionState === ExecutionState.STARTED) {
@@ -48,7 +49,7 @@ const Child = ({ code }) => {
   };
 
   const setInput = (input: string) => {
-    runnableCode = input;
+    setRunnableCode(input);
   };
 
   return (

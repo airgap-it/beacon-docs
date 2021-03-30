@@ -1,0 +1,48 @@
+---
+title: Getting Started
+slug: /
+---
+
+import { RunnableCode } from "@site/src/components/RunnableCode";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="beaconOrTaquito"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
+
+```bash
+npm install --save @airgap/beacon-sdk
+```
+
+  </TabItem>
+  <TabItem value="taquito">
+
+```bash
+npm install --save @taquito/taquito @taquito/beacon-wallet
+```
+
+  </TabItem>
+</Tabs>
+
+<RunnableCode>
+
+<!-- embedme getting-started-1.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme getting-started-1.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>

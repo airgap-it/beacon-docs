@@ -36,6 +36,8 @@ module.exports = {
         "guides/fa1.2-transfer",
         "guides/fa2-transfer",
         "guides/standalone-delegation",
+        "guides/info",
+        "guides/subscribe-to-event",
       ],
       collapsed: true,
     },
@@ -65,7 +67,7 @@ module.exports = {
     {
       type: "link",
       label: "TypeDoc Reference",
-      href: "https://typedocs.walletbeacion.io",
+      href: "https://typedocs.walletbeacon.io",
     },
   ],
   wallet: ["wallet/getting-started", "wallet/security"],

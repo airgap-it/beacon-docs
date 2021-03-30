@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "npm run embed-code && docusaurus start",
     "prepare": "node scripts/fix-beacon-sdk.js",
-    "build": "docusaurus build",
+    "build": "npm run embed-code && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -15,7 +15,8 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "pretty-source": "npx prettier --ignore-unknown --write 'src/**/*'",
     "pretty-docs": "npx prettier --ignore-unknown --write 'docs/**/*'",
-    "embed-code": "npm run pretty-source && tsc src/examples/*.ts && node scripts/copy-examples.js && embedme 'docs/**/*.mdx' && npm run pretty-docs"
+    "clear-folders": "rm -rf build-docs && mkdir build-docs && rm -rf docs && mkdir docs",
+    "embed-code": "npm run pretty-source && tsc src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src_docs/* build-docs/ && embedme 'build-docs/**/*.mdx' --source-root ./build-examples && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^2.2.3",
