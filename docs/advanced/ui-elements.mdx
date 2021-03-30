@@ -5,13 +5,12 @@ title: UI Elements
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
+import DynamicImage from "@site/src/components/DynamicImage";
 
 :::caution
 We strongly recommend keeping the default UI Elements.
 Consistent UI helps users to interact with different dApps more easily.
 :::
-
-// TODO: Resize images
 
 The default UI elements have been designed with all wallets and user setups in mind.
 It handles a lot of cases that are not obvious at first glance. If you really must overwrite the default UI.
@@ -35,7 +34,10 @@ On desktop there is only one view with some wallets and the QR code.
 
 <BrowserWindow url="https://mydapp.com">
 
-![Beacon Pairing](../../static/img/beacon-pairing-ui.png)
+<DynamicImage
+  src="../../static/img/beacon-pairing-ui.png"
+  alt="Beacon Pairing"
+/>
 
 </BrowserWindow>
 
@@ -46,18 +48,32 @@ On iOS, each mobile and webapp has its own entry because the device doesn't allo
 
 <BrowserWindow url="https://mydapp.com">
 
-![Beacon Pairing](../../static/img/beacon-ios-pairing.png)
+<DynamicImage
+  src="../../static/img/beacon-ios-pairing.png"
+  alt="Beacon Pairing"
+/>
+
+<DynamicImage
+  src="../../static/img/beacon-ios-pairing-2.png"
+  alt="Beacon Pairing"
+/>
 
 </BrowserWindow>
-
-![Beacon Pairing](../../static/img/beacon-ios-pairing-2.png)
 
 </TabItem>
 <TabItem value="android">
 
 On Android, there is one link for all mobile apps because the device lets you choose the specific app you want to open.
-![Beacon Pairing](../../static/img/beacon-android-pairing.png)
-![Beacon Pairing](../../static/img/beacon-android-pairing-2.png)
+
+<DynamicImage
+  src="../../static/img/beacon-android-pairing.png"
+  alt="Beacon Pairing"
+/>
+
+<DynamicImage
+  src="../../static/img/beacon-android-pairing-2.png"
+  alt="Beacon Pairing"
+/>
 
 </TabItem>
 </Tabs>
@@ -66,7 +82,7 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 <BrowserWindow url="https://mydapp.com">
 
-![Beacon Loading](../../static/img/beacon-loading.gif)
+<DynamicImage src="../../static/img/beacon-loading.gif" alt="Beacon Loading" />
 
 </BrowserWindow>
 
@@ -78,7 +94,10 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 <BrowserWindow url="https://mydapp.com">
 
-![Beacon Loading Open](../../static/img/beacon-loading-open.gif)
+<DynamicImage
+  src="../../static/img/beacon-loading-open.gif"
+  alt="Beacon Loading Open"
+/>
 
 </BrowserWindow>
 
@@ -88,7 +107,10 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 <BrowserWindow url="https://mydapp.com">
 
-![Beacon Awaiting](../../static/img/beacon-awaiting.gif)
+<DynamicImage
+  src="../../static/img/beacon-awaiting.gif"
+  alt="Beacon Awaiting"
+/>
 
 </BrowserWindow>
 

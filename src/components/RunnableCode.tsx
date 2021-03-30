@@ -3,7 +3,6 @@ import { DAppClient } from "@airgap/beacon-sdk";
 import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import styles from "./styles.module.css";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
 import Monaco from "./Monaco";
 import LoadingAnimation from "./LoadingAnimation";
@@ -120,10 +119,6 @@ const Child = ({ code }) => {
 };
 
 export const RunnableCode = ({ children, color, beacon, taquito }) => {
-  // console.log("children", children);
-  // console.log("color", color);
-  // console.log("beacon", beacon);
-  // console.log("taquito", taquito);
   return (
     <Tabs
       groupId="beaconOrTaquito"
