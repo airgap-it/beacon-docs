@@ -62,7 +62,6 @@ module.exports = {
       ],
       collapsed: true,
     },
-    "FAQ",
     "CHANGELOG",
     {
       type: "link",
