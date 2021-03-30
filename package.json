@@ -13,7 +13,9 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "embed-code": "tsc src/examples/*.ts && node scripts/copy-examples.js && embedme 'docs/**/*.mdx'"
+    "pretty-source": "npx prettier --ignore-unknown --write 'src/**/*'",
+    "pretty-docs": "npx prettier --ignore-unknown --write 'docs/**/*'",
+    "embed-code": "npm run pretty-source && tsc src/examples/*.ts && node scripts/copy-examples.js && embedme 'docs/**/*.mdx' && npm run pretty-docs"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^2.2.3",
