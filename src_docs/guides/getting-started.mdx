@@ -33,41 +33,16 @@ npm install --save @taquito/taquito @taquito/beacon-wallet
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/getting-started-1.beacon.ts -->
+<!-- embedme getting-started-1.beacon.ts -->
 
 ```ts
-import { DAppClient } from "@airgap/beacon-sdk";
-
-const dAppClient = new DAppClient({ name: "Beacon Docs" });
-
-try {
-  console.log("Requesting permissions...");
-  const permissions = await dAppClient.requestPermissions();
-  console.log("Got permissions:", permissions.address);
-} catch (error) {
-  console.log("Got error:", error);
-}
+// TODO
 ```
 
-<!-- embedme ../../build-examples/getting-started-1.taquito.ts -->
+<!-- embedme getting-started-1.taquito.ts -->
 
 ```ts
-import { TezosToolkit } from "@taquito/taquito";
-import { BeaconWallet } from "@taquito/beacon-wallet";
-
-// Create a new DAppClient instance
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" }); // Takes the same arguments as the DAppClient constructor
-
-Tezos.setWalletProvider(wallet);
-
-try {
-  await wallet.requestPermissions();
-  const address = await wallet.getPKH();
-  console.log("Got permissions:", address);
-} catch (error) {
-  console.log("Got error:", error);
-}
+// TODO
 ```
 
 </RunnableCode>

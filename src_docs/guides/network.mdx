@@ -6,117 +6,64 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/network-mainnet-with-url.beacon.ts -->
+<!-- embedme network-mainnet-with-url.beacon.ts -->
 
 ```ts
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
-
-// Create a new DAppClient instance
-const dAppClient = new DAppClient({ name: "Beacon Docs" });
-
-// Mainnet with different rpcUrl
-const result = await dAppClient.requestPermissions({
-  network: {
-    type: NetworkType.MAINNET,
-    rpcUrl: "https://mainnet-tezos.giganode.io/",
-  },
-});
+// TODO
 ```
 
-<!-- embedme ../../build-examples/network-mainnet-with-url.taquito.ts -->
+<!-- embedme network-mainnet-with-url.taquito.ts -->
 
 ```ts
-
+// TODO
 ```
 
 </RunnableCode>
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/network-edonet.beacon.ts -->
+<!-- embedme network-edonet.beacon.ts -->
 
 ```ts
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
-
-// Create a new DAppClient instance
-const dAppClient = new DAppClient({
-  name: "Beacon Docs",
-  preferredNetwork: NetworkType.EDONET,
-});
-
-// Edonet with default rpcUrl
-const result = await dAppClient.requestPermissions({
-  network: {
-    type: NetworkType.EDONET,
-  },
-});
+// TODO
 ```
 
-<!-- embedme ../../build-examples/network-edonet.taquito.ts -->
+<!-- embedme network-edonet.taquito.ts -->
 
 ```ts
-
+// TODO
 ```
 
 </RunnableCode>
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/network-edonet-with-url.beacon.ts -->
+<!-- embedme network-edonet-with-url.beacon.ts -->
 
 ```ts
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
-
-// Create a new DAppClient instance
-const dAppClient = new DAppClient({
-  name: "Beacon Docs",
-  preferredNetwork: NetworkType.EDONET,
-});
-
-// Edonet with different rpcUrl
-const result = await dAppClient.requestPermissions({
-  network: {
-    type: NetworkType.EDONET,
-    rpcUrl: "https://testnet-tezos.giganode.io/",
-  },
-});
+// TODO
 ```
 
-<!-- embedme ../../build-examples/network-edonet-with-url.taquito.ts -->
+<!-- embedme network-edonet-with-url.taquito.ts -->
 
 ```ts
-
+// TODO
 ```
 
 </RunnableCode>
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/network-custom-network.beacon.ts -->
+<!-- embedme network-custom-network.beacon.ts -->
 
 ```ts
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
-
-// Create a new DAppClient instance
-const dAppClient = new DAppClient({
-  name: "Beacon Docs",
-  preferredNetwork: NetworkType.CUSTOM,
-});
-
-// Custom network (eg. local development or latest testnet)
-const result = await dAppClient.requestPermissions({
-  network: {
-    type: NetworkType.CUSTOM,
-    name: "Local Node",
-    rpcUrl: "http://localhost:8732/",
-  },
-});
+// TODO
 ```
 
-<!-- embedme ../../build-examples/network-custom-network.taquito.ts -->
+<!-- embedme network-custom-network.taquito.ts -->
 
 ```ts
-
+// TODO
 ```
 
 </RunnableCode>

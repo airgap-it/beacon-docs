@@ -6,56 +6,16 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 
 <RunnableCode>
 
-<!-- embedme ../../build-examples/custom-block-explorer.beacon.ts -->
+<!-- embedme custom-block-explorer.beacon.ts -->
 
 ```ts
-import {
-  BlockExplorer,
-  DAppClient,
-  NetworkType,
-  Network,
-} from "@airgap/beacon-sdk";
-
-class TzStatsBlockExplorer extends BlockExplorer {
-  constructor(
-    public readonly rpcUrls: { [key in NetworkType]: string } = {
-      [NetworkType.MAINNET]: "https://tzstats.com/",
-      [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
-      [NetworkType.EDONET]: "https://edo.tzstats.com/",
-      [NetworkType.CUSTOM]: "https://edo.tzstats.com/",
-    }
-  ) {
-    super(rpcUrls);
-  }
-
-  public async getAddressLink(
-    address: string,
-    network: Network
-  ): Promise<string> {
-    const blockExplorer = await this.getLinkForNetwork(network);
-
-    return `${blockExplorer}/${address}`;
-  }
-  public async getTransactionLink(
-    transactionId: string,
-    network: Network
-  ): Promise<string> {
-    const blockExplorer = await this.getLinkForNetwork(network);
-
-    return `${blockExplorer}/${transactionId}`;
-  }
-}
-
-const dAppClient = new DAppClient({
-  name: "Beacon Docs",
-  blockExplorer: new TzStatsBlockExplorer(),
-});
+// TODO
 ```
 
-<!-- embedme ../../build-examples/custom-block-explorer.taquito.ts -->
+<!-- embedme custom-block-explorer.taquito.ts -->
 
 ```ts
-
+// TODO
 ```
 
 </RunnableCode>
