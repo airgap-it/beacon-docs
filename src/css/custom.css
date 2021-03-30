@@ -36,3 +36,8 @@
 .button {
   border-radius: 2em;
 }
+
+.d-align-items--center {
+  display: flex;
+  align-items: center;
+}
