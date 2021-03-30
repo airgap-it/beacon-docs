@@ -2,7 +2,7 @@
 /node_modules
 
 # Production
-/build
+/build/
 
 # Generated files
 .docusaurus
@@ -22,3 +22,5 @@ yarn-error.log*
 # Generated files and folders
 build-examples
 src/examples/*.js
+
+/docs/
