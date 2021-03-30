@@ -11,7 +11,6 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "airgap-it",
   projectName: "beacon-docs",
-  themes: ["@docusaurus/theme-live-codeblock"],
   themeConfig: {
     navbar: {
       logo: {
@@ -98,7 +97,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Papers AG - Open Source MIT License`, // TODO
+      copyright: `Copyright © ${new Date().getFullYear()} Papers AG - Open Source MIT License`,
     },
   },
   presets: [

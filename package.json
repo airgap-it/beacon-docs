@@ -16,17 +16,16 @@
     "embed-code": "tsc src/examples/*.ts && node scripts/copy-examples.js && embedme 'docs/**/*.mdx'"
   },
   "dependencies": {
-    "@airgap/beacon-sdk": "^2.2.2",
+    "@airgap/beacon-sdk": "^2.2.3",
     "@docusaurus/core": "2.0.0-alpha.72",
     "@docusaurus/preset-classic": "2.0.0-alpha.72",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.72",
     "@mdx-js/react": "^1.6.21",
-    "@taquito/beacon-wallet": "^8.0.6-beta.0",
-    "@taquito/taquito": "^8.0.6-beta.0",
+    "@taquito/beacon-wallet": "^8.1.0",
+    "@taquito/taquito": "^8.1.0",
     "clsx": "^1.1.1",
     "mermaid": "^8.9.2",
     "monaco-editor": "^0.23.0",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-monaco-editor": "^0.43.0"
   },
