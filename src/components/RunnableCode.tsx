@@ -3,6 +3,7 @@ import { DAppClient } from "@airgap/beacon-sdk";
 import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import styles from "./styles.module.css";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
 import Monaco from "./Monaco";
 import LoadingAnimation from "./LoadingAnimation";
@@ -47,15 +48,6 @@ const Child = ({ code }) => {
 
   return (
     <>
-      <button
-        className="button button--secondary"
-        onClick={() => {
-          toggleReadonly();
-        }}
-      >
-        Toggle Readonly
-      </button>
-
       {readonly ? (
         code
       ) : (
@@ -67,6 +59,15 @@ const Child = ({ code }) => {
           options={{ minimap: { enabled: false }, wordWrap: "on" }}
         />
       )}
+
+      <button
+        className="button button--secondary margin-bottom--lg"
+        onClick={() => {
+          toggleReadonly();
+        }}
+      >
+        {readonly ? "Edit Code" : "Show Example"}
+      </button>
       <BrowserWindow minHeight="" url="https://example.com">
         <button
           className="button button--primary margin-right--xs"
@@ -96,17 +97,18 @@ const Child = ({ code }) => {
           <>
             <h4 className="margin-vert--md">Output</h4>
             <pre>
-              {output || executionState === ExecutionState.ENDED
-                ? output
-                : "Waiting for output..."}
-              {executionState === ExecutionState.STARTED ? (
-                <>
-                  <br />
-                  <LoadingAnimation />
-                </>
-              ) : (
-                ""
-              )}
+              <span className="d-align-items--center">
+                {executionState === ExecutionState.STARTED ? (
+                  <>
+                    <LoadingAnimation />
+                  </>
+                ) : (
+                  ""
+                )}
+                {output || executionState === ExecutionState.ENDED
+                  ? output
+                  : "Waiting for output..."}
+              </span>
             </pre>
           </>
         ) : (
