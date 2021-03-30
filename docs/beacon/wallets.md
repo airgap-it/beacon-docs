@@ -22,9 +22,9 @@ Thanos is a web extension for your browser, easy-to-use browser extension wallet
 
 Galleon is a deployment of Tezori, an open-source wallet frame-work for Tezos, supporting both software and hardware wallets in eight languages on Mac, Windows, and Linux.
 
-## Can I use all features of beacon with all wallets?
+## Can I use all features of Beacon with all wallets?
 
-Wallets are encouraged to support all features that beacon offers. Please refer to the following matrix to check which features are supported in major wallets.
+Wallets are encouraged to support all features that Beacon offers. Please refer to the following matrix to check which features are supported in major wallets.
 
 |                           | Temple               | Kukai                                         | Spire | AirGap | Galleon |
 | ------------------------- | -------------------- | --------------------------------------------- | ----- | ------ | ------- |

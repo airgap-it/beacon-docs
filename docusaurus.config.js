@@ -23,13 +23,13 @@ module.exports = {
           type: "doc",
           position: "left",
           docId: "getting-started/simple-example",
-          label: "Docs",
+          label: "dApps",
         },
         {
           type: "doc",
           position: "left",
           docId: "wallet/getting-started",
-          label: "Wallet",
+          label: "Wallets",
         },
         { to: "playground/", label: "Playground", position: "right" },
         {
