@@ -63,7 +63,7 @@ module.exports = {
             },
             {
               label: "Discord",
-              href: "https://discordapp.com/", // TODO: Discord invite
+              href: "https://discord.gg/vuf4Gtnqh7",
             },
             {
               label: "Twitter",
