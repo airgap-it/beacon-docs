@@ -1,7 +1,12 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { ColorMode, Network, NetworkType, TezosOperationType } from "@airgap/beacon-sdk";
+import {
+  ColorMode,
+  Network,
+  NetworkType,
+  TezosOperationType,
+} from "@airgap/beacon-sdk";
 /// END
 
 async () => {

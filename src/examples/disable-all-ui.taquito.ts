@@ -1,8 +1,5 @@
 /// START
-import {
-  BeaconEvent,
-  defaultEventCallbacks,
-} from "@airgap/beacon-sdk";
+import { BeaconEvent, defaultEventCallbacks } from "@airgap/beacon-sdk";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 /// END
