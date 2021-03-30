@@ -59,6 +59,11 @@ module.exports = {
     },
     "FAQ",
     "CHANGELOG",
+    {
+      type: "link",
+      label: "TypeDoc Reference",
+      href: "https://typedocs.walletbeacion.io",
+    },
   ],
   wallet: ["wallet/getting-started", "wallet/security"],
 };
