@@ -97,6 +97,8 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 ## Overwriting Default UI elements
 
+You can overwrite all of the default UI elements by doing the following.
+
 import { RunnableCode } from "@site/src/components/RunnableCode";
 
 <RunnableCode>
@@ -108,6 +110,48 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 ```
 
 <!-- embedme disable-all-ui.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
+You can also add your own logic to specific events and still keep the original behaviour.
+
+The same can be achieved without overwriting the default event handler by [subscribing to an event](guides/subscribe-to-event). This method is preferred, if possible.
+
+<RunnableCode>
+
+<!-- embedme override-default-event.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme override-default-event.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
+The closing of the pairing alert can not be listened to by default. The reason for this is the delay in the P2P connections.
+It is possible that a user scans the pairing QR code with his wallet and then closes the alert while waiting for the connection to be established.
+If the dApp interprets the "closing" of the alert as an abort, and a few seconds later the connection is established successfully, the behaviour could be unexpected.
+
+If you still want to be notified of the closing of the pairing window, you can do it in the following way, while keeping the default behaviour.
+
+<RunnableCode>
+
+<!-- embedme override-alert-aborted-handler.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme override-alert-aborted-handler.taquito.ts -->
 
 ```ts
 // TODO

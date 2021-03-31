@@ -41,7 +41,6 @@ async () => {
 
     console.log(result);
   } catch (error) {
-    // TODO: Move to error handling code
     console.log(
       `The contract call failed and the following error was returned:`,
       error?.data[1]?.with?.string

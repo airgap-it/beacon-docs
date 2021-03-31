@@ -22,7 +22,13 @@ async () => {
 
   const tokenId = "925";
 
-  const result = await contract.methods.set_color(tokenId).send();
-
+  try {
+    const result = await contract.methods.set_color(tokenId).send();
+  } catch (error) {
+    console.log(
+      `The contract call failed and the following error was returned:`,
+      error?.data[1]?.with?.string
+    );
+  }
   /// END
 };

@@ -7,6 +7,8 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+First, you have to install the necessary dependencies.
+
 <Tabs
   groupId="beaconOrTaquito"
   defaultValue="beacon"
@@ -31,15 +33,62 @@ npm install --save @taquito/taquito @taquito/beacon-wallet
   </TabItem>
 </Tabs>
 
+You can then import the `beacon-sdk` package and create a `DAppClient` instance. This instance will be used throughout your dApp to interact with the users wallet.
+Once created, you can send a permission request to prompt the user to connect to his wallet.
+
 <RunnableCode>
 
-<!-- embedme getting-started-1.beacon.ts -->
+<!-- embedme getting-started-permission-request.beacon.ts -->
 
 ```ts
 // TODO
 ```
 
-<!-- embedme getting-started-1.taquito.ts -->
+<!-- embedme getting-started-permission-request.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
+After the connection is successfully established and the user has shared his account, the result will be returned.
+
+:::info
+The `DAppClient` instance should be a singleton. Avoid creating multiple copies of it, which could lead to unexpected behaviour.
+:::
+
+Now let's introduce a check to see if the SDK is already connected to the dApp.
+This code should be run after the page is loaded to get the users address and show it in your UI.
+If the following code returns an address, there is no need to send another permission request, unless you want to pair a different account.
+
+<RunnableCode>
+
+<!-- embedme getting-started-active-account.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme getting-started-active-account.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
+The `beacon-sdk` is now fully set up and ready to receive operation requests.
+
+<RunnableCode>
+
+<!-- embedme getting-started-operation-request.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme getting-started-operation-request.taquito.ts -->
 
 ```ts
 // TODO
