@@ -18,7 +18,7 @@
     "generate-monaco-types": "node scripts/generate-monaco-types.js",
     "remove-folders": "rm -rf build-docs && rm -rf docs",
     "clear-folders": "npm run remove-folders && mkdir build-docs && mkdir docs",
-    "embed-code": "npm run generate-monaco-types && npm run pretty-source && tsc src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src_docs/* build-docs/ && embedme 'build-docs/**/*.mdx' --source-root ./build-examples && rm -r docs && mv build-docs docs && npm run pretty-docs"
+    "embed-code": "npm run generate-monaco-types && npm run pretty-source && tsc src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && embedme 'build-docs/**/*.mdx' --source-root ./build-examples && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^2.2.3",

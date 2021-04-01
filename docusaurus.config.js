@@ -108,7 +108,7 @@ module.exports = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/airgap-it/beacon-docs/edit/main/",
+          editUrl: "https://github.com/airgap-it/beacon-docs/edit/main/src/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
