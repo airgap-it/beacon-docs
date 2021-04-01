@@ -1,6 +1,7 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import { NetworkType } from "@airgap/beacon-sdk";
 /// END
 
 async () => {
@@ -10,6 +11,12 @@ async () => {
 
   Tezos.setWalletProvider(wallet);
 
-  console.log(wallet.client.name);
+  // Mainnet with different rpcUrl
+  const result = await wallet.client.requestPermissions({
+    network: {
+      type: NetworkType.MAINNET,
+      rpcUrl: "https://mainnet-tezos.giganode.io/",
+    },
+  });
   /// END
 };

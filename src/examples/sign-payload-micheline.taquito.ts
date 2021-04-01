@@ -1,12 +1,17 @@
 /// START
-import { DAppClient, SigningType } from "@airgap/beacon-sdk";
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { SigningType } from "@airgap/beacon-sdk";
 /// END
 
 async () => {
   /// START
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  const response = await dAppClient.requestSignPayload({
+  Tezos.setWalletProvider(wallet);
+
+  const response = await wallet.client.requestSignPayload({
     signingType: SigningType.MICHELINE,
     // This hex string needs to be prefixed with 05
     // The following is packed data, it can also be signed by Kukai

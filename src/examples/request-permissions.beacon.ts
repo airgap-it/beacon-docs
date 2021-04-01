@@ -4,7 +4,6 @@ import { DAppClient, PermissionScope } from "@airgap/beacon-sdk";
 
 async () => {
   /// START
-  // Create a new DAppClient instance
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   // You can request specific permissions if you want

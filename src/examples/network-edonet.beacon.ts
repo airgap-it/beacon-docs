@@ -4,7 +4,6 @@ import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 async () => {
   /// START
-  // Create a new DAppClient instance
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
     preferredNetwork: NetworkType.EDONET,
@@ -16,6 +15,5 @@ async () => {
       type: NetworkType.EDONET,
     },
   });
-
   /// END
 };

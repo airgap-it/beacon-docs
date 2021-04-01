@@ -10,6 +10,17 @@ async () => {
 
   Tezos.setWalletProvider(wallet);
 
-  console.log(wallet.client.name);
+  // TODO: Remove temporary workaround in sandbox
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  await wallet.clearActiveAccount();
+
+  try {
+    const account = await wallet.getPKH();
+    console.log("Active Account", account);
+  } catch {
+    console.log("No wallet connected");
+  }
+
   /// END
 };

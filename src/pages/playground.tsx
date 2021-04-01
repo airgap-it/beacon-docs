@@ -10,7 +10,6 @@ import { DAppClient } from "@airgap/beacon-sdk";
 
 const defaultCode = `import { DAppClient } from "@airgap/beacon-sdk";
 
-// Create a new DAppClient instance
 const dAppClient = new DAppClient({ name: 'Beacon Docs' })
 
 const activeAccount = await dAppClient.getActiveAccount()

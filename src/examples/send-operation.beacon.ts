@@ -4,7 +4,6 @@ import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 async () => {
   /// START
-  // Create a new DAppClient instance
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   const activeAccount = await dAppClient.getActiveAccount();

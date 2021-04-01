@@ -4,7 +4,6 @@ import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
 async () => {
   /// START
-  // Create a new DAppClient instance
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   const response = await dAppClient.requestSignPayload({

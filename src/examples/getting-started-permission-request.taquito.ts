@@ -1,7 +1,6 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { PermissionScope } from "@airgap/beacon-sdk";
 /// END
 
 async () => {
@@ -11,18 +10,12 @@ async () => {
 
   Tezos.setWalletProvider(wallet);
 
-  // You can request specific permissions if you want
-  const scopes: PermissionScope[] = [
-    PermissionScope.OPERATION_REQUEST,
-    PermissionScope.SIGN,
-  ];
-
   try {
-    const permissions = await wallet.client.requestPermissions({ scopes });
+    console.log("Requesting permissions...");
+    const permissions = await wallet.client.requestPermissions();
     console.log("Got permissions:", permissions.address);
   } catch (error) {
     console.log("Got error:", error);
   }
-
   /// END
 };

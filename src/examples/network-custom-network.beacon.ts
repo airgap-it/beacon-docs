@@ -4,7 +4,6 @@ import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 async () => {
   /// START
-  // Create a new DAppClient instance
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
     preferredNetwork: NetworkType.CUSTOM,
@@ -18,6 +17,5 @@ async () => {
       rpcUrl: "http://localhost:8732/",
     },
   });
-
   /// END
 };

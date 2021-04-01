@@ -1,17 +1,22 @@
 /// START
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { NetworkType } from "@airgap/beacon-sdk";
 /// END
 
 async () => {
   /// START
   // We set the preferred network to "EDONET"
   // The "preferred network" will make the connection is sent to the correct URL
-  const dAppClient = new DAppClient({
-    name: "Beacon Docs",
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({
+    name: "Beacon Docs Taquito",
     preferredNetwork: NetworkType.EDONET,
   });
 
-  const result = await dAppClient.requestPermissions({
+  Tezos.setWalletProvider(wallet);
+
+  const result = await wallet.client.requestPermissions({
     network: {
       type: NetworkType.EDONET, // Try: NetworkType.DELPHINET
     },
