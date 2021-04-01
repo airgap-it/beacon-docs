@@ -47,6 +47,7 @@ module.exports = {
       label: "Advanced",
       items: [
         "advanced/ui-elements",
+        "advanced/custom-block-explorer",
         {
           type: "category",
           label: "Flows",
