@@ -24,3 +24,4 @@ build-examples
 src/examples/*.js
 
 /docs/
+/src/components/monaco-types.ts

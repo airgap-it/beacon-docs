@@ -7,16 +7,18 @@ async () => {
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
   });
-  await dAppClient.setActiveAccount(undefined);
 
-  setTimeout(async () => {
-    console.log(await dAppClient.getActiveAccount());
+  // TODO: Remove temporary workaround in sandbox
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
-      console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
-    });
+  await dAppClient.clearActiveAccount();
 
-    await dAppClient.requestPermissions();
-  }, 1000);
+  console.log(await dAppClient.getActiveAccount());
+
+  dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
+    console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+  });
+
+  await dAppClient.requestPermissions();
   /// END
 };

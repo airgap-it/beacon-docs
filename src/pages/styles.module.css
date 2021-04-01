@@ -7,6 +7,10 @@ body > div {
   overflow: hidden;
 }
 
+.runbox {
+  margin: 10px;
+}
+
 .headerContainer {
   display: flex;
   flex-wrap: wrap;

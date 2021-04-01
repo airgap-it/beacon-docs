@@ -91,42 +91,35 @@ function Playground() {
     setExecutionState(ExecutionState.INIT);
   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    execute();
-  }
-
   function handleClickShare() {
     copyShareUrl(input);
   }
 
   return (
     <Layout title="Beacon" description="Beacon Playground" noFooter={true}>
-      <div className={classnames(styles.headerContainer)}>
-        <form
-          onSubmit={handleSubmit}
-          className={classnames(styles.argsInputContainer)}
+      <div className={classnames(styles.runbox)}>
+        <button
+          onClick={execute}
+          className="button button--primary margin-bottom--lg margin-right--xs"
         >
-          <button
-            onClick={execute}
-            className={classnames(styles.argsIconContainer)}
-          >
-            Run Code
-          </button>
-          <button
-            onClick={reset}
-            className={classnames(styles.argsIconContainer)}
-          >
-            Reset
-          </button>
-          <button
-            onClick={clear}
-            className={classnames(styles.argsIconContainer)}
-          >
-            Clear Output
-          </button>
-        </form>
-        <button onClick={handleClickShare}>
+          Run Code
+        </button>
+        <button
+          onClick={reset}
+          className="button button--secondary margin-bottom--lg margin-right--xs"
+        >
+          Reset
+        </button>
+        <button
+          onClick={clear}
+          className="button button--secondary margin-bottom--lg margin-right--xs"
+        >
+          Clear Output
+        </button>
+        <button
+          onClick={handleClickShare}
+          className="button button--secondary margin-bottom--lg margin-right--xs"
+        >
           Share Code (Copy to Clipboard)
         </button>
       </div>
