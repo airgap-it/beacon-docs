@@ -37,7 +37,6 @@ module.exports = {
         "guides/fa2-transfer",
         "guides/contract-error-handling",
         "guides/subscribe-to-event",
-        // TODO: "guides/info",
         "guides/standalone-delegation",
       ],
       collapsed: true,
@@ -48,6 +47,7 @@ module.exports = {
       items: [
         "advanced/ui-elements",
         "advanced/custom-block-explorer",
+        "advanced/sdk-info",
         {
           type: "category",
           label: "Flows",
