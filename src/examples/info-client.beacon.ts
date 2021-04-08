@@ -6,7 +6,7 @@ async () => {
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  console.log(`Connected Accounts:`, await dAppClient.getAccounts())
-  console.log(`Connected Peers:`, await dAppClient.getPeers())
+  console.log(`Connected Accounts:`, await dAppClient.getAccounts());
+  console.log(`Connected Peers:`, await dAppClient.getPeers());
   /// END
 };

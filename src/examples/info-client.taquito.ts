@@ -10,7 +10,7 @@ async () => {
 
   Tezos.setWalletProvider(wallet);
 
-  console.log(`Connected Accounts:`, await wallet.client.getAccounts())
-  console.log(`Connected Peers:`, await wallet.client.getPeers())
+  console.log(`Connected Accounts:`, await wallet.client.getAccounts());
+  console.log(`Connected Peers:`, await wallet.client.getPeers());
   /// END
 };

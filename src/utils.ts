@@ -67,9 +67,6 @@ export const runBeaconCode = (
           window[key] = taquitoWallet[key]
         })
         return (async () => {
-          window.fetch = () => Promise.reject('FETCH API DISABLED')
-          window.XMLHttpRequest = {}
-
           ${code};
           if (typeof result !== 'undefined') {
             return result
