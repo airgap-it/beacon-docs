@@ -12,6 +12,11 @@ module.exports = {
   organizationName: "airgap-it",
   projectName: "beacon-docs",
   themeConfig: {
+    algolia: {
+      apiKey: "b28005d19273bc50236b7f73e6a0e7d7",
+      indexName: "walletbeacon",
+      searchParameters: {},
+    },
     navbar: {
       logo: {
         alt: "Beacon Logo",
