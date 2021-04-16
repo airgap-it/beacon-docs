@@ -15,7 +15,8 @@ async () => {
         [NetworkType.MAINNET]: "https://tzstats.com/",
         [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
         [NetworkType.EDONET]: "https://edo.tzstats.com/",
-        [NetworkType.CUSTOM]: "https://edo.tzstats.com/",
+        [NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
+        [NetworkType.CUSTOM]: "https://florence.tzstats.com/",
       }
     ) {
       super(rpcUrls);
