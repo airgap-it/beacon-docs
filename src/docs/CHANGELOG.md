@@ -2,6 +2,17 @@
 title: Changelog
 ---
 
+## 2.2.4 (2021-04-16)
+
+#### Features
+
+- **florencenet**: Add Florencenet
+- **p2p**: Support federated matrix servers
+
+#### Fixes
+
+- **p2p**: Fix timing issues during connection setup to improve reliability
+
 ## 2.2.3 (2021-03-24)
 
 #### Fixes
