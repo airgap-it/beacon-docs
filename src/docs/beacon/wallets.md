@@ -30,7 +30,7 @@ Wallets are encouraged to support all features that Beacon offers. Please refer 
 | ------------------------- | -------------------- | --------------------------------------------- | ----- | ------ | ------- |
 | permissionRequest         | ✅                   | ✅                                            | ✅    | ✅     | ✅      |
 | operationRequest          | ✅                   | ✅                                            | ✅    | ✅     | ✅      |
-| signRequest (RAW)         | ❌ <br /> (HEX only) | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      |
+| signRequest (RAW)         | ✅                   | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      |
 | signRequest (MICHELINE)   | ✅                   | ✅                                            | ✅    | ✅     | ❌      |
 | signRequest (TRANSACTION) | ✅                   | ✅                                            | ✅    | ✅     | ❌      |
 | broadcastRequest          | ✅                   | ❌                                            | ✅    | ✅     | ❓      |
