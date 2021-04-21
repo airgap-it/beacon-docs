@@ -121,5 +121,18 @@ module.exports = {
       },
     ],
   ],
-  plugins: [path.join(__dirname, "/plugins/monaco-editor")],
+  plugins: [
+    path.join(__dirname, "/plugins/monaco-editor"),
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/beacon/wallets",
+            from: ["/supported-wallets.html"], // string | string[]
+          },
+        ],
+      },
+    ],
+  ],
 };
