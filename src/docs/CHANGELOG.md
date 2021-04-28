@@ -2,6 +2,12 @@
 title: Changelog
 ---
 
+## 2.2.5 (2021-04-26)
+
+#### Fixes
+
+- **p2p**: Remove unknown rooms and retry
+
 ## 2.2.4 (2021-04-16)
 
 #### Features
