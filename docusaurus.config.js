@@ -128,8 +128,8 @@ module.exports = {
       {
         redirects: [
           {
-            to: "/beacon/wallets",
-            from: ["/supported-wallets.html"], // string | string[]
+            to: "/supported-wallets",
+            from: ["/supported-wallets.html", "/beacon/wallets"], // string | string[]
           },
         ],
       },

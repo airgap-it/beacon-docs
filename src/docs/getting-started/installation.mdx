@@ -5,16 +5,19 @@ title: Installation
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+## Simple dApp
+
 First, you need to install the `@airgap/beacon-sdk` package.
 
 <Tabs
-  groupId="packet-manager"
-  defaultValue="npm"
-  values={[
-    { label: "NPM", value: "npm" },
-    { label: "Yarn", value: "yarn" },
-  ]}
+groupId="packet-manager"
+defaultValue="npm"
+values={[
+{ label: "NPM", value: "npm" },
+{ label: "Yarn", value: "yarn" },
+]}
 >
+
 <TabItem value="npm">
 
 ```bash
@@ -31,7 +34,11 @@ yarn add @airgap/beacon-sdk
 </TabItem>
 </Tabs>
 
-If you plan to interact with contracts, you will most likely instead want to install `@taquito`. Taquito installs the `beacon-sdk` as a dependency, so it doesn't have to be installed manually.
+## dApp With Contract Interaction
+
+If you plan to interact with contracts, you will most likely instead want to
+install `@taquito`. Taquito installs the `beacon-sdk` as a dependency, so it
+doesn't have to be installed manually.
 
 <Tabs
   groupId="packet-manager"

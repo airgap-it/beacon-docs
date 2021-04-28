@@ -2,12 +2,12 @@ module.exports = {
   docs: [
     {
       type: "category",
-      label: "Beacon",
+      label: "Introduction",
       items: [
-        "beacon/introduction",
-        "beacon/contributing",
-        "beacon/wallets",
-        "beacon/security-audit",
+        "introduction/introduction",
+        "introduction/contributing",
+        "introduction/wallets",
+        "introduction/security-audit",
       ],
       collapsed: true,
     },
@@ -16,6 +16,7 @@ module.exports = {
       label: "Getting Started",
       items: [
         "getting-started/installation",
+        "getting-started/first-dapp",
         "getting-started/simple-example",
         "getting-started/advanced-example",
       ],
@@ -25,7 +26,6 @@ module.exports = {
       type: "category",
       label: "Guides",
       items: [
-        "guides/getting-started",
         "guides/active-account",
         "guides/disconnecting-a-wallet",
         "guides/network",
