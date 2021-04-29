@@ -2,6 +2,13 @@
 title: Changelog
 ---
 
+## 2.2.6 (2021-04-29)
+
+#### Fixes
+
+- **ui**: Ignore styling from parent page
+- **types**: Make operation request properties optional instead of omitting them
+
 ## 2.2.5 (2021-04-26)
 
 #### Fixes
