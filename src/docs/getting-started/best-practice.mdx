@@ -1,0 +1,61 @@
+---
+title: Best Practice
+---
+
+import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
+import DynamicImage from "@site/src/components/DynamicImage";
+
+## Connect Wallet
+
+The following best practice outlines recommendations for the user interface to create a uniform user experience across dApps in the ecosystem.
+
+Before being able to interact with a wallet through Beacon, the user first needs to perform an action to trigger the wallet connection.
+
+### Button Content
+
+Within the default Beacon configuration where multiple wallets are supported, the connection button should be labeled <b>"Connect Wallet"</b>.
+
+1. Button is clearly visible e.g. distinct border, background color or drop shadow
+2. Button is labeled with "Connect Wallet"
+
+<BrowserWindow url="https://mydapp.com">
+
+<DynamicImage src="/img/beacon-pairing-ui.png" alt="Beacon Pairing" />
+
+</BrowserWindow>
+
+When only supporting a certain wallet, the label could directly indetify the wallet e.g. "Connect AirGap Wallet"
+
+### Button States And Actions
+
+The following two states should be supported: "unconnected" and "connected"
+
+#### Unconnected
+
+Button label has the wording "Connect Button"
+
+#### Connected
+
+- The button has a connection indicator e.g. a green desktop
+- The button label is the shortened Tezos address of the connected account e.g. tz1Mj...UAdtT
+- A click on the button prompts a dropdown:
+  - Disconnect Wallet - Disconnects the wallet from the dApp, resetting the button state and prompting a new Beacon Connection request when the user clicks again
+  - Open Blockexplorer - Opens a link to the address on a blockexplorer in a new tab
+
+<BrowserWindow url="https://mydapp.com">
+
+<DynamicImage src="/img/beacon-pairing-ui.png" alt="Beacon Pairing" />
+
+</BrowserWindow>
+
+### Button Placement
+
+The button should be placed that the connection state and the connected address always remains visible.
+
+A recommended position would be on the top right in the header of the application.
+
+<BrowserWindow url="https://mydapp.com">
+
+<DynamicImage src="/img/beacon-pairing-ui.png" alt="Beacon Pairing" />
+
+</BrowserWindow>
