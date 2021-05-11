@@ -4,11 +4,6 @@ const getFilesRecursively = require("./get-files-in-folder");
 const files = getFilesRecursively(
   "./node_modules/@airgap/beacon-sdk/dist/cjs/"
 ).filter((file) => file.endsWith(".d.ts"));
-files.push(
-  ...getFilesRecursively("./node_modules/@taquito/").filter((file) =>
-    file.endsWith(".d.ts")
-  )
-);
 
 const getFile = (filename) => {
   const text = fs.readFileSync(filename, { encoding: "utf8" });

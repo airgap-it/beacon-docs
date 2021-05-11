@@ -1,8 +1,11 @@
 import * as beacon from "@airgap/beacon-sdk";
 import * as ts from "typescript";
 
-import * as taquito from "@taquito/taquito";
-import * as taquitoWallet from "@taquito/beacon-wallet";
+// import * as taquito from "@taquito/taquito";
+// import * as taquitoWallet from "@taquito/beacon-wallet";
+
+const taquito = {};
+const taquitoWallet = {};
 
 function replaceAll(string: string, search: string, replace: string) {
   return string.split(search).join(replace);

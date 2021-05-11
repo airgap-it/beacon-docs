@@ -1,0 +1,33 @@
+---
+title: Push Notification
+---
+
+:::warning
+Push Notifications are in **beta**. There is no wallet that
+:::
+
+import Mermaid from "@theme/Mermaid";
+
+<Mermaid
+  chart={`
+sequenceDiagram
+  rect rgba(0, 0, 255, .2)
+    Note over dApp,Peer: Only for Extensions<br />Extensions have 200ms to respond
+    dApp->>Peer: Ping
+    Peer->>dApp: Pong
+  end
+  rect rgba(0, 0, 255, .2)
+    Note over dApp,Peer: dApp sends publicKey to Peer
+    dApp->>Peer: PairingRequest
+    Note over dApp,Peer: Peer stores the dApp publicKey <br/> Encrypts own publicKey with dApp publicKey <br/> Send back encrypted publicKey
+    Peer->>dApp: PairingResponse
+  end
+`}
+/>
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgREFwcFxuICAgIHBhcnRpY2lwYW50IFdhbGxldFxuICAgIHBhcnRpY2lwYW50IFB1c2ggT3JhY2xlXG4gICAgcGFydGljaXBhbnQgV2FsbGV0IEJhY2tlbmRcbiAgICBEQXBwLT4-V2FsbGV0OiAxLiBQZXJtaXNzaW9uIFJlcXVlc3RcbiAgICBXYWxsZXQtPj5QdXNoIE9yYWNsZTogMi4gR2V0IENoYWxsZW5nZVxuICAgIFdhbGxldC0-PlB1c2ggT3JhY2xlOiAzLiBSZWdpc3RlclxuICAgIFdhbGxldC0-PkRBcHA6IDQuIFBlcm1pc3Npb24gUmVzcG9uc2VcbiAgICBEQXBwLT4-UHVzaCBPcmFjbGU6IDUuIFJlcXVlc3QgTm90aWZpY2F0aW9uXG4gICAgUHVzaCBPcmFjbGUtPj5XYWxsZXQgQmFja2VuZDogNi4gTm90aWZ5IGJhY2tlbmRcbiAgICBXYWxsZXQgQmFja2VuZC0-PldhbGxldDogNy4gU2VuZCBQdXNoIG5vdGlmaWNhdGlvblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgREFwcFxuICAgIHBhcnRpY2lwYW50IFdhbGxldFxuICAgIHBhcnRpY2lwYW50IFB1c2ggT3JhY2xlXG4gICAgcGFydGljaXBhbnQgV2FsbGV0IEJhY2tlbmRcbiAgICBEQXBwLT4-V2FsbGV0OiAxLiBQZXJtaXNzaW9uIFJlcXVlc3RcbiAgICBXYWxsZXQtPj5QdXNoIE9yYWNsZTogMi4gR2V0IENoYWxsZW5nZVxuICAgIFdhbGxldC0-PlB1c2ggT3JhY2xlOiAzLiBSZWdpc3RlclxuICAgIFdhbGxldC0-PkRBcHA6IDQuIFBlcm1pc3Npb24gUmVzcG9uc2VcbiAgICBEQXBwLT4-UHVzaCBPcmFjbGU6IDUuIFJlcXVlc3QgTm90aWZpY2F0aW9uXG4gICAgUHVzaCBPcmFjbGUtPj5XYWxsZXQgQmFja2VuZDogNi4gTm90aWZ5IGJhY2tlbmRcbiAgICBXYWxsZXQgQmFja2VuZC0-PldhbGxldDogNy4gU2VuZCBQdXNoIG5vdGlmaWNhdGlvblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+Possible abuses:
+
+- Push Oracle cannot send valid notifications for addresses that have not registered (eg. no valid signature provided.)
+-
