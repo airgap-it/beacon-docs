@@ -30,13 +30,9 @@ async () => {
   // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
   const hash = await wallet.sendOperations([
     {
-      operationDetails: [
-        {
-          kind: TezosOperationType.TRANSACTION,
-          destination: myAddress, // Send to ourselves
-          amount: "1", // Amount in mutez, the smallest unit in Tezos
-        },
-      ],
+      kind: TezosOperationType.TRANSACTION,
+      destination: myAddress, // Send to ourselves
+      amount: "1", // Amount in mutez, the smallest unit in Tezos
     },
   ]);
 
