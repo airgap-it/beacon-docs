@@ -33,7 +33,7 @@ const connectApp = async (): Promise<void> => {
     .connect(async (message) => {
       console.log("beacon message", message);
 
-      let response: BeaconResponseInputMessage
+      let response: BeaconResponseInputMessage;
       switch (message.type) {
         case BeaconMessageType.PermissionRequest:
           // Prompt user for permissions. If multiple accounts are available, let user choose one of them
@@ -43,18 +43,19 @@ const connectApp = async (): Promise<void> => {
             network: message.network, // Use the same network that the user requested
             scopes: message.scopes,
             id: message.id,
-            publicKey: '3b92229274683b311cf8b040cf91ac0f8e19e410f06eda5537ef077e718e0024'
-          }
+            publicKey:
+              "3b92229274683b311cf8b040cf91ac0f8e19e410f06eda5537ef077e718e0024",
+          };
 
           // Optional
           // If the user aborts an action at any time, you can send back an error:
           response = {
             type: BeaconMessageType.Error,
             id: message.id,
-            errorType: BeaconErrorType.ABORTED_ERROR
-          }
+            errorType: BeaconErrorType.ABORTED_ERROR,
+          };
 
-          break
+          break;
         case BeaconMessageType.SignPayloadRequest:
           // Sign message.payload and return signature
 
@@ -62,10 +63,10 @@ const connectApp = async (): Promise<void> => {
             type: BeaconMessageType.SignPayloadResponse,
             id: message.id,
             signingType: message.signingType,
-            signature: 'edsig...'
-          }
+            signature: "edsig...",
+          };
 
-          break
+          break;
         case BeaconMessageType.OperationRequest:
           // Prepare transaction based on the details give in message.operationDetails
           // message.operationDetails only contains a partial tezos transaction. Not all fields are mandatory
@@ -75,45 +76,45 @@ const connectApp = async (): Promise<void> => {
           response = {
             type: BeaconMessageType.OperationResponse,
             id: message.id,
-            transactionHash: 'op...'
-          }
+            transactionHash: "op...",
+          };
 
           // Optional
           // If the transaction cannot be prepared, (eg. run_operations fails), an error containing the rpc error can be returned
           let error = [
             {
-              kind: 'temporary',
-              id: 'proto.008-PtEdo2Zk.contract.balance_too_low',
-              contract: 'tz1...',
-              balance: '100',
-              amount: '200'
-            }
-          ] // RPC error
+              kind: "temporary",
+              id: "proto.008-PtEdo2Zk.contract.balance_too_low",
+              contract: "tz1...",
+              balance: "100",
+              amount: "200",
+            },
+          ]; // RPC error
           response = {
             type: BeaconMessageType.Error,
             id: message.id,
             errorType: BeaconErrorType.TRANSACTION_INVALID_ERROR,
-            errorData: error
-          }
+            errorData: error,
+          };
 
-          break
+          break;
         case BeaconMessageType.BroadcastRequest:
           response = {
             type: BeaconMessageType.OperationResponse,
             id: message.id,
-            transactionHash: 'op...'
-          }
+            transactionHash: "op...",
+          };
 
-          break
+          break;
         default:
           response = {
             type: BeaconMessageType.Error,
             id: (message as any).id, // Typescript assumes message is of type "never", but we should still add this to handle any potential future messages we don't support yet.
-            errorType: BeaconErrorType.ABORTED_ERROR
-          }
+            errorType: BeaconErrorType.ABORTED_ERROR,
+          };
       }
-      
-      client.respond(response)
+
+      client.respond(response);
     })
     .catch((error) => console.error("connect error", error));
 };
@@ -127,24 +128,24 @@ To establish a connection over the P2P network, a handshake message has to be gi
 It can be through QR scanning, Deeplinks or Copy-Pasting the handshake message. Once the handshake is received, the new peer has to be added:
 
 ```typescript
-
-const isBeaconMessage: (obj: unknown) => obj is P2PPairingRequest = (obj: unknown): obj is P2PPairingRequest => {
+const isBeaconMessage: (obj: unknown) => obj is P2PPairingRequest = (
+  obj: unknown
+): obj is P2PPairingRequest => {
   return (
-    typeof (obj as P2PPairingRequest).name === 'string' &&
-    typeof (obj as P2PPairingRequest).publicKey === 'string' &&
-    typeof (obj as P2PPairingRequest).relayServer === 'string'
-  )
-}
+    typeof (obj as P2PPairingRequest).name === "string" &&
+    typeof (obj as P2PPairingRequest).publicKey === "string" &&
+    typeof (obj as P2PPairingRequest).relayServer === "string"
+  );
+};
 
-const handshakeMessage = '' // This was received from the dApp, eg. through QR scanning or deeplink
+const handshakeMessage = ""; // This was received from the dApp, eg. through QR scanning or deeplink
 
-const deserialized = (await new Serializer().deserialize(handshakeMessage))
+const deserialized = await new Serializer().deserialize(handshakeMessage);
 
 if (isBeaconMessage(deserialized)) {
   // This will add the peer and establish a connection
-  client.addPeer(peerInfo)
+  client.addPeer(peerInfo);
 }
-
 ```
 
 That's it, now the dApp and the Wallet are connected.
