@@ -2,6 +2,18 @@
 title: Changelog
 ---
 
+## 2.2.7 (2021-05-16)
+
+#### Features
+
+- **network**: Add Granadanet
+- **p2p**: Add second beacon-node to default nodes array
+- **p2p**: Improve reconnect behaviour if the previously used node is not reachable
+
+#### Fix
+
+- **ui**: Limit toast width, which was causing styling issues on some devices
+
 ## 2.2.6 (2021-04-29)
 
 #### Fixes
