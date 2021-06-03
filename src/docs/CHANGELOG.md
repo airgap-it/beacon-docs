@@ -2,6 +2,16 @@
 title: Changelog
 ---
 
+## 2.2.8 (2021-06-03)
+
+#### Fixes
+
+- **p2p**: Cached rooms are updated whenever a message is received or a new invite is received. This prevents peers from sending messages to "old" rooms where the other peer potentially no longer has access to
+- **p2p**: Improved the behaviour of the "re-pairing" for previously connected dApps. To prevent old state from affecting the connection, a new room is now always created when a connection is initialised
+- **p2p**: "Reset Connection" now works properly by making sure all old state is reset
+- **p2p**: Deterministically select the relay server based on the public key so it's always the same on by default
+- **p2p**: The SDK now resumes the connection after the server was unreachable for a while
+
 ## 2.2.7 (2021-05-16)
 
 #### Features
