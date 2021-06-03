@@ -6,7 +6,7 @@ async () => {
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
-    matrixNodes: ["beacon.tztip.me"],
+    matrixNodes: ["beacon-node-0.papers.tech:8448"],
   });
 
   try {
