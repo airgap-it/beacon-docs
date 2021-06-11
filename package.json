@@ -54,6 +54,7 @@
     "file-loader": "^6.2.0",
     "monaco-editor-webpack-plugin": "^3.0.1",
     "postcss": "^8.2.8",
+    "puppeteer": "^10.0.0",
     "typescript": "^4.2.3"
   }
 }

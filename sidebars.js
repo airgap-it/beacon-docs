@@ -7,6 +7,7 @@ module.exports = {
         "introduction/introduction",
         "introduction/contributing",
         "introduction/wallets",
+        "introduction/dapps",
         "introduction/security-audit",
       ],
       collapsed: true,

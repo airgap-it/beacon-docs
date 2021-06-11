@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://quipuswap.com",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.7",
+    "lastCheck": 1623455478615
+  },
+  {
+    "url": "https://www.hicetnunc.xyz",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.8",
+    "lastCheck": 1623455479578
+  },
+  {
+    "url": "https://tzcolors.io",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.5",
+    "lastCheck": 1623455479964
+  },
+  {
+    "url": "https://tzbutton.io",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.5",
+    "lastCheck": 1623455479055
+  },
+  {
+    "url": "https://www.freibier.io",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.6",
+    "lastCheck": 1623455476740
+  },
+  {
+    "url": "https://app.tezos.domains",
+    "usingCustomUI": true,
+    "sdkVersion": "2.2.6",
+    "lastCheck": 1623455480193
+  },
+  {
+    "url": "https://kolibri.finance",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.5",
+    "lastCheck": 1623455477682
+  },
+  {
+    "url": "https://app.tzwrap.com/wrap",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.7",
+    "lastCheck": 1623455477550
+  },
+  {
+    "url": "https://tezos-mandala.art",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.1",
+    "lastCheck": 1623453030000
+  },
+  {
+    "url": "https://salsadao.xyz",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.6",
+    "lastCheck": 1623455479138
+  },
+  {
+    "url": "https://www.plentydefi.com/farms",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.7",
+    "lastCheck": 1623455482468
+  },
+  {
+    "url": "https://www.spacefarm.xyz",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.6",
+    "lastCheck": 1623455266862
+  },
+  {
+    "url": "https://farmsoil.xyz/farm",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.6",
+    "lastCheck": 1623455478908
+  },
+  {
+    "url": "https://tacoz.cash",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.3",
+    "lastCheck": 1623455479132
+  },
+  {
+    "url": "https://app.dexter.exchange",
+    "usingCustomUI": false,
+    "sdkVersion": "2.2.1",
+    "lastCheck": 1623453030000
+  }
+]
