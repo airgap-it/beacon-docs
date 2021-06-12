@@ -26,7 +26,6 @@ const isGreater = (a: any, b: any) => {
 };
 
 const DAppTable = () => {
-  console.log("DAPPS", dApps);
   return (
     <table>
       <thead>
