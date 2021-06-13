@@ -1,92 +1,194 @@
 [
   {
+    "key": "quipuswap",
+    "name": "Quipuswap",
     "url": "https://quipuswap.com",
+    "checkUrl": "https://quipuswap.com",
+    "sourceCode": "https://github.com/madfish-solutions/quipuswap-webapp",
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.7",
-    "lastCheck": 1623455478615
+    "lastCheck": 1623614393753,
+    "title": "Quipuswap - Decentralized exchange on Tezos"
   },
   {
+    "key": "hicetnunc",
+    "name": "hic et nunc",
     "url": "https://www.hicetnunc.xyz",
+    "checkUrl": "https://www.hicetnunc.xyz",
+    "sourceCode": "https://github.com/hicetnunc2000/hicetnunc",
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.8",
-    "lastCheck": 1623455479578
+    "lastCheck": 1623614396381,
+    "title": "hic et nunc"
   },
   {
+    "key": "tzcolors",
+    "name": "tzcolors",
     "url": "https://tzcolors.io",
+    "checkUrl": "https://tzcolors.io",
+    "sourceCode": "https://github.com/tzcolors/tzcolors",
+    "active": true,
     "usingCustomUI": false,
-    "sdkVersion": "2.2.5",
-    "lastCheck": 1623455479964
+    "sdkVersion": "2.2.8",
+    "lastCheck": 1623614395779,
+    "title": "tzcolors"
   },
   {
+    "key": "tzbutton",
+    "name": "tzbutton",
     "url": "https://tzbutton.io",
+    "checkUrl": "https://tzbutton.io",
+    "sourceCode": "https://github.com/tzbutton/tzbutton",
+    "active": true,
     "usingCustomUI": false,
-    "sdkVersion": "2.2.5",
-    "lastCheck": 1623455479055
+    "sdkVersion": "2.2.8",
+    "lastCheck": 1623614395162,
+    "title": "TzButton"
   },
   {
+    "key": "freibier",
+    "name": "Freibier.io",
     "url": "https://www.freibier.io",
+    "checkUrl": "https://www.freibier.io",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623455476740
+    "lastCheck": 1623614393172,
+    "title": "Freibier.io – Token stability on the tezos chain"
   },
   {
-    "url": "https://app.tezos.domains",
+    "key": "tezosdomains",
+    "name": "Tezos Domains",
+    "url": "https://tezos.domains",
+    "checkUrl": "https://app.tezos.domains",
+    "sourceCode": "https://gitlab.com/tezos-domains/app",
+    "active": true,
     "usingCustomUI": true,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623455480193
+    "lastCheck": 1623614394408,
+    "title": "Tezos Domains"
   },
   {
+    "key": "kolibri",
+    "name": "Kolibri",
     "url": "https://kolibri.finance",
+    "checkUrl": "https://kolibri.finance",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.5",
-    "lastCheck": 1623455477682
+    "lastCheck": 1623614394120,
+    "title": "Kolibri"
   },
   {
-    "url": "https://app.tzwrap.com/wrap",
+    "key": "tzwrap",
+    "name": "WRAP",
+    "url": "https://tzwrap.com",
+    "checkUrl": "https://app.tzwrap.com/wrap",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.7",
-    "lastCheck": 1623455477550
+    "lastCheck": 1623614395732,
+    "title": "Wrap Protocol - bridge between Ethereum and Tezos"
   },
   {
+    "key": "tezosmandala",
+    "name": "Tezos Mandala",
     "url": "https://tezos-mandala.art",
+    "checkUrl": "https://tezos-mandala.art",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.1",
-    "lastCheck": 1623453030000
+    "lastCheck": 1623614394633,
+    "title": "Tezos Mandala: a Generative Art Project on Tezos"
   },
   {
+    "key": "salsadao",
+    "name": "salsadao.xyz",
     "url": "https://salsadao.xyz",
+    "checkUrl": "https://salsadao.xyz",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623455479138
+    "lastCheck": 1623614395440,
+    "title": "salsadao.xyz"
   },
   {
-    "url": "https://www.plentydefi.com/farms",
+    "key": "plenty",
+    "name": "Plenty",
+    "url": "https://www.plentydefi.com",
+    "checkUrl": "https://www.plentydefi.com/farms",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.7",
-    "lastCheck": 1623455482468
+    "lastCheck": 1623614403615,
+    "title": "Plenty"
   },
   {
+    "key": "spacefarm",
+    "name": "SpaceFarm",
     "url": "https://www.spacefarm.xyz",
+    "checkUrl": "https://www.spacefarm.xyz",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623455266862
+    "lastCheck": 1623614395447,
+    "title": "SpaceFarm"
   },
   {
-    "url": "https://farmsoil.xyz/farm",
+    "key": "farmsoil",
+    "name": "Farm Soil",
+    "url": "https://farmsoil.xyz",
+    "checkUrl": "https://farmsoil.xyz/farm",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623455478908
+    "lastCheck": 1623614394686,
+    "title": "Farm Soil"
   },
   {
+    "key": "mytezosdefi",
+    "name": "My Tezos DeFi",
+    "url": "https://www.mytezosdefi.com",
+    "checkUrl": "https://www.mytezosdefi.com",
+    "sourceCode": null,
+    "active": true,
+    "usingCustomUI": true,
+    "sdkVersion": "2.2.8",
+    "lastCheck": 1623614393594,
+    "title": "My Tezos DeFi"
+  },
+  {
+    "key": "tacoz",
+    "name": "Tacoz.cash",
     "url": "https://tacoz.cash",
+    "checkUrl": "https://tacoz.cash",
+    "sourceCode": null,
+    "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.3",
-    "lastCheck": 1623455479132
+    "lastCheck": 1623614395066,
+    "title": "Tacoz.cash - Tezos first meme coin"
   },
   {
-    "url": "https://app.dexter.exchange",
+    "key": "dexter",
+    "name": "Dexter",
+    "url": "https://www.dexter.exchange",
+    "checkUrl": "https://app.dexter.exchange",
+    "sourceCode": null,
+    "active": false,
     "usingCustomUI": false,
     "sdkVersion": "2.2.1",
-    "lastCheck": 1623453030000
+    "lastCheck": 1623614396517,
+    "title": "Dexter"
   }
 ]

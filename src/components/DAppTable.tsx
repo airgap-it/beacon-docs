@@ -6,11 +6,11 @@ import dApps from "../data/dapps.json";
 const getDate = (date: number) => {
   const d = new Date(date);
   return (
-    ("0" + d.getDate()).slice(-2) +
+    d.getFullYear() +
     "-" +
     ("0" + (d.getMonth() + 1)).slice(-2) +
     "-" +
-    d.getFullYear()
+    ("0" + d.getDate()).slice(-2)
   );
 };
 const isGreater = (a: any, b: any) => {
@@ -30,21 +30,25 @@ const DAppTable = () => {
     <table>
       <thead>
         <tr>
-          <th>URL</th>
+          <th>DApp</th>
           <th>SDK Version</th>
           <th>Last Checked</th>
+          <th>Source Code</th>
         </tr>
       </thead>
       <tbody>
         {dApps.sort(isGreater).map((dApp, i) => (
           <tr key={i}>
             <td>
-              <a href={dApp.url}>{dApp.url}</a>
+              <a href={dApp.url}>{dApp.name}</a>
             </td>
             <td>
               {dApp.sdkVersion} {dApp.sdkVersion === SDK_VERSION ? "✅" : ""}
             </td>
             <td>{getDate(dApp.lastCheck)}</td>
+            <td>
+              {dApp.sourceCode ? <a href={dApp.sourceCode}>Source Code</a> : ""}
+            </td>
           </tr>
         ))}
       </tbody>
