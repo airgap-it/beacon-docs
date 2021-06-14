@@ -1,20 +1,23 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 
-const clickButton = async (page, query) => {
-  page.evaluate((query) => {
-    const elements = [...document.querySelectorAll("button")];
+const clickButton = async (page, query, selector = "button") => {
+  page.evaluate(
+    (input) => {
+      const elements = [...document.querySelectorAll(input.selector)];
 
-    // Either use .find or .filter, comment one of these
-    // find element with find
-    const targetElement = elements.find((e) => e.innerText.includes(query));
+      // Either use .find or .filter, comment one of these
+      // find element with find
+      const targetElement = elements.find((e) => e.innerText === input.query);
 
-    // OR, find element with filter
-    // const targetElement = elements.filter(e => e.innerText.includes(query))[0];
+      // OR, find element with filter
+      // const targetElement = elements.filter(e => e.innerText.includes(query))[0];
 
-    // make sure the element exists, and only then click it
-    targetElement && targetElement.click();
-  }, query);
+      // make sure the element exists, and only then click it
+      targetElement && targetElement.click();
+    },
+    { query, selector }
+  );
 };
 
 (async () => {
@@ -64,6 +67,11 @@ const getSdkVersionFromDapp = async (page, dApp) => {
       "body > td-root > td-top-nav > mat-toolbar > div > div:nth-child(4) > button.mat-focus-indicator.mr-2.mat-stroked-button.mat-button-base.mat-primary.ng-star-inserted > span.mat-button-wrapper";
     await page.waitForSelector(connectButtonSelector);
     await page.click(connectButtonSelector);
+  } else if (dApp.key === "bettercalldev") {
+    await clickButton(page, "EXECUTE", "span");
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    await clickButton(page, "Wallet", "div");
+    await new Promise((resolve) => setTimeout(resolve, 200));
   } else if (dApp.key === "dexter") {
     await clickButton(page, "Connect Wallet");
   } else if (dApp.key === "tezosmandala") {
