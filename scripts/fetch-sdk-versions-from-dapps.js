@@ -24,7 +24,12 @@ const clickButton = async (page, query) => {
 
   const newData = data.map(async (dApp) => {
     const page = await browser.newPage();
-    return await getSdkVersionFromDapp(page, dApp);
+    await page.setViewport({
+      width: 1920,
+      height: 1080,
+      deviceScaleFactor: 1,
+    });
+    return getSdkVersionFromDapp(page, dApp);
   });
 
   fs.writeFileSync(
@@ -38,11 +43,6 @@ const clickButton = async (page, query) => {
 const getSdkVersionFromDapp = async (page, dApp) => {
   // Instructs the blank page to navigate a URL
   await page.goto(dApp.checkUrl);
-  await page.setViewport({
-    width: 1920,
-    height: 1080,
-    deviceScaleFactor: 1,
-  });
 
   await page.waitForSelector("title");
 
@@ -74,13 +74,6 @@ const getSdkVersionFromDapp = async (page, dApp) => {
   const sdkVersion = await page.evaluate(() =>
     localStorage.getItem("beacon:sdk_version")
   );
-
-  // if (!sdkVersion) {
-  //   const test = await page.evaluate(() =>
-  //     localStorage.getItem("beacon:sdk_version")
-  //   );
-  //   console.log('test')
-  // }
 
   console.log(`${sdkVersion} - ${dApp.checkUrl}`);
   const title = await page.title();
