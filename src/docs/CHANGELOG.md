@@ -2,6 +2,19 @@
 title: Changelog
 ---
 
+## 2.2.9 (2021-06-16)
+
+#### Features
+
+- **ui**: Add "open wallet" button to "request" toast. This button will appear when paired with Kukai Wallet or a mobile wallet (while on mobile)
+- **p2p**: Replace `matrix.papers.tech` node with `beacon-node-1.sky.papers.tech`
+- **p2p**: Use `room_version v5` when creating rooms
+- **p2p**: Add `forceNewConnection` parameter to `addPeer` on the `WalletClient` class. The property is `true` by default (previous behavior), but it can be set to false in case an existing peer is re-added, but no new connection should be initiated.
+
+#### Fixes
+
+- **p2p**: Using the "Reset Connection" button no longer requires a refresh
+
 ## 2.2.8 (2021-06-03)
 
 #### Fixes
