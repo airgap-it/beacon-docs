@@ -8,7 +8,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.7",
-    "lastCheck": 1623701789494,
+    "lastCheck": 1623794845761,
     "title": "Quipuswap - Decentralized exchange on Tezos"
   },
   {
@@ -20,7 +20,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.8",
-    "lastCheck": 1623701792976,
+    "lastCheck": 1623794847995,
     "title": "hic et nunc"
   },
   {
@@ -31,8 +31,8 @@
     "sourceCode": "https://github.com/tzcolors/tzcolors",
     "active": true,
     "usingCustomUI": false,
-    "sdkVersion": "2.2.8",
-    "lastCheck": 1623701790541,
+    "sdkVersion": "2.2.9",
+    "lastCheck": 1623794846332,
     "title": "tzcolors"
   },
   {
@@ -43,8 +43,8 @@
     "sourceCode": "https://github.com/tzbutton/tzbutton",
     "active": true,
     "usingCustomUI": false,
-    "sdkVersion": "2.2.8",
-    "lastCheck": 1623701790582,
+    "sdkVersion": "2.2.9",
+    "lastCheck": 1623794846209,
     "title": "TzButton"
   },
   {
@@ -56,7 +56,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701788006,
+    "lastCheck": 1623794845264,
     "title": "Freibier.io – Token stability on the tezos chain"
   },
   {
@@ -68,7 +68,7 @@
     "active": true,
     "usingCustomUI": true,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701789683,
+    "lastCheck": 1623794845887,
     "title": "Tezos Domains"
   },
   {
@@ -80,7 +80,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.5",
-    "lastCheck": 1623701788974,
+    "lastCheck": 1623794845771,
     "title": "Kolibri"
   },
   {
@@ -92,7 +92,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701790279,
+    "lastCheck": 1623794847108,
     "title": "Better Call Dev — Tezos smart contract explorer by Baking Bad"
   },
   {
@@ -104,7 +104,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.7",
-    "lastCheck": 1623701790335,
+    "lastCheck": 1623794845430,
     "title": "Wrap Protocol - bridge between Ethereum and Tezos"
   },
   {
@@ -116,7 +116,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.1",
-    "lastCheck": 1623701789471,
+    "lastCheck": 1623794846224,
     "title": "Tezos Mandala: a Generative Art Project on Tezos"
   },
   {
@@ -128,7 +128,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701791593,
+    "lastCheck": 1623794849365,
     "title": "salsadao.xyz"
   },
   {
@@ -140,7 +140,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701790399,
+    "lastCheck": 1623794847778,
     "title": "spicyswap.xyz"
   },
   {
@@ -152,7 +152,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.7",
-    "lastCheck": 1623701802718,
+    "lastCheck": 1623794852505,
     "title": "Plenty"
   },
   {
@@ -164,7 +164,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701790748,
+    "lastCheck": 1623794845548,
     "title": "SpaceFarm"
   },
   {
@@ -176,7 +176,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.6",
-    "lastCheck": 1623701789762,
+    "lastCheck": 1623794847198,
     "title": "Farm Soil"
   },
   {
@@ -188,7 +188,7 @@
     "active": true,
     "usingCustomUI": true,
     "sdkVersion": "2.2.8",
-    "lastCheck": 1623701788938,
+    "lastCheck": 1623794845913,
     "title": "My Tezos DeFi"
   },
   {
@@ -200,7 +200,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.8",
-    "lastCheck": 1623701791699,
+    "lastCheck": 1623794847802,
     "title": "PixelPotus | Get Started"
   },
   {
@@ -212,7 +212,7 @@
     "active": true,
     "usingCustomUI": false,
     "sdkVersion": "2.2.3",
-    "lastCheck": 1623701790309,
+    "lastCheck": 1623794846844,
     "title": "Tacoz.cash - Tezos first meme coin"
   },
   {
@@ -224,7 +224,7 @@
     "active": false,
     "usingCustomUI": false,
     "sdkVersion": "2.2.1",
-    "lastCheck": 1623701793132,
+    "lastCheck": 1623794848077,
     "title": "Dexter"
   }
 ]
