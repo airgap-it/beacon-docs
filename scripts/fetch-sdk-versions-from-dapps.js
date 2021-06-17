@@ -76,6 +76,8 @@ const getSdkVersionFromDapp = async (page, dApp) => {
     await clickButton(page, "Connect Wallet");
   } else if (dApp.key === "tezosmandala") {
     await clickButton(page, "Connect Wallet");
+  } else if (dApp.key === "tezosprofiles") {
+    await clickButton(page, "Connect Wallet");
   }
   // await page.screenshot({ path: `screenshot.png` });
 
