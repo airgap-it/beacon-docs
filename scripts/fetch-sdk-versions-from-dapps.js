@@ -67,11 +67,15 @@ const getSdkVersionFromDapp = async (page, dApp) => {
       "body > td-root > td-top-nav > mat-toolbar > div > div:nth-child(4) > button.mat-focus-indicator.mr-2.mat-stroked-button.mat-button-base.mat-primary.ng-star-inserted > span.mat-button-wrapper";
     await page.waitForSelector(connectButtonSelector);
     await page.click(connectButtonSelector);
+  } else if (dApp.key === "freibier") {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  } else if (dApp.key === "tzkt") {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   } else if (dApp.key === "bettercalldev") {
     await clickButton(page, "EXECUTE", "span");
     await new Promise((resolve) => setTimeout(resolve, 200));
     await clickButton(page, "Wallet", "div");
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   } else if (dApp.key === "dexter") {
     await clickButton(page, "Connect Wallet");
   } else if (dApp.key === "tezosmandala") {
