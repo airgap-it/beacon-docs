@@ -55,27 +55,18 @@ const getSdkVersionFromDapp = async (page, dApp) => {
     await page.evaluate(() => localStorage.setItem("newUser", false));
     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
 
-    const connectButtonSelector =
-      "#root > div > div.page-container.header-top-container > div > div.text-center.hidden.lg\\:flex.main-menu-container > div:nth-child(5) > button";
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    await page.waitForSelector(connectButtonSelector);
-    await page.click(connectButtonSelector);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await clickButton(page, "Connect");
   } else if (dApp.key === "tezosdomains") {
     const connectButtonSelector =
       "body > td-root > td-top-nav > mat-toolbar > div > div:nth-child(4) > button.mat-focus-indicator.mr-2.mat-stroked-button.mat-button-base.mat-primary.ng-star-inserted > span.mat-button-wrapper";
     await page.waitForSelector(connectButtonSelector);
     await page.click(connectButtonSelector);
-  } else if (dApp.key === "freibier") {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  } else if (dApp.key === "tzkt") {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
   } else if (dApp.key === "bettercalldev") {
     await clickButton(page, "EXECUTE", "span");
     await new Promise((resolve) => setTimeout(resolve, 200));
     await clickButton(page, "Wallet", "div");
-    await new Promise((resolve) => setTimeout(resolve, 2000));
   } else if (dApp.key === "dexter") {
     await clickButton(page, "Connect Wallet");
   } else if (dApp.key === "tezosmandala") {
@@ -83,6 +74,7 @@ const getSdkVersionFromDapp = async (page, dApp) => {
   } else if (dApp.key === "tezosprofiles") {
     await clickButton(page, "Connect Wallet");
   }
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   // await page.screenshot({ path: `screenshot.png` });
 
   const sdkVersion = await page.evaluate(() =>
