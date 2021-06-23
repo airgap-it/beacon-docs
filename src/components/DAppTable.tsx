@@ -1,7 +1,7 @@
 import { SDK_VERSION } from "@airgap/beacon-sdk";
 import React from "react";
 
-import dApps from "../data/dapps.json";
+import data from "../data/dapps.json";
 
 const getDate = (date: number) => {
   const d = new Date(date);
@@ -27,32 +27,39 @@ const isGreater = (a: any, b: any) => {
 
 const DAppTable = () => {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>DApp</th>
-          <th>SDK Version</th>
-          <th>Last Checked</th>
-          <th>Source Code</th>
-        </tr>
-      </thead>
-      <tbody>
-        {dApps.sort(isGreater).map((dApp, i) => (
-          <tr key={i}>
-            <td>
-              <a href={dApp.url}>{dApp.name}</a>
-            </td>
-            <td>
-              {dApp.sdkVersion} {dApp.sdkVersion === SDK_VERSION ? "✅" : ""}
-            </td>
-            <td>{getDate(dApp.lastCheck)}</td>
-            <td>
-              {dApp.sourceCode ? <a href={dApp.sourceCode}>Source Code</a> : ""}
-            </td>
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>DApp</th>
+            <th>SDK Version</th>
+            <th>Last Updated</th>
+            <th>Source Code</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.dapps.sort(isGreater).map((dApp, i) => (
+            <tr key={i}>
+              <td>
+                <a href={dApp.url}>{dApp.name}</a>
+              </td>
+              <td>
+                {dApp.sdkVersion} {dApp.sdkVersion === SDK_VERSION ? "✅" : ""}
+              </td>
+              <td>{getDate(dApp.lastUpdate)}</td>
+              <td>
+                {dApp.sourceCode ? (
+                  <a href={dApp.sourceCode}>Source Code</a>
+                ) : (
+                  ""
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p>Last check: {getDate(data.lastCheck)}</p>
+    </>
   );
 };
 export default DAppTable;

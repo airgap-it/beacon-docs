@@ -25,7 +25,7 @@ const clickButton = async (page, query, selector = "button") => {
 
   const data = JSON.parse(fs.readFileSync("./src/data/dapps.json"));
 
-  const newData = data.map(async (dApp) => {
+  const dappsPromise = data.dapps.map(async (dApp) => {
     const page = await browser.newPage();
     await page.setViewport({
       width: 1920,
@@ -35,9 +35,15 @@ const clickButton = async (page, query, selector = "button") => {
     return getSdkVersionFromDapp(page, dApp);
   });
 
+  const newDapps = await Promise.all(dappsPromise);
+
   fs.writeFileSync(
     "./src/data/dapps.json",
-    JSON.stringify(await Promise.all(newData), null, 2)
+    JSON.stringify(
+      { lastCheck: new Date().getTime(), dapps: newDapps },
+      null,
+      2
+    )
   );
 
   await browser.close();
@@ -73,6 +79,8 @@ const getSdkVersionFromDapp = async (page, dApp) => {
     await clickButton(page, "Connect Wallet");
   } else if (dApp.key === "tezosprofiles") {
     await clickButton(page, "Connect Wallet");
+  } else if (dApp.key === "tezosswap") {
+    await clickButton(page, "Refresh wallet");
   }
   await new Promise((resolve) => setTimeout(resolve, 2000));
   // await page.screenshot({ path: `screenshot.png` });
@@ -84,12 +92,12 @@ const getSdkVersionFromDapp = async (page, dApp) => {
   console.log(`${sdkVersion} - ${dApp.checkUrl}`);
   const title = await page.title();
 
-  if (sdkVersion) {
+  if (sdkVersion && sdkVersion !== dApp.sdkVersion) {
     return {
       ...dApp,
       title,
       sdkVersion,
-      lastCheck: new Date().getTime(),
+      lastUpdate: new Date().getTime(),
     };
   } else {
     return dApp;
