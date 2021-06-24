@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1624442837523,
+  "lastCheck": 1624519272996,
   "dapps": [
     {
       "key": "quipuswap",
@@ -336,6 +336,18 @@
       "sdkVersion": "2.2.9",
       "lastUpdate": 1624442445877,
       "title": "Crunchy.Network"
+    },
+    {
+      "key": "kalamint",
+      "name": "Kalamint",
+      "url": "https://kalamint.io",
+      "checkUrl": "https://kalamint.io",
+      "sourceCode": null,
+      "active": false,
+      "usingCustomUI": false,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1624442445877,
+      "title": "Kalamint"
     }
   ]
 }
