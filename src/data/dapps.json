@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1624519272996,
+  "lastCheck": 1624833449166,
   "dapps": [
     {
       "key": "quipuswap",
@@ -273,8 +273,8 @@
       "sourceCode": null,
       "active": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.3",
-      "lastUpdate": 1624442449474,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1624833281270,
       "title": "Staker Farm"
     },
     {
@@ -309,8 +309,8 @@
       "sourceCode": null,
       "active": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.3",
-      "lastUpdate": 1624442446147,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1624833280922,
       "title": "Bazaar Market"
     },
     {

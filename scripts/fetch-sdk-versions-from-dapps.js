@@ -32,7 +32,10 @@ const clickButton = async (page, query, selector = "button") => {
       height: 1080,
       deviceScaleFactor: 1,
     });
-    return getSdkVersionFromDapp(page, dApp);
+    return getSdkVersionFromDapp(page, dApp).catch((e) => {
+      console.log(`ERROR:`, dApp.key, e);
+      return dApp;
+    });
   });
 
   const newDapps = await Promise.all(dappsPromise);
