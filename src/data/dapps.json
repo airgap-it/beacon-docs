@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1624833449166,
+  "lastCheck": 1625037315371,
   "dapps": [
     {
       "key": "quipuswap",
@@ -105,8 +105,8 @@
       "sourceCode": null,
       "active": true,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.8",
-      "lastUpdate": 1624442446325,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1625008935210,
       "title": "QuipuSwap sDAO | Tezos Explorer"
     },
     {
@@ -117,8 +117,8 @@
       "sourceCode": null,
       "active": true,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.7",
-      "lastUpdate": 1624442441503,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1625008936588,
       "title": "Wrap Protocol - bridge between Ethereum and Tezos"
     },
     {
@@ -225,8 +225,8 @@
       "sourceCode": null,
       "active": true,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.6",
-      "lastUpdate": 1624283435784,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1625008934057,
       "title": "Tezos Profiles"
     },
     {
