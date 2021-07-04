@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1625037315371,
+  "lastCheck": 1625437406581,
   "dapps": [
     {
       "key": "quipuswap",
@@ -69,8 +69,8 @@
       "sourceCode": "https://gitlab.com/tezos-domains/app",
       "active": true,
       "usingCustomUI": true,
-      "sdkVersion": "2.2.6",
-      "lastUpdate": 1624442449248,
+      "sdkVersion": "2.2.9",
+      "lastUpdate": 1625437388748,
       "title": "Tezos Domains"
     },
     {
@@ -348,6 +348,18 @@
       "sdkVersion": "2.2.9",
       "lastUpdate": 1624442445877,
       "title": "Kalamint"
+    },
+    {
+      "key": "yaynay",
+      "name": "YayNay",
+      "url": "https://yaynay.app",
+      "checkUrl": "https://yaynay.app",
+      "sourceCode": null,
+      "active": false,
+      "usingCustomUI": false,
+      "sdkVersion": "2.2.4",
+      "lastUpdate": 1625437387518,
+      "title": "YayNay"
     }
   ]
 }
