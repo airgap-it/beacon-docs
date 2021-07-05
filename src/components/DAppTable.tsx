@@ -44,7 +44,10 @@ const DAppTable = () => {
                 <a href={dApp.url}>{dApp.name}</a>
               </td>
               <td>
-                {dApp.sdkVersion} {dApp.sdkVersion === SDK_VERSION ? "✅" : ""}
+                {dApp.sdkVersion}{" "}
+                {dApp.sdkVersion === SDK_VERSION || dApp.sdkVersion === "2.2.9"
+                  ? "✅"
+                  : ""}
               </td>
               <td>{getDate(dApp.lastUpdate)}</td>
               <td>
