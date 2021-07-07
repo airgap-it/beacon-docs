@@ -2,6 +2,12 @@
 title: Changelog
 ---
 
+## 2.2.10 (2021-07-05)
+
+#### Features
+
+- **p2p**: Add `beacon-node-2.sky.papers.tech` node to the default nodes
+
 ## 2.2.9 (2021-06-16)
 
 #### Features
