@@ -1,6 +1,10 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 
+const sleep = (delay) => {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+};
+
 const clickButton = async (page, query, selector = "button") => {
   page.evaluate(
     (input) => {
@@ -8,13 +12,18 @@ const clickButton = async (page, query, selector = "button") => {
 
       // Either use .find or .filter, comment one of these
       // find element with find
-      const targetElement = elements.find((e) => e.innerText === input.query);
+      // const targetElement = elements.find((e) => e.innerText === input.query);
 
       // OR, find element with filter
-      // const targetElement = elements.filter(e => e.innerText.includes(query))[0];
+      const targetElements = elements.filter(
+        (e) => e.innerText === input.query
+      );
+      targetElements.forEach((el) => {
+        el.click();
+      });
 
       // make sure the element exists, and only then click it
-      targetElement && targetElement.click();
+      // targetElement && targetElement.click();
     },
     { query, selector }
   );
@@ -53,18 +62,22 @@ const clickButton = async (page, query, selector = "button") => {
 })();
 
 const getSdkVersionFromDapp = async (page, dApp) => {
+  // if (dApp.key !== "tezosprofiles") {
+  //   return dApp;
+  // }
+
   // Instructs the blank page to navigate a URL
   await page.goto(dApp.checkUrl);
 
   await page.waitForSelector("title");
 
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await sleep(5000);
 
   if (dApp.key === "plenty") {
     await page.evaluate(() => localStorage.setItem("newUser", false));
     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await sleep(2000);
 
     await clickButton(page, "Connect");
   } else if (dApp.key === "tezosdomains") {
@@ -74,7 +87,7 @@ const getSdkVersionFromDapp = async (page, dApp) => {
     await page.click(connectButtonSelector);
   } else if (dApp.key === "bettercalldev") {
     await clickButton(page, "EXECUTE", "span");
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await sleep(200);
     await clickButton(page, "Wallet", "div");
   } else if (dApp.key === "dexter") {
     await clickButton(page, "Connect Wallet");
@@ -82,10 +95,16 @@ const getSdkVersionFromDapp = async (page, dApp) => {
     await clickButton(page, "Connect Wallet");
   } else if (dApp.key === "tezosprofiles") {
     await clickButton(page, "Connect Wallet");
+    await sleep(500);
+    await clickButton(page, "Connect Wallet");
+  } else if (dApp.key === "tzkt") {
+    await sleep(5000);
+  } else if (dApp.key === "freibier") {
+    await sleep(2000);
   } else if (dApp.key === "tezosswap") {
     await clickButton(page, "Refresh wallet");
   }
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await sleep(5000);
   // await page.screenshot({ path: `screenshot.png` });
 
   const sdkVersion = await page.evaluate(() =>

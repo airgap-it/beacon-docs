@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1625437406581,
+  "lastCheck": 1625646367052,
   "dapps": [
     {
       "key": "quipuswap",
@@ -93,8 +93,8 @@
       "sourceCode": null,
       "active": true,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442445686,
+      "sdkVersion": "2.2.10",
+      "lastUpdate": 1625642984594,
       "title": "Better Call Dev — Tezos smart contract explorer by Baking Bad"
     },
     {
@@ -221,7 +221,7 @@
       "key": "tezosprofiles",
       "name": "Tezos Profiles",
       "url": "https://tzprofiles.com",
-      "checkUrl": "https://tzprofiles.com/connect",
+      "checkUrl": "https://tzprofiles.com",
       "sourceCode": null,
       "active": true,
       "usingCustomUI": false,
