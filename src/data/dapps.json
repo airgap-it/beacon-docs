@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1625646367052,
+  "lastCheck": 1626332319062,
   "dapps": [
     {
       "key": "quipuswap",
@@ -21,8 +21,8 @@
       "sourceCode": "https://github.com/hicetnunc2000/hicetnunc",
       "active": true,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442448187,
+      "sdkVersion": "2.2.10",
+      "lastUpdate": 1626332219281,
       "title": "hic et nunc"
     },
     {
