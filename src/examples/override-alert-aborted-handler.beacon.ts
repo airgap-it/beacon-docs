@@ -19,10 +19,11 @@ async () => {
         // The default will not be executed anymore. To keep the default,
         // you will have to call it again.
         handler: async (data: {
-          p2pPeerInfo: P2PPairingRequest;
-          postmessagePeerInfo: PostMessagePairingRequest;
+          p2pPeerInfo: () => Promise<P2PPairingRequest>;
+          postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
           preferredNetwork: NetworkType;
           abortedHandler?(): void;
+          disclaimerText?: string;
         }): Promise<void> => {
           // If you want to attach your own "on alert closed" handler
           // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -36,7 +37,7 @@ async () => {
             console.log("My logic");
           };
           data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
-          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+          await defaultEventCallbacks.PAIR_INIT(data as any); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data);
         },
       },

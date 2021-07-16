@@ -23,14 +23,15 @@ async () => {
         // you will have to call it again.
         handler: async (
           data: {
-            p2pPeerInfo: P2PPairingRequest;
-            postmessagePeerInfo: PostMessagePairingRequest;
+            p2pPeerInfo: () => Promise<P2PPairingRequest>;
+            postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
             preferredNetwork: NetworkType;
             abortedHandler?(): void;
+            disclaimerText?: string;
           },
           eventCallback?: any[] | undefined
         ): Promise<void> => {
-          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+          await defaultEventCallbacks.PAIR_INIT(data as any); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data, eventCallback);
         },
       },

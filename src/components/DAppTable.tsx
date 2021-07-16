@@ -45,7 +45,9 @@ const DAppTable = () => {
               </td>
               <td>
                 {dApp.sdkVersion}{" "}
-                {dApp.sdkVersion === SDK_VERSION || dApp.sdkVersion === "2.2.9"
+                {dApp.sdkVersion === SDK_VERSION ||
+                dApp.sdkVersion === "2.2.10" ||
+                dApp.sdkVersion === "2.2.9"
                   ? "✅"
                   : ""}
               </td>

@@ -33,9 +33,9 @@ Wallets are encouraged to support all features that Beacon offers. Please refer 
 
 |                           | Temple | Kukai                                         | Spire | AirGap | Galleon | Umami |
 | ------------------------- | ------ | --------------------------------------------- | ----- | ------ | ------- | ----- |
-| permissionRequest         | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅     |    
-| operationRequest          | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅     | 
-| signRequest (RAW)         | ✅     | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      | ❌     |
-| signRequest (MICHELINE)   | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅     |
-| signRequest (TRANSACTION) | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅     |
-| broadcastRequest          | ✅     | ❌                                            | ✅    | ✅     | ❓      | ❌     |
+| permissionRequest         | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅    |
+| operationRequest          | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅    |
+| signRequest (RAW)         | ✅     | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      | ❌    |
+| signRequest (MICHELINE)   | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅    |
+| signRequest (TRANSACTION) | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅    |
+| broadcastRequest          | ✅     | ❌                                            | ✅    | ✅     | ❓      | ❌    |

@@ -2,6 +2,27 @@
 title: Changelog
 ---
 
+## 2.3.0 (2021-07-16)
+
+#### Features
+
+- **wallet**: Add Umami wallet to the wallet list
+- **pairing alert**: The connection to the beacon network is now estabilished "lazily". This means that the connection is only established if the user selects a wallet that communicates over the beacon network. Users that select an extension wallet will no longer open an unused connection.
+- **pairing alert**: The `DAppClientOptions` new includes a `disclaimerText` field, which will be displayed in the Pairing Alert.
+- **pairing**: If the wallet rejects the initial permission request, the active peer will be reset and on the next action the user will be prompted to select his wallet again.
+- **wallet list**: The wallets in the wallet list now include a `key` property, which will allow developers to uniquely identify the wallet.
+- **ui**: A new "Prepare" UI state. This UI state can optionally be triggered by the developer in case there is a calculation or network request before the beacon request is sent. This will improve usability because there will be immediate feedback. If you are using taquito, the UI state will be triggered for you internally.
+- **ui**: After clicking on a desktop or web wallet, the alert will show a "connecting" state to indicate that the dApp is waiting for the response of the wallet.
+- **ui**: The wallet list is now ordered alphabetically.
+- **p2p**: Rooms created on the beacon nodes are now `public` instead of `private`. This will allow us to improve the reconnection flow in the future.
+- **internal**: Improve example dApp and example wallet
+- **internal**: Add E2E tests
+
+#### Fix
+
+- **peers**: The `activePeer` is now no longer persisted in localStorage, which will improve the behavior if users refresh the page during a connection attempt.
+- **ui**: Small improvements and bug fixes in the alert.
+
 ## 2.2.10 (2021-07-05)
 
 #### Features
