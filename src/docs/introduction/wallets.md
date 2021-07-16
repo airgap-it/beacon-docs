@@ -23,15 +23,19 @@ Temple is a web extension for your browser, easy-to-use browser extension wallet
 
 Galleon is a deployment of Tezori, an open-source wallet frame-work for Tezos, supporting both software and hardware wallets in eight languages on Mac, Windows, and Linux.
 
+**[Umami](https://umamiwallet.com/)**
+
+Umami is a Tezos desktop wallet that combines best-in-class features to deliver a smooth user experience for both beginner and advanced users.
+
 ## Can I use all features of Beacon with all wallets?
 
 Wallets are encouraged to support all features that Beacon offers. Please refer to the following matrix to check which features are supported in major wallets.
 
-|                           | Temple | Kukai                                         | Spire | AirGap | Galleon |
-| ------------------------- | ------ | --------------------------------------------- | ----- | ------ | ------- |
-| permissionRequest         | ✅     | ✅                                            | ✅    | ✅     | ✅      |
-| operationRequest          | ✅     | ✅                                            | ✅    | ✅     | ✅      |
-| signRequest (RAW)         | ✅     | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      |
-| signRequest (MICHELINE)   | ✅     | ✅                                            | ✅    | ✅     | ❌      |
-| signRequest (TRANSACTION) | ✅     | ✅                                            | ✅    | ✅     | ❌      |
-| broadcastRequest          | ✅     | ❌                                            | ✅    | ✅     | ❓      |
+|                           | Temple | Kukai                                         | Spire | AirGap | Galleon | Umami |
+| ------------------------- | ------ | --------------------------------------------- | ----- | ------ | ------- | ----- |
+| permissionRequest         | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅     |    
+| operationRequest          | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅     | 
+| signRequest (RAW)         | ✅     | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      | ❌     |
+| signRequest (MICHELINE)   | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅     |
+| signRequest (TRANSACTION) | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅     |
+| broadcastRequest          | ✅     | ❌                                            | ✅    | ✅     | ❓      | ❌     |
