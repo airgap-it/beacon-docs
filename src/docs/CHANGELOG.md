@@ -2,6 +2,13 @@
 title: Changelog
 ---
 
+## 2.3.1 (2021-07-21)
+
+#### Fix
+
+- **types**: The "disclaimerText" was not properly set as optional.
+- **ui**: When clicking on "AirGap Wallet" in the pairing alert, the loader was shown instead of the QR code.
+
 ## 2.3.0 (2021-07-16)
 
 #### Features
