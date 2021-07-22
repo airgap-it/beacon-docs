@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1626846132330,
+  "lastCheck": 1626992784943,
   "dapps": [
     {
       "key": "quipuswap",
@@ -285,9 +285,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.6",
-      "lastUpdate": 1624442817855,
-      "title": "TezosSwap"
+      "sdkVersion": "2.2.10",
+      "lastUpdate": 1626992758730,
+      "title": "Smartlink Staking App"
     },
     {
       "key": "sebuh",
@@ -369,8 +369,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.0",
-      "lastUpdate": 1626846112475,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1626992760126,
       "title": "youves"
     }
   ]
