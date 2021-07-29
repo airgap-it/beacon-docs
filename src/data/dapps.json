@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1627401926809,
+  "lastCheck": 1627550423233,
   "dapps": [
     {
       "key": "quipuswap",
@@ -129,9 +129,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.1",
-      "lastUpdate": 1624442443132,
-      "title": "Tezos Mandala: a Generative Art Project on Tezos"
+      "sdkVersion": "2.2.10",
+      "lastUpdate": 1627550398232,
+      "title": "Tezos Mandala - Digital Art NFTs"
     },
     {
       "key": "salsadao",
