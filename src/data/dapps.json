@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1627550423233,
+  "lastCheck": 1627965508976,
   "dapps": [
     {
       "key": "quipuswap",
@@ -201,8 +201,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.2.8",
-      "lastUpdate": 1624442445280,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1627965491111,
       "title": "My Tezos DeFi"
     },
     {
@@ -273,8 +273,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624833281270,
+      "sdkVersion": "2.2.10",
+      "lastUpdate": 1627965496133,
       "title": "Staker Farm"
     },
     {
@@ -297,9 +297,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.3",
-      "lastUpdate": 1624442441789,
-      "title": "Sebuh.net XTZ Baker"
+      "sdkVersion": "2.2.10",
+      "lastUpdate": 1627965490971,
+      "title": "Sebuh.net"
     },
     {
       "key": "bazaarmarket",
