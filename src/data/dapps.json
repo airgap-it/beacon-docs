@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1628085070542,
+  "lastCheck": 1628509090221,
   "dapps": [
     {
       "key": "quipuswap",
@@ -213,8 +213,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442452212,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1628509075260,
       "title": "PixelPotus | Get Started"
     },
     {
@@ -285,8 +285,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.10",
-      "lastUpdate": 1626992758730,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1628509055503,
       "title": "Smartlink Staking App"
     },
     {
