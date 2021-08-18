@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1628509090221,
+  "lastCheck": 1629290666643,
   "dapps": [
     {
       "key": "quipuswap",
@@ -9,9 +9,9 @@
       "sourceCode": "https://github.com/madfish-solutions/quipuswap-webapp",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442443552,
-      "title": "Quipuswap - Decentralized exchange on Tezos"
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1629290438421,
+      "title": "QuipuSwap - Tezos DEX with on-chain governance for baking rewards"
     },
     {
       "key": "hicetnunc",
@@ -69,8 +69,8 @@
       "sourceCode": "https://gitlab.com/tezos-domains/app",
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1625437388748,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1629290432209,
       "title": "Tezos Domains"
     },
     {
@@ -189,8 +189,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.6",
-      "lastUpdate": 1624442445758,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1629290438754,
       "title": "Farm Soil"
     },
     {
@@ -321,8 +321,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.8",
-      "lastUpdate": 1624442456070,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1629290666643,
       "title": "Project Uanon"
     },
     {
@@ -333,8 +333,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442445877,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1629290434428,
       "title": "Crunchy.Network"
     },
     {
@@ -372,6 +372,18 @@
       "sdkVersion": "2.3.1",
       "lastUpdate": 1626992760126,
       "title": "youves"
+    },
+    {
+      "key": "bunnyknights",
+      "name": "bunnyknights",
+      "url": "https://www.bunnyknights.com",
+      "checkUrl": "https://www.bunnyknights.com",
+      "sourceCode": null,
+      "inactive": false,
+      "usingCustomUI": false,
+      "sdkVersion": "2.2.7",
+      "lastUpdate": 1629290433015,
+      "title": "Bunny Knights"
     }
   ]
 }
