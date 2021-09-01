@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1629290666643,
+  "lastCheck": 1630535667049,
   "dapps": [
     {
       "key": "quipuswap",
@@ -57,8 +57,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.6",
-      "lastUpdate": 1624360927441,
+      "sdkVersion": "2.2.8",
+      "lastUpdate": 1630533049896,
       "title": "Freibier.io – Token stability on the tezos chain"
     },
     {
@@ -165,8 +165,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.7",
-      "lastUpdate": 1624442466771,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1630533035875,
       "title": "Plenty"
     },
     {
