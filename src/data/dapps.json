@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1630535667049,
+  "lastCheck": 1630601869668,
   "dapps": [
     {
       "key": "quipuswap",
@@ -384,6 +384,42 @@
       "sdkVersion": "2.2.7",
       "lastUpdate": 1629290433015,
       "title": "Bunny Knights"
+    },
+    {
+      "key": "objkt",
+      "name": "objkt",
+      "url": "https://objkt.com",
+      "checkUrl": "https://objkt.com",
+      "sourceCode": null,
+      "inactive": false,
+      "usingCustomUI": false,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1630601522170,
+      "title": "objkt.com | The largest NFT marketplace on Tezos"
+    },
+    {
+      "key": "henext",
+      "name": "henext",
+      "url": "https://henext.xyz",
+      "checkUrl": "https://henext.xyz/profile",
+      "sourceCode": null,
+      "inactive": false,
+      "usingCustomUI": false,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1630601777189,
+      "title": "Profile"
+    },
+    {
+      "key": "tezzardz",
+      "name": "tezzardz",
+      "url": "https://www.tezzardz.xyz",
+      "checkUrl": "https://www.tezzardz.xyz",
+      "sourceCode": null,
+      "inactive": false,
+      "usingCustomUI": false,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1630601869668,
+      "title": "Tezzardz"
     }
   ]
 }
