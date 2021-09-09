@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1630601869668,
+  "lastCheck": 1631198017285,
   "dapps": [
     {
       "key": "quipuswap",
@@ -33,8 +33,8 @@
       "sourceCode": "https://github.com/tzcolors/tzcolors",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442449195,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1631197978631,
       "title": "tzcolors"
     },
     {
@@ -81,8 +81,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.0",
-      "lastUpdate": 1626846112462,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1631198009680,
       "title": "Kolibri"
     },
     {
