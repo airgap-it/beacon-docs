@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1631198017285,
+  "lastCheck": 1631304380167,
   "dapps": [
     {
       "key": "quipuswap",
@@ -57,9 +57,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.8",
-      "lastUpdate": 1630533049896,
-      "title": "Freibier.io – Token stability on the tezos chain"
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1631304353844,
+      "title": "CervezaBrewery.io - A DeFi project on Tezos."
     },
     {
       "key": "tezosdomains",
@@ -117,8 +117,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1625008936588,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1631304344619,
       "title": "Wrap Protocol - bridge between Ethereum and Tezos"
     },
     {
