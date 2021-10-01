@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1631304380167,
+  "lastCheck": 1633089382201,
   "dapps": [
     {
       "key": "quipuswap",
@@ -21,8 +21,8 @@
       "sourceCode": "https://github.com/hicetnunc2000/hicetnunc",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1628085063049,
+      "sdkVersion": "2.3.2",
+      "lastUpdate": 1633089375512,
       "title": "hic et nunc"
     },
     {
@@ -69,8 +69,8 @@
       "sourceCode": "https://gitlab.com/tezos-domains/app",
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1629290432209,
+      "sdkVersion": "2.3.3",
+      "lastUpdate": 1633089375026,
       "title": "Tezos Domains"
     },
     {
@@ -141,8 +141,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442452718,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1633089376419,
       "title": "salsadao.xyz"
     },
     {
@@ -165,8 +165,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1630533035875,
+      "sdkVersion": "2.3.2",
+      "lastUpdate": 1633089374777,
       "title": "Plenty"
     },
     {
@@ -285,9 +285,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1628509055503,
-      "title": "Smartlink Staking App"
+      "sdkVersion": "2.3.2",
+      "lastUpdate": 1633089366959,
+      "title": "Smartlink DeFI App"
     },
     {
       "key": "sebuh",
@@ -381,8 +381,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.7",
-      "lastUpdate": 1629290433015,
+      "sdkVersion": "2.3.2",
+      "lastUpdate": 1633089373309,
       "title": "Bunny Knights"
     },
     {
