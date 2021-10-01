@@ -2,6 +2,23 @@
 title: Changelog
 ---
 
+## 2.3.3 (2021-09-29)
+
+#### Fix
+
+- **network**: Add support for Hangzhounet.
+- **web-wallet**: Open new tab on button press so it will not be blocked by the browser popup blocker.
+- **kukai**: Update icon.
+- **ui**: Add space between wallet name and logo in "Preparing" toast.
+
+## 2.3.2 (2021-09-10)
+
+#### Fix
+
+- **ui**: Dynamically update pairing alert if new extension detected
+- **migration**: Remove migration code for matrix.papers.tech server.
+- **ui**: Avoid listener memory leak in pairing alert.
+
 ## 2.3.1 (2021-07-21)
 
 #### Fix
