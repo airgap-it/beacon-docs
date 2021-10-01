@@ -46,10 +46,13 @@ const DAppTable = () => {
               <td>
                 {dApp.sdkVersion}{" "}
                 {dApp.sdkVersion === SDK_VERSION ||
-                dApp.sdkVersion === "2.3.0" ||
-                dApp.sdkVersion === "2.2.10" ||
-                dApp.sdkVersion === "2.2.9"
+                dApp.sdkVersion.startsWith("2.3.")
                   ? "✅"
+                  : dApp.sdkVersion === "2.2.6" ||
+                    dApp.sdkVersion === "2.2.4" ||
+                    dApp.sdkVersion === "2.2.3" ||
+                    dApp.sdkVersion === "2.2.1"
+                  ? "❌"
                   : ""}
               </td>
               <td>{getDate(dApp.lastUpdate)}</td>
