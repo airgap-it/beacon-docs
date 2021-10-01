@@ -14,7 +14,8 @@ async () => {
         [NetworkType.EDONET]: "https://edo.tzstats.com/",
         [NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
         [NetworkType.GRANADANET]: "https://granadanet.tzstats.com/",
-        [NetworkType.CUSTOM]: "https://granadanet.tzstats.com/",
+        [NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
+        [NetworkType.CUSTOM]: "https://hangzhou.tzstats.com/",
       }
     ) {
       super(rpcUrls);
