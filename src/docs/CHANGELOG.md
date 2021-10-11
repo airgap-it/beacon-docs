@@ -2,6 +2,20 @@
 title: Changelog
 ---
 
+## 2.3.5 (2021-10-11)
+
+#### Fix
+
+- **toast**: Add back "open" button for Kukai and other wallets in toast.
+- **toast**: Make sure the "Reset Connection" option is always shown in the "Request sent" toast.
+
+## 2.3.4 (2021-10-08)
+
+#### Fix
+
+- **reconnect**: If an error is encountered during the sending of a message, it will now always show an alert that lets the user reset the connection.
+- **licence**: Add LICENCE file (MIT).
+
 ## 2.3.3 (2021-09-29)
 
 #### Fix
