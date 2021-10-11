@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1633089382201,
+  "lastCheck": 1633963033521,
   "dapps": [
     {
       "key": "quipuswap",
@@ -9,8 +9,8 @@
       "sourceCode": "https://github.com/madfish-solutions/quipuswap-webapp",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1629290438421,
+      "sdkVersion": "2.3.3",
+      "lastUpdate": 1633962992572,
       "title": "QuipuSwap - Tezos DEX with on-chain governance for baking rewards"
     },
     {
@@ -21,9 +21,9 @@
       "sourceCode": "https://github.com/hicetnunc2000/hicetnunc",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.2",
-      "lastUpdate": 1633089375512,
-      "title": "hic et nunc"
+      "sdkVersion": "2.3.3",
+      "lastUpdate": 1633962992737,
+      "title": "hic et nunc - hic et nunc"
     },
     {
       "key": "tzcolors",
@@ -333,8 +333,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1629290434428,
+      "sdkVersion": "2.3.4",
+      "lastUpdate": 1633962989632,
       "title": "Crunchy.Network"
     },
     {
@@ -393,8 +393,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1630601522170,
+      "sdkVersion": "2.3.3",
+      "lastUpdate": 1633962991763,
       "title": "objkt.com | The largest NFT marketplace on Tezos"
     },
     {
@@ -405,8 +405,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1630601777189,
+      "sdkVersion": "2.3.3",
+      "lastUpdate": 1633962988196,
       "title": "Profile"
     },
     {
