@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1633963033521,
+  "lastCheck": 1634558053407,
   "dapps": [
     {
       "key": "quipuswap",
@@ -45,8 +45,8 @@
       "sourceCode": "https://github.com/tzbutton/tzbutton",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442447375,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1634545662215,
       "title": "TzButton"
     },
     {
@@ -105,8 +105,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1625008935210,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1634544760664,
       "title": "QuipuSwap sDAO | Tezos Explorer"
     },
     {
@@ -117,8 +117,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1631304344619,
+      "sdkVersion": "2.3.4",
+      "lastUpdate": 1634544755872,
       "title": "Wrap Protocol - bridge between Ethereum and Tezos"
     },
     {
@@ -201,9 +201,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1627965491111,
-      "title": "My Tezos DeFi"
+      "sdkVersion": "2.3.4",
+      "lastUpdate": 1634544758353,
+      "title": "My Tezos Defi"
     },
     {
       "key": "pixelpotus",
@@ -213,8 +213,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1628509075260,
+      "sdkVersion": "2.3.4",
+      "lastUpdate": 1634544764683,
       "title": "PixelPotus | Get Started"
     },
     {
@@ -285,9 +285,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.2",
-      "lastUpdate": 1633089366959,
-      "title": "Smartlink DeFI App"
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1634544754948,
+      "title": "Smartlink DeFi App"
     },
     {
       "key": "sebuh",
@@ -369,8 +369,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1626992760126,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1634558041169,
       "title": "youves"
     },
     {
@@ -405,8 +405,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.3",
-      "lastUpdate": 1633962988196,
+      "sdkVersion": "2.3.4",
+      "lastUpdate": 1634544755443,
       "title": "Profile"
     },
     {
