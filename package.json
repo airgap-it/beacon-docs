@@ -22,13 +22,13 @@
     "embed-code": "npm run generate-monaco-types && npm run prettier && tsc src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && embedme 'build-docs/**/*.mdx' --source-root ./build-examples && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
-    "@airgap/beacon-sdk": "2.3.3",
+    "@airgap/beacon-sdk": "2.3.5",
     "@docusaurus/core": "2.0.0-alpha.72",
     "@docusaurus/plugin-client-redirects": "2.0.0-alpha.72",
     "@docusaurus/preset-classic": "2.0.0-alpha.72",
     "@mdx-js/react": "^1.6.21",
-    "@taquito/beacon-wallet": "^9.1.0",
-    "@taquito/taquito": "^9.1.0",
+    "@taquito/beacon-wallet": "10.2.1",
+    "@taquito/taquito": "10.2.1",
     "clsx": "^1.1.1",
     "mermaid": "^8.9.2",
     "monaco-editor": "^0.23.0",

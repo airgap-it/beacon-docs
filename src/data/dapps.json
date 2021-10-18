@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1634558053407,
+  "lastCheck": 1634563946616,
   "dapps": [
     {
       "key": "quipuswap",
@@ -93,8 +93,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.10",
-      "lastUpdate": 1625642984594,
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1634563804209,
       "title": "Better Call Dev — Tezos smart contract explorer by Baking Bad"
     },
     {

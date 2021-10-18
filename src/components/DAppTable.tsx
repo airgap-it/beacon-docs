@@ -46,11 +46,18 @@ const DAppTable = () => {
               <td>
                 {dApp.sdkVersion}{" "}
                 {dApp.sdkVersion === SDK_VERSION ||
-                dApp.sdkVersion.startsWith("2.3.")
+                dApp.sdkVersion === "2.3.5" ||
+                dApp.sdkVersion === "2.3.4"
                   ? "✅"
-                  : dApp.sdkVersion === "2.2.6" ||
+                  : dApp.sdkVersion === "2.2.10" ||
+                    dApp.sdkVersion === "2.2.9" ||
+                    dApp.sdkVersion === "2.2.8" ||
+                    dApp.sdkVersion === "2.2.7" ||
+                    dApp.sdkVersion === "2.2.6" ||
+                    dApp.sdkVersion === "2.2.5" ||
                     dApp.sdkVersion === "2.2.4" ||
                     dApp.sdkVersion === "2.2.3" ||
+                    dApp.sdkVersion === "2.2.2" ||
                     dApp.sdkVersion === "2.2.1"
                   ? "❌"
                   : ""}
