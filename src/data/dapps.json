@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1634563946616,
+  "lastCheck": 1635860113497,
   "dapps": [
     {
       "key": "quipuswap",
@@ -21,8 +21,8 @@
       "sourceCode": "https://github.com/hicetnunc2000/hicetnunc",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.3",
-      "lastUpdate": 1633962992737,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1635860104040,
       "title": "hic et nunc - hic et nunc"
     },
     {
@@ -69,8 +69,8 @@
       "sourceCode": "https://gitlab.com/tezos-domains/app",
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.3",
-      "lastUpdate": 1633089375026,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1635860100061,
       "title": "Tezos Domains"
     },
     {
@@ -405,8 +405,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.4",
-      "lastUpdate": 1634544755443,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1635860096582,
       "title": "Profile"
     },
     {
