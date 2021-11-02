@@ -67,6 +67,7 @@ module.exports = {
       collapsed: true,
     },
     "CHANGELOG",
+    "post-mortem",
     {
       type: "link",
       label: "TypeDoc Reference",
