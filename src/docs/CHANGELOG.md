@@ -2,6 +2,22 @@
 title: Changelog
 ---
 
+## 2.3.7 (2021-11-10)
+
+- **network**: Add Idiazabalnet
+
+#### Feature
+
+#### Fix
+
+- **toast**: The content of the toasts was not responsive in some cases.
+
+## 2.3.6 (2021-11-04)
+
+#### Fix
+
+- **p2p**: Improve the reconnection logic if a server is not available anymore.
+
 ## 2.3.5 (2021-10-11)
 
 #### Fix

@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1635860113497,
+  "lastCheck": 1636535288694,
   "dapps": [
     {
       "key": "quipuswap",
@@ -141,8 +141,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1633089376419,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1636535278910,
       "title": "salsadao.xyz"
     },
     {
@@ -153,9 +153,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.10",
-      "lastUpdate": 1626846114019,
-      "title": "spicyswap.xyz"
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1636535276522,
+      "title": "SpicySwap"
     },
     {
       "key": "plenty",
@@ -381,8 +381,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.2",
-      "lastUpdate": 1633089373309,
+      "sdkVersion": "2.3.6",
+      "lastUpdate": 1636535274965,
       "title": "Bunny Knights"
     },
     {
