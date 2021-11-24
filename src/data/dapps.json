@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1636540913671,
+  "lastCheck": 1637771432546,
   "dapps": [
     {
       "key": "quipuswap",
@@ -9,8 +9,8 @@
       "sourceCode": "https://github.com/madfish-solutions/quipuswap-webapp",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.3",
-      "lastUpdate": 1633962992572,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1637770767560,
       "title": "QuipuSwap - Tezos DEX with on-chain governance for baking rewards"
     },
     {
@@ -19,7 +19,7 @@
       "url": "https://www.hicetnunc.xyz",
       "checkUrl": "https://www.hicetnunc.xyz",
       "sourceCode": "https://github.com/hicetnunc2000/hicetnunc",
-      "inactive": false,
+      "inactive": true,
       "usingCustomUI": false,
       "sdkVersion": "2.3.5",
       "lastUpdate": 1635860104040,
@@ -81,8 +81,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1631198009680,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1637770774249,
       "title": "Kolibri"
     },
     {
@@ -105,8 +105,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1634544760664,
+      "sdkVersion": "2.3.3",
+      "lastUpdate": 1637770771793,
       "title": "QuipuSwap sDAO | Tezos Explorer"
     },
     {
@@ -153,8 +153,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1636535276522,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1637770767545,
       "title": "SpicySwap"
     },
     {
@@ -177,9 +177,9 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.2.9",
-      "lastUpdate": 1624442446168,
-      "title": "SpaceFarm"
+      "sdkVersion": "2.3.1",
+      "lastUpdate": 1637770771816,
+      "title": "SpaceFarm - Tezos Yield Farms"
     },
     {
       "key": "farmsoil",
@@ -201,8 +201,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.4",
-      "lastUpdate": 1634544758353,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1637770760329,
       "title": "My Tezos Defi"
     },
     {
@@ -235,7 +235,7 @@
       "url": "https://tacoz.cash",
       "checkUrl": "https://tacoz.cash",
       "sourceCode": null,
-      "inactive": false,
+      "inactive": true,
       "usingCustomUI": false,
       "sdkVersion": "2.2.3",
       "lastUpdate": 1624442446965,
@@ -285,8 +285,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1634544754948,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1637770754611,
       "title": "Smartlink DeFi App"
     },
     {
@@ -369,8 +369,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1634558041169,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1637770804257,
       "title": "youves"
     },
     {
@@ -393,8 +393,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.3",
-      "lastUpdate": 1633962991763,
+      "sdkVersion": "2.3.5",
+      "lastUpdate": 1637770769318,
       "title": "objkt.com | The largest NFT marketplace on Tezos"
     },
     {

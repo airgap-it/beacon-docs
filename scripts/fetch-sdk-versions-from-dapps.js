@@ -35,6 +35,9 @@ const clickButton = async (page, query, selector = "button") => {
   const data = JSON.parse(fs.readFileSync("./src/data/dapps.json"));
 
   const dappsPromise = data.dapps.map(async (dApp) => {
+    if (dApp.inactive) {
+      return dApp;
+    }
     const page = await browser.newPage();
     await page.setDefaultNavigationTimeout(60000);
     await page.setViewport({

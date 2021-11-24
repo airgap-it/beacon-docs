@@ -2,11 +2,17 @@
 title: Changelog
 ---
 
-## 2.3.7 (2021-11-10)
-
-- **network**: Add Idiazabalnet
+## 2.3.8 (2021-11-24)
 
 #### Feature
+
+- **p2p**: Add 5 new beacon nodes to the array of default nodes.
+
+## 2.3.7 (2021-11-10)
+
+#### Feature
+
+- **network**: Add Idiazabalnet.
 
 #### Fix
 
