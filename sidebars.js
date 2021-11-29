@@ -49,6 +49,7 @@ module.exports = {
         "advanced/ui-elements",
         "advanced/custom-block-explorer",
         "advanced/different-node",
+        "advanced/debug-wallet",
         "advanced/sdk-info",
         {
           type: "category",
