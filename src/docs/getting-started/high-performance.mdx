@@ -1,0 +1,125 @@
+---
+title: High Performance
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+There are a few best practices dApp developers can follow to make their dApps more performant. We will go into a few of those here. Which ones are relevant to your dApp is always depending on the type of dApp. If you need help, feel free to reach out to us on [Discord](https://discord.gg/vuf4Gtnqh7) in the #beacon channel.
+
+## Make sure beacon-sdk is up to date
+
+The `beacon-sdk` receives frequent updates with small bugfixes and performance improvements. We keep breaking changes to a minimum, so updating is usually as easy as increasing the version number.
+
+## Reusing connected accounts
+
+This one is a basic concept of Beacon, but still very important.
+
+Every time a user connects their wallet and shares permission to use an account, that account is persisted on the dApp side. At this point, the UI should reflect that the user is connected and display the address that was shared. The "Connect" or "Sync" button should be replaced by a "Disconnect" or "Unsync" button. Even when the user refreshes, the account is still present and can be retrieved by calling `dAppClient.getActiveAccount()`.
+
+<!-- embedme getting-started-active-account.beacon.ts -->
+
+```ts
+
+```
+
+## Connect to multiple RPCs
+
+If a high number of users are using your dApp at the same time, the load on the RPC can spike. Ideally, the server infrastructure should be using a load balancer and caching to handle the load. If no such infrastructure is available, it is a good idea to provide an array of nodes and randomly select one on pageload. In case one of the nodes goes down, a user can connect to a different one by refreshing.
+
+An even better approach is to add a node selection to your dApp, including a way for users to provide their own RPC.
+
+<!-- embedme example-high-performance-multiple-nodes.ts -->
+
+```ts
+
+```
+
+## Allow users to connect their Wallet early on
+
+In case your dApp is focussed around a specific time (eg. NFT drop or a countdown of some sorts), you should already provide a way for users to pair their wallet with the dApp. This will reduce the load on the Beacon Network once the countdown hits 0.
+
+<!-- embedme getting-started-permission-request.beacon.ts -->
+
+```ts
+
+```
+
+## Reduce number of requests made to RPCs
+
+Whenever doing a call in taquito, it internally has to fetch data from the chain. Under normal circumstances, those requests are not a big deal. But if a high number of users are using your dApp at the same time, those requests can become a problem for the RPCs.
+
+### Use beacon without taquito
+
+When the `beacon-sdk` is used without taquito, no connection to any RPC is required. So if your dApp offers only simple functionality (eg. only calling the `mint` entrypoint with one parameter), it is more performant to construct the contract call yourself and send it to the Beacon Network direcly, without going through taquito first.
+
+See an example contract call without taquito [here](/guides/simple-contract-call)
+
+### Use Caching with taquito
+
+Taquito offers a couple of optional features to reduce the number of network requests.
+
+#### Enable caching
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { RpcClient, RpcClientCache } from "@taquito/rpc";
+
+const rpc = new RpcClientCache(new RpcClient(RPC_URL));
+this.tezos = new TezosToolkit(rpc);
+```
+
+More information in the official [Taquito RPC Caching Docs](https://tezostaquito.io/docs/rpc-cache)
+
+#### Provide contract data locally
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { ContractsLibrary } from "@taquito/contracts-library";
+
+const contractsLibrary = new ContractsLibrary();
+
+const contractInfo = {}; // A JSON file of the contract storage.
+contractsLibrary.addContract(contractInfo);
+
+const Tezos = new TezosToolkit(RPC_URL);
+Tezos.addExtension(contractsLibrary);
+```
+
+More information in the official [Taquito Contracts Library Docs](https://tezostaquito.io/docs/contracts-library)
+
+#### Local Packing
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { MichelCodecPacker } from "@taquito/taquito";
+
+const Tezos = new TezosToolkit(RPC_URL);
+Tezos.setPackerProvider(new MichelCodecPacker());
+```
+
+More information in the official [Taquito Local Packing Docs](https://tezostaquito.io/docs/maps_bigmaps/#local-packing-for-big-maps)
+
+## Provide fee and gas estimates
+
+Depending on the contract that is used on your dApp, the `storage_limit` or `gas_limit` can change with each contract call. This means if multiple people are interacting with the contract in the same block, it is possible that operations will fail because the previously estimated values are no longer correct.
+
+The contract developer should be able to give rough estimates of what the `storage_limit` and `gas_limit` should be. If they change frequently, the dApp should provide a preset for those parameters. Beacon will send those presets to the Wallet, which will take them into consideration when preparing the operation.
+
+<!-- embedme example-high-performance-set-fees.ts -->
+
+```ts
+
+```
+
+## Check Beacon Network Status
+
+You can check the performance of the Beacon Network here in our [Dashboard](https://status.walletbeacon.io). If you see spikes, it is possible that performance is affected. Usually, the network recovers once the load reduces.
+
+:::info
+When using Browser Extension wallets (eg. Temple or Spire), the status of the Beacon Network does **NOT** affect the connection to the wallet. If something doesn't work in conjunction with Temple or Spire, it is most likely the RPC of the dApp or Wallet.
+:::
+
+## Reach out to the Beacon Team
+
+If you have any questions or doubts about the integration of Beacon on your dApp, feel free to reach out to us on [Discord](https://discord.gg/vuf4Gtnqh7) in the #beacon channel. If are developing a dApp with a scheduled event, please contact us in advance so we have enough time to help you prepare for the release.

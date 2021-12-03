@@ -20,6 +20,7 @@ module.exports = {
         "getting-started/first-dapp",
         "getting-started/simple-example",
         "getting-started/advanced-example",
+        "getting-started/high-performance",
       ],
       collapsed: false,
     },
