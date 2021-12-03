@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1638200823364,
+  "lastCheck": 1638524811420,
   "dapps": [
     {
       "key": "quipuswap",
@@ -9,8 +9,8 @@
       "sourceCode": "https://github.com/madfish-solutions/quipuswap-webapp",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1637770767560,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1638524804423,
       "title": "QuipuSwap - Tezos DEX with on-chain governance for baking rewards"
     },
     {
@@ -45,8 +45,8 @@
       "sourceCode": "https://github.com/tzbutton/tzbutton",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1636540903328,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1638524804088,
       "title": "TzButton"
     },
     {
@@ -165,8 +165,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.2",
-      "lastUpdate": 1633089374777,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1638524805885,
       "title": "Plenty"
     },
     {
@@ -285,8 +285,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1637770754611,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1638524799128,
       "title": "Smartlink DeFi App"
     },
     {
@@ -369,8 +369,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1637770804257,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1638524802660,
       "title": "youves"
     },
     {
