@@ -38,6 +38,11 @@ module.exports = {
         },
         { to: "playground/", label: "Playground", position: "right" },
         {
+          href: "https://debug.walletbeacon.io",
+          label: "Debug Wallet",
+          position: "right",
+        },
+        {
           href: "https://github.com/airgap-it/beacon-sdk",
           label: "GitHub",
           position: "right",
