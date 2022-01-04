@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1638524811420,
+  "lastCheck": 1641295123563,
   "dapps": [
     {
       "key": "quipuswap",
@@ -33,8 +33,8 @@
       "sourceCode": "https://github.com/tzcolors/tzcolors",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1636540902771,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1641295032054,
       "title": "tzcolors"
     },
     {
@@ -69,8 +69,8 @@
       "sourceCode": "https://gitlab.com/tezos-domains/app",
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1635860100061,
+      "sdkVersion": "2.3.7",
+      "lastUpdate": 1641295034227,
       "title": "Tezos Domains"
     },
     {
@@ -81,8 +81,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1637770774249,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1641295029471,
       "title": "Kolibri"
     },
     {
@@ -393,8 +393,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1637770769318,
+      "sdkVersion": "2.3.8",
+      "lastUpdate": 1641295031936,
       "title": "objkt.com | The largest NFT marketplace on Tezos"
     },
     {

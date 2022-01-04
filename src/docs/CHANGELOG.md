@@ -2,6 +2,13 @@
 title: Changelog
 ---
 
+## 2.3.9 (2022-01-04)
+
+#### Feature
+
+- **wallet**: Add Naan Wallet
+- **wallet**: Add Autonomy Wallet
+
 ## 2.3.8 (2021-11-24)
 
 #### Feature
