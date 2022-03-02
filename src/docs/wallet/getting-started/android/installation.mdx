@@ -12,7 +12,7 @@ import TOCInline from "@theme/TOCInline";
 
 To add Beacon Android SDK into your project:
 
-1. Make sure the [JitPack](https://jitpack.io/) repository is added to your root `build.gradle` file:
+1. Make sure the [JitPack](https://jitpack.io/) repository is included in your root `build.gradle` file:
 
 <Tabs
   groupId="language"
@@ -71,20 +71,20 @@ allprojects {
 dependencies {
   def beacon_version = "x.y.z"
 
-  // REQUIRED, core
+  // REQUIRED, :core
   implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version"
 
-  // optional, client-wallet
+  // optional, :client-wallet
   implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version"
-  // optional, client-wallet-compat
+  // optional, :client-wallet-compat
   implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beacon_version"
 
-  // optional, blockchain-substrate
+  // optional, :blockchain-substrate
   implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beacon_version"
-  // optional, blockchain-tezos
+  // optional, :blockchain-tezos
   implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beacon_version"
 
-  // optional, transport-p2p-matrix
+  // optional, :transport-p2p-matrix
   implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beacon_version"
 
   ---
@@ -128,6 +128,44 @@ dependencies {
 </TabItem>
 
 </Tabs>
+
+## Modules Overview
+
+The library modules and their relations are described below.
+
+### Core
+
+Core modules are the basis for other modules. They are required for the SDK to work as expected.
+
+| Module  | Description            | Dependencies | Required by                                                                                                                                          |
+| ------- | ---------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `:core` | Base for other modules | ✖️           | `:client-wallet` <br /> `:client-wallet-compat` <br /><br /> `:blockchain-substrate` <br /> `:blockchain-tezos` <br /><br /> `:transport-p2p-matrix` |
+
+### Client
+
+Client modules ship with Beacon implementations for different parts of the network.
+
+| Module                  | Description                                                                                                                                | Dependencies                    | Required by             |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ----------------------- |
+| `:client-wallet`        | Beacon implementation for wallets                                                                                                          | `:core`                         | `:client-wallet-compat` |
+| `:client-wallet-compat` | Provides a supplementary interface for `:client-wallet` for use without [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) | `:core` <br /> `:client-wallet` | ✖️                      |
+
+### Blockchain
+
+Blockchain modules provide support for different blockchains.
+
+| Module                  | Description                   | Dependencies | Required by |
+| ----------------------- | ----------------------------- | ------------ | ----------- |
+| `:blockchain-substrate` | Substrate specific components | `:core`      | ✖️          |
+| `:blockchain-tezos`     | Tezos specific components     | `:core`      | ✖️          |
+
+### Transport
+
+Transport modules provide various interfaces used to establish connection between Beacon clients.
+
+| Module                  | Description                                                                                      | Dependencies | Required by |
+| ----------------------- | ------------------------------------------------------------------------------------------------ | ------------ | ----------- |
+| `:transport-p2p-matrix` | Beacon P2P implementation which uses [Matrix](https://matrix.org/) network for the communication | `:core`      | ✖️          |
 
 ## Proguard and R8
 
