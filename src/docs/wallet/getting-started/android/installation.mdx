@@ -1,3 +1,125 @@
 ---
 title: Installation
 ---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To add Beacon Android SDK into your project:
+
+1. Make sure the [JitPack](https://jitpack.io/) repository is added to your root `build.gradle` file:
+
+<Tabs
+  groupId="language"
+  defaultValue="kotlin"
+  values={[
+    { label: "Groovy", value: "groovy" },
+    { label: "Kotlin", value: "kotlin" },
+  ]}
+>
+
+<TabItem value="groovy">
+
+```groovy
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
+
+</TabItem>
+
+<TabItem value="kotlin">
+
+```kotlin
+allprojects {
+  repositories {
+    ...
+    maven("https://jitpack.io")
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+2. Add the dependencies:
+
+[![stable](https://img.shields.io/github/v/tag/airgap-it/beacon-android-sdk?label=stable&sort=semver)](https://github.com/airgap-it/beacon-android-sdk)
+[![latest](https://img.shields.io/github/v/tag/airgap-it/beacon-android-sdk?color=orange&include_prereleases&label=latest)](https://github.com/airgap-it/beacon-android-sdk)
+
+<Tabs
+  groupId="language"
+  defaultValue="kotlin"
+  values={[
+    { label: "Groovy", value: "groovy" },
+    { label: "Kotlin", value: "kotlin" },
+  ]}
+>
+
+<TabItem value="groovy">
+
+```groovy
+dependencies {
+  def beaconVersion = "x.y.z"
+
+  // REQUIRED, core
+  implementation "com.github.airgap-it.beacon-android-sdk:core:$beaconVersion"
+
+  // optional, client-wallet
+  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion"
+  // optional, client-wallet-compat
+  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beaconVersion"
+
+  // optional, blockchain-substrate
+  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion"
+  // optional, blockchain-tezos
+  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion"
+
+  // optional, transport-p2p-matrix
+  implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion"
+
+  ---
+
+  // alternatively, all modules
+  implementation "com.github.airgap-it:beacon-android-sdk:$beaconVersion"
+}
+```
+
+</TabItem>
+
+<TabItem value="kotlin">
+
+```kotlin
+dependencies {
+  val beaconVersion = "x.y.z"
+
+  // REQUIRED, core
+  implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion")
+
+  // optional, client-wallet
+  implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion")
+  // optional, client-wallet-compat
+  implementation("com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beaconVersion")
+
+  // optional, blockchain-substrate
+  implementation("com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion")
+  // optional, blockchain-tezos
+  implementation("com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion")
+
+  // optional, transport-p2p-matrix
+  implementation("com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion")
+
+  ---
+
+  // alternatively, all modules
+  implementation("com.github.airgap-it:beacon-android-sdk:$beaconVersion")
+}
+```
+
+</TabItem>
+
+</Tabs>
