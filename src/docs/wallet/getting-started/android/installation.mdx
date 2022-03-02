@@ -4,6 +4,11 @@ title: Installation
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+## How to install Beacon Android SDK
 
 To add Beacon Android SDK into your project:
 
@@ -124,6 +129,13 @@ dependencies {
 
 </Tabs>
 
+## Proguard and R8
+
+`Beacon Android SDK` internally uses various libraries that may require custom ProGuard rules. If you're using ProGuard or R8, please follow the guides listed below to make sure your app works correctly after obfuscation:
+
+- [ProGuard rules for Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization#android)
+- [ProGuard rules for LazySodium](https://github.com/terl/lazysodium-java/wiki/installation#proguard)
+
 ## Troubleshooting
 
 See the list of known issues and how to fix them if you run into problems after adding the dependencies:
@@ -144,7 +156,7 @@ See the list of known issues and how to fix them if you run into problems after 
 <TabItem value="groovy">
 
 ```groovy
-def withoutJna = { exclude group: 'net.java.dev.jna' }
+def withoutJna = { exclude group: "net.java.dev.jna" }
 
 implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version", withoutJna
 implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version", withoutJna
