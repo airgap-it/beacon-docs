@@ -64,28 +64,28 @@ allprojects {
 
 ```groovy
 dependencies {
-  def beaconVersion = "x.y.z"
+  def beacon_version = "x.y.z"
 
   // REQUIRED, core
-  implementation "com.github.airgap-it.beacon-android-sdk:core:$beaconVersion"
+  implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version"
 
   // optional, client-wallet
-  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion"
+  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version"
   // optional, client-wallet-compat
-  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beaconVersion"
+  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beacon_version"
 
   // optional, blockchain-substrate
-  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion"
+  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beacon_version"
   // optional, blockchain-tezos
-  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion"
+  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beacon_version"
 
   // optional, transport-p2p-matrix
-  implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion"
+  implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beacon_version"
 
   ---
 
   // alternatively, all modules
-  implementation "com.github.airgap-it:beacon-android-sdk:$beaconVersion"
+  implementation "com.github.airgap-it:beacon-android-sdk:$beacon_version"
 }
 ```
 
@@ -118,6 +118,59 @@ dependencies {
   // alternatively, all modules
   implementation("com.github.airgap-it:beacon-android-sdk:$beaconVersion")
 }
+```
+
+</TabItem>
+
+</Tabs>
+
+## Troubleshooting
+
+See the list of known issues and how to fix them if you run into problems after adding the dependencies:
+
+- `Native library (com/sun/jna/xxxxx/libjnidispatch.so) not found in resource path`
+
+  Add the `"net.java.dev.jna:jna:x.y.z@aar"` dependency **and exclude the `net.java.dev.jna` group from the Beacon dependencies**.
+
+<Tabs
+  groupId="language"
+  defaultValue="kotlin"
+  values={[
+    { label: "Groovy", value: "groovy" },
+    { label: "Kotlin", value: "kotlin" },
+  ]}
+>
+
+<TabItem value="groovy">
+
+```groovy
+def withoutJna = { exclude group: 'net.java.dev.jna' }
+
+implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version", withoutJna
+implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version", withoutJna
+...
+
+def jna_version = "x.y.z"
+
+implementation "net.java.dev.jna:jna:$jna_version@aar"
+```
+
+</TabItem>
+
+<TabItem value="kotlin">
+
+```kotlin
+fun ModuleDependency.excludeJna(): ModuleDependency = apply {
+  exclude(group = "net.java.dev.jna")
+}
+
+implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion") { withoutJna() }
+implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion") { withoutJna() }
+...
+
+val jnaVersion = "x.y.z"
+
+implementation("net.java.dev.jna:jna:$jnaVersion@aar")
 ```
 
 </TabItem>
