@@ -1,0 +1,153 @@
+---
+title: Connect to a dApp
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+## Requirements
+
+Make sure you have added the following modules as your dependencies:
+
+```
+:core
+:client-wallet
+```
+
+You should have also decided which blockchains will be supported in your application and what transport layers to use to establish the communication. Make sure you have added appropriate [Blockchain](installation#blockchain) and [Transport](installation#transport) modules as your dependencies as well.
+
+:::tip
+
+See the [Installation](installation) page for more information about the modules and how to install them.
+
+:::
+
+:::caution
+
+Beacon Android SDK by default uses [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) to handle asynchronous code. If you don't want to use [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) in your application, see the [Advanced](advanced) <!-- TODO: set proper link --> guides to learn the alternatives.
+
+:::
+
+## How to listen for messages and respond
+
+Follow the steps below to learn how to interact with a dApp. The guide assumes all blockchains and transport layers are supported.
+
+### Create a wallet client
+
+Create a `BeaconWalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used in communication.
+
+```kotlin
+import it.airgap.beaconsdk.blockchain.substrate.substrate
+import it.airgap.beaconsdk.blockchain.tezos.tezos
+import it.airgap.beaconsdk.client.wallet.BeaconWalletClient
+import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
+
+val beaconWallet = BeaconWalletClient("My App") {
+    support(substrate(), tezos()) // set support for Substrate and Tezos blockchains
+    use(p2pMatrix()) // use Matrix to communicate with the Beacon network
+}
+```
+
+:::caution
+
+Currently only one instance of `BeaconWalletClient` should be created per application.
+
+:::
+
+### Subscribe to incoming requests
+
+Listen to requests from the dApp by collecting the [`Flow`](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/index.html) returned from the `BeaconWalletClient#connect` method. The [`Flow`](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/index.html) emits `BeaconRequest` packed in a [`Result`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-result/).
+
+```kotlin
+import it.airgap.beaconsdk.core.message.BeaconRequest
+
+myCoroutineScope.launch {
+    // connect to the network and collect the messages
+    beaconWallet.connect().collect { result -> //: Result<BeaconRequest>
+        result.getOrNull()?.let { onBeaconRequest(it) } // if success
+        result.exceptionOrNull()?.let { it.printStackTrace() } // if failure
+    }
+}
+
+fun onBeaconRequest(request: BeaconRequest) {
+    TODO("Not yet implemented")
+}
+```
+
+### Connect to a dApp
+
+To connect to a new dApp take the pairing request (obtained from, for example, a paring QR code) and transform it to `P2pPeer`. Next, register the new instance of `P2pPeer` in your wallet client.
+
+```kotlin
+import it.airgap.beaconsdk.core.data.P2pPeer
+
+// replace placeholder values with data provided in the dApp's pairing request
+val dApp = P2pPeer(
+    id = "id",
+    name = "name",
+    publicKey = "publicKey",
+    relayServer = "relayServer",
+    version = "version",
+)
+
+myCoroutineScope.launch {
+    try {
+        // connect to a new peer
+        beaconWallet.addPeers(dApp)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+```
+
+### Handle requests from the dApp
+
+Having received a request, you can create a response and send it back to the dApp. The response should _always_ be created from an incoming request. Attempting to send a response that was not created from a request awaiting answer will result in an error.
+
+The first request your app receives from a dApp is a permission request. The example below shows how to respond to it in the most basic way. To learn more advanced use cases see the [Advanced](advanced) <!-- TODO: set proper link --> guides.
+
+To get more information about other kinds of requests see the [Blockchains](blockchains) <!-- TODO: set proper link --> guides.
+
+```kotlin
+import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateAccount
+import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateNetwork
+import it.airgap.beaconsdk.blockchain.substrate.message.request.PermissionSubstrateRequest
+import it.airgap.beaconsdk.blockchain.substrate.message.response.PermissionSubstrateResponse
+import it.airgap.beaconsdk.blockchain.tezos.message.request.PermissionTezosRequest
+import it.airgap.beaconsdk.blockchain.tezos.message.response.PermissionTezosResponse
+import it.airgap.beaconsdk.core.data.BeaconError
+import it.airgap.beaconsdk.core.message.BeaconRequest
+import it.airgap.beaconsdk.core.message.ErrorBeaconResponse
+
+fun onBeaconRequest(request: BeaconRequest) {
+    // create a response based on the request
+    val response = when (request) {
+        is PermissionSubstrateRequest -> PermissionSubstrateResponse.from(request, listOf(substrateAccount))
+        is PermissionTezosRequest -> PermissionTezosResponse.from(request, tezosPublicKey)
+        else -> ErrorBeaconResponse.from(request, BeaconError.Aborted)
+    }
+
+    myCoroutineScope.launch {
+        try {
+            // send the response
+            beaconWallet.respond(response)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+}
+
+// replace placeholder values with valid data
+val substrateAccount = SubstrateAccount(
+    network = SubstrateNetwork("genesisHash"),
+    addressPrefix = 0,
+    publicKey = "substratePublicKey"
+)
+val tezosPublicKey = "tezosPublicKey"
+
+```
+
+<!-- TODO: ### Example Code -->

@@ -90,7 +90,10 @@ module.exports = {
         {
           type: "category",
           label: "Android",
-          items: ["wallet/getting-started/android/installation"],
+          items: [
+            "wallet/getting-started/android/installation",
+            "wallet/getting-started/android/connect-to-dapp",
+          ],
           collapsed: true,
         },
         {
