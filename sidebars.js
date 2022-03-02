@@ -76,5 +76,32 @@ module.exports = {
       href: "https://typedocs.walletbeacon.io",
     },
   ],
-  wallet: ["wallet/getting-started", "wallet/security"],
+  wallet: [
+    {
+      type: "category",
+      label: "Getting Started",
+      items: [
+        {
+          type: "category",
+          label: "Web",
+          items: ["wallet/getting-started/web/getting-started"],
+          collapsed: true,
+        },
+        {
+          type: "category",
+          label: "Android",
+          items: ["wallet/getting-started/android/installation"],
+          collapsed: true,
+        },
+        {
+          type: "category",
+          label: "iOS",
+          items: ["wallet/getting-started/ios/installation"],
+          collapsed: true,
+        },
+      ],
+      collapsed: false,
+    },
+    "wallet/security",
+  ],
 };
