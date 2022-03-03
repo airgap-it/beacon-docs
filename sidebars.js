@@ -93,6 +93,7 @@ module.exports = {
           items: [
             "wallet/getting-started/android/installation",
             "wallet/getting-started/android/connect-to-dapp",
+            "wallet/getting-started/android/disconnect-from-dapp",
           ],
           collapsed: true,
         },
