@@ -106,6 +106,28 @@ module.exports = {
       ],
       collapsed: false,
     },
+    {
+      type: "category",
+      label: "Advanced",
+      items: [
+        {
+          type: "category",
+          label: "Android",
+          items: [
+            "wallet/advanced/android/configuration",
+            "wallet/advanced/android/coroutines-alternatives",
+          ],
+          collapsed: true,
+        },
+        {
+          type: "category",
+          label: "iOS",
+          items: [],
+          collapsed: true,
+        },
+      ],
+      collapsed: false,
+    },
     "wallet/security",
   ],
 };
