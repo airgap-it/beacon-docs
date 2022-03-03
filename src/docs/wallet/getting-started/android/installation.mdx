@@ -27,10 +27,10 @@ To add Beacon Android SDK into your project:
 
 ```groovy
 allprojects {
-  repositories {
-    ...
-    maven { url 'https://jitpack.io' }
-  }
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
@@ -40,10 +40,10 @@ allprojects {
 
 ```kotlin
 allprojects {
-  repositories {
-    ...
-    maven("https://jitpack.io")
-  }
+    repositories {
+        ...
+        maven("https://jitpack.io")
+    }
 }
 ```
 
@@ -69,28 +69,28 @@ allprojects {
 
 ```groovy
 dependencies {
-  def beacon_version = "x.y.z"
+    def beacon_version = "x.y.z"
 
-  // REQUIRED, :core
-  implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version"
+    // REQUIRED, :core
+    implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version"
 
-  // optional, :client-wallet
-  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version"
-  // optional, :client-wallet-compat
-  implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beacon_version"
+    // optional, :client-wallet
+    implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version"
+    // optional, :client-wallet-compat
+    implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beacon_version"
 
-  // optional, :blockchain-substrate
-  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beacon_version"
-  // optional, :blockchain-tezos
-  implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beacon_version"
+    // optional, :blockchain-substrate
+    implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beacon_version"
+    // optional, :blockchain-tezos
+    implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beacon_version"
 
-  // optional, :transport-p2p-matrix
-  implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beacon_version"
+    // optional, :transport-p2p-matrix
+    implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beacon_version"
 
-  ---
+    ---
 
-  // alternatively, all modules
-  implementation "com.github.airgap-it:beacon-android-sdk:$beacon_version"
+    // alternatively, all modules
+    implementation "com.github.airgap-it:beacon-android-sdk:$beacon_version"
 }
 ```
 
@@ -100,28 +100,28 @@ dependencies {
 
 ```kotlin
 dependencies {
-  val beaconVersion = "x.y.z"
+    val beaconVersion = "x.y.z"
 
-  // REQUIRED, core
-  implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion")
+    // REQUIRED, core
+    implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion")
 
-  // optional, client-wallet
-  implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion")
-  // optional, client-wallet-compat
-  implementation("com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beaconVersion")
+    // optional, client-wallet
+    implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion")
+    // optional, client-wallet-compat
+    implementation("com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beaconVersion")
 
-  // optional, blockchain-substrate
-  implementation("com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion")
-  // optional, blockchain-tezos
-  implementation("com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion")
+    // optional, blockchain-substrate
+    implementation("com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion")
+    // optional, blockchain-tezos
+    implementation("com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion")
 
-  // optional, transport-p2p-matrix
-  implementation("com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion")
+    // optional, transport-p2p-matrix
+    implementation("com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion")
 
-  ---
+    ---
 
-  // alternatively, all modules
-  implementation("com.github.airgap-it:beacon-android-sdk:$beaconVersion")
+    // alternatively, all modules
+    implementation("com.github.airgap-it:beacon-android-sdk:$beaconVersion")
 }
 ```
 
@@ -154,10 +154,10 @@ Client modules ship with Beacon implementations for different parts of the netwo
 
 Blockchain modules provide support for different blockchains.
 
-| Module                  | Description                   | Dependencies | Required by |
-| ----------------------- | ----------------------------- | ------------ | ----------- |
-| `:blockchain-substrate` | Substrate specific components | `:core`      | ✖️          |
-| `:blockchain-tezos`     | Tezos specific components     | `:core`      | ✖️          |
+| Module                  | Description                                            | Dependencies | Required by |
+| ----------------------- | ------------------------------------------------------ | ------------ | ----------- |
+| `:blockchain-substrate` | [Substrate](https://substrate.io/) specific components | `:core`      | ✖️          |
+| `:blockchain-tezos`     | [Tezos](https://tezos.com/) specific components        | `:core`      | ✖️          |
 
 ### Transport
 
@@ -211,7 +211,7 @@ implementation "net.java.dev.jna:jna:$jna_version@aar"
 
 ```kotlin
 fun ModuleDependency.excludeJna(): ModuleDependency = apply {
-  exclude(group = "net.java.dev.jna")
+    exclude(group = "net.java.dev.jna")
 }
 
 implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion") { withoutJna() }
