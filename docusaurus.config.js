@@ -111,7 +111,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Papers AG - Open Source MIT License`,
     },
     prism: {
-      additionalLanguages: ["kotlin", "groovy"],
+      additionalLanguages: ["kotlin", "groovy", "swift", "ruby"],
     },
   },
   presets: [
