@@ -100,7 +100,10 @@ module.exports = {
         {
           type: "category",
           label: "iOS",
-          items: ["wallet/getting-started/ios/installation"],
+          items: [
+            "wallet/getting-started/ios/installation",
+            "wallet/getting-started/ios/connect-to-dapp",
+          ],
           collapsed: true,
         },
       ],
