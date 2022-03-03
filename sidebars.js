@@ -103,6 +103,7 @@ module.exports = {
           items: [
             "wallet/getting-started/ios/installation",
             "wallet/getting-started/ios/connect-to-dapp",
+            "wallet/getting-started/ios/disconnect-from-dapp",
           ],
           collapsed: true,
         },

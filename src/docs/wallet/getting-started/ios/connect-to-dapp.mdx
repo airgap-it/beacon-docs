@@ -307,18 +307,18 @@ class BeaconExample {
     let tezosPublicKey = "tezosPublicKey"
 
     func run() {
-        createBeaconWallet { createResult in
-            guard case .success(_) = createResult else {
+        createBeaconWallet { result in
+            guard case .success(_) = result else {
                 return
             }
 
-            self.subscribeToRequests { subscribeResult in
-                guard case .success(_) = subscribeResult else {
+            self.subscribeToRequests { result in
+                guard case .success(_) = result else {
                     return
                 }
 
-                self.connectToDApp { connectResult in
-                    guard case .success(_) = connectResult else {
+                self.connectToDApp { result in
+                    guard case .success(_) = result else {
                         return
                     }
                 }
