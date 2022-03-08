@@ -126,9 +126,7 @@ module.exports = {
         {
           type: "category",
           label: "iOS",
-          items: [
-            "wallet/advanced/ios/configuration",
-          ],
+          items: ["wallet/advanced/ios/configuration"],
           collapsed: true,
         },
       ],
