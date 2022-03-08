@@ -62,6 +62,7 @@ The `:transport-p2p-matrix` module defines `P2pMatrixStoragePlugin` and `Extende
 
 ```kotlin
 import it.airgap.beaconsdk.client.wallet.BeaconWalletClient
+import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
 import it.airgap.beaconsdk.transport.p2p.matrix.storage.ExtendedP2pMatrixStoragePlugin
 import it.airgap.beaconsdk.transport.p2p.matrix.storage.P2pMatrixStoragePlugin
 
@@ -88,6 +89,7 @@ You can provide your own Matrix node URLs while setting `BeaconWalletClient` up 
 
 ```kotlin
 import it.airgap.beaconsdk.client.wallet.BeaconWalletClient
+import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
 
 val beaconWallet = BeaconWalletClient {
     ...
