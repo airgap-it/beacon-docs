@@ -52,7 +52,7 @@ do {
         with: .init(
             name: "MyApp",
             blockchains: [Substrate.factory, Tezos.factory], // set support for Substrate and Tezos blockchains
-            connections: [.p2p(.init(client: try Transport.P2P.Matrix.factory()))] // use Matrix to communicate with the Beacon network
+            connections: [try Transport.P2P.Matrix.connection()] // use Matrix to communicate with the Beacon network
         )
     ) { result in
     // highlight-end
@@ -333,7 +333,7 @@ class BeaconExample {
                 with: .init(
                     name: "MyApp",
                     blockchains: [Substrate.factory, Tezos.factory],
-                    connections: [.p2p(.init(client: try Transport.P2P.Matrix.factory()))]
+                    connections: [try Transport.P2P.Matrix.connection()]
                 )
             ) { result in
             // highlight-end

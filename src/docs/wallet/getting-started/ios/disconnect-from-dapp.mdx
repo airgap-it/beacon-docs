@@ -150,7 +150,7 @@ class BeaconExample {
                 with: .init(
                     name: "MyApp",
                     blockchains: [Substrate.factory, Tezos.factory],
-                    connections: [.p2p(.init(client: try Transport.P2P.Matrix.factory()))]
+                    connections: [try Transport.P2P.Matrix.connection()]
                 )
             ) { result in
                 switch result {

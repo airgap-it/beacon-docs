@@ -1,0 +1,99 @@
+---
+title: Configuration
+---
+
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+## Custom storage
+
+Beacon iOS SDK is not a stateless library and bases part of its functionality on preserved data. By default the SDK stores its data in [`UserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults). However, it is possible to override the default storage and provide own implementation. The `BeaconCore` package ships with 3 public protocols that can be satisfied and provided externally during the `Beacon.WalletClient` setup: `Storage`, `ExtendedStorage` (an extended version of `Storage`) and `SecureStorage`.
+
+```swift
+import BeaconCore
+import BeaconClientWallet
+
+Beacon.WalletClient.create(
+    with: .init(
+        ...,
+        storage: MyStorage() /* or MyExtendedStorage() */,
+        secureStorage: MySecureStorage()
+    )
+)
+
+struct MyStorage: Storage {
+    // implementation
+}
+
+struct MyExtendedStorage: ExtendedStorage {
+    // implementation
+}
+
+struct MySecureStorage: SecureStorage {
+    // implementation
+}
+```
+
+### Plugins
+
+Some packages may require additional data to store. Those packages usually come with their own storage plugins which protocols can be also satisfied and provided externally.
+
+#### `BeaconTransportP2PMatrix`
+
+The `BeaconTransportP2PMatrix` packages defines `P2PMatrixStoragePlugin` and `ExtendedP2PMatrixStoragePlugin` protocols.
+
+```swift
+import BeaconClientWallet
+import BeaconTransportP2PMatrix
+
+Beacon.WalletClient.create(
+    with: .init(
+        ...,
+        connections: [try Transport.P2P.Matrix.connection(storagePlugin: MyP2PMatrixStoragePlugin() /* or MyExtendedP2PMatrixStoragePlugin */)]
+    )
+)
+
+struct MyP2PMatrixStoragePlugin: P2pMatrixStoragePlugin {
+    // implementation
+}
+
+struct MyExtendedP2PMatrixStoragePlugin: ExtendedP2pMatrixStoragePlugin {
+    // implementation
+}
+```
+
+<!-- TODO: create separate docs for each module? -->
+
+## Custom Matrix nodes
+
+You can provide your own Matrix node URLs while setting `Beacon.WalletClient` up with the `BeaconTransportP2PMatrix` transport layer. Use the `Transport.P2P.Matrix.connection` factory arguments to set your values.
+
+```swift
+import BeaconClientWallet
+import BeaconTransportP2PMatrix
+
+Beacon.WalletClient.create(
+    ...,
+    connections: [try Transport.P2P.Matrix.connection(matrixNodes: ["my.matrix.node"])]
+)
+```
+
+## Custom URLSession
+
+You can use your own [`URLSession`](https://developer.apple.com/documentation/foundation/urlsession) implementation while setting `Beacon.WalletClient` up with `BeaconTransportP2PMatrix` transport layer. Use the `Transport.P2P.Matrix.connection` factory arguments to provide an instance.
+
+```swift
+import Foundation
+import BeaconClientWallet
+import BeaconTransportP2PMatrix
+
+Beacon.WalletClient.create(
+    ...,
+    connections: [urlSession: MyURLSession()]
+)
+
+struct MyURLSession: URLSession {
+    // implementation
+}
+```
