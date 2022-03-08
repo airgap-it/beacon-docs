@@ -123,7 +123,7 @@ myCoroutineScope.launch {
 
 Having received a request, you can create a response and send it back to the dApp. The response should _always_ be created from an incoming request. Attempting to send a response that was not created from a request awaiting answer will result in an error.
 
-The first request your app receives from a dApp is a permission request. The example below shows how to respond to it in the most basic way. To get more information about other kinds of requests or learn more advanced use cases see the [Blockchains](blockchains) <!-- TODO: set proper link --> guides.
+The first request your app receives from a dApp is a permission request. The example below shows how to respond to it in the most basic way. To get more information about other kinds of requests or learn more advanced use cases see the Blockchain <!-- [Blockchains](blockchains) TODO: set proper link --> guides.
 
 ```kotlin
 import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateAccount
