@@ -132,6 +132,12 @@ module.exports = {
       ],
       collapsed: false,
     },
+    {
+      type: "category",
+      label: "Messages",
+      items: ["wallet/messages/substrate", "wallet/messages/tezos"],
+      collapsed: false,
+    },
     "wallet/security",
   ],
 };
