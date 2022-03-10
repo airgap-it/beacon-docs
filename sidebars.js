@@ -17,6 +17,7 @@ module.exports = {
       items: [
         "getting-started/installation",
         "getting-started/first-dapp",
+        "getting-started/best-practices",
         "getting-started/simple-example",
         "getting-started/advanced-example",
       ],

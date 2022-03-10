@@ -1,5 +1,5 @@
 ---
-title: Best Practice
+title: Best Practices
 ---
 
 import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
@@ -15,6 +15,8 @@ Before being able to interact with a wallet through Beacon, the user first needs
 
 Within the default Beacon configuration where multiple wallets are supported, the connection button should be labeled <b>"Connect Wallet"</b>.
 
+In some communities the term "sync" has been established and can also be used, but "Connect Wallet" should be preferred.
+
 1. Button is clearly visible e.g. distinct border, background color or drop shadow
 2. Button is labeled with "Connect Wallet"
 
@@ -24,22 +26,20 @@ Within the default Beacon configuration where multiple wallets are supported, th
 
 </BrowserWindow>
 
-When only supporting a certain wallet, the label could directly indetify the wallet e.g. "Connect AirGap Wallet"
-
 ### Button States And Actions
 
 The following two states should be supported: "unconnected" and "connected"
 
 #### Unconnected
 
-Button label has the wording "Connect Button"
+Button label has the wording "Connect Wallet" (or "sync").
 
 #### Connected
 
-- The button has a connection indicator e.g. a green desktop
+- The button has a connection indicator e.g. a green dot
 - The button label is the shortened Tezos address of the connected account e.g. tz1Mj...UAdtT
 - A click on the button prompts a dropdown:
-  - Disconnect Wallet - Disconnects the wallet from the dApp, resetting the button state and prompting a new Beacon Connection request when the user clicks again
+  - Disconnect Wallet (or "unsync", if "sync" is used instead of "Connect Wallet") - Disconnects the wallet from the dApp, resetting the button state and prompting a new Beacon Connection request when the user clicks again
   - Open Blockexplorer - Opens a link to the address on a blockexplorer in a new tab
 
 <BrowserWindow url="https://mydapp.com">
