@@ -17,7 +17,7 @@ Make sure you have added the following modules as your dependencies:
 :client-wallet
 ```
 
-You should have also decided which blockchains will be supported in your application and what transport layers to use to establish the communication. Make sure you have added appropriate [Blockchain](installation#blockchain) and [Transport](installation#transport) modules as your dependencies as well.
+You should have also decided which blockchains will be supported in your application and what transport layers to use to establish the communication. Make sure you have added the appropriate [Blockchain](installation#blockchain) and [Transport](installation#transport) modules as your dependencies as well.
 
 :::tip
 
@@ -37,9 +37,9 @@ Follow the steps below to learn how to interact with a dApp. The guide assumes a
 
 ### Create a wallet client
 
-Create a `BeaconWalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used in communication.
+Create a `BeaconWalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used for communication.
 
-The example below creates a new `BeaconWalletClient` instance with default settings. See the [Configuration](/wallet/advanced/android/configuration) guide to learn about more advanced setup.
+The example below creates a new `BeaconWalletClient` instance with default settings. See the [Configuration](/wallet/advanced/android/configuration) guide to learn about a more advanced setup.
 
 ```kotlin
 import it.airgap.beaconsdk.blockchain.substrate.substrate

@@ -24,7 +24,7 @@ val beaconWallet = BeaconWalletClient {
 
 ## Custom storage
 
-Beacon Android SDK is not a stateless library and bases part of its functionality on preserved data. By default the SDK stores its data in [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences). However, it is possible to override the default storage and provide own implementation. The `:core` module ships with 3 public interfaces that can be satisfied and provided externally during the `BeaconWalletClient` setup: `Storage`, `ExtendedStorage` (an extended version of `Storage`) and `SecureStorage`.
+Beacon Android SDK is not a stateless library and bases part of its functionality on preserved data. By default the SDK stores its data in [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences). However, it is possible to override the default storage and provide your own implementation. The `:core` module ships with 3 public interfaces that can be satisfied and provided externally during the `BeaconWalletClient` setup: `Storage`, `ExtendedStorage` (an extended version of `Storage`) and `SecureStorage`.
 
 ```kotlin
 import it.airgap.beaconsdk.client.wallet.BeaconWalletClient

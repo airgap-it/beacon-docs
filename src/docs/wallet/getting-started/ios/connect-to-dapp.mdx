@@ -17,7 +17,7 @@ BeaconCore
 BeaconClientWallet
 ```
 
-You should have also decided which blockchains will be supported in your application and what transport layers to use to establish the communication. Make sure you have added appropriate [Blockchain](installation#blockchain) and [Transport](installation#transport) packages as your dependencies as well.
+You should have also decided which blockchains will be supported in your application and what transport layers to use to establish the communication. Make sure you have added the appropriate [Blockchain](installation#blockchain) and [Transport](installation#transport) packages as your dependencies as well.
 
 :::tip
 
@@ -31,9 +31,9 @@ Follow the steps below to learn how to interact with a dApp. The guide assumes a
 
 ### Create a wallet client
 
-Create a `Beacon.WalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used in communication.
+Create a `Beacon.WalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used for communication.
 
-The example below creates a new `Beacon.WalletClient` instance with default settings. See the [Configuration](/wallet/advanced/ios/configuration) guide to learn about more advanced setup.
+The example below creates a new `Beacon.WalletClient` instance with default settings. See the [Configuration](/wallet/advanced/ios/configuration) guide to learn about a more advanced setup.
 
 ```swift
 import BeaconCore

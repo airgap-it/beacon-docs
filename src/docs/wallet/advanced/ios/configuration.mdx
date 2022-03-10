@@ -8,7 +8,7 @@ import TOCInline from "@theme/TOCInline";
 
 ## Custom storage
 
-Beacon iOS SDK is not a stateless library and bases part of its functionality on preserved data. By default the SDK stores its data in [`UserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults). However, it is possible to override the default storage and provide own implementation. The `BeaconCore` package ships with 3 public protocols that can be satisfied and provided externally during the `Beacon.WalletClient` setup: `Storage`, `ExtendedStorage` (an extended version of `Storage`) and `SecureStorage`.
+Beacon iOS SDK is not a stateless library and bases part of its functionality on preserved data. By default the SDK stores its data in [`UserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults). However, it is possible to override the default storage and provide your own implementation. The `BeaconCore` package ships with 3 public protocols that can be satisfied and provided externally during the `Beacon.WalletClient` setup: `Storage`, `ExtendedStorage` (an extended version of `Storage`) and `SecureStorage`.
 
 ```swift
 import BeaconCore
@@ -41,7 +41,7 @@ Some packages may require additional data to store. Those packages usually come 
 
 #### `BeaconTransportP2PMatrix`
 
-The `BeaconTransportP2PMatrix` packages defines `P2PMatrixStoragePlugin` and `ExtendedP2PMatrixStoragePlugin` protocols.
+The `BeaconTransportP2PMatrix` package defines `P2PMatrixStoragePlugin` and `ExtendedP2PMatrixStoragePlugin` protocols.
 
 ```swift
 import BeaconClientWallet
