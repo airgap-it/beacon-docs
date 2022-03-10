@@ -1,0 +1,449 @@
+---
+title: Connect to a dApp
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+## Requirements
+
+Make sure you have added the following packages as your dependencies:
+
+```
+BeaconCore
+BeaconClientWallet
+```
+
+You should have also decided which blockchains will be supported in your application and what transport layers to use to establish the communication. Make sure you have added the appropriate [Blockchain](installation#blockchain) and [Transport](installation#transport) packages as your dependencies as well.
+
+:::tip
+
+See the [Installation](installation) page for more information about the packages and how to install them.
+
+:::
+
+## How to listen for messages and respond
+
+Follow the steps below to learn how to interact with a dApp. The guide assumes all blockchains and transport layers are supported.
+
+### Create a wallet client
+
+Create a `Beacon.WalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used for communication.
+
+The example below creates a new `Beacon.WalletClient` instance with default settings. See the [Configuration](/wallet/advanced/ios/configuration) guide to learn about a more advanced setup.
+
+```swift
+import BeaconCore
+import BeaconBlockchainSubstrate
+import BeaconBlockchainTezos
+import BeaconClientWallet
+import BeaconTransportP2PMatrix
+
+...
+
+var beaconWallet: Beacon.WalletClient!
+
+do {
+    // highlight-start
+    Beacon.WalletClient.create(
+        with: .init(
+            name: "MyApp",
+            blockchains: [Substrate.factory, Tezos.factory], // set support for Substrate and Tezos blockchains
+            connections: [try Transport.P2P.Matrix.connection()] // use Matrix to communicate with the Beacon network
+        )
+    ) { result in
+    // highlight-end
+        switch result {
+        case let .success(client):
+            beaconWallet = client
+        case let .failure(error):
+            print(error)
+        }
+    }
+} catch {
+    print(error)
+}
+```
+
+:::caution
+
+Currently only one instance of `Beacon.WalletClient` should be created per application.
+
+:::
+
+### Subscribe to incoming requests
+
+Subscribe to requests from the dApp by connecting to the Beacon network and listening to incoming requests.
+
+```swift
+import BeaconCore
+import BeaconBlockchainSubstrate
+import BeaconBlockchainTezos
+import BeaconClientWallet
+
+...
+
+// highlight-start
+beaconWallet.connect { result in
+// highlight-end
+    switch result {
+    case .success(_):
+        // highlight-start
+        beaconWallet.listen(onRequest: onSubstrateRequest) // listen for Substrate requests
+        beaconWallet.listen(onRequest: onTezosRequest) // listen for Tezos requests
+        // highlight-end
+    case let .failure(error):
+        print(error)
+    }
+}
+
+...
+
+func onSubstrateRequest(_ request: Result<BeaconRequest<Substrate>, Beacon.Error>) {
+    // TODO: Not yet implemented
+}
+
+func onTezosRequest(_ request: Result<BeaconRequest<Tezos>, Beacon.Error>) {
+    // TODO: Not yet implemented
+}
+```
+
+### Connect to a dApp
+
+To connect to a new dApp take the pairing request (obtained from, for example, a paring QR code) and transform it to `Beacon.P2PPeer`. Next, register the new instance of `Beacon.P2PPeer` in your wallet client.
+
+```swift
+import BeaconCore
+import BeaconClientWallet
+
+// highlight-start
+// replace placeholder values with data provided in the dApp's pairing request
+let dApp = Beacon.P2PPeer(
+    id: "id",
+    name: "name",
+    publicKey: "publicKey",
+    relayServer: "relayServer",
+    version: "version"
+)
+// highlight-end
+
+// highlight-start
+// connect to a new peer
+beaconWallet.add([.p2p(dApp)]) { result in
+// highlight-end
+    switch result {
+        case .success(_):
+            print("dApp connected")
+        case let .failure(error):
+            print(error)
+    }
+}
+```
+
+### Handle requests from the dApp
+
+Having received a request, you can create a response and send it back to the dApp. The response should _always_ be created from an incoming request. Attempting to send a response that was not created from a request awaiting answer will result in an error.
+
+The first request your app receives from a dApp is a permission request. The example below shows how to respond to it in the most basic way. To get more information about other kinds of requests or learn more advanced use cases see the Blockchain <!-- [Blockchains](blockchains) TODO: set proper link --> guides.
+
+```swift
+import BeaconCore
+import BeaconBlockchainSubstrate
+import BeaconBlockchainTezos
+import BeaconClientWallet
+
+func onSubstrateRequest(_ request: Result<BeaconRequest<Substrate>, Beacon.Error>) {
+    do {
+        let request = try request.get()
+        let response = try response(from: request)
+
+        // highlight-start
+        beaconWallet.respond(with: response) { result in
+        // highlight-end
+            switch result {
+            case .success(_):
+                print("Response sent")
+            case let .failure(error):
+                print(error)
+            }
+        }
+    } catch {
+        print(error)
+    }
+}
+
+func response(from request: BeaconRequest<Substrate>) throws -> BeaconResponse<Substrate> {
+    // highlight-start
+    switch request {
+    case let .permission(content):
+        return .permission(
+            try PermissionSubstrateResponse(from: content, accounts: [substrateAccount])
+        )
+    case let .blockchain(blockchain):
+        return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
+    }
+    // highlight-end
+}
+
+func onTezosRequest(_ request: Result<BeaconRequest<Tezos>, Beacon.Error>) {
+    do {
+        let request = try request.get()
+        let response = try response(from: request)
+
+        // highlight-start
+        beaconWallet.respond(with: response) { result in
+        // highlight-end
+            switch result {
+            case .success(_):
+                print("Response sent")
+            case let .failure(error):
+                print(error)
+            }
+        }
+    } catch {
+        print(error)
+    }
+}
+
+func response(from request: BeaconRequest<Tezos>) throws -> BeaconResponse<Tezos> {
+    // highlight-start
+    switch request {
+    case let .permission(content):
+        return .permission(
+            try PermissionTezosResponse(from: content, publicKey: tezosPublicKey)
+        )
+    case let .blockchain(blockchain):
+        return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
+    }
+    // highlight-end
+}
+
+// replace placeholder values with valid data
+let substrateAccount = Substrate.Account(
+    network: .init(genesisHash: "genesisHash"),
+    addressPrefix: 0,
+    publicKey: "substratePublicKey"
+)
+let tezosPublicKey = "tezosPublicKey"
+```
+
+## Example Code
+
+The following example shows how to create a simple class which connects to a dApp using [Matrix](https://matrix.org/) and handles [Substrate](https://substrate.io/) and [Tezos](https://tezos.com/) messages based on the steps described earlier.
+
+[![stable](https://img.shields.io/github/v/tag/airgap-it/beacon-ios-sdk?label=stable&sort=semver)](https://github.com/airgap-it/beacon-ios-sdk)
+[![latest](https://img.shields.io/github/v/tag/airgap-it/beacon-ios-sdk?color=orange&include_prereleases&label=latest)](https://github.com/airgap-it/beacon-ios-sdk)
+
+<Tabs
+  groupId="package-manager"
+  defaultValue="spm"
+  values={[
+    { label: "SPM", value: "spm" },
+    { label: "CocoaPods", value: "cocoapods" },
+  ]}
+>
+
+<TabItem value="spm">
+
+```swift title="Package.swift"
+dependencies: [
+    .package(url: "https://github.com/airgap-it/beacon-ios-sdk", from: "x.y.z")
+],
+```
+
+Or in Xcode open the `Add Package Dependency` window (as described in [the official guide](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)) and enter the `Beacon iOS SDK` GitHub repository URL
+
+```
+https://github.com/airgap-it/beacon-ios-sdk
+```
+
+</TabItem>
+
+<TabItem value="cocoapods">
+
+```ruby title="Podfile"
+target 'MyTarget' do
+    use_frameworks!
+
+    pod 'BeaconCore', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+    pod 'BeaconClientWallet', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+    pod 'BeaconBlockchainSubstrate', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+    pod 'BeaconBlockchainTezos', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+    pod 'BeaconTransportP2PMatrix', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+end
+```
+
+</TabItem>
+
+</Tabs>
+
+```swift title="BeaconExample.swift"
+import Foundation
+import BeaconCore
+import BeaconBlockchainSubstrate
+import BeaconBlockchainTezos
+import BeaconClientWallet
+import BeaconTransportP2PMatrix
+
+class BeaconExample {
+    var beaconWallet: Beacon.WalletClient!
+
+    let dApp = Beacon.P2PPeer(
+        id: "id",
+        name: "name",
+        publicKey: "publicKey",
+        relayServer: "relayServer",
+        version: "version"
+    )
+
+    let substrateAccount = Substrate.Account(
+        network: .init(genesisHash: "genesisHash"),
+        addressPrefix: 0,
+        publicKey: "substratePublicKey"
+    )
+    let tezosPublicKey = "tezosPublicKey"
+
+    func run() {
+        createBeaconWallet { result in
+            guard case .success(_) = result else {
+                return
+            }
+
+            self.subscribeToRequests { result in
+                guard case .success(_) = result else {
+                    return
+                }
+
+                self.connectToDApp { result in
+                    guard case .success(_) = result else {
+                        return
+                    }
+                }
+            }
+        }
+    }
+
+    func createBeaconWallet(completion: @escaping (Result<(), Error>) -> ()) {
+        do {
+            // highlight-start
+            Beacon.WalletClient.create(
+                with: .init(
+                    name: "MyApp",
+                    blockchains: [Substrate.factory, Tezos.factory],
+                    connections: [try Transport.P2P.Matrix.connection()]
+                )
+            ) { result in
+            // highlight-end
+                switch result {
+                case let .success(client):
+                    self.beaconWallet = client
+                    completion(.success(()))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
+    func subscribeToRequests(completion: @escaping (Result<(), Error>) -> ()) {
+        // highlight-start
+        beaconWallet.connect { result in
+        // highlight-end
+            switch result {
+            case .success(_):
+                // highlight-start
+                self.beaconWallet.listen(onRequest: self.onSubstrateRequest)
+                self.beaconWallet.listen(onRequest: self.onTezosRequest)
+                // highlight-end
+                completion(.success(()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func connectToDApp(completion: @escaping (Result<(), Error>) -> ()) {
+        // highlight-start
+        beaconWallet.add([.p2p(dApp)]) { result in
+        // highlight-end
+            switch result {
+            case .success(_):
+                completion(.success(()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func onSubstrateRequest(_ request: Result<BeaconRequest<Substrate>, Beacon.Error>) {
+        do {
+            let request = try request.get()
+            let response = try response(from: request)
+
+            // highlight-start
+            beaconWallet.respond(with: response) { result in
+            // highlight-end
+                switch result {
+                case .success(_):
+                    print("Response sent")
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    func response(from request: BeaconRequest<Substrate>) throws -> BeaconResponse<Substrate> {
+        // highlight-start
+        switch request {
+        case let .permission(content):
+            return .permission(
+                try PermissionSubstrateResponse(from: content, accounts: [substrateAccount])
+            )
+        case let .blockchain(blockchain):
+            return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
+        }
+        // highlight-end
+    }
+
+    func onTezosRequest(_ request: Result<BeaconRequest<Tezos>, Beacon.Error>) {
+        do {
+            let request = try request.get()
+            let response = try response(from: request)
+
+            // highlight-start
+            beaconWallet.respond(with: response) { result in
+            // highlight-end
+                switch result {
+                case .success(_):
+                    print("Response sent")
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    func response(from request: BeaconRequest<Tezos>) throws -> BeaconResponse<Tezos> {
+        // highlight-start
+        switch request {
+        case let .permission(content):
+            return .permission(
+                try PermissionTezosResponse(from: content, publicKey: tezosPublicKey)
+            )
+        case let .blockchain(blockchain):
+            return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
+        }
+        // highlight-end
+    }
+}
+```

@@ -21,27 +21,27 @@ async () => {
     "KT1CpeSQKdkhWi4pinYcseCFKmDhs5M74BkU" // For this example, we use the tzcolors contract on mainnet.
   );
 
-  const TOKEN_ID = 0 // FA2 token id
-  const recipient = address // Send to ourself
+  const TOKEN_ID = 0; // FA2 token id
+  const recipient = address; // Send to ourself
 
   // Call a method on the contract. In this case, we use the transfer entrypoint.
   // Taquito will automatically check if the entrypoint exists and if we call it with the right parameters.
   // In this case the parameters are [from, to, amount].
   // This will prepare the contract call and send the request to the connected wallet.
   const result = await contract.methods
-  .transfer([
-    {
-      from_: address,
-      txs: [
-        {
-          to_: recipient,
-          token_id: TOKEN_ID,
-          amount: 1,
-        },
-      ],
-    },
-  ])
-  .send()
+    .transfer([
+      {
+        from_: address,
+        txs: [
+          {
+            to_: recipient,
+            token_id: TOKEN_ID,
+            amount: 1,
+          },
+        ],
+      },
+    ])
+    .send();
 
   // As soon as the operation is broadcast, you will receive the operation hash
   return result.opHash;

@@ -33,7 +33,7 @@ module.exports = {
         {
           type: "doc",
           position: "left",
-          docId: "wallet/getting-started",
+          docId: "wallet/getting-started/web/getting-started",
           label: "Wallets",
         },
         { to: "playground/", label: "Playground", position: "right" },
@@ -109,6 +109,9 @@ module.exports = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Papers AG - Open Source MIT License`,
+    },
+    prism: {
+      additionalLanguages: ["kotlin", "groovy", "swift", "ruby"],
     },
   },
   presets: [

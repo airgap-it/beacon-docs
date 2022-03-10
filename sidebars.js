@@ -76,5 +76,68 @@ module.exports = {
       href: "https://typedocs.walletbeacon.io",
     },
   ],
-  wallet: ["wallet/getting-started", "wallet/security"],
+  wallet: [
+    {
+      type: "category",
+      label: "Getting Started",
+      items: [
+        {
+          type: "category",
+          label: "Web",
+          items: ["wallet/getting-started/web/getting-started"],
+          collapsed: true,
+        },
+        {
+          type: "category",
+          label: "Android",
+          items: [
+            "wallet/getting-started/android/installation",
+            "wallet/getting-started/android/connect-to-dapp",
+            "wallet/getting-started/android/disconnect-from-dapp",
+          ],
+          collapsed: true,
+        },
+        {
+          type: "category",
+          label: "iOS",
+          items: [
+            "wallet/getting-started/ios/installation",
+            "wallet/getting-started/ios/connect-to-dapp",
+            "wallet/getting-started/ios/disconnect-from-dapp",
+          ],
+          collapsed: true,
+        },
+      ],
+      collapsed: false,
+    },
+    {
+      type: "category",
+      label: "Advanced",
+      items: [
+        {
+          type: "category",
+          label: "Android",
+          items: [
+            "wallet/advanced/android/configuration",
+            "wallet/advanced/android/coroutines-alternatives",
+          ],
+          collapsed: true,
+        },
+        {
+          type: "category",
+          label: "iOS",
+          items: ["wallet/advanced/ios/configuration"],
+          collapsed: true,
+        },
+      ],
+      collapsed: false,
+    },
+    {
+      type: "category",
+      label: "Messages",
+      items: ["wallet/messages/substrate", "wallet/messages/tezos"],
+      collapsed: false,
+    },
+    "wallet/security",
+  ],
 };
