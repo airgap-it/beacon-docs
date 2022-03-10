@@ -3,6 +3,11 @@
  * and scoped locally.
  */
 
+li,
+p {
+  max-width: 70ch;
+}
+
 body > div {
   overflow: hidden;
 }
