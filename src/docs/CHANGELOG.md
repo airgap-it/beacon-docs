@@ -2,6 +2,12 @@
 title: Changelog
 ---
 
+## 2.3.10 (2022-03-14)
+
+#### Feature
+
+- **network**: Add Ithacanet
+
 ## 2.3.9 (2022-01-04)
 
 #### Feature
