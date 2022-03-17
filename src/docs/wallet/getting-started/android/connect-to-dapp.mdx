@@ -140,8 +140,8 @@ fun onBeaconRequest(request: BeaconRequest) {
     // highlight-start
     // create a response based on the request
     val response = when (request) {
-        is PermissionSubstrateRequest -> PermissionSubstrateResponse.from(request, listOf(substrateAccount))
-        is PermissionTezosRequest -> PermissionTezosResponse.from(request, tezosPublicKey)
+        is PermissionSubstrateRequest -> PermissionSubstrateResponse.from(request, request.networks.map { substrateAccount(it) })
+        is PermissionTezosRequest -> PermissionTezosResponse.from(request, tezosAccount(request.network))
         else -> ErrorBeaconResponse.from(request, BeaconError.Aborted)
     }
     // highlight-end
@@ -159,12 +159,17 @@ fun onBeaconRequest(request: BeaconRequest) {
 }
 
 // replace placeholder values with valid data
-val substrateAccount = SubstrateAccount(
-    network = SubstrateNetwork("genesisHash"),
-    addressPrefix = 0,
-    publicKey = "substratePublicKey",
+fun substrateAccount(network: SubstrateNetwork) = SubstrateAccount(
+    network,
+    "substratePublicKey",
+    "substrateAddress",
 )
-val tezosPublicKey = "tezosPublicKey"
+
+fun tezosAccount(network: TezosNetwork) = TezosAccount(
+    network,
+    "tezosPublicKey",
+    "tezosAddress",
+)
 ```
 
 ## Example Code
@@ -280,6 +285,8 @@ import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateNetwork
 import it.airgap.beaconsdk.blockchain.substrate.message.request.PermissionSubstrateRequest
 import it.airgap.beaconsdk.blockchain.substrate.message.response.PermissionSubstrateResponse
 import it.airgap.beaconsdk.blockchain.substrate.substrate
+import it.airgap.beaconsdk.blockchain.tezos.data.TezosAccount
+import it.airgap.beaconsdk.blockchain.tezos.data.TezosNetwork
 import it.airgap.beaconsdk.blockchain.tezos.message.request.PermissionTezosRequest
 import it.airgap.beaconsdk.blockchain.tezos.message.response.PermissionTezosResponse
 import it.airgap.beaconsdk.blockchain.tezos.tezos
@@ -302,11 +309,16 @@ class MainActivity : AppCompatActivity() {
         "2" /* TODO: change me */,
     )
 
-    val tezosPublicKey = "edpktpzo8UZieYaJZgCHP6M6hKHPdWBSNqxvmEt6dwWRgxDh1EAFw9"
-    val substrateAccount = SubstrateAccount(
-        SubstrateNetwork("91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3"),
-        0,
-        "628f3940a6210a2135ba355f7ff9f8e9fbbfd04f8571e99e1df75554d4bcd24f",
+    fun substrateAccount(network: SubstrateNetwork) = SubstrateAccount(
+        network,
+        "f4c6095213a2f6d09464ed882b12d6024d20f7170c3b8bd5c1b071e4b00ced72" /* TODO: change me */,
+        "16XwWkdUqFXFY1tJNf1Q6fGgxQnGYUS6M95wPcrbp2sjjuoC" /* TODO: change me */,
+    )
+
+    fun tezosAccount(network: TezosNetwork) = TezosAccount(
+        network,
+        "9ae0875d510904b0b15d251d8def1f5f3353e9799841c0ed6d7ac718f04459a0" /* TODO: change me */,
+        "tz1SkbBZg15BXPRkYCrSzhY6rq4tKGtpUSWv" /* TODO: change me */,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -351,8 +363,8 @@ class MainActivity : AppCompatActivity() {
     fun onBeaconRequest(request: BeaconRequest) {
         // highlight-start
         val response = when (request) {
-            is PermissionSubstrateRequest -> PermissionSubstrateResponse.from(request, listOf(substrateAccount))
-            is PermissionTezosRequest -> PermissionTezosResponse.from(request, tezosPublicKey)
+            is PermissionSubstrateRequest -> PermissionSubstrateResponse.from(request, request.networks.map { substrateAccount(it) })
+            is PermissionTezosRequest -> PermissionTezosResponse.from(request, tezosAccount(request.network))
             else -> ErrorBeaconResponse.from(request, BeaconError.Aborted)
         }
         // highlight-end

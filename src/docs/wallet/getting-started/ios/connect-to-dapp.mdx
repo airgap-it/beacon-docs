@@ -179,9 +179,8 @@ func response(from request: BeaconRequest<Substrate>) throws -> BeaconResponse<S
     // highlight-start
     switch request {
     case let .permission(content):
-        return .permission(
-            try PermissionSubstrateResponse(from: content, accounts: [substrateAccount])
-        )
+        let accounts = try content.networks.map { try substrateAccount(network: $0) }
+        return .permission(PermissionSubstrateResponse(from: content, accounts: accounts))
     case let .blockchain(blockchain):
         return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
     }
@@ -212,9 +211,8 @@ func response(from request: BeaconRequest<Tezos>) throws -> BeaconResponse<Tezos
     // highlight-start
     switch request {
     case let .permission(content):
-        return .permission(
-            try PermissionTezosResponse(from: content, publicKey: tezosPublicKey)
-        )
+        let account = try tezosAccount(network: content.network)
+        return .permission(PermissionTezosResponse(from: content, account: account))
     case let .blockchain(blockchain):
         return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
     }
@@ -222,12 +220,21 @@ func response(from request: BeaconRequest<Tezos>) throws -> BeaconResponse<Tezos
 }
 
 // replace placeholder values with valid data
-let substrateAccount = Substrate.Account(
-    network: .init(genesisHash: "genesisHash"),
-    addressPrefix: 0,
-    publicKey: "substratePublicKey"
-)
-let tezosPublicKey = "tezosPublicKey"
+func substrateAccount(network: Substrate.Network) throws -> Substrate.Account {
+    try Substrate.Account(
+        network: network,
+        publicKey: "substratePublicKey",
+        address: "substrateAddress"
+    )
+}
+
+func tezosAccount(network: Tezos.Network) throws -> Tezos.Account {
+    try Tezos.Network(
+        network: network,
+        publicKey: "tezosPublicKey",
+        address: "tezosAddress"
+    )
+}
 ```
 
 ## Example Code
@@ -292,19 +299,28 @@ class BeaconExample {
     var beaconWallet: Beacon.WalletClient!
 
     let dApp = Beacon.P2PPeer(
-        id: "id",
-        name: "name",
-        publicKey: "publicKey",
-        relayServer: "relayServer",
-        version: "version"
+        id: "0b02d44c-de33-b5ab-7730-ff8e62f61869" /* TODO: change me */,,
+        name: "My dApp",
+        publicKey: "6c7870aa1e42477fd7c2baaf4763bd826971e470772f71a0a388c1763de3ea1e" /* TODO: change me */,
+        relayServer: "beacon-node-1.sky.papers.tech" /* TODO: change me */,
+        version: "2" /* TODO: change me */
     )
 
-    let substrateAccount = Substrate.Account(
-        network: .init(genesisHash: "genesisHash"),
-        addressPrefix: 0,
-        publicKey: "substratePublicKey"
-    )
-    let tezosPublicKey = "tezosPublicKey"
+    func substrateAccount(network: Substrate.Network) throws -> Substrate.Account {
+        try Substrate.Account(
+            network: network,
+            publicKey: "f4c6095213a2f6d09464ed882b12d6024d20f7170c3b8bd5c1b071e4b00ced72" /* TODO: change me */,
+            address: "16XwWkdUqFXFY1tJNf1Q6fGgxQnGYUS6M95wPcrbp2sjjuoC" /* TODO: change me */
+        )
+    }
+
+    func tezosAccount(network: Tezos.Network) throws -> Tezos.Account {
+        try Tezos.Network(
+            network: network,
+            publicKey: "9ae0875d510904b0b15d251d8def1f5f3353e9799841c0ed6d7ac718f04459a0" /* TODO: change me */,
+            address: "tz1SkbBZg15BXPRkYCrSzhY6rq4tKGtpUSWv" /* TODO: change me */
+        )
+    }
 
     func run() {
         createBeaconWallet { result in
@@ -404,9 +420,8 @@ class BeaconExample {
         // highlight-start
         switch request {
         case let .permission(content):
-            return .permission(
-                try PermissionSubstrateResponse(from: content, accounts: [substrateAccount])
-            )
+            let accounts = try content.networks.map { try substrateAccount(network: $0) }
+            return .permission(PermissionSubstrateResponse(from: content, accounts: accounts))
         case let .blockchain(blockchain):
             return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
         }
@@ -437,9 +452,8 @@ class BeaconExample {
         // highlight-start
         switch request {
         case let .permission(content):
-            return .permission(
-                try PermissionTezosResponse(from: content, publicKey: tezosPublicKey)
-            )
+            let account = try tezosAccount(network: content.network)
+            return .permission(PermissionTezosResponse(from: content, account: account))
         case let .blockchain(blockchain):
             return .error(ErrorBeaconResponse(from: blockchain, errorType: .aborted))
         }
