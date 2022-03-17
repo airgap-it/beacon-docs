@@ -39,7 +39,7 @@ Follow the steps below to learn how to interact with a dApp. The guide assumes a
 
 Create a `BeaconWalletClient` instance by providing your app's name, registering supported blockchains and transport layers that will be used for communication.
 
-The example below creates a new `BeaconWalletClient` instance with default settings. See the [Configuration](/wallet/advanced/android/configuration) guide to learn about a more advanced setup.
+The example below creates a new `BeaconWalletClient` instance with default settings. See the [Configuration](/wallet/advanced/android/configuration) guide to learn about more advanced setup.
 
 ```kotlin
 import it.airgap.beaconsdk.blockchain.substrate.substrate
@@ -311,7 +311,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_main)
 
         lifecycleScope.launch {
             createWalletClient()
