@@ -187,15 +187,15 @@ class MainActivity : AppCompatActivity() {
     )
 
     fun substrateAccount(network: SubstrateNetwork) = SubstrateAccount(
-        network,
         "f4c6095213a2f6d09464ed882b12d6024d20f7170c3b8bd5c1b071e4b00ced72" /* TODO: change me */,
         "16XwWkdUqFXFY1tJNf1Q6fGgxQnGYUS6M95wPcrbp2sjjuoC" /* TODO: change me */,
+        network,
     )
 
     fun tezosAccount(network: TezosNetwork) = TezosAccount(
-        network,
         "9ae0875d510904b0b15d251d8def1f5f3353e9799841c0ed6d7ac718f04459a0" /* TODO: change me */,
         "tz1SkbBZg15BXPRkYCrSzhY6rq4tKGtpUSWv" /* TODO: change me */,
+        network,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
