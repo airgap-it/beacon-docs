@@ -2,6 +2,13 @@
 title: Changelog
 ---
 
+## 2.3.11 (2022-04-08)
+
+#### Features
+
+- **p2p**: Remove deprecated node `beacon-node-0.papers.tech:8448`
+- **p2p**: Add `beacon-node-1.hope-5.papers.tech` node
+
 ## 2.3.10 (2022-03-14)
 
 #### Feature
