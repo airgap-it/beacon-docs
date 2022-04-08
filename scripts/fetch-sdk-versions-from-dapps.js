@@ -105,8 +105,23 @@ const getSdkVersionFromDapp = async (page, dApp) => {
     await sleep(5000);
   } else if (dApp.key === "freibier") {
     await sleep(2000);
-  } else if (dApp.key === "tezosswap") {
-    await clickButton(page, "Refresh wallet");
+  } else if (dApp.key === "tezotopia") {
+    await sleep(2000);
+  } else if (dApp.key === "glry-art") {
+    await sleep(2000);
+  } else if (dApp.key === "matterdefi") {
+    await sleep(2000);
+  } else if (dApp.key === "dogami") {
+    await clickButton(page, "CONNECT", "p");
+    await sleep(200);
+  } else if (dApp.key === "rarible") {
+    await clickButton(page, "Tezos", "span", "div");
+    await sleep(200);
+    await clickButton(page, "Beacon", "span");
+    await sleep(200);
+  } else if (dApp.key === "tezex") {
+    await clickButton(page, "Connect Wallet", "span", "div");
+    await sleep(200);
   }
   await sleep(5000);
   // await page.screenshot({ path: `screenshot.png` });
