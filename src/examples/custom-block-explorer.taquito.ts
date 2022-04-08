@@ -15,8 +15,8 @@ async () => {
         [NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
         [NetworkType.GRANADANET]: "https://granadanet.tzstats.com/",
         [NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
-        [NetworkType.IDIAZABALNET]: "https://idiazabal.tzstats.com/",
-        [NetworkType.CUSTOM]: "https://hangzhou.tzstats.com/",
+        [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
+        [NetworkType.CUSTOM]: "https://ithacanet.tzstats.com/",
       }
     ) {
       super(rpcUrls);
