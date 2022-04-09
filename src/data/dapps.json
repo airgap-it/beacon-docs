@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1649419945931,
+  "lastCheck": 1649537765016,
   "dapps": [
     {
       "key": "quipuswap",
@@ -33,8 +33,8 @@
       "sourceCode": "https://github.com/tzcolors/tzcolors",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.8",
-      "lastUpdate": 1641295032054,
+      "sdkVersion": "2.3.11",
+      "lastUpdate": 1649535365683,
       "title": "tzcolors"
     },
     {
@@ -45,8 +45,8 @@
       "sourceCode": "https://github.com/tzbutton/tzbutton",
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.8",
-      "lastUpdate": 1638524804088,
+      "sdkVersion": "2.3.11",
+      "lastUpdate": 1649535378750,
       "title": "TzButton"
     },
     {
@@ -69,8 +69,8 @@
       "sourceCode": "https://gitlab.com/tezos-domains/app",
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649417907698,
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649535772220,
       "title": "Tezos Domains"
     },
     {
@@ -89,7 +89,7 @@
       "key": "bettercalldev",
       "name": "Better Call Dev",
       "url": "https://better-call.dev",
-      "checkUrl": "https://better-call.dev/florencenet/KT192v1JhzkKjkaZi7AtwFHLvjbtVqtHbqNn/interact?entrypoint=default",
+      "checkUrl": "https://better-call.dev/mainnet/KT1EtjRRCBC2exyCRXz8UfV7jz7svnkqi7di/interact?entrypoint=default",
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
@@ -101,13 +101,13 @@
       "key": "tzkt",
       "name": "TzKT",
       "url": "https://tzkt.io",
-      "checkUrl": "https://tzkt.io/KT1PrRTVNgxkRgyqqNQvwTiVhd55dqyxXJ6n/dex?baseCurrency=sDAO&quoteCurrency=XTZ",
+      "checkUrl": "https://tzkt.io/KT1EtjRRCBC2exyCRXz8UfV7jz7svnkqi7di/dex?baseCurrency=XTZ&quoteCurrency=uUSD",
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.3",
-      "lastUpdate": 1637770771793,
-      "title": "QuipuSwap sDAO | Tezos Explorer"
+      "sdkVersion": "2.4.0-beta.3",
+      "lastUpdate": 1649535445875,
+      "title": "QuipuSwap sDAO | Tezos Mainnet Explorer"
     },
     {
       "key": "tzwrap",
@@ -141,8 +141,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.5",
-      "lastUpdate": 1636535278910,
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649535488325,
       "title": "salsadao.xyz"
     },
     {
@@ -153,8 +153,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1637770767545,
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649535500894,
       "title": "SpicySwap"
     },
     {
@@ -177,8 +177,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.1",
-      "lastUpdate": 1637770771816,
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649535535327,
       "title": "SpaceFarm - Tezos Yield Farms"
     },
     {
@@ -201,8 +201,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": true,
-      "sdkVersion": "2.3.7",
-      "lastUpdate": 1637770760329,
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649535927940,
       "title": "My Tezos Defi"
     },
     {
@@ -333,8 +333,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.9",
-      "lastUpdate": 1649417900235,
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536072232,
       "title": "Crunchy"
     },
     {
@@ -369,8 +369,8 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.9",
-      "lastUpdate": 1649417904269,
+      "sdkVersion": "2.3.11",
+      "lastUpdate": 1649536123949,
       "title": "youves"
     },
     {
@@ -455,7 +455,7 @@
       "usingCustomUI": false,
       "title": "HIC.AF | The smoothest NFT marketplace on Tezos",
       "sdkVersion": "2.3.2",
-      "lastUpdate": 1649419408809
+      "lastUpdate": 1649419408249
     },
     {
       "key": "hic-af",
@@ -577,7 +577,7 @@
       "url": "https://tezex.io/eth_to_ethtz",
       "checkUrl": "https://tezex.io/eth_to_ethtz",
       "sourceCode": null,
-      "inactive": false,
+      "inactive": true,
       "usingCustomUI": false
     },
     {
@@ -637,8 +637,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "8bidou × TezTok",
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649419396716
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536541968
     },
     {
       "key": "radion",
@@ -660,18 +660,6 @@
       "title": "Endless Ways",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419410526
-    },
-    {
-      "key": "endlessways",
-      "name": "Endless Ways",
-      "url": "https://endlessways.net/",
-      "checkUrl": "https://endlessways.net/",
-      "sourceCode": null,
-      "inactive": false,
-      "usingCustomUI": false,
-      "title": "Endless Ways",
-      "sdkVersion": "2.3.9",
-      "lastUpdate": 1649419410736
     },
     {
       "key": "magicbutton",
@@ -739,8 +727,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "tezblock - Tezos block explorer",
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649419383289
+      "sdkVersion": "2.3.11",
+      "lastUpdate": 1649536716398
     },
     {
       "key": "mooncakes",
@@ -763,8 +751,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "FlameDex - Tezos Blockchain Swap",
-      "sdkVersion": "2.3.2",
-      "lastUpdate": 1649419725708
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536749917
     },
     {
       "key": "matterdefi",
@@ -773,7 +761,10 @@
       "checkUrl": "https://matterdefi.xyz/",
       "sourceCode": null,
       "inactive": false,
-      "usingCustomUI": false
+      "usingCustomUI": false,
+      "title": "Matter DeFi - Sustainable Yield",
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536774927
     },
     {
       "key": "tezotopia",
@@ -802,8 +793,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "tzDropz - NFT PASS Club",
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649419754544
+      "sdkVersion": "2.3.11",
+      "lastUpdate": 1649536837618
     },
     {
       "key": "tezosdegenclub",
@@ -838,8 +829,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "Versum",
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649419417386
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536881602
     },
     {
       "key": "teia",
@@ -850,8 +841,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "teia",
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649419408090
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536903107
     },
     {
       "key": "8bidou",
@@ -874,8 +865,8 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "fxhash — home",
-      "sdkVersion": "2.3.9",
-      "lastUpdate": 1649419420151
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649536934475
     },
     {
       "key": "rarible",

@@ -34,33 +34,45 @@ const clickButton = async (page, query, selector = "button") => {
 
   const data = JSON.parse(fs.readFileSync("./src/data/dapps.json"));
 
-  const dappsPromise = data.dapps.map(async (dApp) => {
+  let newDapps = data.dapps;
+  // .sort((d1, d2) => d2.lastUpdate - d1.lastUpdate)
+  for (const dApp of data.dapps) {
     if (dApp.inactive) {
-      return dApp;
+      continue;
     }
+
     const page = await browser.newPage();
-    await page.setDefaultNavigationTimeout(60000);
+
+    page.setDefaultNavigationTimeout(30000);
+
     await page.setViewport({
       width: 1920,
       height: 1080,
       deviceScaleFactor: 1,
     });
-    return getSdkVersionFromDapp(page, dApp).catch((e) => {
+
+    const updated = await getSdkVersionFromDapp(page, dApp).catch((e) => {
       console.log(`ERROR:`, dApp.key, e);
       return dApp;
     });
-  });
 
-  const newDapps = await Promise.all(dappsPromise);
+    newDapps = newDapps.map((el) => {
+      if (el.key === updated.key) {
+        return updated;
+      } else {
+        return el;
+      }
+    });
 
-  fs.writeFileSync(
-    "./src/data/dapps.json",
-    JSON.stringify(
-      { lastCheck: new Date().getTime(), dapps: newDapps },
-      null,
-      2
-    )
-  );
+    fs.writeFileSync(
+      "./src/data/dapps.json",
+      JSON.stringify(
+        { lastCheck: new Date().getTime(), dapps: newDapps },
+        null,
+        2
+      )
+    );
+  }
 
   await browser.close();
 })();
