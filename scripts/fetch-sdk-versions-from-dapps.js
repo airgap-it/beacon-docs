@@ -35,8 +35,11 @@ const clickButton = async (page, query, selector = "button") => {
   const data = JSON.parse(fs.readFileSync("./src/data/dapps.json"));
 
   let newDapps = data.dapps;
-  // .sort((d1, d2) => d2.lastUpdate - d1.lastUpdate)
-  for (const dApp of data.dapps) {
+
+  const dAppCopy = JSON.parse(JSON.stringify(data.dapps));
+  for (const dApp of dAppCopy.sort(
+    (d1, d2) => (d1.lastCheck ?? 0) - (d2.lastCheck ?? 0)
+  )) {
     if (dApp.inactive) {
       continue;
     }
@@ -151,6 +154,12 @@ const getSdkVersionFromDapp = async (page, dApp) => {
       title,
       sdkVersion,
       lastUpdate: new Date().getTime(),
+      lastCheck: new Date().getTime(),
+    };
+  } else if (sdkVersion) {
+    return {
+      ...dApp,
+      lastCheck: new Date().getTime(),
     };
   } else {
     return dApp;
