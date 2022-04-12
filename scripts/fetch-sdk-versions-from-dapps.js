@@ -149,6 +149,8 @@ const getSdkVersionFromDapp = async (page, dApp) => {
   const title = await page.title();
 
   if (sdkVersion && sdkVersion !== dApp.sdkVersion) {
+    console.log(`NEW VERSION ${sdkVersion} ${dApp.checkUrl}`);
+
     return {
       ...dApp,
       title,
