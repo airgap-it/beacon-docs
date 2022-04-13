@@ -22,9 +22,10 @@ title: Postmortem Incident 2
 **Detection:** The vulnerability was found by Maciej Domanski, Security Engineer at Trail of Bits, during a security review of another project. After discovering that the beacon-sdk was the cause of the issue, the Trail of Bits team privately reached out to us to disclose the vulnerabilty.
 
 **Action Items:**
-| Action Item | Type | Owner | State |
+
+| Action Item                                        | Type     | Owner   | State       |
 | -------------------------------------------------- | -------- | ------- | ----------- |
-| Update beacon-sdk to fix vulnerability | mitigate | andreas | COMPLETE |
+| Update beacon-sdk to fix vulnerability             | mitigate | andreas | COMPLETE    |
 | Monitor dApp ecosystem and reach out to developers | mitigate | andreas | IN PROGRESS |
 
 ## Conclusion
