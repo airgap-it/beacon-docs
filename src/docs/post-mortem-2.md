@@ -1,5 +1,6 @@
 ---
 title: Postmortem Incident 2
+slug: /post-mortem-2
 ---
 
 **Date:** 2022-04-12

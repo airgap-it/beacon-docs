@@ -70,8 +70,13 @@ module.exports = {
       collapsed: true,
     },
     "CHANGELOG",
-    "post-mortem",
-    "post-mortem-2",
+    {
+      type: "category",
+      label: "Post Mortem",
+      items: ["post-mortem", "post-mortem-2"],
+      collapsed: true,
+    },
+
     {
       type: "link",
       label: "TypeDoc Reference",

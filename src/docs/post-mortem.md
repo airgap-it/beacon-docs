@@ -1,5 +1,6 @@
 ---
 title: Postmortem Incident 1
+slug: /post-mortem
 ---
 
 **Date:** 2021-10-24
