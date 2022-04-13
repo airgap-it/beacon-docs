@@ -35,16 +35,18 @@ title: Postmortem Incident 2
 
 ## Timeline
 
-- 2022-04-05 17:30 The Trail of Bits team reached out to the Beacon team to inform us of a security vulnerability they found in the beacon-sdk during one of their audits
-- 2022-04-05 20:00 The Beacon team was able to verify the vulnerability and started planning the fix and its rollout
-- 2022-04-06 15:00 A proof of concept of the mitigations was implemented and fixed the security vulnerability
-- 2022-04-07 14:00 Both mitigations were implemented and an internal review was started
-- 2022-04-08 08:30 The fix was released to NPM with the version number `2.3.11`
-- 2022-04-08 09:00 The Beacon team started privately reaching out to dApps in the Tezos ecosystem, informing them that a new update is available and urging them to update as soon as possible
-- 2022-04-08 15:00 A small fix was deployed to address build issues with server side rendering, beacon-sdk version `2.3.12`
-- 2022-04-11 09:00 More dApps were contacted and notified about the update
-- 2022-04-xx xx:00 The vulnerability has been posted in various developer communities
-- 2022-04-xx xx:00 The vulnerability has been publicly disclosed
+(all times UTC)
+
+- 2022-04-05 20:30 The Trail of Bits team reached out to the Beacon team to inform us of a security vulnerability they found in the beacon-sdk during one of their audits
+- 2022-04-05 23:00 The Beacon team was able to verify the vulnerability and started planning the fix and its rollout
+- 2022-04-06 18:00 A proof of concept of the mitigations was implemented and fixed the security vulnerability
+- 2022-04-07 17:00 Both mitigations were implemented and an internal review was started
+- 2022-04-08 11:30 The fix was released to NPM with the version number `2.3.11`
+- 2022-04-08 12:00 The Beacon team started privately reaching out to dApps in the Tezos ecosystem, informing them that a new update is available and urging them to update as soon as possible
+- 2022-04-08 18:00 A small fix was deployed to address build issues with server side rendering, beacon-sdk version `2.3.12`
+- 2022-04-11 12:00 More dApps were contacted and notified about the update
+- 2022-04-12 23:30 The vulnerability has been posted in various developer communities
+- 2022-04-13 15:00 The vulnerability has been publicly disclosed
 
 ## Support
 
