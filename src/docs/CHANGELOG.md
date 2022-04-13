@@ -2,7 +2,21 @@
 title: Changelog
 ---
 
+## 2.3.13 (2022-04-13)
+
+#### Fixes
+
+- **UI**: On Android, the "Connect Wallet" button was not displayed.
+
+## 2.3.12 (2022-04-08)
+
+#### Fixes
+
+- **UI**: Fixed an issue that could result in build issues for projects that use SSR (server-side rendering)
+
 ## 2.3.11 (2022-04-08)
+
+A security vulnerability was fixed in this release, it is important that all dApps update the beacon-sdk version as soon as possible! For more information, please read this [announcement](/post-mortem-2).
 
 #### Features
 

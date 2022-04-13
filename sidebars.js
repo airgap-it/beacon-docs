@@ -71,6 +71,7 @@ module.exports = {
     },
     "CHANGELOG",
     "post-mortem",
+    "post-mortem-2",
     {
       type: "link",
       label: "TypeDoc Reference",
