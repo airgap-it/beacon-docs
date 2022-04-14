@@ -1,5 +1,5 @@
 {
-  "lastCheck": 1649860529779,
+  "lastCheck": 1649915685760,
   "dapps": [
     {
       "key": "quipuswap",
@@ -12,7 +12,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649727483350,
       "title": "QuipuSwap - Tezos DEX with on-chain governance for baking rewards",
-      "lastCheck": 1649859694360
+      "lastCheck": 1649914960234
     },
     {
       "key": "hicetnunc",
@@ -25,7 +25,7 @@
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649686257077,
       "title": "hic et nunc - hic et nunc",
-      "lastCheck": 1649859706303
+      "lastCheck": 1649914971920
     },
     {
       "key": "tzcolors",
@@ -38,7 +38,7 @@
       "sdkVersion": "2.3.11",
       "lastUpdate": 1649535365683,
       "title": "tzcolors",
-      "lastCheck": 1649859768267
+      "lastCheck": 1649915027387
     },
     {
       "key": "tzbutton",
@@ -51,7 +51,7 @@
       "sdkVersion": "2.3.11",
       "lastUpdate": 1649535378750,
       "title": "TzButton",
-      "lastCheck": 1649859782332
+      "lastCheck": 1649915040439
     },
     {
       "key": "freibier",
@@ -64,7 +64,7 @@
       "sdkVersion": "2.3.1",
       "lastUpdate": 1631304353844,
       "title": "CervezaBrewery.io - A DeFi project on Tezos.",
-      "lastCheck": 1649859798740
+      "lastCheck": 1649915053343
     },
     {
       "key": "tezosdomains",
@@ -77,7 +77,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649535772220,
       "title": "Tezos Domains",
-      "lastCheck": 1649859812615
+      "lastCheck": 1649915065668
     },
     {
       "key": "kolibri",
@@ -90,7 +90,7 @@
       "sdkVersion": "2.3.8",
       "lastUpdate": 1641295029471,
       "title": "Kolibri",
-      "lastCheck": 1649859824588
+      "lastCheck": 1649915078366
     },
     {
       "key": "bettercalldev",
@@ -115,7 +115,7 @@
       "sdkVersion": "3.0.0-beta.1",
       "lastUpdate": 1649859842251,
       "title": "QuipuSwap uUSD | Tezos Mainnet Explorer",
-      "lastCheck": 1649859842251
+      "lastCheck": 1649915094588
     },
     {
       "key": "tzwrap",
@@ -128,7 +128,7 @@
       "sdkVersion": "2.3.4",
       "lastUpdate": 1634544755872,
       "title": "Wrap Protocol - bridge between Ethereum and Tezos",
-      "lastCheck": 1649859855079
+      "lastCheck": 1649915106303
     },
     {
       "key": "tezosmandala",
@@ -141,7 +141,7 @@
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649417910401,
       "title": "Tezos Mandala - Digital Art NFTs",
-      "lastCheck": 1649859868380
+      "lastCheck": 1649915117519
     },
     {
       "key": "salsadao",
@@ -154,7 +154,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649535488325,
       "title": "salsadao.xyz",
-      "lastCheck": 1649859881235
+      "lastCheck": 1649915129847
     },
     {
       "key": "spicyswap",
@@ -167,7 +167,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649535500894,
       "title": "SpicySwap",
-      "lastCheck": 1649859893823
+      "lastCheck": 1649915142360
     },
     {
       "key": "plenty",
@@ -180,7 +180,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649684968286,
       "title": "Plenty",
-      "lastCheck": 1649859912526
+      "lastCheck": 1649915158582
     },
     {
       "key": "spacefarm",
@@ -193,7 +193,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649535535327,
       "title": "SpaceFarm - Tezos Yield Farms",
-      "lastCheck": 1649859925569
+      "lastCheck": 1649915169747
     },
     {
       "key": "farmsoil",
@@ -219,7 +219,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649535927940,
       "title": "My Tezos Defi",
-      "lastCheck": 1649859952552
+      "lastCheck": 1649915192827
     },
     {
       "key": "pixelpotus",
@@ -232,7 +232,7 @@
       "sdkVersion": "2.3.4",
       "lastUpdate": 1634544764683,
       "title": "PixelPotus | Get Started",
-      "lastCheck": 1649859966812
+      "lastCheck": 1649915204554
     },
     {
       "key": "tezosprofiles",
@@ -245,7 +245,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649694295378,
       "title": "Tezos Profiles",
-      "lastCheck": 1649860164172
+      "lastCheck": 1649915386942
     },
     {
       "key": "tacoz",
@@ -282,7 +282,7 @@
       "sdkVersion": "2.2.6",
       "lastUpdate": 1624442442995,
       "title": "Home | Hera",
-      "lastCheck": 1649860176947
+      "lastCheck": 1649915398978
     },
     {
       "key": "stakerdao",
@@ -295,7 +295,7 @@
       "sdkVersion": "2.2.10",
       "lastUpdate": 1627965496133,
       "title": "Staker Farm",
-      "lastCheck": 1649860190469
+      "lastCheck": 1649915412775
     },
     {
       "key": "vortex",
@@ -308,7 +308,7 @@
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649417899613,
       "title": "Vortex Protocol",
-      "lastCheck": 1649860203162
+      "lastCheck": 1649915425027
     },
     {
       "key": "sebuh",
@@ -321,7 +321,7 @@
       "sdkVersion": "2.2.10",
       "lastUpdate": 1627965490971,
       "title": "Sebuh.net",
-      "lastCheck": 1649860216326
+      "lastCheck": 1649915438107
     },
     {
       "key": "bazaarmarket",
@@ -334,7 +334,7 @@
       "sdkVersion": "2.2.9",
       "lastUpdate": 1624833280922,
       "title": "Bazaar Market",
-      "lastCheck": 1649860230247
+      "lastCheck": 1649915452188
     },
     {
       "key": "uanon",
@@ -347,7 +347,7 @@
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649686330836,
       "title": "Project Uanon",
-      "lastCheck": 1649859722138
+      "lastCheck": 1649914988380
     },
     {
       "key": "crunchy",
@@ -360,7 +360,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649536072232,
       "title": "Crunchy",
-      "lastCheck": 1649860244599
+      "lastCheck": 1649915464574
     },
     {
       "key": "kalamint",
@@ -373,7 +373,7 @@
       "sdkVersion": "2.2.9",
       "lastUpdate": 1624442445877,
       "title": "Kalamint",
-      "lastCheck": 1649860259036
+      "lastCheck": 1649915477193
     },
     {
       "key": "yaynay",
@@ -386,7 +386,7 @@
       "sdkVersion": "2.2.4",
       "lastUpdate": 1625437387518,
       "title": "YayNay",
-      "lastCheck": 1649860272795
+      "lastCheck": 1649915488425
     },
     {
       "key": "youves",
@@ -396,10 +396,10 @@
       "sourceCode": null,
       "inactive": false,
       "usingCustomUI": false,
-      "sdkVersion": "2.3.11",
-      "lastUpdate": 1649536123949,
+      "sdkVersion": "2.3.13",
+      "lastUpdate": 1649915502951,
       "title": "youves",
-      "lastCheck": 1649860287607
+      "lastCheck": 1649915502951
     },
     {
       "key": "bunnyknights",
@@ -412,7 +412,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649769621649,
       "title": "Bunny Knights",
-      "lastCheck": 1649860299209
+      "lastCheck": 1649915514236
     },
     {
       "key": "objkt",
@@ -425,7 +425,7 @@
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649802488439,
       "title": "objkt.com | The largest NFT marketplace on Tezos",
-      "lastCheck": 1649860310988
+      "lastCheck": 1649915525469
     },
     {
       "key": "henext",
@@ -438,7 +438,7 @@
       "sdkVersion": "2.3.10",
       "lastUpdate": 1649417919295,
       "title": "Profile",
-      "lastCheck": 1649860323308
+      "lastCheck": 1649915536816
     },
     {
       "key": "tezzardz",
@@ -451,7 +451,7 @@
       "sdkVersion": "2.3.1",
       "lastUpdate": 1630601869668,
       "title": "Tezzardz",
-      "lastCheck": 1649860335830
+      "lastCheck": 1649915549046
     },
     {
       "key": "wolver",
@@ -464,7 +464,7 @@
       "title": "Wolver.ME",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649417897774,
-      "lastCheck": 1649860348320
+      "lastCheck": 1649915561047
     },
     {
       "key": "hennycomb",
@@ -477,7 +477,7 @@
       "title": "hennycomb",
       "sdkVersion": "2.2.2",
       "lastUpdate": 1649419419431,
-      "lastCheck": 1649860360293
+      "lastCheck": 1649915573268
     },
     {
       "key": "hic-af",
@@ -490,7 +490,7 @@
       "title": "HIC.AF | The smoothest NFT marketplace on Tezos",
       "sdkVersion": "2.3.2",
       "lastUpdate": 1649419408249,
-      "lastCheck": 1649860374402
+      "lastCheck": 1649915585258
     },
     {
       "key": "glry-art",
@@ -503,7 +503,7 @@
       "title": "hic et nunc - hic et nunc",
       "sdkVersion": "2.3.5",
       "lastUpdate": 1649419382207,
-      "lastCheck": 1649860389081
+      "lastCheck": 1649915597999
     },
     {
       "key": "henradio",
@@ -514,9 +514,9 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "Hen Radio | NFT Music Player",
-      "sdkVersion": "2.3.8",
-      "lastUpdate": 1649419386098,
-      "lastCheck": 1649860405028
+      "sdkVersion": "2.3.12",
+      "lastUpdate": 1649915611786,
+      "lastCheck": 1649915611786
     },
     {
       "key": "tokenbatch",
@@ -527,9 +527,9 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "FA2 Token Batch Sender",
-      "sdkVersion": "2.3.10",
-      "lastUpdate": 1649419396713,
-      "lastCheck": 1649860417789
+      "sdkVersion": "2.3.13",
+      "lastUpdate": 1649915623991,
+      "lastCheck": 1649915623996
     },
     {
       "key": "hicetdono",
@@ -540,9 +540,9 @@
       "inactive": false,
       "usingCustomUI": false,
       "title": "hic et dono",
-      "sdkVersion": "2.3.9",
-      "lastUpdate": 1649419396826,
-      "lastCheck": 1649860430539
+      "sdkVersion": "2.3.13",
+      "lastUpdate": 1649915635537,
+      "lastCheck": 1649915635537
     },
     {
       "key": "nftbiker",
@@ -564,7 +564,7 @@
       "title": "Degen Emojis",
       "sdkVersion": "2.3.10",
       "lastUpdate": 1649419707834,
-      "lastCheck": 1649860442060
+      "lastCheck": 1649915648216
     },
     {
       "key": "vesselsgen0",
@@ -577,7 +577,7 @@
       "title": "Vessels Gen-0",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419415171,
-      "lastCheck": 1649860455084
+      "lastCheck": 1649915660781
     },
     {
       "key": "dns",
@@ -599,7 +599,7 @@
       "title": "TezID",
       "sdkVersion": "2.3.8",
       "lastUpdate": 1649419386934,
-      "lastCheck": 1649860472398
+      "lastCheck": 1649915672330
     },
     {
       "key": "tezex",
@@ -621,7 +621,7 @@
       "title": "World War Tez",
       "sdkVersion": "2.2.9",
       "lastUpdate": 1649419402497,
-      "lastCheck": 1649859438755
+      "lastCheck": 1649914706448
     },
     {
       "key": "pixelposh",
@@ -634,7 +634,7 @@
       "title": "Pixel Posh",
       "sdkVersion": "2.3.5",
       "lastUpdate": 1649419378583,
-      "lastCheck": 1649855899033
+      "lastCheck": 1649914667039
     },
     {
       "key": "goldengoals",
@@ -647,7 +647,7 @@
       "title": "Golden Goals",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419398134,
-      "lastCheck": 1649860529778
+      "lastCheck": 1649915685752
     },
     {
       "key": "byteblock",
@@ -660,7 +660,7 @@
       "title": "ByteBlock",
       "sdkVersion": "2.2.7",
       "lastUpdate": 1649419720966,
-      "lastCheck": 1649859453136
+      "lastCheck": 1649914721328
     },
     {
       "key": "8bidouteztok",
@@ -673,7 +673,7 @@
       "title": "8bidou × TezTok",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649536541968,
-      "lastCheck": 1649859465826
+      "lastCheck": 1649914732476
     },
     {
       "key": "radion",
@@ -686,7 +686,7 @@
       "title": "RADION™",
       "sdkVersion": "2.3.13",
       "lastUpdate": 1649859491354,
-      "lastCheck": 1649859491354
+      "lastCheck": 1649914756401
     },
     {
       "key": "endlessways",
@@ -699,7 +699,7 @@
       "title": "Endless Ways",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419410526,
-      "lastCheck": 1649859502962
+      "lastCheck": 1649914767160
     },
     {
       "key": "magicbutton",
@@ -712,7 +712,7 @@
       "title": "Tezos Magic Button Game: MAG token, Governance, Yield Farming",
       "sdkVersion": "2.2.10",
       "lastUpdate": 1649419428384,
-      "lastCheck": 1649859519054
+      "lastCheck": 1649914782360
     },
     {
       "key": "cryptoeasy",
@@ -734,7 +734,7 @@
       "title": "akaSwap - Home",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419721162,
-      "lastCheck": 1649859737155
+      "lastCheck": 1649915003230
     },
     {
       "key": "hicetnuncart",
@@ -747,7 +747,7 @@
       "title": "hic et nunc - hic et nunc",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419421976,
-      "lastCheck": 1649859530905
+      "lastCheck": 1649914794288
     },
     {
       "key": "hicetnuncteztools",
@@ -760,7 +760,7 @@
       "title": "hic et nunc",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419386251,
-      "lastCheck": 1649859541832
+      "lastCheck": 1649914804853
     },
     {
       "key": "tezblock",
@@ -773,7 +773,7 @@
       "title": "tezblock - Tezos block explorer",
       "sdkVersion": "2.3.11",
       "lastUpdate": 1649536716398,
-      "lastCheck": 1649859753803
+      "lastCheck": 1649915015384
     },
     {
       "key": "mooncakes",
@@ -786,7 +786,7 @@
       "title": "Mooncakes",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649685704918,
-      "lastCheck": 1649859554706
+      "lastCheck": 1649914817069
     },
     {
       "key": "flamedex",
@@ -799,7 +799,7 @@
       "title": "FlameDex - Tezos Blockchain Swap",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649536749917,
-      "lastCheck": 1649859567205
+      "lastCheck": 1649914828893
     },
     {
       "key": "matterdefi",
@@ -843,7 +843,7 @@
       "title": "tzDropz - NFT PASS Club",
       "sdkVersion": "2.3.11",
       "lastUpdate": 1649536837618,
-      "lastCheck": 1649859598016
+      "lastCheck": 1649914876875
     },
     {
       "key": "tezosdegenclub",
@@ -856,7 +856,7 @@
       "title": "Tezos Degen Club",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649685838487,
-      "lastCheck": 1649859615881
+      "lastCheck": 1649914891046
     },
     {
       "key": "juster",
@@ -869,7 +869,7 @@
       "title": "Explore • Juster",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649859630238,
-      "lastCheck": 1649859630238
+      "lastCheck": 1649914902672
     },
     {
       "key": "versum",
@@ -882,7 +882,7 @@
       "title": "Versum",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649536881602,
-      "lastCheck": 1649859642017
+      "lastCheck": 1649914914051
     },
     {
       "key": "teia",
@@ -895,7 +895,7 @@
       "title": "teia",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649536903107,
-      "lastCheck": 1649859653801
+      "lastCheck": 1649914926067
     },
     {
       "key": "8bidou",
@@ -908,7 +908,7 @@
       "title": "八火堂 - 8bidou",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649419398277,
-      "lastCheck": 1649859666299
+      "lastCheck": 1649914937117
     },
     {
       "key": "fxhash",
@@ -921,7 +921,7 @@
       "title": "fxhash — home",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649536934475,
-      "lastCheck": 1649859681139
+      "lastCheck": 1649914949254
     },
     {
       "key": "rarible",
@@ -943,7 +943,7 @@
       "title": "Exchange Area - Alien’s Tezos Farm",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649774543170,
-      "lastCheck": 1649860151658
+      "lastCheck": 1649915374563
     },
     {
       "key": "visualtez",
@@ -961,7 +961,7 @@
       "title": "NFT 4 NFT",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649833687397,
-      "lastCheck": 1649859979585
+      "lastCheck": 1649915215382
     },
     {
       "key": "pixel-debates",
@@ -972,7 +972,7 @@
       "title": "PixelDebates | Home",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649833698730,
-      "lastCheck": 1649859995182
+      "lastCheck": 1649915227195
     },
     {
       "key": "offers-xtztools",
@@ -983,7 +983,7 @@
       "title": "offers",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649833709724,
-      "lastCheck": 1649860010612
+      "lastCheck": 1649915241512
     },
     {
       "key": "tzcards",
@@ -994,7 +994,7 @@
       "title": "tzcards",
       "sdkVersion": "2.3.10",
       "lastUpdate": 1649833722078,
-      "lastCheck": 1649860023891
+      "lastCheck": 1649915253915
     },
     {
       "key": "chopsumo",
@@ -1005,7 +1005,7 @@
       "title": "chop-sumo",
       "sdkVersion": "2.3.5",
       "lastUpdate": 1649833736855,
-      "lastCheck": 1649860037209
+      "lastCheck": 1649915267757
     },
     {
       "key": "tezotrooperz",
@@ -1016,7 +1016,7 @@
       "title": "TezoTrooperz",
       "sdkVersion": "2.3.10",
       "lastUpdate": 1649835477234,
-      "lastCheck": 1649860054512
+      "lastCheck": 1649915280356
     },
     {
       "key": "projectcygnus",
@@ -1027,7 +1027,7 @@
       "title": "Home",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649855439448,
-      "lastCheck": 1649860069152
+      "lastCheck": 1649915295740
     },
     {
       "key": "thegolriouspandas",
@@ -1045,7 +1045,7 @@
       "title": "WTZ",
       "sdkVersion": "2.3.12",
       "lastUpdate": 1649835513482,
-      "lastCheck": 1649860082342
+      "lastCheck": 1649915307633
     },
     {
       "key": "cyberkidzclub",
@@ -1056,7 +1056,7 @@
       "title": "Cyberkidz Club",
       "sdkVersion": "2.3.5",
       "lastUpdate": 1649835527002,
-      "lastCheck": 1649860095939
+      "lastCheck": 1649915321235
     },
     {
       "key": "artforge",
@@ -1067,7 +1067,7 @@
       "title": "ArtForge — Generative NFTs on Tezos",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649835542516,
-      "lastCheck": 1649860109410
+      "lastCheck": 1649915333776
     },
     {
       "key": "tacodudez",
@@ -1078,7 +1078,7 @@
       "title": "TacoDudez Crowdsale",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649835555425,
-      "lastCheck": 1649860122749
+      "lastCheck": 1649915345939
     },
     {
       "key": "tezosninja",
@@ -1089,7 +1089,7 @@
       "title": "TNT - Tezos Ninja Troopers",
       "sdkVersion": "2.3.9",
       "lastUpdate": 1649835567527,
-      "lastCheck": 1649860136520
+      "lastCheck": 1649915360408
     }
   ]
 }
