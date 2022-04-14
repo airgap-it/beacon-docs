@@ -54,4 +54,4 @@ slug: /post-mortem-2
 
 We want to thank all the developers in the Tezos ecosystem that were involved in addressing this issue as soon as possible in a very effective manner.
 
-Special thanks to the Trail of Bits team for reporting the vulnerability, as well as the Ecad Labs team and the Kukai Wallet team for helping us coordinate the communication in the Tezos Developer ecosystem.
+Special thanks to the Trail of Bits team for reporting the vulnerability, as well as the Ecad Labs, Tezos Commons, Codecrafting Labs and Kukai Wallet teams for helping us coordinate the communication in the Tezos Developer ecosystem.
