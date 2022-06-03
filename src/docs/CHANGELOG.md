@@ -2,6 +2,11 @@
 title: Changelog
 ---
 
+## 3.1.0 (2022-05-24)
+
+- **Sapling**: Added basic sapling support. A section about sapling will be added to the docs soon.
+- **Temple Mobile**: Added Temple Mobile Wallet
+
 ## 3.0.0 (2022-04-21)
 
 Version 3 of the Beacon SDK brings a couple of important changes. The most important ones are:
