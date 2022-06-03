@@ -19,7 +19,8 @@ async () => {
         [NetworkType.GRANADANET]: "https://granada.tzstats.com/",
         [NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
         [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
-        [NetworkType.CUSTOM]: "https://ithacanet.tzstats.com/",
+        [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
+        [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
       }
     ) {
       super(rpcUrls);
@@ -29,7 +30,7 @@ async () => {
       address: string,
       network: Network
     ): Promise<string> {
-      const blockExplorer = await this.getLinkForNetwork(network);
+      const blockExplorer = await (this as any).getLinkForNetwork(network);
 
       return `${blockExplorer}/${address}`;
     }
@@ -37,7 +38,7 @@ async () => {
       transactionId: string,
       network: Network
     ): Promise<string> {
-      const blockExplorer = await this.getLinkForNetwork(network);
+      const blockExplorer = await (this as any).getLinkForNetwork(network);
 
       return `${blockExplorer}/${transactionId}`;
     }
