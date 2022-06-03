@@ -44,7 +44,7 @@ async () => {
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
-    blockExplorer: new TzStatsBlockExplorer(),
+    blockExplorer: new TzStatsBlockExplorer() as any,
   });
 
   Tezos.setWalletProvider(wallet);

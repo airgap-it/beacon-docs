@@ -46,7 +46,7 @@ async () => {
 
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
-    blockExplorer: new TzStatsBlockExplorer(),
+    blockExplorer: new TzStatsBlockExplorer() as any,
   });
   /// END
 };
