@@ -16,7 +16,7 @@ async () => {
         [NetworkType.GRANADANET]: "https://granadanet.tzstats.com/",
         [NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
         [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
-        [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
+        // [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
         [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
       }
     ) {
