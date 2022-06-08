@@ -69,6 +69,24 @@ module.exports = {
       ],
       collapsed: true,
     },
+    {
+      type: "category",
+      label: "Messages",
+      items: [
+        "blockchains/introduction",
+        {
+          type: "category",
+          label: "Blockchains",
+          items: [
+            "blockchains/blockchain-substrate",
+            "blockchains/blockchain-tezos",
+            "blockchains/blockchain-tezos-sapling",
+          ],
+          collapsed: false,
+        },
+      ],
+      collapsed: true,
+    },
     "CHANGELOG",
     {
       type: "category",
