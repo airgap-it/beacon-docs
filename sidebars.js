@@ -74,6 +74,7 @@ module.exports = {
       label: "Messages",
       items: [
         "blockchains/introduction",
+        "blockchains/usage",
         {
           type: "category",
           label: "Blockchains",
