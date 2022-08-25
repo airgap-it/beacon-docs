@@ -4,24 +4,6 @@ title: Sign Payload
 
 import { RunnableCode } from "@site/src/components/RunnableCode";
 
-## RAW
-
-<RunnableCode>
-
-<!-- embedme sign-payload-raw.beacon.ts -->
-
-```ts
-// TODO
-```
-
-<!-- embedme sign-payload-raw.taquito.ts -->
-
-```ts
-// TODO
-```
-
-</RunnableCode>
-
 ## HEX Prefixed With 05
 
 <RunnableCode>
@@ -51,6 +33,29 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 ```
 
 <!-- embedme sign-payload-operation.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
+
+## RAW
+
+:::warning
+Not all wallets support the `RAW` signing type. Additionally, the signatures can be different depending on the wallet that was used. For the preferred way of signing arbitrary data, please check the docs here: https://tezostaquito.io/docs/signing/#generating-a-signature-with-beacon-sdk
+:::
+
+<RunnableCode>
+
+<!-- embedme sign-payload-raw.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme sign-payload-raw.taquito.ts -->
 
 ```ts
 // TODO
