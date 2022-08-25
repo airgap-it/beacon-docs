@@ -31,11 +31,13 @@ Umami is a Tezos desktop wallet that combines best-in-class features to deliver 
 
 Wallets are encouraged to support all features that Beacon offers. Please refer to the following matrix to check which features are supported in major wallets.
 
-|                           | Temple | Kukai                                         | Spire | AirGap | Galleon | Umami |
-| ------------------------- | ------ | --------------------------------------------- | ----- | ------ | ------- | ----- |
-| permissionRequest         | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅    |
-| operationRequest          | ✅     | ✅                                            | ✅    | ✅     | ✅      | ✅    |
-| signRequest (RAW)         | ✅     | ❌ <br /> (05 or 03 prefixed operations only) | ✅    | ✅     | ❌      | ❌    |
-| signRequest (MICHELINE)   | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅    |
-| signRequest (TRANSACTION) | ✅     | ✅                                            | ✅    | ✅     | ❌      | ✅    |
-| broadcastRequest          | ✅     | ❌                                            | ✅    | ✅     | ❓      | ❌    |
+|                           | Temple | Kukai | Spire | AirGap | Galleon | Umami |
+| ------------------------- | ------ | ----- | ----- | ------ | ------- | ----- |
+| permissionRequest         | ✅     | ✅     | ✅    | ✅     | ✅      | ✅    |
+| operationRequest          | ✅     | ✅     | ✅    | ✅     | ✅      | ✅    |
+| signRequest (RAW)         | ✅     | ❌ *** | ✅    | ✅     | ❌      | ✅    |
+| signRequest (MICHELINE)   | ✅     | ✅     | ✅    | ✅     | ❌      | ✅    |
+| signRequest (TRANSACTION) | ✅     | ✅     | ✅    | ✅     | ❌      | ✅    |
+| broadcastRequest          | ✅     | ❌     | ✅    | ✅     | ❓      | ❌    |
+
+` *** 05 or 03 prefixed operations only`
