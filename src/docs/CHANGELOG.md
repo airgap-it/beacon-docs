@@ -2,7 +2,53 @@
 title: Changelog
 ---
 
+## 3.1.4 (2022-09-01)
+
+### Features
+
+- **API**: Add `getDAppClientInstance(config)` method. This method should be used instead of `new DAppClient(config)`. The advantage of using the new method is that it makes sure there is only one instance created. If it is called multiple times, the same same (cached) instance is returned. This is important because creating multiple client instances can lead to problems.
+- **Tezos**: The `TezBlockExplorer` was replaced by `TzktExplorer` because tezblock.io now redirects to tzkt.io.
+- **Tezos**: Update Autonomy wallet metadata
+
+### Fixes
+
+- **Tezos**: The value in the TezosNetworks enum for "dailynet" was wrong.
+
+## 3.1.3 (2022-07-06)
+
+### Features
+
+- **Tezos**: Add **Kathmandunet**, the latest Tezos testnet
+
+## 3.1.2 (2022-06-30)
+
+### Features
+
+- **Tezos**: Add **Ghostnet**, a persistent testnet
+- **Tezos**: Add **Mondaynet**, a testnet that resets every Monday
+- **Tezos**: Add **Dailynet**, a testnet that resets every day
+- **Pairing Alert**:  If a browser extension is not installed, clicking on it will now open its website
+- **EventEmitter**: Remove the dependency on the node 'events' module, which caused build issues in some projects
+- **Error Logger**: Developers can now overwrite the error logger used in the SDK to enable features like adding Sentry error logging. 
+
+
+### Fixes
+
+- **QR**: The button that appears when hovering over the QR code will no longer cover the QR code
+
+## 3.1.1 (2022-06-05)
+
+### Changes
+
+- **Readme**: Added readmes to the individual packages so they are not empty on NPM.
+
+### Fixes
+
+- **compatibility**: There was a bug where the version of a message was set to the incorrect value, causing compatibility issues in some circumstances.
+
 ## 3.1.0 (2022-05-24)
+
+### Features
 
 - **Sapling**: Added basic sapling support. A section about sapling will be added to the docs soon.
 - **Temple Mobile**: Added Temple Mobile Wallet
