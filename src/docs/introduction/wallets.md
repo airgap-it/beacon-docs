@@ -28,6 +28,7 @@ Galleon is a deployment of Tezori, an open-source wallet frame-work for Tezos, s
 Umami is a Tezos desktop wallet that combines best-in-class features to deliver a smooth user experience for both beginner and advanced users.
 
 **[Autnomy](https://autonomy.io/)**
+
 Autonomy is the world’s first and only digital art wallet. It gives you one easy-to-use app to securely collect, view and discover digital art you love. Autonomy works with Tezos and is built to support all new chains as they emerge.
 
 ## Can I use all features of Beacon with all wallets?
