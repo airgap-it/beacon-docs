@@ -2,6 +2,35 @@
 title: Changelog
 ---
 
+## 3.3.0 (2022-10-13)
+
+### Features
+
+- **SDK**: Multi Region Support: The Beacon SDK now supports multiple server regions. With this feature, the SDK will always try to select the server closest to the user to improve performance. (Note: There is currently only one region being used. This feature will only have an impact once more servers in different regions are being added.)
+- **Tezos**: Human Readable Contract Errors:
+Sometimes when trying to do a contract call, the contract returns an error. Those errors are often numbers or short strings that tell developers what is wrong, but they are not useful to users. In this update, we added a way to add a simple mapping of error codes to a short description, which will be displayed to the user.
+```typescript
+new DAppClient({
+  errorMessages: {
+    KT1CpeSQKdkhWi4pinYcseCFKmDhs5M74BkU: {
+      'AUC_ID_ALREADY_IN_USE': 'This auction ID is already in use. Please choose another one and try again.'
+    }
+  }
+})
+```
+
+- **SDK**: Notification Support: The Beacon SDK now supports sending notifications to wallets. This feature is brand new and will require wallets to add support for it. So at the moment, the feature cannot be used, besides for testing on the side of wallet developers. Any wallet that is interested in adding support for notifications through beacon should reach out to us. We're still in the process of writing a proper documentation.
+
+## 3.2.0 (2022-09-21)
+
+### Features
+
+- **SDK**: Replace `libsodium` with `@stablelib`. This change will reduce the bundle size and solve build issues related to `libsodium`.
+
+### Fixes
+
+- **Matrix**: Prepare for an API change in newer synapse versions
+
 ## 3.1.4 (2022-09-01)
 
 ### Features
