@@ -9,7 +9,7 @@ AirGap Wallet is a mobile wallet for [Android](https://play.google.com/store/app
 
 **[Altme](https://altme.io/)**
 
-Altme is the first universal wallet that supports your decentralized identity, ID documents, cryptos and NFTs.
+Altme is the first universal wallet for [Android](https://play.google.com/store/apps/details?id=co.altme.alt.me.altme) and [iOS](https://apps.apple.com/fr/app/altme/id1633216869) that supports your decentralized identity, ID documents, cryptos and NFTs.
 
 **[Autonomy](https://autonomy.io/)**
 
