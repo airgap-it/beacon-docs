@@ -2,6 +2,26 @@
 title: Changelog
 ---
 
+## 3.3.2 (2023-01-10)
+
+### Features
+
+- **Wallet**: Add Atomex Wallet
+- **Tezos**: Add Limanet and Mumbainet
+
+## 3.3.1 (2022-12-30)
+
+### Features
+
+- **Wallet**: Add Altme Wallet
+- **Wallet**: Add Infinity Wallet
+- **Wallet**: Update Autonomy logo
+- **Wallet**: Update AirGap logo
+
+### Fixes
+
+- **Storage**: Improve typescript typings
+
 ## 3.3.0 (2022-10-13)
 
 ### Features
