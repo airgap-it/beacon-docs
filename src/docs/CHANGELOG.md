@@ -2,6 +2,71 @@
 title: Changelog
 ---
 
+## 4.0.0 (2023-04-04)
+
+### Features
+
+- **WalletConnect**: Support for WalletConnect 2 has been added. This means that wallets that support Tezos and WalletConnect 2 (eg. TrustWallet) can easily add support for Tezos dApps. Read more about the supported WalletConnect 2 messages here: https://docs.walletconnect.com/2.0/advanced/rpc-reference/tezos-rpc. WalletConnect 2 support works out of the box, but some options can be customised by dApps.
+```typescript
+const client = getDAppClientInstance({
+    name: 'Name of the dApp',
+    walletConnectOptions: {
+        projectId: '97f804b46f0db632c52af0556586a5f3', // Project ID can be customised
+        relayUrl: 'wss://relay.walletconnect.com' // WC2 relayUrl can be customised
+    }
+})
+```
+- **TrustWallet**: Support for TrustWallet has been added
+- **UI**: Beacon now includes a completely new Pairing UI. The new modal provides a better onboarding experience for new users, as certain wallets are highlighted and the setup of wallets is explained.
+The list of the new UI is opinionated, but it can be adjusted by the dApps to include other wallets. The following code can be used to adjust the highlighted wallets:
+```typescript
+const client = getDAppClientInstance({
+    name: 'Name of the dApp',
+    featuredWallets: ['airgap', 'kukai', 'temple', 'naan']
+})
+```
+- **Analytics**: DApps can now choose to pass an analytics instance to the beacon-sdk, where some events like clicks in the UI modal will be tracked. **This feature is turned off by default and has to be explicitly enabled by dApps!**
+```typescript
+export class MyAnalytics implements AnalyticsInterface {
+  track(
+    trigger: 'click' | 'event',
+    section: string,
+    label: string,
+    data?: Record<string, any>
+  ) {
+    console.log('##### TRACK', trigger, section, label, data)
+  }
+}
+
+const client = getDAppClientInstance({
+  name: 'Name of the dApp',
+  analytics: new MyAnalytics()
+})
+```
+- **Naan**: Naan logo updated
+- **SDK**: Changed from browserify to webpack
+
+## 3.3.4 (2023-02-16)
+
+### Features
+
+- **Internal**: Update build environment
+
+### Fixes
+
+- **Pairing**: Remove Alert Overflow
+
+## 3.3.3 (2023-02-09)
+
+### Features
+
+- **Wallet**: Add Umami Mobile
+- **Wallet**: Add Atomex Mobile
+- **Wallet**: Update Naan Metadata
+- **Wallet**: Update AltMe Logo
+- **Internal**: Add support for svg logos
+- **Internal**: Use NPM Workspaces
+
 ## 3.3.2 (2023-01-10)
 
 ### Features
