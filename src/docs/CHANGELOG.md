@@ -2,6 +2,23 @@
 title: Changelog
 ---
 
+## 4.0.5 (2023-07-06)
+
+### Features
+
+- **Internal**: Make wallet list in alert dynamic, which means that it can be used in InApp Browsers, eg. Infinity Wallet
+- **Internal**: Normalize public key to edpk... format
+- **Alert**: Add WC2 QR code in pairing alert
+- **Toast**: Add "open wallet" button for web wallets
+- **WalletConnect**: Update walletconnect dependency to 2.9.0
+
+### Fixes
+
+- **WalletConnect**: Update property name according to docs
+- **WalletConnect**: Show wallet icon in toast
+- **Internal**: Ignore empty regions and prevent invalid network requests
+- **Alert**: Open web wallets in new tab immediately, which will prevent them from being blocked by browsers
+
 ## 4.0.4 (2023-05-22)
 
 ### Features
