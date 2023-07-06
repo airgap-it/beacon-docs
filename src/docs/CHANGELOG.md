@@ -2,47 +2,90 @@
 title: Changelog
 ---
 
+## 4.0.4 (2023-05-22)
+
+### Features
+
+- **WalletConnect**: Update WalletConnect SDK to 2.7.5
+
+## 4.0.3 (2023-05-15)
+
+### Features
+
+- **UI**: Add Naan wallet to default list
+
+## 4.0.2 (2023-04-25)
+
+### Features
+
+- **internal**: Update WalletConnect dependencies
+
+### Fixes
+
+- **UI**: Add white border around QR code in dark mode
+
+## 4.0.1 (2023-04-21)
+
+### Features
+
+- **Tezos**: Add Nairobinet
+- **WalletConnect**: If no public key is shared by the wallet, an error is thrown
+- **internal**: Update WalletConnect dependencies
+
+### Fixes
+
+- **UI**: Font styling is no longer overwritten by dApp styles
+- **internal**: Fix `preferredNetwork` preference with Kukai Wallet
+- **internal**: Remove unused dependencies
+- **internal**: Change build settings of beacon-ui package to improve compatibility with different frameworks
+
 ## 4.0.0 (2023-04-04)
 
 ### Features
 
 - **WalletConnect**: Support for WalletConnect 2 has been added. This means that wallets that support Tezos and WalletConnect 2 (eg. TrustWallet) can easily add support for Tezos dApps. Read more about the supported WalletConnect 2 messages here: https://docs.walletconnect.com/2.0/advanced/rpc-reference/tezos-rpc. WalletConnect 2 support works out of the box, but some options can be customised by dApps.
+
 ```typescript
 const client = getDAppClientInstance({
-    name: 'Name of the dApp',
-    walletConnectOptions: {
-        projectId: '97f804b46f0db632c52af0556586a5f3', // Project ID can be customised
-        relayUrl: 'wss://relay.walletconnect.com' // WC2 relayUrl can be customised
-    }
-})
+  name: "Name of the dApp",
+  walletConnectOptions: {
+    projectId: "97f804b46f0db632c52af0556586a5f3", // Project ID can be customised
+    relayUrl: "wss://relay.walletconnect.com", // WC2 relayUrl can be customised
+  },
+});
 ```
+
 - **TrustWallet**: Support for TrustWallet has been added
 - **UI**: Beacon now includes a completely new Pairing UI. The new modal provides a better onboarding experience for new users, as certain wallets are highlighted and the setup of wallets is explained.
-The list of the new UI is opinionated, but it can be adjusted by the dApps to include other wallets. The following code can be used to adjust the highlighted wallets:
+  The list of the new UI is opinionated, but it can be adjusted by the dApps to include other wallets. The following code can be used to adjust the highlighted wallets:
+
 ```typescript
 const client = getDAppClientInstance({
-    name: 'Name of the dApp',
-    featuredWallets: ['airgap', 'kukai', 'temple', 'naan']
-})
+  name: "Name of the dApp",
+  featuredWallets: ["airgap", "kukai", "temple", "naan"],
+});
 ```
+
 - **Analytics**: DApps can now choose to pass an analytics instance to the beacon-sdk, where some events like clicks in the UI modal will be tracked. **This feature is turned off by default and has to be explicitly enabled by dApps!**
+
 ```typescript
 export class MyAnalytics implements AnalyticsInterface {
   track(
-    trigger: 'click' | 'event',
+    trigger: "click" | "event",
     section: string,
     label: string,
     data?: Record<string, any>
   ) {
-    console.log('##### TRACK', trigger, section, label, data)
+    console.log("##### TRACK", trigger, section, label, data);
   }
 }
 
 const client = getDAppClientInstance({
-  name: 'Name of the dApp',
-  analytics: new MyAnalytics()
-})
+  name: "Name of the dApp",
+  analytics: new MyAnalytics(),
+});
 ```
+
 - **Naan**: Naan logo updated
 - **SDK**: Changed from browserify to webpack
 
@@ -93,15 +136,17 @@ const client = getDAppClientInstance({
 
 - **SDK**: Multi Region Support: The Beacon SDK now supports multiple server regions. With this feature, the SDK will always try to select the server closest to the user to improve performance. (Note: There is currently only one region being used. This feature will only have an impact once more servers in different regions are being added.)
 - **Tezos**: Human Readable Contract Errors:
-Sometimes when trying to do a contract call, the contract returns an error. Those errors are often numbers or short strings that tell developers what is wrong, but they are not useful to users. In this update, we added a way to add a simple mapping of error codes to a short description, which will be displayed to the user.
+  Sometimes when trying to do a contract call, the contract returns an error. Those errors are often numbers or short strings that tell developers what is wrong, but they are not useful to users. In this update, we added a way to add a simple mapping of error codes to a short description, which will be displayed to the user.
+
 ```typescript
 new DAppClient({
   errorMessages: {
     KT1CpeSQKdkhWi4pinYcseCFKmDhs5M74BkU: {
-      'AUC_ID_ALREADY_IN_USE': 'This auction ID is already in use. Please choose another one and try again.'
-    }
-  }
-})
+      AUC_ID_ALREADY_IN_USE:
+        "This auction ID is already in use. Please choose another one and try again.",
+    },
+  },
+});
 ```
 
 - **SDK**: Notification Support: The Beacon SDK now supports sending notifications to wallets. This feature is brand new and will require wallets to add support for it. So at the moment, the feature cannot be used, besides for testing on the side of wallet developers. Any wallet that is interested in adding support for notifications through beacon should reach out to us. We're still in the process of writing a proper documentation.
@@ -141,10 +186,9 @@ new DAppClient({
 - **Tezos**: Add **Ghostnet**, a persistent testnet
 - **Tezos**: Add **Mondaynet**, a testnet that resets every Monday
 - **Tezos**: Add **Dailynet**, a testnet that resets every day
-- **Pairing Alert**:  If a browser extension is not installed, clicking on it will now open its website
+- **Pairing Alert**: If a browser extension is not installed, clicking on it will now open its website
 - **EventEmitter**: Remove the dependency on the node 'events' module, which caused build issues in some projects
-- **Error Logger**: Developers can now overwrite the error logger used in the SDK to enable features like adding Sentry error logging. 
-
+- **Error Logger**: Developers can now overwrite the error logger used in the SDK to enable features like adding Sentry error logging.
 
 ### Fixes
 
