@@ -88,14 +88,17 @@ module.exports = {
       ],
       collapsed: true,
     },
-    "CHANGELOG",
     {
       type: "category",
       label: "Post Mortem",
       items: ["post-mortem", "post-mortem-2"],
       collapsed: true,
     },
-
+    {
+      type: "link",
+      label: "Changelog",
+      href: "https://github.com/airgap-it/beacon-sdk/releases",
+    },
     {
       type: "link",
       label: "TypeDoc Reference",
