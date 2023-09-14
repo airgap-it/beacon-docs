@@ -22,7 +22,7 @@
     "embed-code": "npm run generate-monaco-types && npm run prettier && tsc src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && embedme 'build-docs/**/*.mdx' --source-root ./build-examples && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
-    "@airgap/beacon-sdk": "2.3.13",
+    "@airgap/beacon-sdk": "4.0.10",
     "@docusaurus/core": "2.0.0-alpha.72",
     "@docusaurus/plugin-client-redirects": "2.0.0-alpha.72",
     "@docusaurus/preset-classic": "2.0.0-alpha.72",
@@ -55,6 +55,6 @@
     "monaco-editor-webpack-plugin": "^3.0.1",
     "postcss": "^8.2.8",
     "puppeteer": "^10.0.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.4.3"
   }
 }
