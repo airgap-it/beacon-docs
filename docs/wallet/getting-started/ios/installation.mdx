@@ -1,0 +1,103 @@
+---
+title: Installation
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+## How to install Beacon iOS SDK
+
+To add Beacon iOS SDK into your project add the dependencies:
+
+[![stable](https://img.shields.io/github/v/tag/airgap-it/beacon-ios-sdk?label=stable&sort=semver)](https://github.com/airgap-it/beacon-ios-sdk)
+[![latest](https://img.shields.io/github/v/tag/airgap-it/beacon-ios-sdk?color=orange&include_prereleases&label=latest)](https://github.com/airgap-it/beacon-ios-sdk)
+
+<Tabs
+  groupId="package-manager"
+  defaultValue="spm"
+  values={[
+    { label: "SPM", value: "spm" },
+    { label: "CocoaPods", value: "cocoapods" },
+  ]}
+>
+
+<TabItem value="spm">
+
+```swift title="Package.swift"
+dependencies: [
+    .package(url: "https://github.com/airgap-it/beacon-ios-sdk", from: "x.y.z")
+],
+```
+
+Or in Xcode open the `Add Package Dependency` window (as described in [the official guide](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)) and enter the `Beacon iOS SDK` GitHub repository URL
+
+```
+https://github.com/airgap-it/beacon-ios-sdk
+```
+
+</TabItem>
+
+<TabItem value="cocoapods">
+
+```ruby title="Podfile"
+target 'MyTarget' do
+    use_frameworks!
+
+    pod 'BeaconCore', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+
+    // optional
+    pod 'BeaconClientWallet', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+
+    // optional
+    pod 'BeaconBlockchainSubstrate', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+    // optional
+    pod 'BeaconBlockchainTezos', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+
+    // optional
+    pod 'BeaconTransportP2PMatrix', :git => 'https://github.com/airgap-it/beacon-ios-sdk', :tag => 'x.y.z'
+end
+```
+
+</TabItem>
+
+</Tabs>
+
+## Packages Overview
+
+The library packages and their relations are described below.
+
+### Core
+
+Core packages are the basis for other packages. They are required for the SDK to work as expected.
+
+| Module       | Description            | Dependencies | Required by                                                                                                                          |
+| ------------ | ---------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `BeaconCore` | Base for other modules | ✖️           | `BeaconClientWallet` <br /><br /> `BeaconBlockchainSubstrate` <br /> `BeaconBlockchainTezos` <br /><br /> `BeaconTransportP2PMatrix` |
+
+### Client
+
+Client packages ship with Beacon implementations for different parts of the network.
+
+| Module               | Description                       | Dependencies | Required by |
+| -------------------- | --------------------------------- | ------------ | ----------- |
+| `BeaconClientWallet` | Beacon implementation for wallets | `BeaconCore` | ✖️          |
+
+### Blockchain
+
+Blockchain packages provide support for different blockchains.
+
+| Module                      | Description                                            | Dependencies | Required by |
+| --------------------------- | ------------------------------------------------------ | ------------ | ----------- |
+| `BeaconBlockchainSubstrate` | [Substrate](https://substrate.io/) specific components | `BeaconCore` | ✖️          |
+| `BeaconBlockchainTezos`     | [Tezos](https://tezos.com/) specific components        | `BeaconCore` | ✖️          |
+
+### Transport
+
+Transport packages provide various interfaces used to establish connection between Beacon clients.
+
+| Module                     | Description                                                                              | Dependencies | Required by |
+| -------------------------- | ---------------------------------------------------------------------------------------- | ------------ | ----------- |
+| `BeaconTransportP2PMatrix` | Beacon P2P implementation which uses [Matrix](https://matrix.org/) for the communication | `BeaconCore` | ✖️          |

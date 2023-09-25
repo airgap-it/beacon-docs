@@ -1,0 +1,57 @@
+---
+title: Different Beacon Node
+---
+
+You can configure the DApp or Wallet to connect to a different beacon node.
+Make sure the servers you use are whitelisted in the beacon network and federation is working correctly.
+
+import { RunnableCode } from "@site/src/components/RunnableCode";
+
+<RunnableCode>
+
+<!-- embedme different-node.beacon.ts -->
+
+```ts
+import { DAppClient } from "@airgap/beacon-sdk";
+
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+  matrixNodes: ["beacon-node-0.papers.tech:8448"],
+});
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.log("Got error:", error);
+}
+```
+
+<!-- embedme different-node.taquito.ts -->
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({
+  name: "Beacon Docs Taquito",
+  matrixNodes: ["beacon-node-0.papers.tech:8448"],
+});
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  const permissions = await wallet.client.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.log("Got error:", error);
+}
+```
+
+</RunnableCode>
+
+:::tip
+The beacon-sdk deterministically chooses one of the nodes in the array. Changing the array of nodes will most likely lead to users losing their connection.
+:::

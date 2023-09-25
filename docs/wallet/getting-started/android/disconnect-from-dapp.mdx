@@ -1,0 +1,258 @@
+---
+title: Disconnect from a dApp
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import TOCInline from "@theme/TOCInline";
+
+<TOCInline toc={toc} />
+
+:::info
+
+This guide is a continuation of [Connect to a dApp](connect-to-dapp) and may assume that certain code components have been defined.
+
+:::
+
+## Disconnect from a dApp
+
+To disconnect form a subscribed dApp remove its peer entry from the client.
+
+```kotlin
+myCoroutineScope.launch {
+    try {
+        val peers = beaconWallet.getPeers() // get subscribed peers
+        val dApp = peers.find { it.name == "MyApp" }
+        // highlight-start
+        beaconWallet.removePeers(dApp)
+        // highlight-end
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+```
+
+## Disconnect from all dApps
+
+To disconnect from all subscribed dApps remove all peers that were previously registered in the client.
+
+```kotlin
+myCoroutineScope.launch {
+    try {
+        // highlight-start
+        beaconWallet.removeAllPeers()
+        // highlight-end
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+}
+```
+
+## Example Code
+
+The following example extends the code presented in the [Connect to a dApp](connect-to-dapp#ExampleCode) guide. The `Activity` listens for incoming requests from a dApp, waits 1s and cancels connection.
+
+<Tabs
+  groupId="language"
+  defaultValue="kotlin"
+  values={[
+    { label: "Groovy", value: "groovy" },
+    { label: "Kotlin", value: "kotlin" },
+  ]}
+>
+
+<TabItem value="groovy">
+
+```groovy title="build.gradle"
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+</TabItem>
+
+<TabItem value="kotlin">
+
+```kotlin title="build.gradle.kts"
+allprojects {
+    repositories {
+        maven("https://jitpack.io")
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+[![stable](https://img.shields.io/github/v/tag/airgap-it/beacon-android-sdk?label=stable&sort=semver)](https://github.com/airgap-it/beacon-android-sdk)
+[![latest](https://img.shields.io/github/v/tag/airgap-it/beacon-android-sdk?color=orange&include_prereleases&label=latest)](https://github.com/airgap-it/beacon-android-sdk)
+
+<Tabs
+  groupId="language"
+  defaultValue="kotlin"
+  values={[
+    { label: "Groovy", value: "groovy" },
+    { label: "Kotlin", value: "kotlin" },
+  ]}
+>
+
+<TabItem value="groovy">
+
+```groovy title="app/build.gradle"
+dependencies {
+    // Beacon
+    def beacon_version = "x.y.z"
+
+    implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version"
+    implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version"
+    implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beacon_version"
+    implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beacon_version"
+    implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beacon_version"
+
+    // Android
+    def android_activity_version = "x.y.z"
+    implementation "androidx.activity:activity-ktx:$android_activity_version"
+
+    def android_lifecycle_version = "x.y.z"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$android_lifecycle_version"
+}
+```
+
+</TabItem>
+
+<TabItem value="kotlin">
+
+```kotlin title="app/build.gradle.kts"
+dependencies {
+    // Beacon
+    val beaconVersion = "x.y.z"
+
+    implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion")
+    implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion")
+    implementation("com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion")
+    implementation("com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion")
+    implementation("com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion")
+
+    // Android
+    val androidActivityVersion = "x.y.z"
+    implementation("androidx.activity:activity-ktx:$androidActivityVersion")
+
+    val androidLifecycleVersion = "x.y.z"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$androidLifecycleVersion")
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+```kotlin title="app/src/main/java/com/example/MainActivity.kt"
+package com.example
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
+import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateAccount
+import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateNetwork
+import it.airgap.beaconsdk.blockchain.substrate.message.request.PermissionSubstrateRequest
+import it.airgap.beaconsdk.blockchain.substrate.message.response.PermissionSubstrateResponse
+import it.airgap.beaconsdk.blockchain.substrate.substrate
+import it.airgap.beaconsdk.blockchain.tezos.data.TezosAccount
+import it.airgap.beaconsdk.blockchain.tezos.data.TezosNetwork
+import it.airgap.beaconsdk.blockchain.tezos.message.request.PermissionTezosRequest
+import it.airgap.beaconsdk.blockchain.tezos.message.response.PermissionTezosResponse
+import it.airgap.beaconsdk.blockchain.tezos.tezos
+import it.airgap.beaconsdk.client.wallet.BeaconWalletClient
+import it.airgap.beaconsdk.core.data.BeaconError
+import it.airgap.beaconsdk.core.data.P2pPeer
+import it.airgap.beaconsdk.core.message.BeaconRequest
+import it.airgap.beaconsdk.core.message.ErrorBeaconResponse
+import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+class MainActivity : AppCompatActivity() {
+    lateinit var beaconWallet: BeaconWalletClient
+
+    val dApp = P2pPeer(
+        "0b02d44c-de33-b5ab-7730-ff8e62f61869" /* TODO: change me */,
+        "My dApp",
+        "6c7870aa1e42477fd7c2baaf4763bd826971e470772f71a0a388c1763de3ea1e" /* TODO: change me */,
+        "beacon-node-1.sky.papers.tech" /* TODO: change me */,
+        "2" /* TODO: change me */,
+    )
+
+    fun substrateAccount(network: SubstrateNetwork) = SubstrateAccount(
+        "f4c6095213a2f6d09464ed882b12d6024d20f7170c3b8bd5c1b071e4b00ced72" /* TODO: change me */,
+        "16XwWkdUqFXFY1tJNf1Q6fGgxQnGYUS6M95wPcrbp2sjjuoC" /* TODO: change me */,
+        network,
+    )
+
+    fun tezosAccount(network: TezosNetwork) = TezosAccount(
+        "9ae0875d510904b0b15d251d8def1f5f3353e9799841c0ed6d7ac718f04459a0" /* TODO: change me */,
+        "tz1SkbBZg15BXPRkYCrSzhY6rq4tKGtpUSWv" /* TODO: change me */,
+        network,
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        lifecycleScope.launch {
+            createWalletClient()
+            subscribeToRequests()
+            connectToDApp()
+        }
+    }
+
+    suspend fun createWalletClient() {
+        beaconWallet = BeaconWalletClient("My App") {
+            support(substrate(), tezos())
+            use(p2pMatrix())
+        }
+    }
+
+    fun subscribeToRequests() {
+        beaconWallet.connect().asLiveData().observe(this) { result ->
+            result.getOrNull()?.let { onBeaconRequest(it) }
+            result.exceptionOrNull()?.let { onError(it) }
+        }
+    }
+
+    suspend fun connectToDApp() {
+        try {
+            beaconWallet.addPeers(dApp)
+        } catch (e: Exception) {
+            onError(e)
+        }
+    }
+
+    fun onBeaconRequest(request: BeaconRequest) {
+        val response = when (request) {
+            is PermissionSubstrateRequest -> PermissionSubstrateResponse.from(request, request.networks.map { substrateAccount(it) })
+            is PermissionTezosRequest -> PermissionTezosResponse.from(request, tezosAccount(request.network))
+            else -> ErrorBeaconResponse.from(request, BeaconError.Aborted)
+        }
+
+        lifecycleScope.launch {
+            try {
+                beaconWallet.respond(response)
+                delay(1000)
+                // highlight-start
+                beaconWallet.removePeers(dApp)
+                // highlight-end
+            } catch (e: Exception) {
+                onError(e)
+            }
+        }
+    }
+
+    fun onError(e: Throwable) {
+        e.printStackTrace()
+    }
+}
+```

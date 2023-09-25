@@ -1,0 +1,155 @@
+---
+title: Getting Started
+---
+
+First, you need to install the `beacon-sdk` package.
+
+`npm install --save @airgap/beacon-sdk`
+
+After that you need to import the Beacon SDK in your code and initialize the WalletClient.
+
+The `beacon-sdk` will automatically establish a connection and listen to all Beacon messages.
+
+:::caution
+The RPC URL that is provided by the DApp can be an insecure http:// connection. The reason for this is because it allows for easy development with a local node, without setting up a local SSL certificate.
+
+Especially the wallet should care about this and potentially show a warning to the user if the RPC URL is not a secure https:// URL.
+:::
+
+```ts
+import {
+  WalletClient,
+  BeaconMessageType,
+  PermissionScope,
+  PermissionResponseInput,
+} from "@airgap/beacon-sdk";
+
+const connectApp = async (): Promise<void> => {
+  // Only ONE WalletClient should be created and reused everywhere.
+  const client = new WalletClient({ name: "My Wallet" });
+  await client.init(); // Establish P2P connection
+
+  client
+    .connect(async (message) => {
+      console.log("beacon message", message);
+
+      let response: BeaconResponseInputMessage;
+      switch (message.type) {
+        case BeaconMessageType.PermissionRequest:
+          // Prompt user for permissions. If multiple accounts are available, let user choose one of them
+
+          response = {
+            type: BeaconMessageType.PermissionResponse,
+            network: message.network, // Use the same network that the user requested
+            scopes: message.scopes,
+            id: message.id,
+            publicKey:
+              "3b92229274683b311cf8b040cf91ac0f8e19e410f06eda5537ef077e718e0024",
+          };
+
+          // Optional
+          // If the user aborts an action at any time, you can send back an error:
+          response = {
+            type: BeaconMessageType.Error,
+            id: message.id,
+            errorType: BeaconErrorType.ABORTED_ERROR,
+          };
+
+          break;
+        case BeaconMessageType.SignPayloadRequest:
+          // Sign message.payload and return signature
+
+          response = {
+            type: BeaconMessageType.SignPayloadResponse,
+            id: message.id,
+            signingType: message.signingType,
+            signature: "edsig...",
+          };
+
+          break;
+        case BeaconMessageType.OperationRequest:
+          // Prepare transaction based on the details give in message.operationDetails
+          // message.operationDetails only contains a partial tezos transaction. Not all fields are mandatory
+          // The fields that are not present (eg. counter, fee, gas_limit) have to be set by the wallet
+          // If one of the optional fields is set, then that one should be used and not replaced by the wallet
+
+          response = {
+            type: BeaconMessageType.OperationResponse,
+            id: message.id,
+            transactionHash: "op...",
+          };
+
+          // Optional
+          // If the transaction cannot be prepared, (eg. run_operations fails), an error containing the rpc error can be returned
+          let error = [
+            {
+              kind: "temporary",
+              id: "proto.008-PtEdo2Zk.contract.balance_too_low",
+              contract: "tz1...",
+              balance: "100",
+              amount: "200",
+            },
+          ]; // RPC error
+          response = {
+            type: BeaconMessageType.Error,
+            id: message.id,
+            errorType: BeaconErrorType.TRANSACTION_INVALID_ERROR,
+            errorData: error,
+          };
+
+          break;
+        case BeaconMessageType.BroadcastRequest:
+          response = {
+            type: BeaconMessageType.OperationResponse,
+            id: message.id,
+            transactionHash: "op...",
+          };
+
+          break;
+        default:
+          response = {
+            type: BeaconMessageType.Error,
+            id: (message as any).id, // Typescript assumes message is of type "never", but we should still add this to handle any potential future messages we don't support yet.
+            errorType: BeaconErrorType.ABORTED_ERROR,
+          };
+      }
+
+      client.respond(response);
+    })
+    .catch((error) => console.error("connect error", error));
+};
+
+connectApp().catch((error) => console.error("connect error", error));
+```
+
+By adding the code above, our app is now ready to receive messages. Now all that is left for us to do is connecting to a DApp.
+
+To establish a connection over the P2P network, a handshake message has to be given from the dApp to the wallet. How this is done depends on the platform.
+It can be through QR scanning, Deeplinks or Copy-Pasting the handshake message. Once the handshake is received, the new peer has to be added:
+
+```typescript
+const isBeaconMessage: (obj: unknown) => obj is P2PPairingRequest = (
+  obj: unknown
+): obj is P2PPairingRequest => {
+  return (
+    typeof (obj as P2PPairingRequest).name === "string" &&
+    typeof (obj as P2PPairingRequest).publicKey === "string" &&
+    typeof (obj as P2PPairingRequest).relayServer === "string"
+  );
+};
+
+const handshakeMessage = ""; // This was received from the dApp, eg. through QR scanning or deeplink
+
+const deserialized = await new Serializer().deserialize(handshakeMessage);
+
+if (isBeaconMessage(deserialized)) {
+  // This will add the peer and establish a connection
+  client.addPeer(peerInfo);
+}
+```
+
+That's it, now the dApp and the Wallet are connected.
+
+There are some additional features that the `WalletClient` provides, such as `client.getPermissions()` or `client.getPeers()` to listing all the connected peers and permissions that were granted to dApps.
+
+Using `client.removePeer(peer)` the wallet can disconnect from a peer. If this is done, the dApp will receive a message that the wallet has disconnected.
