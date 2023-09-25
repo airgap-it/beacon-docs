@@ -26,7 +26,7 @@ if (activeAccount) {
 
 function Playground() {
   if (typeof window === "undefined") {
-    return null;
+    return <></>;
   }
 
   const urlParams = new URLSearchParams(window.location.search);
