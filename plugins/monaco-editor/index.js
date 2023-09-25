@@ -16,8 +16,8 @@ module.exports = function (context, options) {
           rules: [
             {
               test: /\.ttf$/,
-              use: ["file-loader"],
-            },
+              type: 'asset/resource'
+            }
           ],
         },
         plugins: [
