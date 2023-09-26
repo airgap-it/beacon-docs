@@ -27,7 +27,6 @@ const config = {
 
   plugins: [
     "docusaurus-node-polyfills",
-    path.join(__dirname, "/plugins/monaco-editor"),
     [
       "@docusaurus/plugin-client-redirects",
       {
