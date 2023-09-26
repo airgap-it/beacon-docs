@@ -1,18 +1,25 @@
 {
-  "name": "my-website",
+  "name": "beacon-docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "npm run embed-code && docusaurus start",
+    "prepare": "node scripts/fix-beacon-sdk.js",
+    "build": "npm run embed-code && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "prettier": "npx prettier --write './sidebars.js' 'docusaurus.config.js' && npm run pretty-source",
+    "pretty-source": "npx prettier --ignore-unknown --write 'src/**/*'",
+    "pretty-docs": "npx prettier --ignore-unknown --write 'docs/**/*'",
+    "generate-monaco-types": "node scripts/generate-monaco-types.js",
+    "remove-folders": "rm -rf build-docs && rm -rf docs",
+    "clear-folders": "npm run remove-folders && mkdir build-docs && mkdir docs",
+    "embed-code": "npm run generate-monaco-types && npm run prettier && tsc src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && embedme 'build-docs/**/*.mdx' --source-root ./build-examples && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^4.0.10",

@@ -22,3 +22,6 @@ yarn-error.log*
 # Generated files and folders
 build-examples
 src/examples/*.js
+
+/docs/
+/src/components/monaco-types.ts
