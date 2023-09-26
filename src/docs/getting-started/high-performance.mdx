@@ -20,7 +20,23 @@ Every time a user connects their wallet and shares permission to use an account,
 <!-- embedme getting-started-active-account.beacon.ts -->
 
 ```ts
+import { DAppClient } from "@airgap/beacon-sdk";
 
+async () => {
+  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+  // The following code should always be run during pageload if you want to show if the user is connected.
+  const activeAccount = await dAppClient.getActiveAccount();
+  if (activeAccount) {
+    // User already has account connected, everything is ready
+    // You can now do an operation request, sign request, or send another permission request to switch wallet
+    console.log("Already connected:", activeAccount.address);
+    return activeAccount;
+  } else {
+    // The user is not connected. A button should be displayed where the user can connect to his wallet.
+    console.log("Not connected!");
+  }
+};
 ```
 
 ## Connect to multiple RPCs
@@ -32,7 +48,24 @@ An even better approach is to add a node selection to your dApp, including a way
 <!-- embedme example-high-performance-multiple-nodes.ts -->
 
 ```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
 
+async () => {
+  // Define an array of nodes
+  const RPCs = [
+    "https://mainnet-tezos.giganode.io",
+    "https://mainnet.api.tez.ie",
+  ];
+
+  // Select random node from array
+  const randomRpc = RPCs[Math.floor(RPCs.length * Math.random())];
+
+  const Tezos = new TezosToolkit(randomRpc);
+  const wallet = new BeaconWallet({ name: "Beacon Docs" }); // Takes the same arguments as the DAppClient constructor
+
+  Tezos.setWalletProvider(wallet);
+};
 ```
 
 ## Allow users to connect their Wallet early on
@@ -42,7 +75,19 @@ In case your dApp is focussed around a specific time (eg. NFT drop or a countdow
 <!-- embedme getting-started-permission-request.beacon.ts -->
 
 ```ts
+import { DAppClient } from "@airgap/beacon-sdk";
 
+async () => {
+  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+  try {
+    console.log("Requesting permissions...");
+    const permissions = await dAppClient.requestPermissions();
+    console.log("Got permissions:", permissions.address);
+  } catch (error) {
+    console.log("Got error:", error);
+  }
+};
 ```
 
 ## Reduce number of requests made to RPCs

@@ -7,13 +7,46 @@ title: Sign Payload
 <!-- embedme sign-payload-micheline.beacon.ts -->
 
 ```ts
-// TODO
+import { DAppClient, SigningType } from "@airgap/beacon-sdk";
+
+async () => {
+  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+  const response = await dAppClient.requestSignPayload({
+    signingType: SigningType.MICHELINE,
+    // This hex string needs to be prefixed with 05
+    // The following is packed data, it can also be signed by Kukai
+    payload:
+      "05010000004254657a6f73205369676e6564204d6573736167653a206d79646170702e636f6d20323032312d30312d31345431353a31363a30345a2048656c6c6f20776f726c6421",
+  });
+
+  console.log(`Signature: ${response.signature}`);
+};
 ```
 
 <!-- embedme sign-payload-micheline.taquito.ts -->
 
 ```ts
-// TODO
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { SigningType } from "@airgap/beacon-sdk";
+
+async () => {
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+  Tezos.setWalletProvider(wallet);
+
+  const response = await wallet.client.requestSignPayload({
+    signingType: SigningType.MICHELINE,
+    // This hex string needs to be prefixed with 05
+    // The following is packed data, it can also be signed by Kukai
+    payload:
+      "05010000004254657a6f73205369676e6564204d6573736167653a206d79646170702e636f6d20323032312d30312d31345431353a31363a30345a2048656c6c6f20776f726c6421",
+  });
+
+  console.log(`Signature: ${response.signature}`);
+};
 ```
 
 ## HEX Prefixed With 03
@@ -21,13 +54,40 @@ title: Sign Payload
 <!-- embedme sign-payload-operation.beacon.ts -->
 
 ```ts
-// TODO
+import { DAppClient, SigningType } from "@airgap/beacon-sdk";
+
+async () => {
+  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+  const response = await dAppClient.requestSignPayload({
+    signingType: SigningType.OPERATION,
+    payload: "0300", // This hex string needs to be prefixed with 03
+  });
+
+  console.log(`Signature: ${response.signature}`);
+};
 ```
 
 <!-- embedme sign-payload-operation.taquito.ts -->
 
 ```ts
-// TODO
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { SigningType } from "@airgap/beacon-sdk";
+
+async () => {
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+  Tezos.setWalletProvider(wallet);
+
+  const response = await wallet.client.requestSignPayload({
+    signingType: SigningType.OPERATION,
+    payload: "0300", // This hex string needs to be prefixed with 03
+  });
+
+  console.log(`Signature: ${response.signature}`);
+};
 ```
 
 ## RAW
@@ -39,11 +99,38 @@ Not all wallets support the `RAW` signing type. Additionally, the signatures can
 <!-- embedme sign-payload-raw.beacon.ts -->
 
 ```ts
-// TODO
+import { DAppClient, SigningType } from "@airgap/beacon-sdk";
+
+async () => {
+  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+  const response = await dAppClient.requestSignPayload({
+    signingType: SigningType.RAW,
+    payload: "any string that will be signed",
+  });
+
+  console.log(`Signature: ${response.signature}`);
+};
 ```
 
 <!-- embedme sign-payload-raw.taquito.ts -->
 
 ```ts
-// TODO
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { SigningType } from "@airgap/beacon-sdk";
+
+async () => {
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+  Tezos.setWalletProvider(wallet);
+
+  const response = await wallet.client.requestSignPayload({
+    signingType: SigningType.RAW,
+    payload: "any string that will be signed",
+  });
+
+  console.log(`Signature: ${response.signature}`);
+};
 ```
