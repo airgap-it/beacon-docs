@@ -30,7 +30,7 @@ async () => {
       });
 
       console.log(response);
-    }
+    },
   );
 
   // Check if we are connected. If not, do a permission request first.

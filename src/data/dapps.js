@@ -11,8 +11,9 @@ export const data = {
       usingCustomUI: false,
       sdkVersion: "3.1.0",
       lastUpdate: 1654256979714,
-      title: "QuipuSwap - Tezos DEX with on-chain governance for baking rewards",
-      lastCheck: 1654256979714
+      title:
+        "QuipuSwap - Tezos DEX with on-chain governance for baking rewards",
+      lastCheck: 1654256979714,
     },
     {
       key: "hicetnunc",
@@ -25,7 +26,7 @@ export const data = {
       sdkVersion: "2.3.9",
       lastUpdate: 1649686257077,
       title: "hic et nunc - hic et nunc",
-      lastCheck: 1650634493605
+      lastCheck: 1650634493605,
     },
     {
       key: "tzcolors",
@@ -38,7 +39,7 @@ export const data = {
       sdkVersion: "2.3.11",
       lastUpdate: 1649535365683,
       title: "tzcolors",
-      lastCheck: 1654256994925
+      lastCheck: 1654256994925,
     },
     {
       key: "tzbutton",
@@ -51,7 +52,7 @@ export const data = {
       sdkVersion: "2.3.11",
       lastUpdate: 1649535378750,
       title: "TzButton",
-      lastCheck: 1654257009271
+      lastCheck: 1654257009271,
     },
     {
       key: "freibier",
@@ -64,7 +65,7 @@ export const data = {
       sdkVersion: "2.3.13",
       lastUpdate: 1650634517170,
       title: "CervezaBrewery.io 🍺 - A DeFi project on Tezos.",
-      lastCheck: 1650935033862
+      lastCheck: 1650935033862,
     },
     {
       key: "tezosdomains",
@@ -77,7 +78,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649535772220,
       title: "Tezos Domains",
-      lastCheck: 1654256426190
+      lastCheck: 1654256426190,
     },
     {
       key: "kolibri",
@@ -90,32 +91,34 @@ export const data = {
       sdkVersion: "2.3.13",
       lastUpdate: 1650634552899,
       title: "Kolibri",
-      lastCheck: 1654256452578
+      lastCheck: 1654256452578,
     },
     {
       key: "bettercalldev",
       name: "Better Call Dev",
       url: "https://better-call.dev",
-      checkUrl: "https://better-call.dev/mainnet/KT1EtjRRCBC2exyCRXz8UfV7jz7svnkqi7di/interact?entrypoint=default",
+      checkUrl:
+        "https://better-call.dev/mainnet/KT1EtjRRCBC2exyCRXz8UfV7jz7svnkqi7di/interact?entrypoint=default",
       sourceCode: null,
       inactive: false,
       usingCustomUI: false,
       sdkVersion: "2.3.1",
       lastUpdate: 1634563804209,
-      title: "Better Call Dev — Tezos smart contract explorer by Baking Bad"
+      title: "Better Call Dev — Tezos smart contract explorer by Baking Bad",
     },
     {
       key: "tzkt",
       name: "TzKT",
       url: "https://tzkt.io",
-      checkUrl: "https://tzkt.io/KT1EtjRRCBC2exyCRXz8UfV7jz7svnkqi7di/dex?baseCurrency=XTZ&quoteCurrency=uUSD",
+      checkUrl:
+        "https://tzkt.io/KT1EtjRRCBC2exyCRXz8UfV7jz7svnkqi7di/dex?baseCurrency=XTZ&quoteCurrency=uUSD",
       sourceCode: null,
       inactive: false,
       usingCustomUI: false,
       sdkVersion: "3.0.0",
       lastUpdate: 1654257027942,
       title: "QuipuSwap uUSD | Tezos Mainnet Explorer",
-      lastCheck: 1654257027942
+      lastCheck: 1654257027942,
     },
     {
       key: "tzwrap",
@@ -128,7 +131,7 @@ export const data = {
       sdkVersion: "2.3.13",
       lastUpdate: 1649967633189,
       title: "Wrap Protocol - bridge between Ethereum and Tezos",
-      lastCheck: 1654256467252
+      lastCheck: 1654256467252,
     },
     {
       key: "tezosmandala",
@@ -141,7 +144,7 @@ export const data = {
       sdkVersion: "2.3.13",
       lastUpdate: 1650345131390,
       title: "Tezos Mandala - Digital Art NFTs",
-      lastCheck: 1654257046351
+      lastCheck: 1654257046351,
     },
     {
       key: "salsadao",
@@ -154,7 +157,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649535488325,
       title: "salsadao.xyz",
-      lastCheck: 1654257061285
+      lastCheck: 1654257061285,
     },
     {
       key: "spicyswap",
@@ -167,7 +170,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649535500894,
       title: "SpicySwap",
-      lastCheck: 1654256339826
+      lastCheck: 1654256339826,
     },
     {
       key: "plenty",
@@ -180,7 +183,7 @@ export const data = {
       sdkVersion: "3.0.0",
       lastUpdate: 1654256484892,
       title: "Plenty",
-      lastCheck: 1654256484892
+      lastCheck: 1654256484892,
     },
     {
       key: "spacefarm",
@@ -193,7 +196,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649535535327,
       title: "SpaceFarm - Tezos Yield Farms",
-      lastCheck: 1654256502980
+      lastCheck: 1654256502980,
     },
     {
       key: "farmsoil",
@@ -206,7 +209,7 @@ export const data = {
       sdkVersion: "2.3.1",
       lastUpdate: 1629290438754,
       title: "Farm Soil",
-      lastCheck: 1649859938262
+      lastCheck: 1649859938262,
     },
     {
       key: "mytezosdefi",
@@ -219,7 +222,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649535927940,
       title: "My Tezos Defi",
-      lastCheck: 1654256517307
+      lastCheck: 1654256517307,
     },
     {
       key: "pixelpotus",
@@ -232,7 +235,7 @@ export const data = {
       sdkVersion: "3.0.0",
       lastUpdate: 1654256531106,
       title: "PixelPotus | Get Started",
-      lastCheck: 1654256531106
+      lastCheck: 1654256531106,
     },
     {
       key: "tezosprofiles",
@@ -245,7 +248,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649694295378,
       title: "Tezos Profiles",
-      lastCheck: 1654257128105
+      lastCheck: 1654257128105,
     },
     {
       key: "tacoz",
@@ -257,7 +260,7 @@ export const data = {
       usingCustomUI: false,
       sdkVersion: "2.2.3",
       lastUpdate: 1624442446965,
-      title: "Tacoz.cash - Tezos first meme coin"
+      title: "Tacoz.cash - Tezos first meme coin",
     },
     {
       key: "dexter",
@@ -269,7 +272,7 @@ export const data = {
       usingCustomUI: false,
       sdkVersion: "2.2.1",
       lastUpdate: 1624442453816,
-      title: "Dexter"
+      title: "Dexter",
     },
     {
       key: "heranetwork",
@@ -282,7 +285,7 @@ export const data = {
       sdkVersion: "2.2.6",
       lastUpdate: 1624442442995,
       title: "Home | Hera",
-      lastCheck: 1654256679488
+      lastCheck: 1654256679488,
     },
     {
       key: "stakerdao",
@@ -295,7 +298,7 @@ export const data = {
       sdkVersion: "2.2.10",
       lastUpdate: 1627965496133,
       title: "Staker Farm",
-      lastCheck: 1654256695102
+      lastCheck: 1654256695102,
     },
     {
       key: "vortex",
@@ -308,7 +311,7 @@ export const data = {
       sdkVersion: "2.3.9",
       lastUpdate: 1649417899613,
       title: "Vortex Protocol",
-      lastCheck: 1654257142862
+      lastCheck: 1654257142862,
     },
     {
       key: "sebuh",
@@ -321,7 +324,7 @@ export const data = {
       sdkVersion: "2.2.10",
       lastUpdate: 1627965490971,
       title: "Sebuh.net",
-      lastCheck: 1654256708817
+      lastCheck: 1654256708817,
     },
     {
       key: "bazaarmarket",
@@ -334,7 +337,7 @@ export const data = {
       sdkVersion: "2.2.9",
       lastUpdate: 1624833280922,
       title: "Bazaar Market",
-      lastCheck: 1654257158118
+      lastCheck: 1654257158118,
     },
     {
       key: "uanon",
@@ -347,7 +350,7 @@ export const data = {
       sdkVersion: "2.3.9",
       lastUpdate: 1649686330836,
       title: "Project Uanon",
-      lastCheck: 1649967497091
+      lastCheck: 1649967497091,
     },
     {
       key: "crunchy",
@@ -360,7 +363,7 @@ export const data = {
       sdkVersion: "2.3.12",
       lastUpdate: 1649536072232,
       title: "Crunchy",
-      lastCheck: 1654256722729
+      lastCheck: 1654256722729,
     },
     {
       key: "kalamint",
@@ -373,7 +376,7 @@ export const data = {
       sdkVersion: "2.3.13",
       lastUpdate: 1650345676016,
       title: "Kalamint",
-      lastCheck: 1654256831642
+      lastCheck: 1654256831642,
     },
     {
       key: "yaynay",
@@ -386,7 +389,7 @@ export const data = {
       sdkVersion: "2.3.13",
       lastUpdate: 1650345696057,
       title: "YayNay",
-      lastCheck: 1654257172414
+      lastCheck: 1654257172414,
     },
     {
       key: "youves",
@@ -399,7 +402,7 @@ export const data = {
       sdkVersion: "3.1.0",
       lastUpdate: 1654256856226,
       title: "youves",
-      lastCheck: 1654256856226
+      lastCheck: 1654256856226,
     },
     {
       key: "bunnyknights",
@@ -412,7 +415,7 @@ export const data = {
       sdkVersion: "2.3.9",
       lastUpdate: 1654257192395,
       title: "Bunny Knights",
-      lastCheck: 1654257192395
+      lastCheck: 1654257192395,
     },
     {
       key: "objkt",
@@ -425,7 +428,7 @@ export const data = {
       sdkVersion: "3.0.0",
       lastUpdate: 1654256735926,
       title: "objkt.com | The largest NFT marketplace on Tezos",
-      lastCheck: 1654256735926
+      lastCheck: 1654256735926,
     },
     {
       key: "henext",
@@ -438,7 +441,7 @@ export const data = {
       sdkVersion: "2.3.10",
       lastUpdate: 1649417919295,
       title: "Profile",
-      lastCheck: 1654256748499
+      lastCheck: 1654256748499,
     },
     {
       key: "tezzardz",
@@ -451,7 +454,7 @@ export const data = {
       sdkVersion: "2.3.1",
       lastUpdate: 1630601869668,
       title: "Tezzardz",
-      lastCheck: 1654257210413
+      lastCheck: 1654257210413,
     },
     {
       key: "wolver",
@@ -464,7 +467,7 @@ export const data = {
       title: "Wolver.ME",
       sdkVersion: "2.3.9",
       lastUpdate: 1649417897774,
-      lastCheck: 1654257226767
+      lastCheck: 1654257226767,
     },
     {
       key: "hennycomb",
@@ -477,7 +480,7 @@ export const data = {
       title: "hennycomb",
       sdkVersion: "2.2.2",
       lastUpdate: 1649419419431,
-      lastCheck: 1654257240427
+      lastCheck: 1654257240427,
     },
     {
       key: "hic-af",
@@ -490,7 +493,7 @@ export const data = {
       title: "HIC.AF | The smoothest NFT marketplace on Tezos",
       sdkVersion: "2.3.2",
       lastUpdate: 1649419408249,
-      lastCheck: 1654257262664
+      lastCheck: 1654257262664,
     },
     {
       key: "glry-art",
@@ -503,7 +506,7 @@ export const data = {
       title: "hic et nunc - hic et nunc",
       sdkVersion: "2.3.5",
       lastUpdate: 1649419382207,
-      lastCheck: 1654257281440
+      lastCheck: 1654257281440,
     },
     {
       key: "henradio",
@@ -516,7 +519,7 @@ export const data = {
       title: "Hen Radio | NFT Music Player",
       sdkVersion: "2.3.12",
       lastUpdate: 1649915611786,
-      lastCheck: 1654257304045
+      lastCheck: 1654257304045,
     },
     {
       key: "tokenbatch",
@@ -529,7 +532,7 @@ export const data = {
       title: "FA2 Token Batch Sender",
       sdkVersion: "2.3.13",
       lastUpdate: 1649915623991,
-      lastCheck: 1654257319543
+      lastCheck: 1654257319543,
     },
     {
       key: "hicetdono",
@@ -542,7 +545,7 @@ export const data = {
       title: "hic et dono",
       sdkVersion: "2.3.13",
       lastUpdate: 1649915635537,
-      lastCheck: 1654257335975
+      lastCheck: 1654257335975,
     },
     {
       key: "nftbiker",
@@ -551,7 +554,7 @@ export const data = {
       checkUrl: "https://nftbiker.xyz/?",
       sourceCode: null,
       inactive: false,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "degenemojis",
@@ -564,7 +567,7 @@ export const data = {
       title: "Degen Emojis",
       sdkVersion: "2.3.10",
       lastUpdate: 1649419707834,
-      lastCheck: 1654257350326
+      lastCheck: 1654257350326,
     },
     {
       key: "vesselsgen0",
@@ -577,7 +580,7 @@ export const data = {
       title: "Vessels Gen-0",
       sdkVersion: "2.3.9",
       lastUpdate: 1649419415171,
-      lastCheck: 1654256883134
+      lastCheck: 1654256883134,
     },
     {
       key: "dns",
@@ -586,7 +589,7 @@ export const data = {
       checkUrl: "https://dns.xyz/login",
       sourceCode: null,
       inactive: false,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "tezid",
@@ -599,7 +602,7 @@ export const data = {
       title: "TezID",
       sdkVersion: "2.3.13",
       lastUpdate: 1650346033445,
-      lastCheck: 1654257366349
+      lastCheck: 1654257366349,
     },
     {
       key: "tezex",
@@ -608,7 +611,7 @@ export const data = {
       checkUrl: "https://tezex.io/eth_to_ethtz",
       sourceCode: null,
       inactive: true,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "worldwartez",
@@ -621,7 +624,7 @@ export const data = {
       title: "World War Tez",
       sdkVersion: "2.2.9",
       lastUpdate: 1649419402497,
-      lastCheck: 1650932138021
+      lastCheck: 1650932138021,
     },
     {
       key: "pixelposh",
@@ -634,7 +637,7 @@ export const data = {
       title: "Pixel Posh",
       sdkVersion: "2.3.5",
       lastUpdate: 1649419378583,
-      lastCheck: 1654257384455
+      lastCheck: 1654257384455,
     },
     {
       key: "goldengoals",
@@ -647,7 +650,7 @@ export const data = {
       title: "Golden Goals",
       sdkVersion: "2.3.9",
       lastUpdate: 1649419398134,
-      lastCheck: 1654256900786
+      lastCheck: 1654256900786,
     },
     {
       key: "byteblock",
@@ -660,7 +663,7 @@ export const data = {
       title: "ByteBlock",
       sdkVersion: "2.2.7",
       lastUpdate: 1649419720966,
-      lastCheck: 1654257530010
+      lastCheck: 1654257530010,
     },
     {
       key: "8bidouteztok",
@@ -673,7 +676,7 @@ export const data = {
       title: "8bidou × TezTok",
       sdkVersion: "2.3.12",
       lastUpdate: 1649536541968,
-      lastCheck: 1654257400049
+      lastCheck: 1654257400049,
     },
     {
       key: "radion",
@@ -686,7 +689,7 @@ export const data = {
       title: "RADION™",
       sdkVersion: "3.0.0",
       lastUpdate: 1650633729802,
-      lastCheck: 1650633729802
+      lastCheck: 1650633729802,
     },
     {
       key: "endlessways",
@@ -699,7 +702,7 @@ export const data = {
       title: "Endless Ways",
       sdkVersion: "2.3.13",
       lastUpdate: 1654257415349,
-      lastCheck: 1654257415349
+      lastCheck: 1654257415349,
     },
     {
       key: "magicbutton",
@@ -712,7 +715,7 @@ export const data = {
       title: "Tezos Magic Button Game: MAG token, Governance, Yield Farming",
       sdkVersion: "2.2.10",
       lastUpdate: 1649419428384,
-      lastCheck: 1654257439147
+      lastCheck: 1654257439147,
     },
     {
       key: "cryptoeasy",
@@ -721,7 +724,7 @@ export const data = {
       checkUrl: "https://cryptoeasy.io/defi",
       sourceCode: null,
       inactive: false,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "akaswap",
@@ -734,7 +737,7 @@ export const data = {
       title: "akaSwap - Home",
       sdkVersion: "3.0.0",
       lastUpdate: 1654256300961,
-      lastCheck: 1654256300961
+      lastCheck: 1654256300961,
     },
     {
       key: "hicetnuncart",
@@ -747,7 +750,7 @@ export const data = {
       title: "hic et nunc - hic et nunc",
       sdkVersion: "2.3.9",
       lastUpdate: 1649419421976,
-      lastCheck: 1650634386630
+      lastCheck: 1650634386630,
     },
     {
       key: "hicetnuncteztools",
@@ -760,7 +763,7 @@ export const data = {
       title: "hic et nunc",
       sdkVersion: "2.3.9",
       lastUpdate: 1649419386251,
-      lastCheck: 1654257452953
+      lastCheck: 1654257452953,
     },
     {
       key: "tezblock",
@@ -773,7 +776,7 @@ export const data = {
       title: "tezblock - Tezos block explorer",
       sdkVersion: "2.3.11",
       lastUpdate: 1649536716398,
-      lastCheck: 1654256813777
+      lastCheck: 1654256813777,
     },
     {
       key: "mooncakes",
@@ -786,7 +789,7 @@ export const data = {
       title: "Mooncakes",
       sdkVersion: "2.3.12",
       lastUpdate: 1649685704918,
-      lastCheck: 1654257471681
+      lastCheck: 1654257471681,
     },
     {
       key: "flamedex",
@@ -799,7 +802,7 @@ export const data = {
       title: "FlameDex - Tezos Blockchain Swap",
       sdkVersion: "2.3.12",
       lastUpdate: 1649536749917,
-      lastCheck: 1654256354521
+      lastCheck: 1654256354521,
     },
     {
       key: "matterdefi",
@@ -812,7 +815,7 @@ export const data = {
       title: "Matter DeFi - Sustainable Yield",
       sdkVersion: "2.3.12",
       lastUpdate: 1649536774927,
-      lastCheck: 1654257491771
+      lastCheck: 1654257491771,
     },
     {
       key: "tezotopia",
@@ -821,7 +824,7 @@ export const data = {
       checkUrl: "https://app.tezotopia.com/",
       sourceCode: null,
       inactive: false,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "dogami",
@@ -830,7 +833,7 @@ export const data = {
       checkUrl: "https://marketplace.dogami.com/",
       sourceCode: null,
       inactive: false,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "tzdrops",
@@ -843,7 +846,7 @@ export const data = {
       title: "tzDropz - NFT PASS Club",
       sdkVersion: "3.0.0",
       lastUpdate: 1654256785356,
-      lastCheck: 1654256785356
+      lastCheck: 1654256785356,
     },
     {
       key: "tezosdegenclub",
@@ -856,7 +859,7 @@ export const data = {
       title: "Tezos Degen Club",
       sdkVersion: "3.1.0",
       lastUpdate: 1654256916679,
-      lastCheck: 1654256916679
+      lastCheck: 1654256916679,
     },
     {
       key: "juster",
@@ -869,7 +872,7 @@ export const data = {
       title: "Explore • Juster",
       sdkVersion: "2.3.12",
       lastUpdate: 1649859630238,
-      lastCheck: 1654256931339
+      lastCheck: 1654256931339,
     },
     {
       key: "versum",
@@ -882,7 +885,7 @@ export const data = {
       title: "Versum",
       sdkVersion: "3.1.0",
       lastUpdate: 1654256945534,
-      lastCheck: 1654256945534
+      lastCheck: 1654256945534,
     },
     {
       key: "teia",
@@ -895,7 +898,7 @@ export const data = {
       title: "teia",
       sdkVersion: "2.3.12",
       lastUpdate: 1649536903107,
-      lastCheck: 1654256366930
+      lastCheck: 1654256366930,
     },
     {
       key: "8bidou",
@@ -908,7 +911,7 @@ export const data = {
       title: "八火堂 - 8bidou",
       sdkVersion: "2.3.13",
       lastUpdate: 1649944508334,
-      lastCheck: 1654256380473
+      lastCheck: 1654256380473,
     },
     {
       key: "fxhash",
@@ -921,7 +924,7 @@ export const data = {
       title: "fxhash — home",
       sdkVersion: "2.3.12",
       lastUpdate: 1649536934475,
-      lastCheck: 1654256960551
+      lastCheck: 1654256960551,
     },
     {
       key: "rarible",
@@ -930,7 +933,7 @@ export const data = {
       checkUrl: "https://rarible.com/connect",
       sourceCode: null,
       inactive: false,
-      usingCustomUI: false
+      usingCustomUI: false,
     },
     {
       key: "aliensfarm",
@@ -943,14 +946,14 @@ export const data = {
       title: "Exchange Area - Alien’s Tezos Farm",
       sdkVersion: "2.3.12",
       lastUpdate: 1649774543170,
-      lastCheck: 1654256662165
+      lastCheck: 1654256662165,
     },
     {
       key: "visualtez",
       name: "Visual Tez",
       url: "https://visualtez.com",
       checkUrl: "https://visualtez.com/deploy",
-      sourceCode: null
+      sourceCode: null,
     },
     {
       key: "barter-nftbiker",
@@ -961,7 +964,7 @@ export const data = {
       title: "NFT 4 NFT",
       sdkVersion: "2.3.12",
       lastUpdate: 1649833687397,
-      lastCheck: 1654256544420
+      lastCheck: 1654256544420,
     },
     {
       key: "pixel-debates",
@@ -972,7 +975,7 @@ export const data = {
       title: "PixelDebates | Home",
       sdkVersion: "2.3.12",
       lastUpdate: 1649833698730,
-      lastCheck: 1654257078430
+      lastCheck: 1654257078430,
     },
     {
       key: "offers-xtztools",
@@ -983,7 +986,7 @@ export const data = {
       title: "offers",
       sdkVersion: "2.3.9",
       lastUpdate: 1649833709724,
-      lastCheck: 1654257094877
+      lastCheck: 1654257094877,
     },
     {
       key: "tzcards",
@@ -994,7 +997,7 @@ export const data = {
       title: "tzcards",
       sdkVersion: "2.3.10",
       lastUpdate: 1649833722078,
-      lastCheck: 1654256560926
+      lastCheck: 1654256560926,
     },
     {
       key: "chopsumo",
@@ -1005,7 +1008,7 @@ export const data = {
       title: "chop-sumo",
       sdkVersion: "2.3.5",
       lastUpdate: 1649833736855,
-      lastCheck: 1654256576447
+      lastCheck: 1654256576447,
     },
     {
       key: "tezotrooperz",
@@ -1016,7 +1019,7 @@ export const data = {
       title: "TezoTrooperz",
       sdkVersion: "2.3.13",
       lastUpdate: 1654256325620,
-      lastCheck: 1654256325620
+      lastCheck: 1654256325620,
     },
     {
       key: "projectcygnus",
@@ -1027,14 +1030,14 @@ export const data = {
       title: "Home",
       sdkVersion: "2.3.12",
       lastUpdate: 1649855439448,
-      lastCheck: 1654257113441
+      lastCheck: 1654257113441,
     },
     {
       key: "thegolriouspandas",
       name: "The Gloriouz Pandaz Club",
       url: "https://www.thegloriouspandas.com/",
       checkUrl: "https://www.thegloriouspandas.com/",
-      sourceCode: null
+      sourceCode: null,
     },
     {
       key: "wtzio",
@@ -1045,7 +1048,7 @@ export const data = {
       title: "WTZ",
       sdkVersion: "2.3.12",
       lastUpdate: 1649835513482,
-      lastCheck: 1654256596727
+      lastCheck: 1654256596727,
     },
     {
       key: "cyberkidzclub",
@@ -1056,7 +1059,7 @@ export const data = {
       title: "Cyberkidz Club",
       sdkVersion: "2.3.5",
       lastUpdate: 1649835527002,
-      lastCheck: 1654256611453
+      lastCheck: 1654256611453,
     },
     {
       key: "artforge",
@@ -1067,7 +1070,7 @@ export const data = {
       title: "ArtForge — Generative NFTs on Tezos",
       sdkVersion: "2.3.13",
       lastUpdate: 1650634793083,
-      lastCheck: 1654256631843
+      lastCheck: 1654256631843,
     },
     {
       key: "tacodudez",
@@ -1078,7 +1081,7 @@ export const data = {
       title: "TacoDudez Crowdsale",
       sdkVersion: "2.3.9",
       lastUpdate: 1649835555425,
-      lastCheck: 1654256646510
+      lastCheck: 1654256646510,
     },
     {
       key: "tezosninja",
@@ -1089,7 +1092,7 @@ export const data = {
       title: "TNT - Tezos Ninja Troopers",
       sdkVersion: "2.3.9",
       lastUpdate: 1649835567527,
-      lastCheck: 1649967937998
-    }
-  ]
-}
+      lastCheck: 1649967937998,
+    },
+  ],
+};

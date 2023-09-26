@@ -1,5 +1,5 @@
 import React from "react";
-import { useColorMode } from '@docusaurus/theme-common';
+import { useColorMode } from "@docusaurus/theme-common";
 
 const LoadingAnimation = () => {
   const { colorMode } = useColorMode();

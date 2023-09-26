@@ -32,7 +32,7 @@ const removeImports = (code: string) => {
 
 export const runBeaconCode = (
   rawCode: string,
-  setOutput: (str: string) => void
+  setOutput: (str: string) => void,
 ) => {
   let code = rawCode;
 
@@ -47,9 +47,9 @@ export const runBeaconCode = (
     appendOutput(
       args
         .map((arg) =>
-          typeof arg === "object" ? JSON.stringify(arg, null, 2) : arg
+          typeof arg === "object" ? JSON.stringify(arg, null, 2) : arg,
         )
-        .join(" ")
+        .join(" "),
     );
   };
 

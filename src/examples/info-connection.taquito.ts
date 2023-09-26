@@ -13,13 +13,13 @@ async () => {
 
   const addressLink = await wallet.client.blockExplorer.getAddressLink(
     "tz1MJx9vhaNRSimcuXPK2rW4fLccQnDAnVKJ",
-    { type: NetworkType.MAINNET }
+    { type: NetworkType.MAINNET },
   );
   console.log("Address Link", addressLink);
 
   const txLink = await wallet.client.blockExplorer.getTransactionLink(
     "onzCRJhQ9zPC38TLGhBTghCW7WAJpfUJ2NpwbbQKbW6LeEL8RfK",
-    { type: NetworkType.MAINNET }
+    { type: NetworkType.MAINNET },
   );
   console.log("Transaction Link", txLink);
 

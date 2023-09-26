@@ -18,14 +18,14 @@ async () => {
         [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
         // [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
         [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
-      }
+      },
     ) {
       super(rpcUrls);
     }
 
     public async getAddressLink(
       address: string,
-      network: Network
+      network: Network,
     ): Promise<string> {
       const blockExplorer = await (this as any).getLinkForNetwork(network);
 
@@ -33,7 +33,7 @@ async () => {
     }
     public async getTransactionLink(
       transactionId: string,
-      network: Network
+      network: Network,
     ): Promise<string> {
       const blockExplorer = await (this as any).getLinkForNetwork(network);
 

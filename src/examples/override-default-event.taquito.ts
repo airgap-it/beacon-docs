@@ -29,7 +29,7 @@ async () => {
             abortedHandler?(): void;
             disclaimerText?: string;
           },
-          eventCallback?: any[] | undefined
+          eventCallback?: any[] | undefined,
         ): Promise<void> => {
           await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data, eventCallback);

@@ -12,7 +12,7 @@ async () => {
     async (account) => {
       // An active account has been set, update the dApp UI
       console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
-    }
+    },
   );
 
   // Check if we are connected. If not, do a permission request first.

@@ -8,13 +8,13 @@ async () => {
 
   const addressLink = await dAppClient.blockExplorer.getAddressLink(
     "tz1MJx9vhaNRSimcuXPK2rW4fLccQnDAnVKJ",
-    { type: NetworkType.MAINNET }
+    { type: NetworkType.MAINNET },
   );
   console.log("Address Link", addressLink);
 
   const txLink = await dAppClient.blockExplorer.getTransactionLink(
     "onzCRJhQ9zPC38TLGhBTghCW7WAJpfUJ2NpwbbQKbW6LeEL8RfK",
-    { type: NetworkType.MAINNET }
+    { type: NetworkType.MAINNET },
   );
   console.log("Transaction Link", txLink);
 

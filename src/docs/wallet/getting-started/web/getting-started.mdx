@@ -129,7 +129,7 @@ It can be through QR scanning, Deeplinks or Copy-Pasting the handshake message. 
 
 ```typescript
 const isBeaconMessage: (obj: unknown) => obj is P2PPairingRequest = (
-  obj: unknown
+  obj: unknown,
 ): obj is P2PPairingRequest => {
   return (
     typeof (obj as P2PPairingRequest).name === "string" &&

@@ -18,7 +18,7 @@ async () => {
   // Connect to a specific contract on the tezos blockchain.
   // Make sure the contract is deployed on the network you requested permissions for.
   const contract = await Tezos.wallet.at(
-    "KT1CpeSQKdkhWi4pinYcseCFKmDhs5M74BkU" // For this example, we use the tzcolors contract on mainnet.
+    "KT1CpeSQKdkhWi4pinYcseCFKmDhs5M74BkU", // For this example, we use the tzcolors contract on mainnet.
   );
 
   const TOKEN_ID = 0; // FA2 token id

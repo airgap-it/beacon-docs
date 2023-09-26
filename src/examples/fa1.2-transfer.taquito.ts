@@ -18,7 +18,7 @@ async () => {
   // Connect to a specific contract on the tezos blockchain.
   // Make sure the contract is deployed on the network you requested permissions for.
   const contract = await Tezos.wallet.at(
-    "KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn" // For this example, we use the TZBTC contract on mainnet.
+    "KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn", // For this example, we use the TZBTC contract on mainnet.
   );
 
   // Call a method on the contract. In this case, we use the transfer entrypoint.
@@ -29,7 +29,7 @@ async () => {
     .transfer(
       "tz1d75oB6T4zUMexzkr5WscGktZ1Nss1JrT7",
       "tz1Mj7RzPmMAqDUNFBn5t5VbXmWW4cSUAdtT",
-      1
+      1,
     )
     .send();
 

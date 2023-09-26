@@ -25,7 +25,7 @@ async () => {
   // Read the current theme of the docs page from local storage. This depends on your dApp state
   const theme = localStorage.getItem("theme");
   await dAppClient.setColorMode(
-    theme === "dark" ? ColorMode.DARK : ColorMode.LIGHT
+    theme === "dark" ? ColorMode.DARK : ColorMode.LIGHT,
   );
 
   // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
@@ -67,7 +67,7 @@ async () => {
   // Let's generate a link to see the transaction on a block explorer
   const explorerLink = await dAppClient.blockExplorer.getTransactionLink(
     response.transactionHash,
-    network
+    network,
   );
 
   console.log("Block Explorer:", explorerLink);

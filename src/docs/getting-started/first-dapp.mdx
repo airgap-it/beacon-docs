@@ -2,7 +2,6 @@
 title: First dApp
 ---
 
-
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -39,8 +38,6 @@ npm install --save @taquito/taquito @taquito/beacon-wallet
 You can then import the `beacon-sdk` package and create a `DAppClient` instance. This instance will be used throughout your dApp to interact with the users wallet.
 Once created, you can send a permission request to prompt the user to connect to his wallet.
 
-
-
 <!-- embedme getting-started-permission-request.beacon.ts -->
 
 ```ts
@@ -52,8 +49,6 @@ Once created, you can send a permission request to prompt the user to connect to
 ```ts
 // TODO
 ```
-
-
 
 After the connection is successfully established and the user has shared his account, the result will be returned.
 
@@ -67,8 +62,6 @@ Now let's introduce a check to see if the SDK is already connected to the dApp.
 This code should be run after the page is loaded to get the users address and show it in your UI.
 If the following code returns an address, there is no need to send another permission request, unless you want to pair a different account.
 
-
-
 <!-- embedme getting-started-active-account.beacon.ts -->
 
 ```ts
@@ -81,13 +74,9 @@ If the following code returns an address, there is no need to send another permi
 // TODO
 ```
 
-
-
 The `beacon-sdk` is now fully set up and ready to receive operation requests.
 
 > If you want to add reactivity to your DApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
-
-
 
 <!-- embedme getting-started-active-account-events.beacon.ts -->
 
@@ -101,11 +90,7 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
 // TODO
 ```
 
-
-
 ## Operation Request
-
-
 
 <!-- embedme getting-started-operation-request.beacon.ts -->
 
@@ -119,11 +104,7 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
 // TODO
 ```
 
-
-
 > Alternatively with `BeaconEvent.ACTIVE_ACCOUNT_SET`
-
-
 
 <!-- embedme getting-started-operation-request-events.beacon.ts -->
 
@@ -136,8 +117,6 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
 ```ts
 // TODO
 ```
-
-
 
 ## User Interaction Best Practice
 
