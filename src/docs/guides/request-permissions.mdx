@@ -1,8 +1,18 @@
 ---
 title: Request Permissions
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme request-permissions.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoRP"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, PermissionScope } from "@airgap/beacon-sdk";
@@ -26,7 +36,9 @@ async () => {
 };
 ```
 
-<!-- embedme request-permissions.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -53,3 +65,6 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>

@@ -1,8 +1,18 @@
 ---
 title: Subscribe To Event
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme subscribe-to-event.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSTE"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
@@ -27,7 +37,9 @@ async () => {
 };
 ```
 
-<!-- embedme subscribe-to-event.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -54,3 +66,6 @@ async () => {
   await wallet.client.requestPermissions();
 };
 ```
+
+</TabItem>
+</Tabs>

@@ -1,8 +1,18 @@
 ---
 title: Active Account
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme read-previous-state.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoAA"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient } from "@airgap/beacon-sdk";
@@ -24,7 +34,9 @@ async () => {
 };
 ```
 
-<!-- embedme read-previous-state.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -49,3 +61,6 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>

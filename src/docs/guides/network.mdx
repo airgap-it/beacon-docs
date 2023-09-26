@@ -1,10 +1,20 @@
 ---
 title: Network
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 ## Mainnet With Custom RPC
 
-<!-- embedme network-mainnet-with-url.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoN1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
@@ -22,7 +32,9 @@ async () => {
 };
 ```
 
-<!-- embedme network-mainnet-with-url.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -45,9 +57,20 @@ async () => {
 };
 ```
 
+</TabItem>
+</Tabs>
+
 ## Testnet
 
-<!-- embedme network-edonet.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoN2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
@@ -67,7 +90,9 @@ async () => {
 };
 ```
 
-<!-- embedme network-edonet.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -91,10 +116,21 @@ async () => {
   });
 };
 ```
+
+</TabItem>
+</Tabs>
 
 ## Testnet With Custom RPC
 
-<!-- embedme network-edonet-with-url.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoN3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
@@ -115,7 +151,9 @@ async () => {
 };
 ```
 
-<!-- embedme network-edonet-with-url.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -141,9 +179,20 @@ async () => {
 };
 ```
 
+</TabItem>
+</Tabs>
+
 ## Custom Network
 
-<!-- embedme network-custom-network.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoN4"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
@@ -165,7 +214,9 @@ async () => {
 };
 ```
 
-<!-- embedme network-custom-network.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -191,3 +242,6 @@ async () => {
   });
 };
 ```
+
+</TabItem>
+</Tabs>

@@ -99,7 +99,15 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 You can overwrite all of the default UI elements by doing the following.
 
-<!-- embedme disable-all-ui.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoUE1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import {
@@ -133,7 +141,9 @@ async () => {
 };
 ```
 
-<!-- embedme disable-all-ui.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { BeaconEvent, defaultEventCallbacks } from "@airgap/beacon-sdk";
@@ -168,11 +178,22 @@ async () => {
 };
 ```
 
+</TabItem>
+</Tabs>
+
 You can also add your own logic to specific events and still keep the original behaviour.
 
 The same can be achieved without overwriting the default event handler by [subscribing to an event](/guides/subscribe-to-event). This method is preferred, if possible.
 
-<!-- embedme override-default-event.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoUE2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import {
@@ -219,7 +240,9 @@ async () => {
 };
 ```
 
-<!-- embedme override-default-event.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -270,6 +293,9 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>
 
 The closing of the pairing alert can not be listened to by default. The reason for this is the delay in the P2P connections.
 It is possible that a user scans the pairing QR code with his wallet and then closes the alert while waiting for the connection to be established.
@@ -277,7 +303,15 @@ If the dApp interprets the "closing" of the alert as an abort, and a few seconds
 
 If you still want to be notified of the closing of the pairing window, you can do it in the following way, while keeping the default behaviour.
 
-<!-- embedme override-alert-aborted-handler.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoUE3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import {
@@ -333,7 +367,9 @@ async () => {
 };
 ```
 
-<!-- embedme override-alert-aborted-handler.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -393,3 +429,6 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>

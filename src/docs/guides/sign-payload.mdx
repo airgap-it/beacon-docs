@@ -1,10 +1,20 @@
 ---
 title: Sign Payload
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 ## HEX Prefixed With 05
 
-<!-- embedme sign-payload-micheline.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSP1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
@@ -24,7 +34,9 @@ async () => {
 };
 ```
 
-<!-- embedme sign-payload-micheline.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -48,10 +60,21 @@ async () => {
   console.log(`Signature: ${response.signature}`);
 };
 ```
+
+</TabItem>
+</Tabs>
 
 ## HEX Prefixed With 03
 
-<!-- embedme sign-payload-operation.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSP2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
@@ -68,7 +91,9 @@ async () => {
 };
 ```
 
-<!-- embedme sign-payload-operation.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -89,6 +114,9 @@ async () => {
   console.log(`Signature: ${response.signature}`);
 };
 ```
+
+</TabItem>
+</Tabs>
 
 ## RAW
 
@@ -96,7 +124,15 @@ async () => {
 Not all wallets support the `RAW` signing type. Additionally, the signatures can be different depending on the wallet that was used. For the preferred way of signing arbitrary data, please check the docs here: https://tezostaquito.io/docs/signing/#generating-a-signature-with-beacon-sdk
 :::
 
-<!-- embedme sign-payload-raw.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSP3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
@@ -113,7 +149,9 @@ async () => {
 };
 ```
 
-<!-- embedme sign-payload-raw.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -134,3 +172,6 @@ async () => {
   console.log(`Signature: ${response.signature}`);
 };
 ```
+
+</TabItem>
+</Tabs>

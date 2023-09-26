@@ -1,11 +1,21 @@
 ---
 title: Different Beacon Node
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 You can configure the DApp or Wallet to connect to a different beacon node.
 Make sure the servers you use are whitelisted in the beacon network and federation is working correctly.
 
-<!-- embedme different-node.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoDN"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient } from "@airgap/beacon-sdk";
@@ -26,7 +36,8 @@ async () => {
 };
 ```
 
-<!-- embedme different-node.taquito.ts -->
+</TabItem>
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -49,6 +60,9 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>
 
 :::tip
 The beacon-sdk deterministically chooses one of the nodes in the array. Changing the array of nodes will most likely lead to users losing their connection.

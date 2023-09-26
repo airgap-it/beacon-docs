@@ -1,8 +1,19 @@
 ---
 title: Custom Block Explorer
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme custom-block-explorer.beacon.ts -->
+
+<Tabs
+  groupId="beaconOrTaquitoCBE"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import {
@@ -13,22 +24,22 @@ import {
 } from "@airgap/beacon-sdk";
 
 async () => {
-  class TzStatsBlockExplorer extends BlockExplorer {
-    constructor(
-      public readonly rpcUrls: { [key in NetworkType]: string } = {
-        [NetworkType.MAINNET]: "https://tzstats.com/",
-        [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
-        [NetworkType.EDONET]: "https://edo.tzstats.com/",
-        [NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
-        [NetworkType.GRANADANET]: "https://granada.tzstats.com/",
-        [NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
-        [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
-        // [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
-        [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
-      },
-    ) {
-      super(rpcUrls);
-    }
+class TzStatsBlockExplorer extends BlockExplorer {
+constructor(
+public readonly rpcUrls: { [key in NetworkType]: string } = {
+[NetworkType.MAINNET]: "https://tzstats.com/",
+[NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
+[NetworkType.EDONET]: "https://edo.tzstats.com/",
+[NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
+[NetworkType.GRANADANET]: "https://granada.tzstats.com/",
+[NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
+[NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
+// [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
+[NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
+},
+) {
+super(rpcUrls);
+}
 
     public async getAddressLink(
       address: string,
@@ -46,16 +57,19 @@ async () => {
 
       return `${blockExplorer}/${transactionId}`;
     }
-  }
 
-  const dAppClient = new DAppClient({
-    name: "Beacon Docs",
-    blockExplorer: new TzStatsBlockExplorer() as any,
-  });
+}
+
+const dAppClient = new DAppClient({
+name: "Beacon Docs",
+blockExplorer: new TzStatsBlockExplorer() as any,
+});
 };
-```
 
-<!-- embedme custom-block-explorer.taquito.ts -->
+```
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { BlockExplorer, NetworkType, Network } from "@airgap/beacon-sdk";
@@ -107,3 +121,6 @@ async () => {
   Tezos.setWalletProvider(wallet);
 };
 ```
+
+</TabItem>
+</Tabs>

@@ -1,6 +1,8 @@
 ---
 title: Advanced Example
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 The following example will show:
 
@@ -10,7 +12,15 @@ The following example will show:
 4. How to send an operation request
 5. How to "disconnect" a wallet
 
-<!-- embedme example-advanced.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoAE"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import {
@@ -93,7 +103,9 @@ async () => {
 };
 ```
 
-<!-- embedme example-advanced.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -176,3 +188,6 @@ async () => {
   await wallet.clearActiveAccount();
 };
 ```
+
+</TabItem>
+</Tabs>

@@ -18,7 +18,7 @@
     "pretty-docs": "npx prettier --ignore-unknown --write 'docs/**/*'",
     "remove-folders": "rm -rf build-docs && rm -rf docs",
     "clear-folders": "npm run remove-folders && mkdir build-docs && mkdir docs",
-    "embed-code": "npm run prettier && tsc --module es2015 --target es2015 --moduleResolution node --allowSyntheticDefaultImports true src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && rm -r docs && mv build-docs docs && npm run pretty-docs"
+    "embed-code": "tsc --module es2015 --target es2015 --moduleResolution node --allowSyntheticDefaultImports true src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && rm -r docs && mv build-docs docs"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^4.0.10",

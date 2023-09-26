@@ -1,8 +1,18 @@
 ---
 title: Broadcast Request
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme broadcast-request.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoBR"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient } from "@airgap/beacon-sdk";
@@ -20,7 +30,9 @@ async () => {
 };
 ```
 
-<!-- embedme broadcast-request.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -41,3 +53,6 @@ async () => {
   console.log("transaction hash", response.transactionHash);
 };
 ```
+
+</TabItem>
+</Tabs>

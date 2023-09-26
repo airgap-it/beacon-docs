@@ -1,8 +1,18 @@
 ---
 title: Disconnecting a Wallet
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme disconnect-wallet.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoDAW"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient } from "@airgap/beacon-sdk";
@@ -21,7 +31,9 @@ async () => {
 };
 ```
 
-<!-- embedme disconnect-wallet.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -46,3 +58,6 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>

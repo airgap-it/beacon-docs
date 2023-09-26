@@ -2,13 +2,24 @@
 title: Simple Example
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 The following example will show:
 
 1. How to connect a dApp to a wallet
 2. How to re-use an existing connection after a page refreshed
 3. How to send an operation request
 
-<!-- embedme example-simple.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSE"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
@@ -47,7 +58,9 @@ async () => {
 };
 ```
 
-<!-- embedme example-simple.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -88,3 +101,6 @@ async () => {
   console.log("Operation Hash: ", hash);
 };
 ```
+
+</TabItem>
+</Tabs>

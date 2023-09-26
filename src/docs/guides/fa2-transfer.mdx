@@ -1,8 +1,18 @@
 ---
 title: FA2 Transfer
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme not-recommended.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoFA2"
+  defaultValue="taquito"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 // Complex contract calls should be done with Taquito.
@@ -10,7 +20,9 @@ title: FA2 Transfer
 // See the "Simple Contract Call" page for an example without Taquito.
 ```
 
-<!-- embedme fa2-transfer.taquito.ts -->
+</TabItem>
+
+  <TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -59,3 +71,6 @@ async () => {
   return result.opHash;
 };
 ```
+
+</TabItem>
+</Tabs>

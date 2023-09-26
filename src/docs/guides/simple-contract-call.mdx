@@ -1,6 +1,8 @@
 ---
 title: Simple Contract Call
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 The following example shows how to do a simple contract call with Beacon.
 
@@ -10,7 +12,15 @@ The `beacon-sdk` itself does not do any type checking on the parameters you pass
 
 The wallet will process and validate the operation. If there are any errors, they have to be displayed in the wallet. `run_operation` errors can optionally be sent back to the dApp as well.
 
-<!-- embedme simple-contract-call.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSCC"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
@@ -61,7 +71,9 @@ async () => {
 };
 ```
 
-<!-- embedme simple-contract-call.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -94,3 +106,6 @@ async () => {
   }
 };
 ```
+
+</TabItem>
+</Tabs>

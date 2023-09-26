@@ -1,8 +1,18 @@
 ---
 title: Client Info
 ---
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<!-- embedme info-version.beacon.ts -->
+<Tabs
+  groupId="beaconOrTaquitoSI1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { BEACON_VERSION, SDK_VERSION } from "@airgap/beacon-sdk";
@@ -13,7 +23,9 @@ async () => {
 };
 ```
 
-<!-- embedme info-version.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { BEACON_VERSION, SDK_VERSION } from "@airgap/beacon-sdk";
@@ -24,7 +36,18 @@ async () => {
 };
 ```
 
-<!-- embedme info-client.beacon.ts -->
+</TabItem>
+</Tabs>
+
+<Tabs
+  groupId="beaconOrTaquitoSI2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient } from "@airgap/beacon-sdk";
@@ -37,7 +60,9 @@ async () => {
 };
 ```
 
-<!-- embedme info-client.taquito.ts -->
+</TabItem>
+
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -54,7 +79,18 @@ async () => {
 };
 ```
 
-<!-- embedme info-connection.beacon.ts -->
+</TabItem>
+</Tabs>
+
+<Tabs
+  groupId="beaconOrTaquitoSI3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
@@ -90,7 +126,8 @@ async () => {
 };
 ```
 
-<!-- embedme info-connection.taquito.ts -->
+</TabItem>
+<TabItem value="taquito">
 
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
@@ -130,3 +167,6 @@ async () => {
   console.log("Own Metadata:", ownMetadata);
 };
 ```
+
+</TabItem>
+</Tabs>
