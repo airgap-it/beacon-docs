@@ -8,7 +8,7 @@ title: Client Info
 
 <!-- embedme info-version.beacon.ts -->
 
-```ts live
+```ts
 import { BEACON_VERSION, SDK_VERSION } from "@airgap/beacon-sdk";
 
 console.log("SDK Version", SDK_VERSION);
@@ -17,7 +17,7 @@ console.log("Beacon Version", BEACON_VERSION);
 
 <!-- embedme info-version.taquito.ts -->
 
-```ts live
+```ts
 import { BEACON_VERSION, SDK_VERSION } from "@airgap/beacon-sdk";
 
 console.log("SDK Version", SDK_VERSION);
@@ -30,7 +30,7 @@ console.log("Beacon Version", BEACON_VERSION);
 
 <!-- embedme info-client.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -41,7 +41,7 @@ console.log(`Connected Peers:`, await dAppClient.getPeers());
 
 <!-- embedme info-client.taquito.ts -->
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -60,7 +60,7 @@ console.log(`Connected Peers:`, await wallet.client.getPeers());
 
 <!-- embedme info-connection.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -94,7 +94,7 @@ console.log("Own Metadata:", ownMetadata);
 
 <!-- embedme info-connection.taquito.ts -->
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";

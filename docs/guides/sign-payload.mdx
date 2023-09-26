@@ -10,7 +10,7 @@ title: Sign Payload
 
 <!-- embedme sign-payload-micheline.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -28,7 +28,7 @@ console.log(`Signature: ${response.signature}`);
 
 <!-- embedme sign-payload-micheline.taquito.ts -->
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
@@ -57,7 +57,7 @@ console.log(`Signature: ${response.signature}`);
 
 <!-- embedme sign-payload-operation.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -72,7 +72,7 @@ console.log(`Signature: ${response.signature}`);
 
 <!-- embedme sign-payload-operation.taquito.ts -->
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
@@ -102,7 +102,7 @@ Not all wallets support the `RAW` signing type. Additionally, the signatures can
 
 <!-- embedme sign-payload-raw.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -117,7 +117,7 @@ console.log(`Signature: ${response.signature}`);
 
 <!-- embedme sign-payload-raw.taquito.ts -->
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";

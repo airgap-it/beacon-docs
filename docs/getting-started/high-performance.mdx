@@ -19,7 +19,7 @@ Every time a user connects their wallet and shares permission to use an account,
 
 <!-- embedme getting-started-active-account.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -45,7 +45,7 @@ An even better approach is to add a node selection to your dApp, including a way
 
 <!-- embedme example-high-performance-multiple-nodes.ts -->
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -70,7 +70,7 @@ In case your dApp is focussed around a specific time (eg. NFT drop or a countdow
 
 <!-- embedme getting-started-permission-request.beacon.ts -->
 
-```ts live
+```ts
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -92,7 +92,7 @@ Whenever doing a call in taquito, it internally has to fetch data from the chain
 
 When the `beacon-sdk` is used without taquito, no connection to any RPC is required. So if your dApp offers only simple functionality (eg. only calling the `mint` entrypoint with one parameter), it is more performant to construct the contract call yourself and send it to the Beacon Network direcly, without going through taquito first.
 
-```ts live
+```ts
 const result = await dAppClient.requestOperation({
   operationDetails: [
     {
@@ -118,7 +118,7 @@ Taquito offers a couple of optional features to reduce the number of network req
 
 #### Enable caching
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { RpcClient, RpcClientCache } from "@taquito/rpc";
 
@@ -130,7 +130,7 @@ More information in the official [Taquito RPC Caching Docs](https://tezostaquito
 
 #### Provide contract data locally
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { ContractsLibrary } from "@taquito/contracts-library";
 
@@ -147,7 +147,7 @@ More information in the official [Taquito Contracts Library Docs](https://tezost
 
 #### Local Packing
 
-```ts live
+```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { MichelCodecPacker } from "@taquito/taquito";
 
@@ -163,7 +163,7 @@ Depending on the contract that is used on your dApp, the `storage_limit` or `gas
 
 The contract developer should be able to give rough estimates of what the `storage_limit` and `gas_limit` should be. If they change frequently, the dApp should provide a preset for those parameters. Beacon will send those presets to the Wallet, which will take them into consideration when preparing the operation.
 
-```ts live
+```ts
 const result = await dAppClient.requestOperation({
   operationDetails: [
     {
