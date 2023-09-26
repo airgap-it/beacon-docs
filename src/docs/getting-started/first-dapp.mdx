@@ -2,7 +2,7 @@
 title: First dApp
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -39,21 +39,21 @@ npm install --save @taquito/taquito @taquito/beacon-wallet
 You can then import the `beacon-sdk` package and create a `DAppClient` instance. This instance will be used throughout your dApp to interact with the users wallet.
 Once created, you can send a permission request to prompt the user to connect to his wallet.
 
-<RunnableCode>
+
 
 <!-- embedme getting-started-permission-request.beacon.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
 <!-- embedme getting-started-permission-request.taquito.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
-</RunnableCode>
+
 
 After the connection is successfully established and the user has shared his account, the result will be returned.
 
@@ -67,77 +67,77 @@ Now let's introduce a check to see if the SDK is already connected to the dApp.
 This code should be run after the page is loaded to get the users address and show it in your UI.
 If the following code returns an address, there is no need to send another permission request, unless you want to pair a different account.
 
-<RunnableCode>
+
 
 <!-- embedme getting-started-active-account.beacon.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
 <!-- embedme getting-started-active-account.taquito.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
-</RunnableCode>
+
 
 The `beacon-sdk` is now fully set up and ready to receive operation requests.
 
 > If you want to add reactivity to your DApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
 
-<RunnableCode>
+
 
 <!-- embedme getting-started-active-account-events.beacon.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
 <!-- embedme getting-started-active-account-events.taquito.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
-</RunnableCode>
+
 
 ## Operation Request
 
-<RunnableCode>
+
 
 <!-- embedme getting-started-operation-request.beacon.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
 <!-- embedme getting-started-operation-request.taquito.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
-</RunnableCode>
+
 
 > Alternatively with `BeaconEvent.ACTIVE_ACCOUNT_SET`
 
-<RunnableCode>
+
 
 <!-- embedme getting-started-operation-request-events.beacon.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
 <!-- embedme getting-started-operation-request-events.taquito.ts -->
 
-```ts
+```ts live
 // TODO
 ```
 
-</RunnableCode>
+
 
 ## User Interaction Best Practice
 

@@ -2,13 +2,13 @@
 title: FA1.2 Transfer
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 
-<RunnableCode>
+
+
 
 <!-- embedme not-recommended.beacon.ts -->
 
-```ts
+```ts live
 // Complex contract calls should be done with Taquito.
 // It is possible to do them without taquito, but then you have to construct the parameters yourself.
 // See the "Simple Contract Call" page for an example without Taquito.
@@ -16,7 +16,7 @@ import { RunnableCode } from "@site/src/components/RunnableCode";
 
 <!-- embedme fa1.2-transfer.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -52,4 +52,4 @@ const result = await contract.methods
 return result.opHash;
 ```
 
-</RunnableCode>
+

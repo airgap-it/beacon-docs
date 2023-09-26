@@ -5,13 +5,13 @@ title: Different Beacon Node
 You can configure the DApp or Wallet to connect to a different beacon node.
 Make sure the servers you use are whitelisted in the beacon network and federation is working correctly.
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 
-<RunnableCode>
+
+
 
 <!-- embedme different-node.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -30,7 +30,7 @@ try {
 
 <!-- embedme different-node.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -50,7 +50,7 @@ try {
 }
 ```
 
-</RunnableCode>
+
 
 :::tip
 The beacon-sdk deterministically chooses one of the nodes in the array. Changing the array of nodes will most likely lead to users losing their connection.

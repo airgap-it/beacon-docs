@@ -2,13 +2,13 @@
 title: Request Permissions
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 
-<RunnableCode>
+
+
 
 <!-- embedme request-permissions.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, PermissionScope } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -30,7 +30,7 @@ try {
 
 <!-- embedme request-permissions.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { PermissionScope } from "@airgap/beacon-sdk";
@@ -54,4 +54,4 @@ try {
 }
 ```
 
-</RunnableCode>
+

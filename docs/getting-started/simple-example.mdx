@@ -2,7 +2,7 @@
 title: Simple Example
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
+
 
 The following example will show:
 
@@ -10,11 +10,11 @@ The following example will show:
 2. How to re-use an existing connection after a page refreshed
 3. How to send an operation request
 
-<RunnableCode>
+
 
 <!-- embedme example-simple.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -51,7 +51,7 @@ console.log("Operation Hash: ", response.transactionHash);
 
 <!-- embedme example-simple.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosOperationType } from "@airgap/beacon-sdk";
@@ -89,4 +89,4 @@ const hash = await wallet.sendOperations([
 console.log("Operation Hash: ", hash);
 ```
 
-</RunnableCode>
+

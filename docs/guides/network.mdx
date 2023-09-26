@@ -2,15 +2,15 @@
 title: Network
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
+
 
 ## Mainnet With Custom RPC
 
-<RunnableCode className="padding-bottom--lg">
+
 
 <!-- embedme network-mainnet-with-url.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -26,7 +26,7 @@ const result = await dAppClient.requestPermissions({
 
 <!-- embedme network-mainnet-with-url.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -45,15 +45,15 @@ const result = await wallet.client.requestPermissions({
 });
 ```
 
-</RunnableCode>
+
 
 ## Testnet
 
-<RunnableCode className="padding-bottom--lg">
+
 
 <!-- embedme network-edonet.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -71,7 +71,7 @@ const result = await dAppClient.requestPermissions({
 
 <!-- embedme network-edonet.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -92,15 +92,15 @@ const result = await wallet.client.requestPermissions({
 });
 ```
 
-</RunnableCode>
+
 
 ## Testnet With Custom RPC
 
-<RunnableCode className="padding-bottom--lg">
+
 
 <!-- embedme network-edonet-with-url.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -119,7 +119,7 @@ const result = await dAppClient.requestPermissions({
 
 <!-- embedme network-edonet-with-url.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -141,15 +141,15 @@ const result = await wallet.client.requestPermissions({
 });
 ```
 
-</RunnableCode>
+
 
 ## Custom Network
 
-<RunnableCode>
+
 
 <!-- embedme network-custom-network.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -169,7 +169,7 @@ const result = await dAppClient.requestPermissions({
 
 <!-- embedme network-custom-network.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -192,4 +192,4 @@ const result = await wallet.client.requestPermissions({
 });
 ```
 
-</RunnableCode>
+

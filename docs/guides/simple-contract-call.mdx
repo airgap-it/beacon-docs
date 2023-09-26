@@ -2,7 +2,7 @@
 title: Simple Contract Call
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
+
 
 The following example shows how to do a simple contract call with Beacon.
 
@@ -12,11 +12,11 @@ The `beacon-sdk` itself does not do any type checking on the parameters you pass
 
 The wallet will process and validate the operation. If there are any errors, they have to be displayed in the wallet. `run_operation` errors can optionally be sent back to the dApp as well.
 
-<RunnableCode>
+
 
 <!-- embedme simple-contract-call.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 // Create a new DAppClient instance
@@ -65,7 +65,7 @@ try {
 
 <!-- embedme simple-contract-call.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -95,4 +95,4 @@ try {
 }
 ```
 
-</RunnableCode>
+

@@ -2,13 +2,13 @@
 title: Broadcast Request
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 
-<RunnableCode>
+
+
 
 <!-- embedme broadcast-request.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -24,7 +24,7 @@ console.log("transaction hash", response.transactionHash);
 
 <!-- embedme broadcast-request.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -42,4 +42,4 @@ const response = await wallet.client.requestBroadcast({
 console.log("transaction hash", response.transactionHash);
 ```
 
-</RunnableCode>
+

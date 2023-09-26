@@ -1,7 +1,7 @@
 import { SDK_VERSION } from "@airgap/beacon-sdk";
 import React from "react";
 
-import data from "../data/dapps.json";
+import { data } from "../data/dapps.js";
 
 const getDate = (date: number) => {
   const d = new Date(date);

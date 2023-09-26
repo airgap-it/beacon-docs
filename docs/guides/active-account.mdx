@@ -2,13 +2,13 @@
 title: Active Account
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 
-<RunnableCode>
+
+
 
 <!-- embedme read-previous-state.beacon.ts -->
 
-```ts
+```ts live
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -28,7 +28,7 @@ if (activeAccount) {
 
 <!-- embedme read-previous-state.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -50,4 +50,4 @@ if (activeAccount) {
 }
 ```
 
-</RunnableCode>
+

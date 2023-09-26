@@ -3,15 +3,20 @@ title: DApps
 slug: /dapps
 ---
 
-import DAppTable from "@site/src/components/DAppTable";
-import { SDK_VERSION } from "@airgap/beacon-sdk";
-
 This is a list of all the dApps that are using beacon and their version. If a dApp is missing, please let us know.
 
 dApps should always use the latest `beacon-sdk` version for the latest features and fixes.
 
-<p>
-  The most recent version of the beacon-sdk is <b>{SDK_VERSION}</b>.
-</p>
+```ts noInline
+import { SDK_VERSION } from "@airgap/beacon-sdk";
+import DAppTable from "@site/src/components/DAppTable";
 
-<DAppTable />
+render(
+  <>
+    <p>
+      The most recent version of the beacon-sdk is <b>{SDK_VERSION}</b>.
+    </p>
+    <DAppTable />
+  </>
+)
+```

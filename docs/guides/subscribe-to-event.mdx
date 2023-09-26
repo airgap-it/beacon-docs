@@ -2,13 +2,13 @@
 title: Subscribe To Event
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 
-<RunnableCode>
+
+
 
 <!-- embedme subscribe-to-event.beacon.ts -->
 
-```ts
+```ts live
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -31,7 +31,7 @@ await dAppClient.requestPermissions();
 
 <!-- embedme subscribe-to-event.taquito.ts -->
 
-```ts
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";
@@ -55,4 +55,4 @@ wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
 await wallet.client.requestPermissions();
 ```
 
-</RunnableCode>
+
