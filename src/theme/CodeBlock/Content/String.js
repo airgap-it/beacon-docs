@@ -93,7 +93,7 @@ export default function CodeBlockString({
           <CopyButton className={styles.codeButton} code={code} />
         </div>
       </div>
-      {(metastring ?? "").includes("code") && <button className={styles['run_button']} onClick={() => ExecuteExample.execute(code)}>Run code</button>}
+      {(metastring ?? "").includes("code") && <button className={styles['run_button']} onClick={() => ExecuteExample.execute(title ?? '')}>Run code</button>}
     </Container>
   );
 }

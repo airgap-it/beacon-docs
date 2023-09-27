@@ -3,10 +3,10 @@ import {
   BeaconEvent,
   DAppClient,
   TezosOperationType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/cjs";
 /// END
 
-async () => {
+const getActiveAccountBeaconWithEvents = async () => {
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -41,3 +41,5 @@ async () => {
 
   /// END
 };
+
+export default getActiveAccountBeaconWithEvents;

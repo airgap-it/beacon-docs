@@ -48,7 +48,7 @@ Once created, you can send a permission request to prompt the user to connect to
 >
   <TabItem value="beacon">
 
-```ts code
+```ts code title="Beacon permission request"
 import { DAppClient } from "@airgap/beacon-sdk";
 
 async () => {
@@ -68,7 +68,7 @@ async () => {
 
 <TabItem value="taquito">
 
-```ts code
+```ts code title="Taquito permission request"
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -113,7 +113,7 @@ If the following code returns an address, there is no need to send another permi
 >
   <TabItem value="beacon">
 
-```ts code
+```ts code title="Beacon get active account"
 import { DAppClient } from "@airgap/beacon-sdk";
 
 async () => {
@@ -137,7 +137,7 @@ async () => {
 
 <TabItem value="taquito">
 
-```ts code
+```ts code title="Taquito get active account"
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -175,9 +175,9 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
     { label: "Taquito", value: "taquito" },
   ]}
 >
-  <TabItem value="beacon">
+  <TabItem value="Beacon get active account with events">
 
-```ts code
+```ts code title="title"
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
 async () => {
@@ -201,9 +201,9 @@ async () => {
 ```
 
 </TabItem>
-<TabItem value="taquito">
+<TabItem value="Taquito get active account with events">
 
-```ts code
+```ts code title="title"
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";
@@ -236,7 +236,7 @@ async () => {
 >
   <TabItem value="beacon">
 
-```ts code
+```ts code title="title"
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 async () => {
@@ -272,7 +272,7 @@ async () => {
 
 <TabItem value="taquito">
 
-```ts code
+```ts code title="title"
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
@@ -322,7 +322,7 @@ async () => {
 >
   <TabItem value="beacon">
 
-```ts code
+```ts code title="title"
 import {
   BeaconEvent,
   DAppClient,
@@ -367,7 +367,7 @@ async () => {
 
  <TabItem value="taquito">
 
-```ts code
+```ts code title="title"
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {

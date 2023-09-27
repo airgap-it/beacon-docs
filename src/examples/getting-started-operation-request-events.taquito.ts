@@ -8,7 +8,7 @@ import {
 } from "@airgap/beacon-sdk";
 /// END
 
-async () => {
+const getActiveAccountTaquitoWithEvents = async () => {
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -44,3 +44,4 @@ async () => {
 
   /// END
 };
+export default getActiveAccountTaquitoWithEvents;
