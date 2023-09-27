@@ -8,7 +8,7 @@ import {
 } from "../node_modules/beacon-sdk/cjs";
 /// END
 
-const getActiveAccountTaquitoWithEvents = async () => {
+const getOperationRequestTaquitoWithEvents = async () => {
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -44,4 +44,4 @@ const getActiveAccountTaquitoWithEvents = async () => {
 
   /// END
 };
-export default getActiveAccountTaquitoWithEvents;
+export default getOperationRequestTaquitoWithEvents;

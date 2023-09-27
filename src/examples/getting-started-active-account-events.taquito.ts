@@ -4,7 +4,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "../node_modules/beacon-sdk/cjs";
 /// END
 
-async () => {
+const getActiveAccountTaquitoWithEvents = async () => {
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -18,3 +18,4 @@ async () => {
 
   /// END
 };
+export default getActiveAccountTaquitoWithEvents;

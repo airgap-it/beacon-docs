@@ -1,9 +1,11 @@
+import getActiveAccountBeaconWithEvents from "./examples/getting-started-active-account-events.beacon";
+import getActiveAccountTaquitoWithEvents from "./examples/getting-started-active-account-events.taquito";
 import getActiveAccountBeacon from "./examples/getting-started-active-account.beacon";
 import getActiveAccountTaquito from "./examples/getting-started-active-account.taquito";
-import getActiveAccountBeaconWithEvents from "./examples/getting-started-operation-request-events.beacon";
-import getActiveAccountTaquitoWithEvents from "./examples/getting-started-operation-request-events.taquito";
-// import requestOperationBeacon from "./examples/getting-started-operation-request.beacon";
-// import requestOperationTaquito from "./examples/getting-started-operation-request.taquito";
+import getOperationRequestBeaconWithEvents from "./examples/getting-started-operation-request-events.beacon";
+import getOperationRequestTaquitoWithEvents from "./examples/getting-started-operation-request-events.taquito";
+import requestOperationBeacon from "./examples/getting-started-operation-request.beacon";
+import requestOperationTaquito from "./examples/getting-started-operation-request.taquito";
 import requestPermissionsBeacon from "./examples/getting-started-permission-request.beacon";
 import requestPermissionsTaquito from "./examples/getting-started-permission-request.taquito";
 
@@ -28,12 +30,18 @@ export class ExecuteExample {
       case "Taquito get active account with events":
         await getActiveAccountTaquitoWithEvents();
         break;
-      // case "Beacon request operation":
-      //   await requestOperationBeacon();
-      //   break;
-      // case "Taquito request operation":
-      //   await requestOperationTaquito();
-      //   break;
+      case "Beacon request operation":
+        await requestOperationBeacon();
+        break;
+      case "Taquito request operation":
+        await requestOperationTaquito();
+        break;
+      case "Beacon request operation with events":
+        await getOperationRequestBeaconWithEvents();
+        break;
+      case "Taquito request operation with events":
+        await getOperationRequestTaquitoWithEvents();
+        break;
       default:
         break;
     }

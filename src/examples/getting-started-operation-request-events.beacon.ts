@@ -6,7 +6,7 @@ import {
 } from "../node_modules/beacon-sdk/cjs";
 /// END
 
-const getActiveAccountBeaconWithEvents = async () => {
+const getOperationRequestBeaconWithEvents = async () => {
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -42,4 +42,4 @@ const getActiveAccountBeaconWithEvents = async () => {
   /// END
 };
 
-export default getActiveAccountBeaconWithEvents;
+export default getOperationRequestBeaconWithEvents;

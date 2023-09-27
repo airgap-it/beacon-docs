@@ -1,10 +1,10 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { DAppClient, TezosOperationType } from "../node_modules/beacon-sdk/cjs";
+import { TezosOperationType } from "../node_modules/beacon-sdk/cjs";
 /// END
 
-async () => {
+const requestOperationTaquito = async () => {
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -34,3 +34,5 @@ async () => {
   ]);
   /// END
 };
+
+export default requestOperationTaquito;
