@@ -1,5 +1,5 @@
 /// START
-import { DAppClient, SigningType } from "@airgap/beacon-sdk";
+import { DAppClient, SigningType } from "../node_modules/beacon-sdk/cjs";
 /// END
 
 async () => {

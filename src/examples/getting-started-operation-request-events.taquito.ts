@@ -5,7 +5,7 @@ import {
   BeaconEvent,
   DAppClient,
   TezosOperationType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/cjs";
 /// END
 
 const getActiveAccountTaquitoWithEvents = async () => {

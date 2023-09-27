@@ -6,7 +6,7 @@ import {
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/cjs";
 /// END
 
 async () => {
@@ -28,10 +28,10 @@ async () => {
           },
           eventCallback?: any[] | undefined,
         ): Promise<void> => {
-          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+          await defaultEventCallbacks.PAIR_INIT(data as any); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data, eventCallback);
         },
-      },
+      } as any,
     },
   });
 

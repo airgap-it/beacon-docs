@@ -4,7 +4,7 @@ import {
   DAppClient,
   NetworkType,
   Network,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/cjs";
 /// END
 
 async () => {
@@ -21,7 +21,7 @@ async () => {
         [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
         // [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
         [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
-      },
+      } as any,
     ) {
       super(rpcUrls);
     }

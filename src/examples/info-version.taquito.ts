@@ -1,5 +1,5 @@
 /// START
-import { BEACON_VERSION, SDK_VERSION } from "@airgap/beacon-sdk";
+import { BEACON_VERSION, SDK_VERSION } from "../node_modules/beacon-sdk/cjs";
 /// END
 
 async () => {

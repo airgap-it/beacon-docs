@@ -8,7 +8,7 @@ import {
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/cjs";
 /// END
 
 async () => {
@@ -40,10 +40,10 @@ async () => {
             console.log("My logic");
           };
           data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
-          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+          await defaultEventCallbacks.PAIR_INIT(data as any); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data);
         },
-      },
+      } as any,
     },
   });
 

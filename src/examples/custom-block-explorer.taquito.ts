@@ -1,5 +1,5 @@
 /// START
-import { BlockExplorer, NetworkType, Network } from "@airgap/beacon-sdk";
+import { BlockExplorer, NetworkType, Network } from "../node_modules/beacon-sdk/cjs";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 /// END
@@ -18,7 +18,7 @@ async () => {
         [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
         // [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
         [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
-      },
+      } as any,
     ) {
       super(rpcUrls);
     }
