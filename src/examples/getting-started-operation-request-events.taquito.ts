@@ -6,7 +6,7 @@ import {
   DAppClient,
   TezosOperationType,
 } from "../node_modules/beacon-sdk/dist/cjs";
-import Logger from "../Logger"
+import Logger from "../Logger";
 /// END
 
 const getOperationRequestTaquitoWithEvents = async (loggerFun: Function) => {

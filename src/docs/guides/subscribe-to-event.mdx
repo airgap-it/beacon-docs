@@ -1,6 +1,7 @@
 ---
 title: Subscribe To Event
 ---
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -17,24 +18,22 @@ import TabItem from "@theme/TabItem";
 ```ts live
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
-async () => {
-  const dAppClient = new DAppClient({
-    name: "Beacon Docs",
-  });
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+});
 
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+// TODO: Remove temporary workaround in sandbox
+await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  await dAppClient.clearActiveAccount();
+await dAppClient.clearActiveAccount();
 
-  console.log(await dAppClient.getActiveAccount());
+console.log(await dAppClient.getActiveAccount());
 
-  dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
-    console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
-  });
+dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
+  console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+});
 
-  await dAppClient.requestPermissions();
-};
+await dAppClient.requestPermissions();
 ```
 
 </TabItem>
@@ -46,25 +45,23 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+// TODO: Remove temporary workaround in sandbox
+await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  await wallet.clearActiveAccount();
+await wallet.clearActiveAccount();
 
-  console.log(await wallet.client.getActiveAccount());
+console.log(await wallet.client.getActiveAccount());
 
-  wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
-    console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
-  });
+wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
+  console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+});
 
-  await wallet.client.requestPermissions();
-};
+await wallet.client.requestPermissions();
 ```
 
 </TabItem>

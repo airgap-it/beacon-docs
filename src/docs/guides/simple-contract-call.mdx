@@ -1,6 +1,7 @@
 ---
 title: Simple Contract Call
 ---
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -25,50 +26,48 @@ The wallet will process and validate the operation. If there are any errors, the
 ```ts live
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
-async () => {
-  // Create a new DAppClient instance
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+// Create a new DAppClient instance
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  const activeAccount = await dAppClient.getActiveAccount();
-  if (activeAccount) {
-    // User already has account connected, everything is ready
-    // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
-  } else {
-    const permissions = await dAppClient.requestPermissions();
-    console.log("New connection:", permissions.address);
-  }
+const activeAccount = await dAppClient.getActiveAccount();
+if (activeAccount) {
+  // User already has account connected, everything is ready
+  // You can now do an operation request, sign request, or send another permission request to switch wallet
+  console.log("Already connected:", activeAccount.address);
+} else {
+  const permissions = await dAppClient.requestPermissions();
+  console.log("New connection:", permissions.address);
+}
 
-  const TZ_BUTTON_COLORS_CONTRACT = "KT1RPW5kTX6WFxg8JK34rGEU24gqEEudyfvz";
-  const tokenId = "925";
+const TZ_BUTTON_COLORS_CONTRACT = "KT1RPW5kTX6WFxg8JK34rGEU24gqEEudyfvz";
+const tokenId = "925";
 
-  // Setting the color of TzButton is only possible if you are currently the leader and own a color
-  // So this call will likely fail
-  try {
-    const result = await dAppClient.requestOperation({
-      operationDetails: [
-        {
-          kind: TezosOperationType.TRANSACTION,
-          amount: "0",
-          destination: TZ_BUTTON_COLORS_CONTRACT,
-          parameters: {
-            entrypoint: "set_color",
-            value: {
-              int: tokenId,
-            },
+// Setting the color of TzButton is only possible if you are currently the leader and own a color
+// So this call will likely fail
+try {
+  const result = await dAppClient.requestOperation({
+    operationDetails: [
+      {
+        kind: TezosOperationType.TRANSACTION,
+        amount: "0",
+        destination: TZ_BUTTON_COLORS_CONTRACT,
+        parameters: {
+          entrypoint: "set_color",
+          value: {
+            int: tokenId,
           },
         },
-      ],
-    });
+      },
+    ],
+  });
 
-    console.log(result);
-  } catch (error) {
-    console.log(
-      `The contract call failed and the following error was returned:`,
-      error?.data[1]?.with?.string,
-    );
-  }
-};
+  console.log(result);
+} catch (error) {
+  console.log(
+    `The contract call failed and the following error was returned:`,
+    error?.data[1]?.with?.string,
+  );
+}
 ```
 
 </TabItem>
@@ -79,32 +78,30 @@ async () => {
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  const address = await wallet.getPKH();
-  if (!address) {
-    await wallet.requestPermissions();
-  }
+const address = await wallet.getPKH();
+if (!address) {
+  await wallet.requestPermissions();
+}
 
-  // We now know we are connected, or the above code threw an error
-  const TZ_BUTTON_COLORS_CONTRACT = "KT1RPW5kTX6WFxg8JK34rGEU24gqEEudyfvz";
-  const contract = await Tezos.wallet.at(TZ_BUTTON_COLORS_CONTRACT);
+// We now know we are connected, or the above code threw an error
+const TZ_BUTTON_COLORS_CONTRACT = "KT1RPW5kTX6WFxg8JK34rGEU24gqEEudyfvz";
+const contract = await Tezos.wallet.at(TZ_BUTTON_COLORS_CONTRACT);
 
-  const tokenId = "925";
+const tokenId = "925";
 
-  try {
-    const result = await contract.methods.set_color(tokenId).send();
-  } catch (error) {
-    console.log(
-      `The contract call failed and the following error was returned:`,
-      error?.data[1]?.with?.string,
-    );
-  }
-};
+try {
+  const result = await contract.methods.set_color(tokenId).send();
+} catch (error) {
+  console.log(
+    `The contract call failed and the following error was returned:`,
+    error?.data[1]?.with?.string,
+  );
+}
 ```
 
 </TabItem>

@@ -1,5 +1,8 @@
 /// START
-import { BeaconEvent, defaultEventCallbacks } from "../node_modules/beacon-sdk/dist/cjs";
+import {
+  BeaconEvent,
+  defaultEventCallbacks,
+} from "../node_modules/beacon-sdk/dist/cjs";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 /// END

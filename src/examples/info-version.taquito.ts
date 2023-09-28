@@ -1,5 +1,8 @@
 /// START
-import { BEACON_VERSION, SDK_VERSION } from "../node_modules/beacon-sdk/dist/cjs";
+import {
+  BEACON_VERSION,
+  SDK_VERSION,
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {

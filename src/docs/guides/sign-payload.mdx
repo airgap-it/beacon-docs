@@ -1,6 +1,7 @@
 ---
 title: Sign Payload
 ---
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -19,19 +20,17 @@ import TabItem from "@theme/TabItem";
 ```ts live
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
-async () => {
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  const response = await dAppClient.requestSignPayload({
-    signingType: SigningType.MICHELINE,
-    // This hex string needs to be prefixed with 05
-    // The following is packed data, it can also be signed by Kukai
-    payload:
-      "05010000004254657a6f73205369676e6564204d6573736167653a206d79646170702e636f6d20323032312d30312d31345431353a31363a30345a2048656c6c6f20776f726c6421",
-  });
+const response = await dAppClient.requestSignPayload({
+  signingType: SigningType.MICHELINE,
+  // This hex string needs to be prefixed with 05
+  // The following is packed data, it can also be signed by Kukai
+  payload:
+    "05010000004254657a6f73205369676e6564204d6573736167653a206d79646170702e636f6d20323032312d30312d31345431353a31363a30345a2048656c6c6f20776f726c6421",
+});
 
-  console.log(`Signature: ${response.signature}`);
-};
+console.log(`Signature: ${response.signature}`);
 ```
 
 </TabItem>
@@ -43,22 +42,20 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  const response = await wallet.client.requestSignPayload({
-    signingType: SigningType.MICHELINE,
-    // This hex string needs to be prefixed with 05
-    // The following is packed data, it can also be signed by Kukai
-    payload:
-      "05010000004254657a6f73205369676e6564204d6573736167653a206d79646170702e636f6d20323032312d30312d31345431353a31363a30345a2048656c6c6f20776f726c6421",
-  });
+const response = await wallet.client.requestSignPayload({
+  signingType: SigningType.MICHELINE,
+  // This hex string needs to be prefixed with 05
+  // The following is packed data, it can also be signed by Kukai
+  payload:
+    "05010000004254657a6f73205369676e6564204d6573736167653a206d79646170702e636f6d20323032312d30312d31345431353a31363a30345a2048656c6c6f20776f726c6421",
+});
 
-  console.log(`Signature: ${response.signature}`);
-};
+console.log(`Signature: ${response.signature}`);
 ```
 
 </TabItem>
@@ -79,16 +76,14 @@ async () => {
 ```ts live
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
-async () => {
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  const response = await dAppClient.requestSignPayload({
-    signingType: SigningType.OPERATION,
-    payload: "0300", // This hex string needs to be prefixed with 03
-  });
+const response = await dAppClient.requestSignPayload({
+  signingType: SigningType.OPERATION,
+  payload: "0300", // This hex string needs to be prefixed with 03
+});
 
-  console.log(`Signature: ${response.signature}`);
-};
+console.log(`Signature: ${response.signature}`);
 ```
 
 </TabItem>
@@ -100,19 +95,17 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  const response = await wallet.client.requestSignPayload({
-    signingType: SigningType.OPERATION,
-    payload: "0300", // This hex string needs to be prefixed with 03
-  });
+const response = await wallet.client.requestSignPayload({
+  signingType: SigningType.OPERATION,
+  payload: "0300", // This hex string needs to be prefixed with 03
+});
 
-  console.log(`Signature: ${response.signature}`);
-};
+console.log(`Signature: ${response.signature}`);
 ```
 
 </TabItem>
@@ -137,16 +130,14 @@ Not all wallets support the `RAW` signing type. Additionally, the signatures can
 ```ts live
 import { DAppClient, SigningType } from "@airgap/beacon-sdk";
 
-async () => {
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  const response = await dAppClient.requestSignPayload({
-    signingType: SigningType.RAW,
-    payload: "any string that will be signed",
-  });
+const response = await dAppClient.requestSignPayload({
+  signingType: SigningType.RAW,
+  payload: "any string that will be signed",
+});
 
-  console.log(`Signature: ${response.signature}`);
-};
+console.log(`Signature: ${response.signature}`);
 ```
 
 </TabItem>
@@ -158,19 +149,17 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  const response = await wallet.client.requestSignPayload({
-    signingType: SigningType.RAW,
-    payload: "any string that will be signed",
-  });
+const response = await wallet.client.requestSignPayload({
+  signingType: SigningType.RAW,
+  payload: "any string that will be signed",
+});
 
-  console.log(`Signature: ${response.signature}`);
-};
+console.log(`Signature: ${response.signature}`);
 ```
 
 </TabItem>

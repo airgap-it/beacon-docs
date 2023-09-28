@@ -58,7 +58,7 @@ export interface PermissionRequestV3<T extends string = string>
   blockchainData: {
     appMetadata: AppMetadata; // Some additional information about the DApp
     scopes: string[];
-  };
+
 }
 ```
 
@@ -70,7 +70,7 @@ export interface PermissionResponseV3<T extends string = string>
   blockchainData: {
     appMetadata: AppMetadata; // Some additional information about the Wallet
     scopes: string[]; // Permissions that have been granted for this specific address / account
-  };
+
 }
 ```
 
@@ -89,7 +89,7 @@ export interface BlockchainRequestV3<T extends string = string>
   blockchainData: {
     type: string;
     scope: string;
-  };
+
 }
 ```
 

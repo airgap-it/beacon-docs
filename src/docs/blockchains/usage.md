@@ -80,7 +80,7 @@ client.connect(async (message) => {
             },
           ],
         },
-      };
+
 
       // Send response back to DApp
       client.respond(response);

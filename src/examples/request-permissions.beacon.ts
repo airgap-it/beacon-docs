@@ -1,5 +1,8 @@
 /// START
-import { DAppClient, PermissionScope } from "../node_modules/beacon-sdk/dist/cjs";
+import {
+  DAppClient,
+  PermissionScope,
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {

@@ -13,7 +13,7 @@ const getActiveAccountBeaconWithEvents = async (loggerFun: Function) => {
     async (account) => {
       // An active account has been set, update the dApp UI
       logger.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
-    }
+    },
   );
 
   try {

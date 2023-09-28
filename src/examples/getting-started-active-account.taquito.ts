@@ -26,4 +26,4 @@ const getActiveAccountTaquito = async (loggerFun: Function) => {
   /// END
 };
 
-export default getActiveAccountTaquito
+export default getActiveAccountTaquito;

@@ -1,6 +1,7 @@
 ---
 title: Disconnecting a Wallet
 ---
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -17,18 +18,18 @@ import TabItem from "@theme/TabItem";
 ```ts live
 import { DAppClient } from "@airgap/beacon-sdk";
 
-async () => {
+
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   // TODO: Remove temporary workaround in sandbox
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  dAppClient.clearActiveAccount().then(async () => {
+  dAppClient.clearActiveAccount().then(
     const account = await dAppClient.getActiveAccount();
 
     console.log("Active Account", account);
   });
-};
+
 ```
 
 </TabItem>
@@ -39,24 +40,22 @@ async () => {
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+// TODO: Remove temporary workaround in sandbox
+await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  await wallet.clearActiveAccount();
+await wallet.clearActiveAccount();
 
-  try {
-    const account = await wallet.getPKH();
-    console.log("Active Account", account);
-  } catch {
-    console.log("No wallet connected");
-  }
-};
+try {
+  const account = await wallet.getPKH();
+  console.log("Active Account", account);
+} catch {
+  console.log("No wallet connected");
+}
 ```
 
 </TabItem>

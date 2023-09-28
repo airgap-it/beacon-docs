@@ -95,7 +95,7 @@ export default function Playground({ children, transformCode, ...props }) {
     setisEditorEnabled(false);
 
     setTimeout(() => setisEditorEnabled(true), 200);
-  }
+  };
   return (
     <>
       <div className={styles.playgroundContainer}>

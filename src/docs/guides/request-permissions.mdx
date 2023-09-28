@@ -1,6 +1,7 @@
 ---
 title: Request Permissions
 ---
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -17,23 +18,21 @@ import TabItem from "@theme/TabItem";
 ```ts live
 import { DAppClient, PermissionScope } from "@airgap/beacon-sdk";
 
-async () => {
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  // You can request specific permissions if you want
-  const scopes: PermissionScope[] = [
-    PermissionScope.OPERATION_REQUEST,
-    PermissionScope.SIGN,
-  ];
+// You can request specific permissions if you want
+const scopes: PermissionScope[] = [
+  PermissionScope.OPERATION_REQUEST,
+  PermissionScope.SIGN,
+];
 
-  try {
-    console.log("Requesting permissions...");
-    const permissions = await dAppClient.requestPermissions({ scopes });
-    console.log("Got permissions:", permissions.address);
-  } catch (error) {
-    console.log("Got error:", error);
-  }
-};
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions({ scopes });
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.log("Got error:", error);
+}
 ```
 
 </TabItem>
@@ -45,25 +44,23 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { PermissionScope } from "@airgap/beacon-sdk";
 
-async () => {
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
-  Tezos.setWalletProvider(wallet);
+Tezos.setWalletProvider(wallet);
 
-  // You can request specific permissions if you want
-  const scopes: PermissionScope[] = [
-    PermissionScope.OPERATION_REQUEST,
-    PermissionScope.SIGN,
-  ];
+// You can request specific permissions if you want
+const scopes: PermissionScope[] = [
+  PermissionScope.OPERATION_REQUEST,
+  PermissionScope.SIGN,
+];
 
-  try {
-    const permissions = await wallet.client.requestPermissions({ scopes });
-    console.log("Got permissions:", permissions.address);
-  } catch (error) {
-    console.log("Got error:", error);
-  }
-};
+try {
+  const permissions = await wallet.client.requestPermissions({ scopes });
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.log("Got error:", error);
+}
 ```
 
 </TabItem>

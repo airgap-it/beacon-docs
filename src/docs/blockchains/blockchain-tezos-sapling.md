@@ -53,8 +53,8 @@ export interface TezosSaplingPermissionRequest
       type: NetworkType;
       name?: string;
       rpcUrl?: string;
-    };
-  };
+
+
 }
 ```
 
@@ -77,9 +77,9 @@ export interface TezosSaplingPermissionResponse
         type: NetworkType;
         name?: string;
         rpcUrl?: string;
-      };
+
     }[];
-  };
+
 }
 ```
 
@@ -98,7 +98,7 @@ export interface TezosSaplingTransferRequest
     recipient: string;
     // No network required because we can get it from account id
     mode: "submit" | "submit-and-return" | "return"; // TODO: Wording
-  };
+
 }
 ```
 
@@ -119,5 +119,5 @@ export type TezosSaplingTransferResponse =
   | {
       signature: string;
       payload?: string;
-    };
+
 ```

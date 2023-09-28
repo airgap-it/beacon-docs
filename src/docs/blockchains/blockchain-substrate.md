@@ -42,7 +42,7 @@ export interface SubstratePermissionRequest
       genesisHash: string; // Wallet shows only those accounts
       rpc?: string; // For development nodes?
     }[]; // Array to "whitelist" certain networks? (optional)
-  };
+
 }
 ```
 
@@ -61,11 +61,11 @@ export interface SubstratePermissionResponse
       network?: {
         genesisHash: string;
         rpc?: string;
-      };
+
       publicKey: string;
       address: string;
     }[];
-  };
+
 }
 ```
 
@@ -85,9 +85,9 @@ export interface SubstrateTransferRequest
     network: {
       genesisHash: string;
       rpc?: string;
-    };
+
     mode: "submit" | "submit-and-return" | "return"; // TODO: Wording
-  };
+
 }
 ```
 
@@ -108,7 +108,7 @@ export type SubstrateTransferResponse =
   | {
       signature: string;
       payload?: string;
-    };
+
 ```
 
 ### Sign Payload Request
@@ -189,10 +189,10 @@ export interface SubstrateSignPayloadRequest
           isMutable: boolean;
           dataType: "bytes" | "payload";
           data: string;
-        };
+
 
     mode: "submit" | "submit-and-return" | "return";
-  };
+
 }
 ```
 
@@ -213,5 +213,5 @@ export type SubstrateSignPayloadResponse =
   | {
       signature: string;
       payload?: string;
-    };
+
 ```
