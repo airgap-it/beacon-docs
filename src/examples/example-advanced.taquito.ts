@@ -7,9 +7,11 @@ import {
   NetworkType,
   TezosOperationType,
 } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const exampleAdvancedTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   // Set the network (Mainnet is default)
   const network: Network = { type: NetworkType.MAINNET };
@@ -36,7 +38,7 @@ async () => {
   if (activeAccount) {
     // If defined, the user is connected to a wallet.
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
+    logger.log("Already connected:", activeAccount.address);
 
     // You probably want to show the address in your UI somewhere.
     myAddress = activeAccount.address;
@@ -50,7 +52,7 @@ async () => {
       network: network,
     });
     myAddress = await wallet.getPKH();
-    console.log("New connection: ", myAddress);
+    logger.log("New connection: ", myAddress);
   }
 
   // At this point we are connected to an account.
@@ -63,7 +65,7 @@ async () => {
     },
   ]);
 
-  console.log("Operation Hash:", hash);
+  logger.log("Operation Hash:", hash);
 
   // Let's generate a link to see the transaction on a block explorer
   const explorerLink = await wallet.client.blockExplorer.getTransactionLink(
@@ -71,7 +73,7 @@ async () => {
     network,
   );
 
-  console.log("Block Explorer:", explorerLink);
+  logger.log("Block Explorer:", explorerLink);
 
   // TODO: Remove temporary workaround in sandbox
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -81,3 +83,5 @@ async () => {
   await wallet.clearActiveAccount();
   /// END
 };
+
+export default exampleAdvancedTaquito;

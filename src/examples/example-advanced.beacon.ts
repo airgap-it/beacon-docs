@@ -1,4 +1,5 @@
 /// START
+import Logger from "../Logger";
 import {
   ColorMode,
   DAppClient,
@@ -8,7 +9,8 @@ import {
 } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
-async () => {
+const exampleAdvancedBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   // Set the network (Mainnet is default)
   const network: Network = { type: NetworkType.MAINNET };
@@ -33,7 +35,7 @@ async () => {
   if (activeAccount) {
     // If defined, the user is connected to a wallet.
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
+    logger.log("Already connected:", activeAccount.address);
 
     // You probably want to show the address in your UI somewhere.
     myAddress = activeAccount.address;
@@ -46,7 +48,7 @@ async () => {
     const permissions = await dAppClient.requestPermissions({
       network: network,
     });
-    console.log("New connection: ", permissions.address);
+    logger.log("New connection: ", permissions.address);
     myAddress = permissions.address;
   }
 
@@ -62,7 +64,7 @@ async () => {
     ],
   });
 
-  console.log("Operation Hash:", response.transactionHash);
+  logger.log("Operation Hash:", response.transactionHash);
 
   // Let's generate a link to see the transaction on a block explorer
   const explorerLink = await dAppClient.blockExplorer.getTransactionLink(
@@ -70,7 +72,7 @@ async () => {
     network,
   );
 
-  console.log("Block Explorer:", explorerLink);
+  logger.log("Block Explorer:", explorerLink);
 
   // TODO: Remove temporary workaround in sandbox
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -80,3 +82,4 @@ async () => {
   await dAppClient.clearActiveAccount();
   /// END
 };
+export default exampleAdvancedBeacon;
