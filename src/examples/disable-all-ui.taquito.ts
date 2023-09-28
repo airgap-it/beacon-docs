@@ -28,7 +28,7 @@ async () => {
     const address = await wallet.getPKH();
     console.log("Got permissions:", address);
   } catch (error) {
-    console.log("Got error:", error);
+    console.log("Got error:", error.message);
   }
 
   /// END

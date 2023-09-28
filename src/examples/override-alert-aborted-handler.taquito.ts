@@ -54,7 +54,7 @@ async () => {
     const permissions = await wallet.client.requestPermissions();
     console.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    console.log("Got error:", error.message);
   }
   /// END
 };
