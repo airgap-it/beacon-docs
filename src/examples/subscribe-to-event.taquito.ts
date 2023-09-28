@@ -2,9 +2,11 @@
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const subscribeToEventTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -16,12 +18,13 @@ async () => {
 
   await wallet.clearActiveAccount();
 
-  console.log(await wallet.client.getActiveAccount());
+  logger.log(await wallet.client.getActiveAccount());
 
   wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
-    console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+    logger.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
   });
 
   await wallet.client.requestPermissions();
   /// END
 };
+export default subscribeToEventTaquito;

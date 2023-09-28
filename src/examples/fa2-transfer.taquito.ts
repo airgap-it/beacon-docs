@@ -1,9 +1,11 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const fa2TransferTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs" });
@@ -47,3 +49,4 @@ async () => {
   return result.opHash;
   /// END
 };
+export default fa2TransferTaquito;

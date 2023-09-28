@@ -1,8 +1,10 @@
 /// START
 import { BeaconEvent, DAppClient } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const subscribeToEventBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
@@ -13,12 +15,13 @@ async () => {
 
   await dAppClient.clearActiveAccount();
 
-  console.log(await dAppClient.getActiveAccount());
+  logger.log(await dAppClient.getActiveAccount());
 
   dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
-    console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+    logger.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
   });
 
   await dAppClient.requestPermissions();
   /// END
 };
+export default subscribeToEventBeacon;

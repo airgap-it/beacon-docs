@@ -16,6 +16,7 @@ import TabItem from "@theme/TabItem";
   <TabItem value="beacon">
 
 ```ts live
+// beacon subscribe to event
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -41,6 +42,7 @@ await dAppClient.requestPermissions();
 <TabItem value="taquito">
 
 ```ts live
+// taquito subscribe to event
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";

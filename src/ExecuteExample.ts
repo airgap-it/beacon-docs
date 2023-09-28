@@ -1,9 +1,13 @@
+import broadcastRequestBeacon from "./examples/broadcast-request.beacon";
+import broadcastRequestTaquito from "./examples/broadcast-request.taquito";
 import disconnectWalletBeacon from "./examples/disconnect-wallet.beacon";
 import disconnectWalletTaquito from "./examples/disconnect-wallet.taquito";
 import exampleAdvancedBeacon from "./examples/example-advanced.beacon";
 import exampleAdvancedTaquito from "./examples/example-advanced.taquito";
 import exampleSimpleBeacon from "./examples/example-simple.beacon";
 import exampleSimpleTaquito from "./examples/example-simple.taquito";
+import fa12TransferTaquito from "./examples/fa1.2-transfer.taquito";
+import fa2TransferTaquito from "./examples/fa2-transfer.taquito";
 import getActiveAccountBeaconWithEvents from "./examples/getting-started-active-account-events.beacon";
 import getActiveAccountTaquitoWithEvents from "./examples/getting-started-active-account-events.taquito";
 import getActiveAccountBeacon from "./examples/getting-started-active-account.beacon";
@@ -14,6 +18,10 @@ import requestOperationBeacon from "./examples/getting-started-operation-request
 import requestOperationTaquito from "./examples/getting-started-operation-request.taquito";
 import requestPermissionsBeacon from "./examples/getting-started-permission-request.beacon";
 import requestPermissionsTaquito from "./examples/getting-started-permission-request.taquito";
+import simpleContractCallBeacon from "./examples/simple-contract-call.beacon";
+import simpleContractCallTaquito from "./examples/simple-contract-call.taquito";
+import subscribeToEventBeacon from "./examples/subscribe-to-event.beacon";
+import subscribeToEventTaquito from "./examples/subscribe-to-event.taquito";
 
 export class ExecuteExample {
   static async execute(code: string, updateLogs: Function) {
@@ -65,6 +73,30 @@ export class ExecuteExample {
         break;
       case "taquito disconnect wallet":
         await disconnectWalletTaquito(updateLogs);
+        break;
+      case "beacon broadcast request":
+        await broadcastRequestBeacon(updateLogs);
+        break;
+      case "taquito broadcast request":
+        await broadcastRequestTaquito(updateLogs);
+        break;
+      case "beacon simple contract call":
+        await simpleContractCallBeacon(updateLogs);
+        break;
+      case "taquito simple contract call":
+        await simpleContractCallTaquito(updateLogs);
+        break;
+      case "taquito fa1.2 transfer":
+        await fa12TransferTaquito(updateLogs);
+        break;
+      case "taquito fa2 transfer":
+        await fa2TransferTaquito(updateLogs);
+        break;
+      case "beacon subscribe to event":
+        await subscribeToEventBeacon(updateLogs);
+        break;
+      case "taquito subscribe to event":
+        await subscribeToEventTaquito(updateLogs);
         break;
       default:
         break;
