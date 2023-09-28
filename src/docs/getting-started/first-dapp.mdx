@@ -85,6 +85,24 @@ If the following code returns an address, there is no need to send another permi
 
 The `beacon-sdk` is now fully set up and ready to receive operation requests.
 
+> If you want to add reactivity to your DApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
+
+<RunnableCode>
+
+<!-- embedme getting-started-active-account-events.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme getting-started-active-account-events.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
 ## Operation Request
 
 <RunnableCode>
@@ -96,6 +114,24 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
 ```
 
 <!-- embedme getting-started-operation-request.taquito.ts -->
+
+```ts
+// TODO
+```
+
+</RunnableCode>
+
+> Alternatively with `BeaconEvent.ACTIVE_ACCOUNT_SET`
+
+<RunnableCode>
+
+<!-- embedme getting-started-operation-request-events.beacon.ts -->
+
+```ts
+// TODO
+```
+
+<!-- embedme getting-started-operation-request-events.taquito.ts -->
 
 ```ts
 // TODO
