@@ -7,7 +7,7 @@
     "start": "npm run create-node-modules && npm run embed-code && docusaurus start",
     "create-node-modules": "rm -rf src/node_modules && mkdir src/node_modules && cp -r node_modules/@airgap/beacon-sdk src/node_modules",
     "prepare": "node scripts/fix-beacon-sdk.js",
-    "build": "npm run embed-code && docusaurus build",
+    "build": "npm run create-node-modules && npm run embed-code && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

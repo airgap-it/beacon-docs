@@ -1,5 +1,5 @@
 /// START
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
+import { DAppClient, NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {

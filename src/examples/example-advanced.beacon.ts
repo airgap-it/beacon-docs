@@ -5,7 +5,7 @@ import {
   Network,
   NetworkType,
   TezosOperationType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {

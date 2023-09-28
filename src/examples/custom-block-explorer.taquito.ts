@@ -1,5 +1,5 @@
 /// START
-import { BlockExplorer, NetworkType, Network } from "@airgap/beacon-sdk";
+import { BlockExplorer, NetworkType, Network } from "../node_modules/beacon-sdk/dist/cjs";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 /// END

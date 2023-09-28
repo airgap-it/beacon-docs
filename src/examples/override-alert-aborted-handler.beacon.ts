@@ -6,7 +6,7 @@ import {
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {

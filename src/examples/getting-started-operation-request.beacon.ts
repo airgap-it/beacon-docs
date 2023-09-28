@@ -1,5 +1,5 @@
 /// START
-import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
+import { DAppClient, TezosOperationType } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 const requestOperationBeacon = async () => {

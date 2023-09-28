@@ -1,5 +1,5 @@
 /// START
-import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
+import { BeaconEvent, DAppClient } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 const getActiveAccountBeaconWithEvents = async () => {

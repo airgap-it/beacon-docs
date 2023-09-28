@@ -4,7 +4,7 @@ import {
   DAppClient,
   NetworkType,
   Network,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {
