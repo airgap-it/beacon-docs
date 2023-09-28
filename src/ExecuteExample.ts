@@ -10,36 +10,36 @@ import requestPermissionsBeacon from "./examples/getting-started-permission-requ
 import requestPermissionsTaquito from "./examples/getting-started-permission-request.taquito";
 
 export class ExecuteExample {
-  static async execute(title: string) {
-    switch (title) {
-      case "Beacon permission request":
-        await requestPermissionsBeacon();
+  static async execute(code: string, updateLogs: Function) {
+    switch (code) {
+      case "beacon permission request":
+        await requestPermissionsBeacon(updateLogs);
         break;
-      case "Taquito permission request":
+      case "taquito permission request":
         await requestPermissionsTaquito();
         break;
-      case "Beacon get active account":
+      case "beacon get active account":
         await getActiveAccountBeacon();
         break;
-      case "Taquito get active account":
+      case "taquito get active account":
         await getActiveAccountTaquito();
         break;
-      case "Beacon get active account with events":
+      case "beacon get active account with events":
         await getActiveAccountBeaconWithEvents();
         break;
-      case "Taquito get active account with events":
+      case "taquito get active account with events":
         await getActiveAccountTaquitoWithEvents();
         break;
-      case "Beacon request operation":
+      case "beacon request operation":
         await requestOperationBeacon();
         break;
-      case "Taquito request operation":
+      case "taquito request operation":
         await requestOperationTaquito();
         break;
-      case "Beacon request operation with events":
+      case "beacon request operation with events":
         await getOperationRequestBeaconWithEvents();
         break;
-      case "Taquito request operation with events":
+      case "taquito request operation with events":
         await getOperationRequestTaquitoWithEvents();
         break;
       default:

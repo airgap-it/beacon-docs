@@ -9,6 +9,16 @@ import { usePrismTheme } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 
+function getCodeBody(code) {
+  const lines = code.split("\n");
+  lines.splice(0, 1);
+  return lines.join("\n");
+}
+
+function getSnippetCode(code) {
+  return (code.split("\n")[0].split("//")[1] ?? "").trim();
+}
+
 function Header({ children }) {
   return <div className={clsx(styles.playgroundHeader)}>{children}</div>;
 }
@@ -17,7 +27,7 @@ function LivePreviewLoader() {
   // eslint-disable-next-line @docusaurus/no-untranslated-text
   return <div>Loading...</div>;
 }
-function ResultWithHeader() {
+function ResultWithHeader({ snippetCode }) {
   return (
     <>
       <Header>
@@ -32,13 +42,10 @@ function ResultWithHeader() {
       <div className={styles.playgroundPreview}>
         <BrowserOnly fallback={<LivePreviewLoader />}>
           {() => {
-            const { DAppClient } = require("@airgap/beacon-sdk");
-            const { TezosToolkit } = require("@taquito/taquito");
-            console.log("who's that pokémon?: ", DAppClient, TezosToolkit);
+            const Console = require("../../components/Console").default;
             return (
               <>
-                <LivePreview />
-                <LiveError />
+                <Console snippetCode={snippetCode} />
               </>
             );
           }}
@@ -88,7 +95,7 @@ export default function Playground({ children, transformCode, ...props }) {
       <div className={styles.playgroundContainer}>
         {/* @ts-expect-error: type incompatibility with refs */}
         <LiveProvider
-          code={children.replace(/\n$/, "")}
+          code={getCodeBody(children.replace(/\n$/, ""))}
           noInline={noInline}
           transformCode={transformCode ?? ((code) => `${code};`)}
           theme={prismTheme}
@@ -96,13 +103,17 @@ export default function Playground({ children, transformCode, ...props }) {
         >
           {playgroundPosition === "top" ? (
             <>
-              {isEditorEnabled && <ResultWithHeader />}
+              {isEditorEnabled && (
+                <ResultWithHeader snippetCode={getSnippetCode(children)} />
+              )}
               <EditorWithHeader />
             </>
           ) : (
             <>
               <EditorWithHeader />
-              {isEditorEnabled && <ResultWithHeader />}
+              {isEditorEnabled && (
+                <ResultWithHeader snippetCode={getSnippetCode(children)} />
+              )}
             </>
           )}
         </LiveProvider>

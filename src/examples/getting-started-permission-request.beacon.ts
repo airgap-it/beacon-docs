@@ -1,17 +1,19 @@
 /// START
 import { DAppClient } from "@airgap/beacon-sdk";
+import Logger from "../Logger";
 /// END
 
-const requestPermissionsBeacon = async () => {
+const requestPermissionsBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await dAppClient.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    logger.log("Got error:", error);
   }
   /// END
 };
