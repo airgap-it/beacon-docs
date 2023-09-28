@@ -2,9 +2,11 @@
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosOperationType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-const requestOperationTaquito = async () => {
+const requestOperationTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -17,7 +19,7 @@ const requestOperationTaquito = async () => {
   const activeAccount = await wallet.client.getActiveAccount();
   if (!activeAccount) {
     const permissions = await wallet.client.requestPermissions();
-    console.log("New connection:", permissions.address);
+    logger.log("New connection:", permissions.address);
     myAddress = permissions.address;
   } else {
     myAddress = activeAccount.address;

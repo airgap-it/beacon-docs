@@ -1,8 +1,10 @@
 /// START
+import Logger from "../Logger";
 import { DAppClient, TezosOperationType } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
-const requestOperationBeacon = async () => {
+const requestOperationBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -12,7 +14,7 @@ const requestOperationBeacon = async () => {
   const activeAccount = await dAppClient.getActiveAccount();
   if (!activeAccount) {
     const permissions = await dAppClient.requestPermissions();
-    console.log("New connection:", permissions.address);
+    logger.log("New connection:", permissions.address);
     myAddress = permissions.address;
   } else {
     myAddress = activeAccount.address;

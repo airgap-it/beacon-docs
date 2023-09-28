@@ -2,9 +2,11 @@
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-const getActiveAccountTaquitoWithEvents = async () => {
+const getActiveAccountTaquitoWithEvents = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -13,7 +15,7 @@ const getActiveAccountTaquitoWithEvents = async () => {
 
   wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
     // An active account has been set
-    console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+    logger.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
   });
 
   /// END

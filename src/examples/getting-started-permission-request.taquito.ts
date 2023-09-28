@@ -1,9 +1,11 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
 /// END
 
-const requestPermissionsTaquito = async () => {
+const requestPermissionsTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -11,11 +13,11 @@ const requestPermissionsTaquito = async () => {
   Tezos.setWalletProvider(wallet);
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await wallet.client.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error.message);
+    logger.log("Got error:", error.message);
   }
   /// END
 };

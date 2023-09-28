@@ -1,9 +1,11 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
 /// END
 
-const getActiveAccountTaquito = async () => {
+const getActiveAccountTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -15,11 +17,11 @@ const getActiveAccountTaquito = async () => {
   if (activeAccount) {
     // User already has account connected, everything is ready
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
+    logger.log("Already connected:", activeAccount.address);
     return activeAccount;
   } else {
     // The user is not connected. A button should be displayed where the user can connect to his wallet.
-    console.log("Not connected!");
+    logger.log("Not connected!");
   }
   /// END
 };

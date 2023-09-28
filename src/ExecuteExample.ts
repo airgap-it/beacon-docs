@@ -16,31 +16,31 @@ export class ExecuteExample {
         await requestPermissionsBeacon(updateLogs);
         break;
       case "taquito permission request":
-        await requestPermissionsTaquito();
+        await requestPermissionsTaquito(updateLogs);
         break;
       case "beacon get active account":
-        await getActiveAccountBeacon();
+        await getActiveAccountBeacon(updateLogs);
         break;
       case "taquito get active account":
-        await getActiveAccountTaquito();
+        await getActiveAccountTaquito(updateLogs);
         break;
       case "beacon get active account with events":
-        await getActiveAccountBeaconWithEvents();
+        await getActiveAccountBeaconWithEvents(updateLogs);
         break;
       case "taquito get active account with events":
-        await getActiveAccountTaquitoWithEvents();
+        await getActiveAccountTaquitoWithEvents(updateLogs);
         break;
       case "beacon request operation":
-        await requestOperationBeacon();
+        await requestOperationBeacon(updateLogs);
         break;
       case "taquito request operation":
-        await requestOperationTaquito();
+        await requestOperationTaquito(updateLogs);
         break;
       case "beacon request operation with events":
-        await getOperationRequestBeaconWithEvents();
+        await getOperationRequestBeaconWithEvents(updateLogs);
         break;
       case "taquito request operation with events":
-        await getOperationRequestTaquitoWithEvents();
+        await getOperationRequestTaquitoWithEvents(updateLogs);
         break;
       default:
         break;
