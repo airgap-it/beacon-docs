@@ -67,7 +67,7 @@ try {
 
 <TabItem value="taquito">
 
-```ts code title="Taquito permission request"
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -110,7 +110,7 @@ If the following code returns an address, there is no need to send another permi
 >
   <TabItem value="beacon">
 
-```ts code title="Beacon get active account"
+```ts live
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -132,7 +132,7 @@ if (activeAccount) {
 
 <TabItem value="taquito">
 
-```ts code title="Taquito get active account"
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -170,7 +170,7 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
 >
   <TabItem value="Beacon get active account with events">
 
-```ts code title="title"
+```ts live
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -191,7 +191,7 @@ if (!activeAccount) {
 </TabItem>
 <TabItem value="Taquito get active account with events">
 
-```ts code title="title"
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";
@@ -222,7 +222,7 @@ wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
 >
   <TabItem value="beacon">
 
-```ts code title="Beacon request operation"
+```ts live
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -256,7 +256,7 @@ const response = await dAppClient.requestOperation({
 
 <TabItem value="taquito">
 
-```ts code title="Taquito request operation"
+```ts live
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
