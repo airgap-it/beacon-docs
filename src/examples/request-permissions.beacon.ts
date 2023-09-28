@@ -1,5 +1,5 @@
 /// START
-import { DAppClient, PermissionScope } from "../node_modules/beacon-sdk/cjs";
+import { DAppClient, PermissionScope } from "@airgap/beacon-sdk";
 /// END
 
 async () => {

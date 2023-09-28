@@ -1,5 +1,5 @@
 /// START
-import { BeaconEvent, DAppClient } from "../node_modules/beacon-sdk/cjs";
+import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 /// END
 
 async () => {

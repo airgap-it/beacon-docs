@@ -3,7 +3,7 @@ import {
   BeaconEvent,
   DAppClient,
   TezosOperationType,
-} from "../node_modules/beacon-sdk/cjs";
+} from "@airgap/beacon-sdk";
 /// END
 
 const getOperationRequestBeaconWithEvents = async () => {

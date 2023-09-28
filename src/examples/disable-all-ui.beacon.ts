@@ -3,7 +3,7 @@ import {
   BeaconEvent,
   DAppClient,
   defaultEventCallbacks,
-} from "../node_modules/beacon-sdk/cjs";
+} from "@airgap/beacon-sdk";
 /// END
 
 async () => {

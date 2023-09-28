@@ -1,7 +1,7 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { BeaconEvent } from "../node_modules/beacon-sdk/cjs";
+import { BeaconEvent } from "@airgap/beacon-sdk";
 /// END
 
 const getActiveAccountTaquitoWithEvents = async () => {

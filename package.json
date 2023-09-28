@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run embed-code && docusaurus start",
+    "start": "npm run create-node-modules && npm run embed-code && docusaurus start",
+    "create-node-modules": "rm -rf src/node_modules && mkdir src/node_modules && cp -r node_modules/@airgap/beacon-sdk src/node_modules",
     "prepare": "node scripts/fix-beacon-sdk.js",
     "build": "npm run embed-code && docusaurus build",
     "swizzle": "docusaurus swizzle",
@@ -25,6 +26,7 @@
     "@docusaurus/core": "2.4.3",
     "@docusaurus/plugin-client-redirects": "^2.4.3",
     "@docusaurus/preset-classic": "2.4.3",
+    "@docusaurus/theme-live-codeblock": "^2.4.3",
     "@mdx-js/react": "^1.6.22",
     "@taquito/beacon-wallet": "^17.3.1",
     "@taquito/taquito": "^17.3.1",
