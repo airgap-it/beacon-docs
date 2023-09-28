@@ -59,7 +59,7 @@ try {
   const permissions = await dAppClient.requestPermissions();
   console.log("Got permissions:", permissions.address);
 } catch (error) {
-  console.log("Got error:", error);
+  console.error("Got error:", error);
 }
 ```
 
@@ -68,6 +68,7 @@ try {
 <TabItem value="taquito">
 
 ```ts live
+// taquito permission request
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -81,7 +82,7 @@ try {
   const permissions = await wallet.client.requestPermissions();
   console.log("Got permissions:", permissions.address);
 } catch (error) {
-  console.log("Got error:", error);
+  console.error("Got error:", error);
 }
 ```
 
@@ -111,6 +112,7 @@ If the following code returns an address, there is no need to send another permi
   <TabItem value="beacon">
 
 ```ts live
+// beacon get active account
 import { DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -133,6 +135,7 @@ if (activeAccount) {
 <TabItem value="taquito">
 
 ```ts live
+// taquito get active account
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
@@ -168,9 +171,10 @@ The `beacon-sdk` is now fully set up and ready to receive operation requests.
     { label: "Taquito", value: "taquito" },
   ]}
 >
-  <TabItem value="Beacon get active account with events">
+  <TabItem value="beacon">
 
 ```ts live
+// beacon get active account with events
 import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -178,20 +182,23 @@ const dAppClient = new DAppClient({ name: "Beacon Docs" });
 // Listen for all the active account changes
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   // An active account has been set, update the dApp UI
-  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+  logger.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
 });
 
-// Check if we are connected. If not, do a permission request first.
-const activeAccount = await dAppClient.getActiveAccount();
-if (!activeAccount) {
-  await dAppClient.requestPermissions();
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error.message);
 }
 ```
 
 </TabItem>
-<TabItem value="Taquito get active account with events">
+<TabItem value="taquito">
 
 ```ts live
+// taquito get active account with events
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";
@@ -205,6 +212,14 @@ wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
   // An active account has been set
   console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
 });
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await wallet.client.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error.message);
+}
 ```
 
 </TabItem>
@@ -223,6 +238,7 @@ wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
   <TabItem value="beacon">
 
 ```ts live
+// beacon request operation
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -257,6 +273,7 @@ const response = await dAppClient.requestOperation({
 <TabItem value="taquito">
 
 ```ts live
+// taquito request operation
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
@@ -304,7 +321,8 @@ const response = await wallet.sendOperations([
 >
   <TabItem value="beacon">
 
-```ts code title="Beacon request operation with events"
+```ts live
+// beacon request operation with events
 import {
   BeaconEvent,
   DAppClient,
@@ -344,7 +362,8 @@ if (!activeAccount) {
 
  <TabItem value="taquito">
 
-```ts code title="Taquito request operation with events"
+```ts live
+// taquito request operation with events
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {

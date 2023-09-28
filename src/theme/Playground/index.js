@@ -90,6 +90,12 @@ export default function Playground({ children, transformCode, ...props }) {
   } = themeConfig;
   const prismTheme = usePrismTheme();
   const noInline = props.metastring?.includes("noInline") ?? false;
+
+  const setisEditorEnabledHandler = () => {
+    setisEditorEnabled(false);
+
+    setTimeout(() => setisEditorEnabled(true), 200);
+  }
   return (
     <>
       <div className={styles.playgroundContainer}>
@@ -118,7 +124,7 @@ export default function Playground({ children, transformCode, ...props }) {
           )}
         </LiveProvider>
       </div>
-      <button onClick={() => setisEditorEnabled(true)}>Run Code</button>
+      <button onClick={() => setisEditorEnabledHandler()}>Run Code</button>
     </>
   );
 }

@@ -18,6 +18,14 @@ const getActiveAccountTaquitoWithEvents = async (loggerFun: Function) => {
     logger.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
   });
 
+  try {
+    console.log("Requesting permissions...");
+    const permissions = await wallet.client.requestPermissions();
+    console.log("Got permissions:", permissions.address);
+  } catch (error) {
+    console.log("Got error:", error.message);
+  }
+
   /// END
 };
 export default getActiveAccountTaquitoWithEvents;
