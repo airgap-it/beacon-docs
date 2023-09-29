@@ -21,17 +21,21 @@ const getOperationRequestBeaconWithEvents = async (loggerFun: Function) => {
 
       // At this point we are connected to an account.
       // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
-      const response = await dAppClient.requestOperation({
-        operationDetails: [
-          {
-            kind: TezosOperationType.TRANSACTION,
-            destination: account.address, // Send to ourselves
-            amount: "1", // Amount in mutez, the smallest unit in Tezos
-          },
-        ],
-      });
+      try {
+        const response = await dAppClient.requestOperation({
+          operationDetails: [
+            {
+              kind: TezosOperationType.TRANSACTION,
+              destination: account.address, // Send to ourselves
+              amount: "1", // Amount in mutez, the smallest unit in Tezos
+            },
+          ],
+        });
 
-      logger.log("Response: ", response);
+        logger.log("Response: ", response);
+      } catch (error) {
+        logger.log("Error: ", error.message);
+      }
     },
   );
 

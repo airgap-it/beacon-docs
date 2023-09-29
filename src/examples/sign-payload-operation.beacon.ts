@@ -8,12 +8,16 @@ const signPayloadOperationBeacon = async (loggerFun: Function) => {
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  const response = await dAppClient.requestSignPayload({
-    signingType: SigningType.OPERATION,
-    payload: "0300", // This hex string needs to be prefixed with 03
-  });
+  try {
+    const response = await dAppClient.requestSignPayload({
+      signingType: SigningType.OPERATION,
+      payload: "0300", // This hex string needs to be prefixed with 03
+    });
 
-  logger.log(`Signature: ${response.signature}`);
+    logger.log(`Signature: ${response.signature}`);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default signPayloadOperationBeacon;

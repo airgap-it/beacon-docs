@@ -17,12 +17,16 @@ const networkEdonetTaquito = async (loggerFun: Function) => {
   Tezos.setWalletProvider(wallet);
 
   // Edonet with default rpcUrl
-  const result = await wallet.client.requestPermissions({
-    network: {
-      type: NetworkType.EDONET,
-    },
-  });
-  logger.log("Permissions: ", result);
+  try {
+    const result = await wallet.client.requestPermissions({
+      network: {
+        type: NetworkType.EDONET,
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default networkEdonetTaquito;

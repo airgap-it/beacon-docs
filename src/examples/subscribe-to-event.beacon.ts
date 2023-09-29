@@ -20,8 +20,11 @@ const subscribeToEventBeacon = async (loggerFun: Function) => {
   dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
     logger.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
   });
-
-  await dAppClient.requestPermissions();
+  try {
+    await dAppClient.requestPermissions();
+  } catch (error) {
+    logger.log("Error: ", error);
+  }
   /// END
 };
 export default subscribeToEventBeacon;

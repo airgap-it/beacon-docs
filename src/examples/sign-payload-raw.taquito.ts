@@ -13,12 +13,16 @@ const signPayloadRawTaquito = async (loggerFun: Function) => {
 
   Tezos.setWalletProvider(wallet);
 
-  const response = await wallet.client.requestSignPayload({
-    signingType: SigningType.RAW,
-    payload: "any string that will be signed",
-  });
+  try {
+    const response = await wallet.client.requestSignPayload({
+      signingType: SigningType.RAW,
+      payload: "any string that will be signed",
+    });
 
-  logger.log(`Signature: ${response.signature}`);
+    logger.log(`Signature: ${response.signature}`);
+  } catch (error) {
+    logger.log("Result: ", error.message);
+  }
   /// END
 };
 export default signPayloadRawTaquito;

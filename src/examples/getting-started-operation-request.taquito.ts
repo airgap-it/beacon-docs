@@ -27,14 +27,18 @@ const requestOperationTaquito = async (loggerFun: Function) => {
 
   // At this point we are connected to an account.
   // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
-  const response = await wallet.sendOperations([
-    {
-      kind: TezosOperationType.TRANSACTION,
-      destination: myAddress, // Send to ourselves
-      amount: "1", // Amount in mutez, the smallest unit in Tezos
-    },
-  ]);
-  logger.log("Response: ", response);
+  try {
+    const response = await wallet.sendOperations([
+      {
+        kind: TezosOperationType.TRANSACTION,
+        destination: myAddress, // Send to ourselves
+        amount: "1", // Amount in mutez, the smallest unit in Tezos
+      },
+    ]);
+    logger.log("Response: ", response);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 

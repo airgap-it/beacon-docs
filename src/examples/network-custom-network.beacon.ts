@@ -12,14 +12,18 @@ const networkCustomBeacon = async (loggerFun: Function) => {
   });
 
   // Custom network (eg. local development or latest testnet)
-  const result = await dAppClient.requestPermissions({
-    network: {
-      type: NetworkType.CUSTOM,
-      name: "Local Node",
-      rpcUrl: "http://localhost:8732/",
-    },
-  });
-  logger.log("Permissions: ", result);
+  try {
+    const result = await dAppClient.requestPermissions({
+      network: {
+        type: NetworkType.CUSTOM,
+        name: "Local Node",
+        rpcUrl: "http://localhost:8732/",
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default networkCustomBeacon;

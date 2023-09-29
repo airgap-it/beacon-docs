@@ -23,8 +23,11 @@ const subscribeToEventTaquito = async (loggerFun: Function) => {
   wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
     logger.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
   });
-
-  await wallet.client.requestPermissions();
+  try {
+    await wallet.client.requestPermissions();
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default subscribeToEventTaquito;

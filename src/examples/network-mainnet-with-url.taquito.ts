@@ -14,13 +14,17 @@ const networkMainnetWithUrlTaquito = async (loggerFun: Function) => {
   Tezos.setWalletProvider(wallet);
 
   // Mainnet with different rpcUrl
-  const result = await wallet.client.requestPermissions({
-    network: {
-      type: NetworkType.MAINNET,
-      rpcUrl: "https://mainnet-tezos.giganode.io/",
-    },
-  });
-  logger.log("Permissions: ", result);
+  try {
+    const result = await wallet.client.requestPermissions({
+      network: {
+        type: NetworkType.MAINNET,
+        rpcUrl: "https://mainnet-tezos.giganode.io/",
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default networkMainnetWithUrlTaquito;

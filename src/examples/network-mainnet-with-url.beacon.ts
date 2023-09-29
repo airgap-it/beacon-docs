@@ -9,13 +9,17 @@ const networkMainnetWithUrlBeacon = async (loggerFun: Function) => {
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   // Mainnet with different rpcUrl
-  const result = await dAppClient.requestPermissions({
-    network: {
-      type: NetworkType.MAINNET,
-      rpcUrl: "https://mainnet-tezos.giganode.io/",
-    },
-  });
-  logger.log("Permissions: ", result);
+  try {
+    const result = await dAppClient.requestPermissions({
+      network: {
+        type: NetworkType.MAINNET,
+        rpcUrl: "https://mainnet-tezos.giganode.io/",
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default networkMainnetWithUrlBeacon;

@@ -12,13 +12,16 @@ const signPayloadOperationTaquito = async (loggerFun: Function) => {
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
   Tezos.setWalletProvider(wallet);
+  try {
+    const response = await wallet.client.requestSignPayload({
+      signingType: SigningType.OPERATION,
+      payload: "0300", // This hex string needs to be prefixed with 03
+    });
 
-  const response = await wallet.client.requestSignPayload({
-    signingType: SigningType.OPERATION,
-    payload: "0300", // This hex string needs to be prefixed with 03
-  });
-
-  logger.log(`Signature: ${response.signature}`);
+    logger.log(`Signature: ${response.signature}`);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default signPayloadOperationTaquito;

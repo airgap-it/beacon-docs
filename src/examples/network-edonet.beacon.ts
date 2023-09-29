@@ -12,12 +12,16 @@ const networkEdonetBeacon = async (loggerFun: Function) => {
   });
 
   // Edonet with default rpcUrl
-  const result = await dAppClient.requestPermissions({
-    network: {
-      type: NetworkType.EDONET,
-    },
-  });
-  logger.log("Permissions: ", result);
+  try {
+    const result = await dAppClient.requestPermissions({
+      network: {
+        type: NetworkType.EDONET,
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
 export default networkEdonetBeacon;

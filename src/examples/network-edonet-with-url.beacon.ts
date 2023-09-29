@@ -12,13 +12,17 @@ const networkEdonetWithRpcBeacon = async (loggerFun: Function) => {
   });
 
   // Edonet with different rpcUrl
-  const result = await dAppClient.requestPermissions({
-    network: {
-      type: NetworkType.EDONET,
-      rpcUrl: "https://testnet-tezos.giganode.io/",
-    },
-  });
-  logger.log("Permissions: ", result);
+  try {
+    const result = await dAppClient.requestPermissions({
+      network: {
+        type: NetworkType.EDONET,
+        rpcUrl: "https://testnet-tezos.giganode.io/",
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Result: ", error.message);
+  }
   /// END
 };
 export default networkEdonetWithRpcBeacon;

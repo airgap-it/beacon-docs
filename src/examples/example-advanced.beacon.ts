@@ -45,34 +45,44 @@ const exampleAdvancedBeacon = async (loggerFun: Function) => {
     // The following permission request should not be called on pageload,
     // it should be triggered when the user clicks on a "connect" button on your page.
     // This will trigger the pairing alert UI where the user can select which wallet to pair.
-    const permissions = await dAppClient.requestPermissions({
-      network: network,
-    });
-    logger.log("New connection: ", permissions.address);
-    myAddress = permissions.address;
+    try {
+      const permissions = await dAppClient.requestPermissions({
+        network: network,
+      });
+      logger.log("New connection: ", permissions.address);
+      myAddress = permissions.address;
+    } catch (error) {
+      logger.log("Error: ", error.message);
+      return;
+    }
   }
 
   // At this point we are connected to an account.
   // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
-  const response = await dAppClient.requestOperation({
-    operationDetails: [
-      {
-        kind: TezosOperationType.TRANSACTION,
-        destination: myAddress, // Send to ourselves
-        amount: "1", // Amount in mutez, the smallest unit in Tezos
-      },
-    ],
-  });
+  try {
+    const response = await dAppClient.requestOperation({
+      operationDetails: [
+        {
+          kind: TezosOperationType.TRANSACTION,
+          destination: myAddress, // Send to ourselves
+          amount: "1", // Amount in mutez, the smallest unit in Tezos
+        },
+      ],
+    });
 
-  logger.log("Operation Hash:", response.transactionHash);
+    logger.log("Operation Hash:", response.transactionHash);
 
-  // Let's generate a link to see the transaction on a block explorer
-  const explorerLink = await dAppClient.blockExplorer.getTransactionLink(
-    response.transactionHash,
-    network,
-  );
+    // Let's generate a link to see the transaction on a block explorer
+    const explorerLink = await dAppClient.blockExplorer.getTransactionLink(
+      response.transactionHash,
+      network,
+    );
 
-  logger.log("Block Explorer:", explorerLink);
+    logger.log("Block Explorer:", explorerLink);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+    return;
+  }
 
   // TODO: Remove temporary workaround in sandbox
   await new Promise((resolve) => setTimeout(resolve, 1000));
