@@ -1,8 +1,10 @@
 /// START
 import { DAppClient, NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const networkCustomBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
@@ -17,5 +19,7 @@ async () => {
       rpcUrl: "http://localhost:8732/",
     },
   });
+  logger.log("Permissions: ", result);
   /// END
 };
+export default networkCustomBeacon;

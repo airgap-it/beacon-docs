@@ -18,6 +18,20 @@ import requestOperationBeacon from "./examples/getting-started-operation-request
 import requestOperationTaquito from "./examples/getting-started-operation-request.taquito";
 import requestPermissionsBeacon from "./examples/getting-started-permission-request.beacon";
 import requestPermissionsTaquito from "./examples/getting-started-permission-request.taquito";
+import networkCustomBeacon from "./examples/network-custom-network.beacon";
+import networkCustomTaquito from "./examples/network-custom-network.taquito";
+import networkEdonetWithRpcBeacon from "./examples/network-edonet-with-url.beacon";
+import networkEdonetWithRpcTaquito from "./examples/network-edonet-with-url.taquito";
+import networkEdonetBeacon from "./examples/network-edonet.beacon";
+import networkEdonetTaquito from "./examples/network-edonet.taquito";
+import networkMainnetWithUrlBeacon from "./examples/network-mainnet-with-url.beacon";
+import networkMainnetWithUrlTaquito from "./examples/network-mainnet-with-url.taquito";
+import signPayloadMichelineBeacon from "./examples/sign-payload-micheline.beacon";
+import signPayloadMichelineTaquito from "./examples/sign-payload-micheline.taquito";
+import signPayloadOperationBeacon from "./examples/sign-payload-operation.beacon";
+import signPayloadOperationTaquito from "./examples/sign-payload-operation.taquito";
+import signPayloadRawBeacon from "./examples/sign-payload-raw.beacon";
+import signPayloadRawTaquito from "./examples/sign-payload-raw.taquito";
 import simpleContractCallBeacon from "./examples/simple-contract-call.beacon";
 import simpleContractCallTaquito from "./examples/simple-contract-call.taquito";
 import subscribeToEventBeacon from "./examples/subscribe-to-event.beacon";
@@ -97,6 +111,48 @@ export class ExecuteExample {
         break;
       case "taquito subscribe to event":
         await subscribeToEventTaquito(updateLogs);
+        break;
+      case "beacon mainnet network":
+        await networkMainnetWithUrlBeacon(updateLogs);
+        break;
+      case "taquito mainnet network":
+        await networkMainnetWithUrlTaquito(updateLogs);
+        break;
+      case "beacon edonet network":
+        await networkEdonetBeacon(updateLogs);
+        break;
+      case "taquito edonet network":
+        await networkEdonetTaquito(updateLogs);
+        break;
+      case "beacon edonet network with RPC":
+        await networkEdonetWithRpcBeacon(updateLogs);
+        break;
+      case "taquito edonet network with RPC":
+        await networkEdonetWithRpcTaquito(updateLogs);
+        break;
+      case "beacon custom network":
+        await networkCustomBeacon(updateLogs);
+        break;
+      case "taquito custom network":
+        await networkCustomTaquito(updateLogs);
+        break;
+      case "beacon sign payload micheline":
+        await signPayloadMichelineBeacon(updateLogs);
+        break;
+      case "taquito sign payload micheline":
+        await signPayloadMichelineTaquito(updateLogs);
+        break;
+      case "beacon sign payload operation":
+        await signPayloadOperationBeacon(updateLogs);
+        break;
+      case "taquito sign payload operation":
+        await signPayloadOperationTaquito(updateLogs);
+        break;
+      case "beacon sign payload raw":
+        await signPayloadRawBeacon(updateLogs);
+        break;
+      case "taquito sign payload raw":
+        await signPayloadRawTaquito(updateLogs);
         break;
       default:
         break;

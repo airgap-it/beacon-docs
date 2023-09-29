@@ -1,8 +1,10 @@
 /// START
 import { DAppClient, SigningType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const signPayloadRawBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -11,6 +13,7 @@ async () => {
     payload: "any string that will be signed",
   });
 
-  console.log(`Signature: ${response.signature}`);
+  logger.log(`Signature: ${response.signature}`);
   /// END
 };
+export default signPayloadRawBeacon;

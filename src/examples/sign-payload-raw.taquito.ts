@@ -2,9 +2,11 @@
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const signPayloadRawTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -16,6 +18,7 @@ async () => {
     payload: "any string that will be signed",
   });
 
-  console.log(`Signature: ${response.signature}`);
+  logger.log(`Signature: ${response.signature}`);
   /// END
 };
+export default signPayloadRawTaquito;
