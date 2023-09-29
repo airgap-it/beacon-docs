@@ -34,6 +34,7 @@ const requestOperationBeacon = async (loggerFun: Function) => {
       },
     ],
   });
+  logger.log("Response: ", response);
   /// END
 };
 export default requestOperationBeacon;

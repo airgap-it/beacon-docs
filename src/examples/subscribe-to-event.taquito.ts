@@ -18,7 +18,7 @@ const subscribeToEventTaquito = async (loggerFun: Function) => {
 
   await wallet.clearActiveAccount();
 
-  logger.log(await wallet.client.getActiveAccount());
+  logger.log("Active account: ", await wallet.client.getActiveAccount());
 
   wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
     logger.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);

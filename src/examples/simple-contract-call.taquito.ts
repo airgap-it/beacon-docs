@@ -26,6 +26,7 @@ const simpleContractCallTaquito = async (loggerFun: Function) => {
 
   try {
     const result = await contract.methods.set_color(tokenId).send();
+    logger.log("Result: ", result);
   } catch (error) {
     logger.log(
       `The contract call failed and the following error was returned:`,

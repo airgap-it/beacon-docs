@@ -20,6 +20,7 @@ const networkMainnetWithUrlTaquito = async (loggerFun: Function) => {
       rpcUrl: "https://mainnet-tezos.giganode.io/",
     },
   });
+  logger.log("Permissions: ", result);
   /// END
 };
 export default networkMainnetWithUrlTaquito;

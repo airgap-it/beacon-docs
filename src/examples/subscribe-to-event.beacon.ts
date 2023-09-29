@@ -15,7 +15,7 @@ const subscribeToEventBeacon = async (loggerFun: Function) => {
 
   await dAppClient.clearActiveAccount();
 
-  logger.log(await dAppClient.getActiveAccount());
+  logger.log("Active account: ", await dAppClient.getActiveAccount());
 
   dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
     logger.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);

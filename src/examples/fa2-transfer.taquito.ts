@@ -45,6 +45,7 @@ const fa2TransferTaquito = async (loggerFun: Function) => {
     ])
     .send();
 
+  logger.log("Operation hash: ", result);
   // As soon as the operation is broadcast, you will receive the operation hash
   return result.opHash;
   /// END

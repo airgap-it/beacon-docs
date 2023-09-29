@@ -34,7 +34,7 @@ const getOperationRequestTaquitoWithEvents = async (loggerFun: Function) => {
         },
       ]);
 
-      logger.log(response);
+      logger.log("Response: ", response);
     },
   );
 

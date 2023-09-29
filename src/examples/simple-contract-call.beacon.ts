@@ -44,7 +44,7 @@ const simpleContractCallBeacon = async (loggerFun: Function) => {
       ],
     });
 
-    logger.log(result);
+    logger.log("Result: ", result);
   } catch (error) {
     logger.log(
       `The contract call failed and the following error was returned:`,

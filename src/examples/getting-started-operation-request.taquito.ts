@@ -34,6 +34,7 @@ const requestOperationTaquito = async (loggerFun: Function) => {
       amount: "1", // Amount in mutez, the smallest unit in Tezos
     },
   ]);
+  logger.log("Response: ", response);
   /// END
 };
 

@@ -17,11 +17,11 @@ const getActiveAccountBeaconWithEvents = async (loggerFun: Function) => {
   );
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await dAppClient.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error.message);
+    logger.log("Got error:", error.message);
   }
 
   /// END
