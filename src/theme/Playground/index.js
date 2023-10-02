@@ -95,7 +95,7 @@ export default function Playground({ children, transformCode, ...props }) {
 
   const setIsEditorEnabledHandler = () => {
     setIsEditorEnabled(false);
-    setTimeout(() => setIsEditorEnabled(true), 100);
+    setTimeout(() => setIsEditorEnabled(true));
   };
 
   const hideHandler = async (snippetId) => {

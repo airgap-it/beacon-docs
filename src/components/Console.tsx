@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ExecuteExample } from "../ExecuteExample";
-import { BeaconDocsState } from "../Utils";
 
 export type ConsoleProps = {
   snippetId: string;
