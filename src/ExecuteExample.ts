@@ -1,3 +1,4 @@
+import { reset } from "./Utils";
 import broadcastRequestBeacon from "./examples/broadcast-request.beacon";
 import broadcastRequestTaquito from "./examples/broadcast-request.taquito";
 import disconnectWalletBeacon from "./examples/disconnect-wallet.beacon";
@@ -153,6 +154,9 @@ export class ExecuteExample {
         break;
       case "taquito sign payload raw":
         await signPayloadRawTaquito(updateLogs);
+        break;
+      case "reset editor":
+        await reset();
         break;
       default:
         break;

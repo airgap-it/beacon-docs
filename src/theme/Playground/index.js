@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import useIsBrowser from "@docusaurus/useIsBrowser";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import { LiveProvider, LiveEditor } from "react-live";
 import Translate from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import { usePrismTheme } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
+import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
 
 function getCodeBody(code) {
   const lines = code.split("\n");
@@ -15,7 +16,7 @@ function getCodeBody(code) {
   return lines.join("\n");
 }
 
-function getSnippetCode(code) {
+function getSnippetId(code) {
   return (code.split("\n")[0].split("//")[1] ?? "").trim();
 }
 
@@ -27,7 +28,7 @@ function LivePreviewLoader() {
   // eslint-disable-next-line @docusaurus/no-untranslated-text
   return <div>Loading...</div>;
 }
-function ResultWithHeader({ snippetCode }) {
+function ResultWithHeader({ snippetId }) {
   return (
     <>
       <Header>
@@ -45,7 +46,7 @@ function ResultWithHeader({ snippetCode }) {
             const Console = require("../../components/Console").default;
             return (
               <>
-                <Console snippetCode={snippetCode} />
+                <Console snippetId={snippetId} />
               </>
             );
           }}
@@ -81,7 +82,7 @@ function EditorWithHeader() {
   );
 }
 export default function Playground({ children, transformCode, ...props }) {
-  const [isEditorEnabled, setisEditorEnabled] = useState(false);
+  const [isEditorEnabled, setIsEditorEnabled] = useState(false);
   const {
     siteConfig: { themeConfig },
   } = useDocusaurusContext();
@@ -90,12 +91,18 @@ export default function Playground({ children, transformCode, ...props }) {
   } = themeConfig;
   const prismTheme = usePrismTheme();
   const noInline = props.metastring?.includes("noInline") ?? false;
+  const [snippetId, setSnippetId] = useState(getSnippetId(children));
 
-  const setisEditorEnabledHandler = () => {
-    setisEditorEnabled(false);
-
-    setTimeout(() => setisEditorEnabled(true), 200);
+  const setIsEditorEnabledHandler = () => {
+    setIsEditorEnabled(false);
+    setTimeout(() => setIsEditorEnabled(true), 100);
   };
+
+  const hideHandlerdHandler = (snippetId) => {
+    setSnippetId(snippetId);
+    setIsEditorEnabled(false);
+  };
+
   return (
     <>
       <div className={styles.playgroundContainer}>
@@ -109,22 +116,37 @@ export default function Playground({ children, transformCode, ...props }) {
         >
           {playgroundPosition === "top" ? (
             <>
-              {isEditorEnabled && (
-                <ResultWithHeader snippetCode={getSnippetCode(children)} />
-              )}
+              {isEditorEnabled && <ResultWithHeader snippetId={snippetId} />}
               <EditorWithHeader />
             </>
           ) : (
             <>
               <EditorWithHeader />
-              {isEditorEnabled && (
-                <ResultWithHeader snippetCode={getSnippetCode(children)} />
-              )}
+              {isEditorEnabled && <ResultWithHeader snippetId={snippetId} />}
             </>
           )}
         </LiveProvider>
       </div>
-      <button onClick={() => setisEditorEnabledHandler()}>Run Code</button>
+      <BrowserWindow url="https://example.beacon.docs.com">
+        <button
+          className="button button--primary margin-right--xs"
+          onClick={() => setIsEditorEnabledHandler()}
+        >
+          Run Code
+        </button>
+        <button
+          className="button button--secondary margin-right--xs"
+          onClick={() => hideHandlerdHandler("reset editor")}
+        >
+          Reset
+        </button>
+        <button
+          className="button button--secondary"
+          onClick={() => hideHandlerdHandler("clear console output")}
+        >
+          Clear Output
+        </button>
+      </BrowserWindow>
     </>
   );
 }
