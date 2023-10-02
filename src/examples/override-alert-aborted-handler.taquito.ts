@@ -3,11 +3,12 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {
   BeaconEvent,
-  DAppClient,
   defaultEventCallbacks,
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
 } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
@@ -24,9 +25,12 @@ async () => {
         handler: async (data: {
           p2pPeerInfo: () => Promise<P2PPairingRequest>;
           postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
-          preferredNetwork: NetworkType;
+          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          networkType: NetworkType;
           abortedHandler?(): void;
           disclaimerText?: string;
+          analytics: AnalyticsInterface;
+          featuredWallets?: string[];
         }): Promise<void> => {
           // If you want to attach your own "on alert closed" handler
           // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -40,10 +44,10 @@ async () => {
             console.log("My logic");
           };
           data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
-          await defaultEventCallbacks.PAIR_INIT(data as any); // Add this if you want to keep the default behaviour.
+          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data);
         },
-      } as any,
+      },
     },
   });
 

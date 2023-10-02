@@ -1,12 +1,15 @@
 /// START
-import { DAppClient } from "../node_modules/beacon-sdk/dist/cjs";
+import { DAppClient, Regions } from "../node_modules/beacon-sdk/dist/cjs";
+
 /// END
 
 async () => {
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
-    matrixNodes: ["beacon-node-0.papers.tech:8448"] as any,
+    matrixNodes: {
+      [Regions.EUROPE_WEST]: ["beacon-node-0.papers.tech:8448"],
+    },
   });
 
   try {

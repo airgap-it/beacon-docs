@@ -3,11 +3,12 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {
   BeaconEvent,
-  DAppClient,
   defaultEventCallbacks,
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
 } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
@@ -25,16 +26,19 @@ async () => {
           data: {
             p2pPeerInfo: () => Promise<P2PPairingRequest>;
             postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
-            preferredNetwork: NetworkType;
+            walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+            networkType: NetworkType;
             abortedHandler?(): void;
             disclaimerText?: string;
+            analytics: AnalyticsInterface;
+            featuredWallets?: string[];
           },
           eventCallback?: any[] | undefined,
         ): Promise<void> => {
-          await defaultEventCallbacks.PAIR_INIT(data as any); // Add this if you want to keep the default behaviour.
+          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
           console.log("syncInfo", data, eventCallback);
         },
-      } as any,
+      },
     },
   });
 

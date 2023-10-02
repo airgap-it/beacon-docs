@@ -13,15 +13,23 @@ async () => {
     constructor(
       public readonly rpcUrls: { [key in NetworkType]: string } = {
         [NetworkType.MAINNET]: "https://tzstats.com/",
+        [NetworkType.GHOSTNET]: "https://ghost.tzstats.com/",
+        [NetworkType.MONDAYNET]: "https://monday.tzstats.com/",
+        [NetworkType.DAILYNET]: "https://daily.tzstats.com/",
         [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
         [NetworkType.EDONET]: "https://edo.tzstats.com/",
         [NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
         [NetworkType.GRANADANET]: "https://granada.tzstats.com/",
-        [NetworkType.HANGZHOUNET]: "https://hangzhou.tzstats.com/",
-        [NetworkType.ITHACANET]: "https://ithacanet.tzstats.com/",
-        // [NetworkType.JAKARTANET]: "https://jakartanet.tzstats.com/",
-        [NetworkType.CUSTOM]: "https://jakartanet.tzstats.com/",
-      } as any,
+        [NetworkType.HANGZHOUNET]: "https://hangzhounet.tzstats.com/",
+        [NetworkType.ITHACANET]: "https://ithaca.tzstats.com/",
+        [NetworkType.JAKARTANET]: "https://jakara.tzstats.com/",
+        [NetworkType.KATHMANDUNET]: "https://kathmandu.tzstats.com/",
+        [NetworkType.LIMANET]: "https://lima.tzstats.com/",
+        [NetworkType.MUMBAINET]: "https://mumbai.tzstats.com/",
+        [NetworkType.NAIROBINET]: "https://nairobi.tzstats.com/",
+        [NetworkType.OXFORDNET]: "https://oxford.tzstats.com/",
+        [NetworkType.CUSTOM]: "https://custom.tzstats.com/",
+      },
     ) {
       super(rpcUrls);
     }
@@ -30,7 +38,7 @@ async () => {
       address: string,
       network: Network,
     ): Promise<string> {
-      const blockExplorer = await (this as any).getLinkForNetwork(network);
+      const blockExplorer = await this.getLinkForNetwork(network);
 
       return `${blockExplorer}/${address}`;
     }
@@ -38,7 +46,7 @@ async () => {
       transactionId: string,
       network: Network,
     ): Promise<string> {
-      const blockExplorer = await (this as any).getLinkForNetwork(network);
+      const blockExplorer = await this.getLinkForNetwork(network);
 
       return `${blockExplorer}/${transactionId}`;
     }
@@ -46,7 +54,7 @@ async () => {
 
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
-    blockExplorer: new TzStatsBlockExplorer() as any,
+    blockExplorer: new TzStatsBlockExplorer(),
   });
   /// END
 };

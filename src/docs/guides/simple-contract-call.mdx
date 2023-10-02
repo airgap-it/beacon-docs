@@ -64,7 +64,7 @@ try {
 
   console.log(result);
 } catch (error) {
-  console.log(
+  console.error(
     `The contract call failed and the following error was returned:`,
     error?.data[1]?.with?.string,
   );
@@ -99,7 +99,7 @@ const tokenId = "925";
 try {
   const result = await contract.methods.set_color(tokenId).send();
 } catch (error) {
-  console.log(
+  console.error(
     `The contract call failed and the following error was returned:`,
     error?.data[1]?.with?.string,
   );

@@ -1,6 +1,7 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import { Regions } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {
@@ -8,7 +9,9 @@ async () => {
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
-    matrixNodes: ["beacon-node-0.papers.tech:8448"] as any,
+    matrixNodes: {
+      [Regions.EUROPE_WEST]: ["beacon-node-0.papers.tech:8448"],
+    },
   });
 
   Tezos.setWalletProvider(wallet);

@@ -109,7 +109,7 @@ const connectApp = async (): Promise<void> => {
         default:
           response = {
             type: BeaconMessageType.Error,
-            id: (message as any).id, // Typescript assumes message is of type "never", but we should still add this to handle any potential future messages we don't support yet.
+            id: message.id,
             errorType: BeaconErrorType.ABORTED_ERROR,
 
       }

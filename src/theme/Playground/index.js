@@ -148,7 +148,7 @@ export default function Playground({ children, transformCode, ...props }) {
         </button>
         <button
           className="button button--secondary"
-          onClick={async() => await hideHandler("clear console output")}
+          onClick={async () => await hideHandler("clear console output")}
         >
           Clear Output
         </button>
