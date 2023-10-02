@@ -92,7 +92,7 @@ const config = {
           },
           {
             href: "https://stackblitz.com/edit/vitejs-vite-71wsul?file=src%2Fmain.ts&terminal=dev",
-            label: "Playgorund",
+            label: "Playground",
             position: "right",
           },
           {
