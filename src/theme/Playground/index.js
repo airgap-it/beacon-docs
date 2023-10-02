@@ -9,6 +9,7 @@ import { usePrismTheme } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
+import { reset } from "@site/src/Utils";
 
 function getCodeBody(code) {
   const lines = code.split("\n");
@@ -91,15 +92,16 @@ export default function Playground({ children, transformCode, ...props }) {
   } = themeConfig;
   const prismTheme = usePrismTheme();
   const noInline = props.metastring?.includes("noInline") ?? false;
-  const [snippetId, setSnippetId] = useState(getSnippetId(children));
 
   const setIsEditorEnabledHandler = () => {
     setIsEditorEnabled(false);
     setTimeout(() => setIsEditorEnabled(true), 100);
   };
 
-  const hideHandlerdHandler = (snippetId) => {
-    setSnippetId(snippetId);
+  const hideHandler = async (snippetId) => {
+    if (snippetId === "reset editor") {
+      await reset();
+    }
     setIsEditorEnabled(false);
   };
 
@@ -116,13 +118,17 @@ export default function Playground({ children, transformCode, ...props }) {
         >
           {playgroundPosition === "top" ? (
             <>
-              {isEditorEnabled && <ResultWithHeader snippetId={snippetId} />}
+              {isEditorEnabled && (
+                <ResultWithHeader snippetId={getSnippetId(children)} />
+              )}
               <EditorWithHeader />
             </>
           ) : (
             <>
               <EditorWithHeader />
-              {isEditorEnabled && <ResultWithHeader snippetId={snippetId} />}
+              {isEditorEnabled && (
+                <ResultWithHeader snippetId={getSnippetId(children)} />
+              )}
             </>
           )}
         </LiveProvider>
@@ -136,13 +142,13 @@ export default function Playground({ children, transformCode, ...props }) {
         </button>
         <button
           className="button button--secondary margin-right--xs"
-          onClick={() => hideHandlerdHandler("reset editor")}
+          onClick={async () => await hideHandler("reset editor")}
         >
           Reset
         </button>
         <button
           className="button button--secondary"
-          onClick={() => hideHandlerdHandler("clear console output")}
+          onClick={async() => await hideHandler("clear console output")}
         >
           Clear Output
         </button>
