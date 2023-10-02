@@ -1,5 +1,7 @@
 import broadcastRequestBeacon from "./examples/broadcast-request.beacon";
 import broadcastRequestTaquito from "./examples/broadcast-request.taquito";
+import disableUIBeacon from "./examples/disable-all-ui.beacon";
+import disableUITaquito from "./examples/disable-all-ui.taquito";
 import disconnectWalletBeacon from "./examples/disconnect-wallet.beacon";
 import disconnectWalletTaquito from "./examples/disconnect-wallet.taquito";
 import exampleAdvancedBeacon from "./examples/example-advanced.beacon";
@@ -26,6 +28,10 @@ import networkEdonetBeacon from "./examples/network-edonet.beacon";
 import networkEdonetTaquito from "./examples/network-edonet.taquito";
 import networkMainnetWithUrlBeacon from "./examples/network-mainnet-with-url.beacon";
 import networkMainnetWithUrlTaquito from "./examples/network-mainnet-with-url.taquito";
+import overrideAlertAbortedBeacon from "./examples/override-alert-aborted-handler.beacon";
+import overrideAlertAbortedTaquito from "./examples/override-alert-aborted-handler.taquito";
+import overrideDefaultEventBeacon from "./examples/override-default-event.beacon";
+import overrideDefaultEventTaquito from "./examples/override-default-event.taquito";
 import signPayloadMichelineBeacon from "./examples/sign-payload-micheline.beacon";
 import signPayloadMichelineTaquito from "./examples/sign-payload-micheline.taquito";
 import signPayloadOperationBeacon from "./examples/sign-payload-operation.beacon";
@@ -153,6 +159,24 @@ export class ExecuteExample {
         break;
       case "taquito sign payload raw":
         await signPayloadRawTaquito(updateLogs);
+        break;
+      case "beacon disable ui":
+        await disableUIBeacon(updateLogs);
+        break;
+      case "taquito disable ui":
+        await disableUITaquito(updateLogs);
+        break;
+      case "beacon request permission events":
+        await overrideDefaultEventBeacon(updateLogs);
+        break;
+      case "taquito request permission events":
+        await overrideDefaultEventTaquito(updateLogs);
+        break;
+      case "beacon request permission alert":
+        await overrideAlertAbortedBeacon(updateLogs);
+        break;
+      case "taquito request permission alert":
+        await overrideAlertAbortedTaquito(updateLogs);
         break;
       default:
         break;

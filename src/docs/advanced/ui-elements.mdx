@@ -110,6 +110,7 @@ You can overwrite all of the default UI elements by doing the following.
   <TabItem value="beacon">
 
 ```ts live
+// beacon disable ui
 import {
   BeaconEvent,
   DAppClient,
@@ -144,6 +145,7 @@ try {
 <TabItem value="taquito">
 
 ```ts live
+// taquito disable ui
 import { BeaconEvent, defaultEventCallbacks } from "@airgap/beacon-sdk";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
@@ -192,6 +194,7 @@ The same can be achieved without overwriting the default event handler by [subsc
   <TabItem value="beacon">
 
 ```ts live
+// beacon request permission events
 import {
   BeaconEvent,
   DAppClient,
@@ -244,6 +247,7 @@ try {
 <TabItem value="taquito">
 
 ```ts live
+// taquito request permission events
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {
@@ -316,6 +320,7 @@ If you still want to be notified of the closing of the pairing window, you can d
   <TabItem value="beacon">
 
 ```ts live
+// beacon request permission alert
 import {
   BeaconEvent,
   DAppClient,
@@ -369,7 +374,7 @@ import {
     const permissions = await dAppClient.requestPermissions();
     console.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    console.error("Got error:", error);
   }
 
 ```
@@ -379,6 +384,7 @@ import {
 <TabItem value="taquito">
 
 ```ts live
+// taquito request permission alert
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {
@@ -437,7 +443,7 @@ import {
     const permissions = await wallet.client.requestPermissions();
     console.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    console.error("Got error:", error);
   }
 
 ```

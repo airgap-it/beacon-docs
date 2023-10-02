@@ -9,9 +9,11 @@ import {
   WalletConnectPairingRequest,
   AnalyticsInterface,
 } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const overrideAlertAbortedBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
@@ -39,22 +41,23 @@ async () => {
               oldHandler();
             }
             // Add your own logic here
-            console.log("My logic");
+            logger.log("My logic");
           };
           data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
           await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
-          console.log("syncInfo", data);
+          logger.log("syncInfo", data);
         },
       },
     },
   });
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await dAppClient.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error.message);
+    logger.log("Got error:", error.message);
   }
   /// END
 };
+export default overrideAlertAbortedBeacon;
