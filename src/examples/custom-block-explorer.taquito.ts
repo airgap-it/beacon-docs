@@ -6,9 +6,11 @@ import {
 } from "../node_modules/beacon-sdk/dist/cjs";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const customBlockExplorerTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   class TzStatsBlockExplorer extends BlockExplorer {
     constructor(
@@ -59,6 +61,14 @@ async () => {
     blockExplorer: new TzStatsBlockExplorer(),
   });
 
+  try {
+    logger.log("Requesting permissions...");
+    const permissions = await wallet.client.requestPermissions();
+    logger.log("Got permissions:", permissions.address);
+  } catch (error) {
+    logger.log("Got error:", error.message);
+  }
   Tezos.setWalletProvider(wallet);
   /// END
 };
+export default customBlockExplorerTaquito;

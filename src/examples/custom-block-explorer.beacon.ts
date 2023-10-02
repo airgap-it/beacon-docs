@@ -5,9 +5,11 @@ import {
   NetworkType,
   Network,
 } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const customBlockExplorerBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   class TzStatsBlockExplorer extends BlockExplorer {
     constructor(
@@ -56,5 +58,14 @@ async () => {
     name: "Beacon Docs",
     blockExplorer: new TzStatsBlockExplorer(),
   });
+
+  try {
+    logger.log("Requesting permissions...");
+    const permissions = await dAppClient.requestPermissions();
+    logger.log("Got permissions:", permissions.address);
+  } catch (error) {
+    logger.log("Got error:", error.message);
+  }
   /// END
 };
+export default customBlockExplorerBeacon;
