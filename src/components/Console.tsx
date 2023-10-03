@@ -6,7 +6,7 @@ export type ConsoleProps = {
 };
 
 const Console = ({ snippetId }: ConsoleProps) => {
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState<string[]>([]);
 
   const setLogsHandler = (log: string) => {
     setLogs((prevLogs) => [...prevLogs, log]);

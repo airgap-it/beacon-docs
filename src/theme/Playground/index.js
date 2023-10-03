@@ -9,7 +9,6 @@ import { usePrismTheme } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
-import { reset } from "@site/src/Utils";
 
 function getCodeBody(code) {
   const lines = code.split("\n");
@@ -98,10 +97,7 @@ export default function Playground({ children, transformCode, ...props }) {
     setTimeout(() => setIsEditorEnabled(true));
   };
 
-  const hideHandler = async (snippetId) => {
-    if (snippetId === "reset editor") {
-      await reset();
-    }
+  const hideHandler = () => {
     setIsEditorEnabled(false);
   };
 
@@ -133,26 +129,39 @@ export default function Playground({ children, transformCode, ...props }) {
           )}
         </LiveProvider>
       </div>
-      <BrowserWindow url="https://example.beacon.docs.com">
-        <button
-          className="button button--primary margin-right--xs"
-          onClick={() => setIsEditorEnabledHandler()}
-        >
-          Run Code
-        </button>
-        <button
-          className="button button--secondary margin-right--xs"
-          onClick={async () => await hideHandler("reset editor")}
-        >
-          Reset
-        </button>
-        <button
-          className="button button--secondary"
-          onClick={async () => await hideHandler("clear console output")}
-        >
-          Clear Output
-        </button>
-      </BrowserWindow>
+      <BrowserOnly fallback={<LivePreviewLoader />}>
+        {() => {
+          const { reset } = require("../../utils");
+          const resetHandler = () => {
+            hideHandler();
+            reset();
+          };
+          return (
+            <>
+              <BrowserWindow url="https://example.beacon.docs.com">
+                <button
+                  className="button button--primary margin-right--xs"
+                  onClick={() => setIsEditorEnabledHandler()}
+                >
+                  Run Code
+                </button>
+                <button
+                  className="button button--secondary margin-right--xs"
+                  onClick={() => resetHandler()}
+                >
+                  Reset
+                </button>
+                <button
+                  className="button button--secondary"
+                  onClick={() => hideHandler("clear console output")}
+                >
+                  Clear Output
+                </button>
+              </BrowserWindow>
+            </>
+          );
+        }}
+      </BrowserOnly>
     </>
   );
 }
