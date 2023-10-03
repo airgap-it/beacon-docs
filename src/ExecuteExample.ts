@@ -45,6 +45,14 @@ import subscribeToEventTaquito from "./examples/subscribe-to-event.taquito";
 
 export class ExecuteExample {
   static async execute(code: string, updateLogs: Function) {
+    try {
+      await this.executeExample(code, updateLogs);
+    } catch (error) {
+      updateLogs(error.message);
+    }
+  }
+
+  private static async executeExample(code: string, updateLogs: Function) {
     switch (code) {
       case "beacon permission request":
         await requestPermissionsBeacon(updateLogs);
