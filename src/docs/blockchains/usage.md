@@ -5,7 +5,7 @@ slug: /blockchains/usage
 
 Let's look at an example how a dApp can be initialized with support for a `substrate` based blockchain.
 
-```typescript
+```ts
 import { DAppClient } from "@airgap/beacon-dapp";
 import { SubstrateBlockchain } from "@airgap/beacon-blockchain-substrate";
 
@@ -42,7 +42,7 @@ client.getActiveAccount().then((activeAccount) => {
 
 On the wallet side, the blockchain doesn't explicitly have to be registered, it can be filtered by the `blockchainIdentifier` property.
 
-```typescript
+```ts
 import { WalletClient } from "@airgap/beacon-wallet";
 import { BeaconMessageType } from "@airgap/beacon-types";
 

@@ -7,7 +7,7 @@ slug: /blockchains/substrate
 
 The following permission scopes are available in the Substrate package.
 
-```typescript
+```ts
 export enum SubstratePermissionScope {
   "transfer" = "transfer",
   "sign_payload_json" = "sign_payload_json",
@@ -19,7 +19,7 @@ export enum SubstratePermissionScope {
 
 The supported message types.
 
-```typescript
+```ts
 export enum SubstrateMessageType {
   "transfer_request" = "transfer_request",
   "sign_payload_request" = "sign_payload_request",
@@ -32,7 +32,7 @@ export enum SubstrateMessageType {
 
 This message is used to request permissions to use an account.
 
-```typescript
+```ts
 export interface SubstratePermissionRequest
   extends PermissionRequestV3<"substrate"> {
   blockchainData: {
@@ -50,7 +50,7 @@ export interface SubstratePermissionRequest
 
 This message is used to share information about an account with a dApp.
 
-```typescript
+```ts
 export interface SubstratePermissionResponse
   extends PermissionResponseV3<"substrate"> {
   blockchainData: {
@@ -73,7 +73,7 @@ export interface SubstratePermissionResponse
 
 This message is used to initiate a transfer between two accounts.
 
-```typescript
+```ts
 export interface SubstrateTransferRequest
   extends BlockchainMessage<"substrate"> {
   blockchainData: {
@@ -95,7 +95,7 @@ export interface SubstrateTransferRequest
 
 This message is used to share information about a requested operation with the dApp.
 
-```typescript
+```ts
 export type SubstrateTransferResponse =
   | {
       transactionHash: string;
@@ -115,7 +115,7 @@ export type SubstrateTransferResponse =
 
 This message is used to request the signature for a payload.
 
-```typescript
+```ts
 export interface SubstrateSignPayloadRequest
   extends BlockchainMessage<"substrate"> {
   blockchainData: {
@@ -200,7 +200,7 @@ export interface SubstrateSignPayloadRequest
 
 This message is used to share information about a requested signature with the dApp.
 
-```typescript
+```ts
 export type SubstrateSignPayloadResponse =
   | {
       transactionHash: string;
