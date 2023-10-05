@@ -19,6 +19,7 @@ Make sure the servers you use are whitelisted in the beacon network and federati
   <TabItem value="beacon">
 
 ```ts live
+// beacon different node
 import { DAppClient, Regions } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
@@ -41,6 +42,7 @@ try {
 <TabItem value="taquito">
 
 ```ts live
+// taquito different node
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { Regions } from "@airgap/beacon-sdk";

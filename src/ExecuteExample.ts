@@ -1,5 +1,7 @@
 import broadcastRequestBeacon from "./examples/broadcast-request.beacon";
 import broadcastRequestTaquito from "./examples/broadcast-request.taquito";
+import differentNodeBeacon from "./examples/different-node.beacon";
+import differentNodeTaquito from "./examples/different-node.taquito";
 import disableUIBeacon from "./examples/disable-all-ui.beacon";
 import disableUITaquito from "./examples/disable-all-ui.taquito";
 import disconnectWalletBeacon from "./examples/disconnect-wallet.beacon";
@@ -185,6 +187,12 @@ export class ExecuteExample {
         break;
       case "taquito request permission alert":
         await overrideAlertAbortedTaquito(updateLogs);
+        break;
+      case "beacon different node":
+        await differentNodeBeacon(updateLogs);
+        break;
+      case "taquito different node":
+        await differentNodeTaquito(updateLogs);
         break;
       default:
         break;
