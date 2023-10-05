@@ -82,7 +82,7 @@ const config = {
             type: "doc",
             position: "left",
             docId: "getting-started/simple-example",
-            label: "dApps",
+            label: "DApps",
           },
           {
             type: "doc",
