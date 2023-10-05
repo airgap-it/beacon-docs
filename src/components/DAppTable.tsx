@@ -1,7 +1,7 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import React from "react";
 
-import { data } from "../data/dapps.js";
+import data from "../data/dapps.json";
 
 const getDate = (date: number) => {
   const d = new Date(date);
@@ -19,7 +19,7 @@ const isGreater = (a: any, b: any) => {
     undefined,
     {
       numeric: true,
-    },
+    }
   ) === 1
     ? -1
     : 1;
