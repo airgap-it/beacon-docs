@@ -22,6 +22,10 @@ import requestOperationBeacon from "./examples/getting-started-operation-request
 import requestOperationTaquito from "./examples/getting-started-operation-request.taquito";
 import requestPermissionsBeacon from "./examples/getting-started-permission-request.beacon";
 import requestPermissionsTaquito from "./examples/getting-started-permission-request.taquito";
+import infoConnectionBeacon from "./examples/info-connection.beacon";
+import infoConnectionTaquito from "./examples/info-connection.taquito";
+import infoVersionBeacon from "./examples/info-version.beacon";
+import infoVersionTaquito from "./examples/info-version.taquito";
 import networkCustomBeacon from "./examples/network-custom-network.beacon";
 import networkCustomTaquito from "./examples/network-custom-network.taquito";
 import networkEdonetWithRpcBeacon from "./examples/network-edonet-with-url.beacon";
@@ -193,6 +197,24 @@ export class ExecuteExample {
         break;
       case "taquito different node":
         await differentNodeTaquito(updateLogs);
+        break;
+      case "beacon sdk version":
+        await infoVersionBeacon(updateLogs);
+        break;
+      case "taquito sdk version":
+        await infoVersionTaquito(updateLogs);
+        break;
+      case "beacon sdk client":
+        await infoVersionBeacon(updateLogs);
+        break;
+      case "taquito sdk client":
+        await infoVersionTaquito(updateLogs);
+        break;
+      case "beacon sdk connection":
+        await infoConnectionBeacon(updateLogs);
+        break;
+      case "taquito sdk connection":
+        await infoConnectionTaquito(updateLogs);
         break;
       default:
         break;

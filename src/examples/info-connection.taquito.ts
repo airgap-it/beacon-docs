@@ -1,10 +1,12 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { DAppClient, NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
+import { NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const infoConnectionTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -15,26 +17,27 @@ async () => {
     "tz1MJx9vhaNRSimcuXPK2rW4fLccQnDAnVKJ",
     { type: NetworkType.MAINNET },
   );
-  console.log("Address Link", addressLink);
+  logger.log("Address Link", addressLink);
 
   const txLink = await wallet.client.blockExplorer.getTransactionLink(
     "onzCRJhQ9zPC38TLGhBTghCW7WAJpfUJ2NpwbbQKbW6LeEL8RfK",
     { type: NetworkType.MAINNET },
   );
-  console.log("Transaction Link", txLink);
+  logger.log("Transaction Link", txLink);
 
-  console.log("\n\nConnection Info:\n");
-  console.log("Status:", wallet.client.connectionStatus);
+  logger.log("\n\nConnection Info:\n");
+  logger.log("Status:", wallet.client.connectionStatus);
   const accounts = await wallet.client.getAccounts();
-  console.log("Accounts:", accounts);
+  logger.log("Accounts:", accounts);
   const peers = await wallet.client.getPeers();
-  console.log("Peers:", peers);
+  logger.log("Peers:", peers);
 
-  console.log("\n\nDebug:\n");
-  console.log("Local Beacon ID:", await wallet.client.beaconId);
+  logger.log("\n\nDebug:\n");
+  logger.log("Local Beacon ID:", await wallet.client.beaconId);
   const colorMode = await wallet.client.getColorMode();
-  console.log("Color Mode:", colorMode);
+  logger.log("Color Mode:", colorMode);
   const ownMetadata = await wallet.client.getOwnAppMetadata();
-  console.log("Own Metadata:", ownMetadata);
+  logger.log("Own Metadata:", ownMetadata);
   /// END
 };
+export default infoConnectionTaquito;

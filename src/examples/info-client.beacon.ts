@@ -1,12 +1,15 @@
 /// START
 import { DAppClient } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const infoClientBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  console.log(`Connected Accounts:`, await dAppClient.getAccounts());
-  console.log(`Connected Peers:`, await dAppClient.getPeers());
+  logger.log(`Connected Accounts:`, await dAppClient.getAccounts());
+  logger.log(`Connected Peers:`, await dAppClient.getPeers());
   /// END
 };
+export default infoClientBeacon;
