@@ -22,7 +22,7 @@
     "embed-code": "npm run prettier && tsc --module es2015 --target es2015 --moduleResolution node --esModuleInterop true src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
-    "@airgap/beacon-sdk": "^4.0.10",
+    "@airgap/beacon-sdk": "4.0.12",
     "@docusaurus/core": "2.4.3",
     "@docusaurus/plugin-client-redirects": "^2.4.3",
     "@docusaurus/preset-classic": "2.4.3",
