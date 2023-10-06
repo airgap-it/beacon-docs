@@ -19,13 +19,44 @@ const isGreater = (a: any, b: any) => {
     undefined,
     {
       numeric: true,
-    },
+    }
   ) === 1
     ? -1
     : 1;
 };
 
 const DAppTable = () => {
+  const sdkVersions = {
+    recommended: [
+      "4.0.10-beta.2",
+      "4.0.10-beta.1",
+      "4.0.6",
+      "4.0.4",
+      "4.0.2",
+      "4.0.0",
+    ],
+    outdated: [
+      "2.3.13",
+      "2.3.12",
+      "2.3.11",
+      "2.3.10",
+      "2.3.9",
+      "2.3.5",
+      "2.3.2",
+      "2.3.1",
+      "2.2.10",
+      "2.2.9",
+      "2.2.8",
+      "2.2.7",
+      "2.2.6",
+      "2.2.5",
+      "2.2.4",
+      "2.2.3",
+      "2.2.2",
+      "2.2.1",
+    ],
+  };
+
   return (
     <>
       <BrowserOnly fallback={<></>}>
@@ -57,19 +88,9 @@ const DAppTable = () => {
                       <td>
                         {dApp.sdkVersion}{" "}
                         {dApp.sdkVersion === SDK_VERSION ||
-                        dApp.sdkVersion === "3.0.0" ||
-                        dApp.sdkVersion === "2.3.13"
+                        sdkVersions.recommended.includes(dApp.sdkVersion)
                           ? "✅"
-                          : dApp.sdkVersion === "2.2.10" ||
-                            dApp.sdkVersion === "2.2.9" ||
-                            dApp.sdkVersion === "2.2.8" ||
-                            dApp.sdkVersion === "2.2.7" ||
-                            dApp.sdkVersion === "2.2.6" ||
-                            dApp.sdkVersion === "2.2.5" ||
-                            dApp.sdkVersion === "2.2.4" ||
-                            dApp.sdkVersion === "2.2.3" ||
-                            dApp.sdkVersion === "2.2.2" ||
-                            dApp.sdkVersion === "2.2.1"
+                          : sdkVersions.outdated.includes(dApp.sdkVersion)
                           ? "❌"
                           : ""}
                       </td>
