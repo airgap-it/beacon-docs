@@ -19,7 +19,7 @@ const isGreater = (a: any, b: any) => {
     undefined,
     {
       numeric: true,
-    }
+    },
   ) === 1
     ? -1
     : 1;
