@@ -14,7 +14,7 @@ const getActiveAccountTaquitoWithEvents = async (loggerFun: Function) => {
   Tezos.setWalletProvider(wallet);
 
   wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
-    // An active account has been set
+    // An active account has been set, update the dApp UI
     logger.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
   });
 
