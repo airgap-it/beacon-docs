@@ -1,8 +1,8 @@
 import React from "react";
-import useThemeContext from "@theme/hooks/useThemeContext";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const LoadingAnimation = () => {
-  const { isDarkTheme } = useThemeContext();
+  const { colorMode } = useColorMode();
 
   return (
     <svg
@@ -12,7 +12,7 @@ const LoadingAnimation = () => {
       height="38"
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
-      stroke={isDarkTheme ? "#fff" : "#3880ff"}
+      stroke={colorMode === "dark" ? "#fff" : "#3880ff"}
     >
       <g fill="none" fillRule="evenodd">
         <g transform="translate(1 1)" strokeWidth="2">

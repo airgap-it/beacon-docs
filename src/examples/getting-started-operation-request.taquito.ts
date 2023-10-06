@@ -1,10 +1,12 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
+import { TezosOperationType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const requestOperationTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -17,7 +19,7 @@ async () => {
   const activeAccount = await wallet.client.getActiveAccount();
   if (!activeAccount) {
     const permissions = await wallet.client.requestPermissions();
-    console.log("New connection:", permissions.address);
+    logger.log("New connection:", permissions.address);
     myAddress = permissions.address;
   } else {
     myAddress = activeAccount.address;
@@ -25,12 +27,19 @@ async () => {
 
   // At this point we are connected to an account.
   // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
-  const response = await wallet.sendOperations([
-    {
-      kind: TezosOperationType.TRANSACTION,
-      destination: myAddress, // Send to ourselves
-      amount: "1", // Amount in mutez, the smallest unit in Tezos
-    },
-  ]);
+  try {
+    const response = await wallet.sendOperations([
+      {
+        kind: TezosOperationType.TRANSACTION,
+        destination: myAddress, // Send to ourselves
+        amount: "1", // Amount in mutez, the smallest unit in Tezos
+      },
+    ]);
+    logger.log("Response: ", response);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
+
+export default requestOperationTaquito;

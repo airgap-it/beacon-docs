@@ -1,7 +1,7 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { PermissionScope } from "@airgap/beacon-sdk";
+import { PermissionScope } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
 async () => {
@@ -21,7 +21,7 @@ async () => {
     const permissions = await wallet.client.requestPermissions({ scopes });
     console.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    console.log("Got error:", error.message);
   }
 
   /// END

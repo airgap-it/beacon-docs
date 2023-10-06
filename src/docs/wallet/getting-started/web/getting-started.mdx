@@ -16,7 +16,7 @@ The RPC URL that is provided by the DApp can be an insecure http:// connection. 
 Especially the wallet should care about this and potentially show a warning to the user if the RPC URL is not a secure https:// URL.
 :::
 
-```ts
+```ts live
 import {
   WalletClient,
   BeaconMessageType,
@@ -45,7 +45,7 @@ const connectApp = async (): Promise<void> => {
             id: message.id,
             publicKey:
               "3b92229274683b311cf8b040cf91ac0f8e19e410f06eda5537ef077e718e0024",
-          };
+
 
           // Optional
           // If the user aborts an action at any time, you can send back an error:
@@ -53,7 +53,7 @@ const connectApp = async (): Promise<void> => {
             type: BeaconMessageType.Error,
             id: message.id,
             errorType: BeaconErrorType.ABORTED_ERROR,
-          };
+
 
           break;
         case BeaconMessageType.SignPayloadRequest:
@@ -64,7 +64,7 @@ const connectApp = async (): Promise<void> => {
             id: message.id,
             signingType: message.signingType,
             signature: "edsig...",
-          };
+
 
           break;
         case BeaconMessageType.OperationRequest:
@@ -77,7 +77,7 @@ const connectApp = async (): Promise<void> => {
             type: BeaconMessageType.OperationResponse,
             id: message.id,
             transactionHash: "op...",
-          };
+
 
           // Optional
           // If the transaction cannot be prepared, (eg. run_operations fails), an error containing the rpc error can be returned
@@ -95,7 +95,7 @@ const connectApp = async (): Promise<void> => {
             id: message.id,
             errorType: BeaconErrorType.TRANSACTION_INVALID_ERROR,
             errorData: error,
-          };
+
 
           break;
         case BeaconMessageType.BroadcastRequest:
@@ -103,21 +103,21 @@ const connectApp = async (): Promise<void> => {
             type: BeaconMessageType.OperationResponse,
             id: message.id,
             transactionHash: "op...",
-          };
+
 
           break;
         default:
           response = {
             type: BeaconMessageType.Error,
-            id: (message as any).id, // Typescript assumes message is of type "never", but we should still add this to handle any potential future messages we don't support yet.
+            id: message.id,
             errorType: BeaconErrorType.ABORTED_ERROR,
-          };
+
       }
 
       client.respond(response);
     })
     .catch((error) => console.error("connect error", error));
-};
+
 
 connectApp().catch((error) => console.error("connect error", error));
 ```
@@ -129,14 +129,14 @@ It can be through QR scanning, Deeplinks or Copy-Pasting the handshake message. 
 
 ```typescript
 const isBeaconMessage: (obj: unknown) => obj is P2PPairingRequest = (
-  obj: unknown
+  obj: unknown,
 ): obj is P2PPairingRequest => {
   return (
     typeof (obj as P2PPairingRequest).name === "string" &&
     typeof (obj as P2PPairingRequest).publicKey === "string" &&
     typeof (obj as P2PPairingRequest).relayServer === "string"
   );
-};
+
 
 const handshakeMessage = ""; // This was received from the dApp, eg. through QR scanning or deeplink
 
@@ -150,6 +150,6 @@ if (isBeaconMessage(deserialized)) {
 
 That's it, now the dApp and the Wallet are connected.
 
-There are some additional features that the `WalletClient` provides, such as `client.getPermissions()` or `client.getPeers()` to listing all the connected peers and permissions that were granted to dApps.
+There are some additional features that the `WalletClient` provides, such as `client.getPermissions()` or `client.getPeers()` to listing all the connected peers and permissions that were granted to DApps.
 
 Using `client.removePeer(peer)` the wallet can disconnect from a peer. If this is done, the dApp will receive a message that the wallet has disconnected.

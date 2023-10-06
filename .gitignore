@@ -1,8 +1,10 @@
 # Dependencies
 /node_modules
+/src/node_modules
 
 # Production
 /build/
+/build-docs/
 
 # Generated files
 .docusaurus
@@ -22,6 +24,7 @@ yarn-error.log*
 # Generated files and folders
 build-examples
 src/examples/*.js
+src/*.js
 
 /docs/
 /src/components/monaco-types.ts

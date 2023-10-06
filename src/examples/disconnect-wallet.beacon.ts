@@ -1,8 +1,10 @@
 /// START
-import { DAppClient } from "@airgap/beacon-sdk";
+import Logger from "../Logger";
+import { DAppClient } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
-async () => {
+const disconnectWalletBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -12,7 +14,8 @@ async () => {
   dAppClient.clearActiveAccount().then(async () => {
     const account = await dAppClient.getActiveAccount();
 
-    console.log("Active Account", account);
+    logger.log("Active Account", account);
   });
   /// END
 };
+export default disconnectWalletBeacon;

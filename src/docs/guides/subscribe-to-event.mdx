@@ -2,20 +2,69 @@
 title: Subscribe To Event
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquitoSTE"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme subscribe-to-event.beacon.ts -->
+```ts live
+// beacon subscribe to event
+import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+});
+
+// TODO: Remove temporary workaround in sandbox
+await new Promise((resolve) => setTimeout(resolve, 1000));
+
+await dAppClient.clearActiveAccount();
+
+console.log(await dAppClient.getActiveAccount());
+
+dAppClient.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
+  console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+});
+
+await dAppClient.requestPermissions();
 ```
 
-<!-- embedme subscribe-to-event.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito subscribe to event
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { BeaconEvent } from "@airgap/beacon-sdk";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+// TODO: Remove temporary workaround in sandbox
+await new Promise((resolve) => setTimeout(resolve, 1000));
+
+await wallet.clearActiveAccount();
+
+console.log(await wallet.client.getActiveAccount());
+
+wallet.client.subscribeToEvent(BeaconEvent.PAIR_SUCCESS, (data) => {
+  console.log(`${BeaconEvent.PAIR_SUCCESS} triggered: `, data);
+});
+
+await wallet.client.requestPermissions();
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>

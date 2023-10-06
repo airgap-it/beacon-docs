@@ -1,8 +1,10 @@
 /// START
-import { DAppClient } from "@airgap/beacon-sdk";
+import Logger from "../Logger";
+import { DAppClient } from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
-async () => {
+const getActiveAccountBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -11,11 +13,13 @@ async () => {
   if (activeAccount) {
     // User already has account connected, everything is ready
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
+    logger.log("Already connected:", activeAccount.address);
     return activeAccount;
   } else {
     // The user is not connected. A button should be displayed where the user can connect to his wallet.
-    console.log("Not connected!");
+    logger.log("Not connected!");
   }
   /// END
 };
+
+export default getActiveAccountBeacon;

@@ -5,10 +5,12 @@ import {
   BeaconEvent,
   DAppClient,
   TezosOperationType,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const getOperationRequestTaquitoWithEvents = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -20,20 +22,24 @@ async () => {
     BeaconEvent.ACTIVE_ACCOUNT_SET,
     async (account) => {
       // An active account has been set, update the dApp UI
-      console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+      logger.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
 
       // At this point we are connected to an account.
       // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
-      const response = await wallet.sendOperations([
-        {
-          kind: TezosOperationType.TRANSACTION,
-          destination: account.address, // Send to ourselves
-          amount: "1", // Amount in mutez, the smallest unit in Tezos
-        },
-      ]);
+      try {
+        const response = await wallet.sendOperations([
+          {
+            kind: TezosOperationType.TRANSACTION,
+            destination: account.address, // Send to ourselves
+            amount: "1", // Amount in mutez, the smallest unit in Tezos
+          },
+        ]);
 
-      console.log(response);
-    }
+        logger.log("Response: ", response);
+      } catch (error) {
+        logger.log("Error: ", error.message);
+      }
+    },
   );
 
   // Check if we are connected. If not, do a permission request first.
@@ -44,3 +50,4 @@ async () => {
 
   /// END
 };
+export default getOperationRequestTaquitoWithEvents;

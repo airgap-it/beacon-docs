@@ -2,7 +2,6 @@
 title: First dApp
 ---
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -11,7 +10,7 @@ import TabItem from "@theme/TabItem";
 Let's get started with your first dApp. You have to install the necessary dependencies.
 
 <Tabs
-  groupId="beaconOrTaquito"
+  groupId="beaconOrTaquito1"
   defaultValue="beacon"
   values={[
     { label: "Beacon", value: "beacon" },
@@ -39,21 +38,56 @@ npm install --save @taquito/taquito @taquito/beacon-wallet
 You can then import the `beacon-sdk` package and create a `DAppClient` instance. This instance will be used throughout your dApp to interact with the users wallet.
 Once created, you can send a permission request to prompt the user to connect to his wallet.
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquito2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme getting-started-permission-request.beacon.ts -->
+```ts live
+// beacon permission request
+import { DAppClient } from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
-<!-- embedme getting-started-permission-request.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito permission request
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await wallet.client.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>
 
 After the connection is successfully established and the user has shared his account, the result will be returned.
 
@@ -67,77 +101,312 @@ Now let's introduce a check to see if the SDK is already connected to the dApp.
 This code should be run after the page is loaded to get the users address and show it in your UI.
 If the following code returns an address, there is no need to send another permission request, unless you want to pair a different account.
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquito3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme getting-started-active-account.beacon.ts -->
+```ts live
+// beacon get active account
+import { DAppClient } from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+// The following code should always be run during pageload if you want to show if the user is connected.
+const activeAccount = await dAppClient.getActiveAccount();
+if (activeAccount) {
+  // User already has account connected, everything is ready
+  // You can now do an operation request, sign request, or send another permission request to switch wallet
+  console.log("Already connected:", activeAccount.address);
+  return activeAccount;
+} else {
+  // The user is not connected. A button should be displayed where the user can connect to his wallet.
+  console.error("Not connected!");
+}
 ```
 
-<!-- embedme getting-started-active-account.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito get active account
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+// The following code should always be run during pageload if you want to show if the user is connected.
+const activeAccount = await wallet.client.getActiveAccount();
+if (activeAccount) {
+  // User already has account connected, everything is ready
+  // You can now do an operation request, sign request, or send another permission request to switch wallet
+  console.log("Already connected:", activeAccount.address);
+  return activeAccount;
+} else {
+  // The user is not connected. A button should be displayed where the user can connect to his wallet.
+  console.error("Not connected!");
+}
 ```
 
-</RunnableCode>
-
+</TabItem>
+</Tabs>
 The `beacon-sdk` is now fully set up and ready to receive operation requests.
 
 > If you want to add reactivity to your DApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquito4"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme getting-started-active-account-events.beacon.ts -->
+```ts live
+// beacon get active account with events
+import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+// Listen for all the active account changes
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error.message);
+}
 ```
 
-<!-- embedme getting-started-active-account-events.taquito.ts -->
+</TabItem>
+<TabItem value="taquito">
 
-```ts
-// TODO
+```ts live
+// taquito get active account with events
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { BeaconEvent } from "@airgap/beacon-sdk";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await wallet.client.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error.message);
+}
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>
 
 ## Operation Request
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquito5"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme getting-started-operation-request.beacon.ts -->
+```ts live
+// beacon request operation
+import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+let myAddress: string | undefined;
+
+// Check if we are connected. If not, do a permission request first.
+const activeAccount = await dAppClient.getActiveAccount();
+if (!activeAccount) {
+  const permissions = await dAppClient.requestPermissions();
+  console.log("New connection:", permissions.address);
+  myAddress = permissions.address;
+} else {
+  myAddress = activeAccount.address;
+}
+
+// At this point we are connected to an account.
+// Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
+const response = await dAppClient.requestOperation({
+  operationDetails: [
+    {
+      kind: TezosOperationType.TRANSACTION,
+      destination: myAddress, // Send to ourselves
+      amount: "1", // Amount in mutez, the smallest unit in Tezos
+    },
+  ],
+});
 ```
 
-<!-- embedme getting-started-operation-request.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito request operation
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+let myAddress: string | undefined;
+
+// Check if we are connected. If not, do a permission request first.
+const activeAccount = await wallet.client.getActiveAccount();
+if (!activeAccount) {
+  const permissions = await wallet.client.requestPermissions();
+  console.log("New connection:", permissions.address);
+  myAddress = permissions.address;
+} else {
+  myAddress = activeAccount.address;
+}
+
+// At this point we are connected to an account.
+// Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
+const response = await wallet.sendOperations([
+  {
+    kind: TezosOperationType.TRANSACTION,
+    destination: myAddress, // Send to ourselves
+    amount: "1", // Amount in mutez, the smallest unit in Tezos
+  },
+]);
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>
 
 > Alternatively with `BeaconEvent.ACTIVE_ACCOUNT_SET`
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquito6"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme getting-started-operation-request-events.beacon.ts -->
+```ts live
+// beacon request operation with events
+import {
+  BeaconEvent,
+  DAppClient,
+  TezosOperationType,
+} from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+// Listen for all the active account changes
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+
+  // At this point we are connected to an account.
+  // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
+  const response = await dAppClient.requestOperation({
+    operationDetails: [
+      {
+        kind: TezosOperationType.TRANSACTION,
+        destination: account.address, // Send to ourselves
+        amount: "1", // Amount in mutez, the smallest unit in Tezos
+      },
+    ],
+  });
+
+  console.log(response);
+});
+
+// Check if we are connected. If not, do a permission request first.
+const activeAccount = await dAppClient.getActiveAccount();
+if (!activeAccount) {
+  await dAppClient.requestPermissions();
+}
 ```
 
-<!-- embedme getting-started-operation-request-events.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+ <TabItem value="taquito">
+
+```ts live
+// taquito request operation with events
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import {
+  BeaconEvent,
+  DAppClient,
+  TezosOperationType,
+} from "@airgap/beacon-sdk";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+// Listen for all the active account changes
+wallet.client.subscribeToEvent(
+  BeaconEvent.ACTIVE_ACCOUNT_SET,
+  async (account) => {
+    // An active account has been set, update the dApp UI
+    console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+
+    // At this point we are connected to an account.
+    // Let's send a simple transaction to the wallet that sends 1 mutez to ourselves.
+    const response = await wallet.sendOperations([
+      {
+        kind: TezosOperationType.TRANSACTION,
+        destination: account.address, // Send to ourselves
+        amount: "1", // Amount in mutez, the smallest unit in Tezos
+      },
+    ]);
+
+    console.log(response);
+  },
+);
+
+// Check if we are connected. If not, do a permission request first.
+const activeAccount = await wallet.client.getActiveAccount();
+if (!activeAccount) {
+  await wallet.client.requestPermissions();
+}
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>
 
 ## User Interaction Best Practice
 

@@ -3,10 +3,12 @@ import {
   BeaconEvent,
   DAppClient,
   defaultEventCallbacks,
-} from "@airgap/beacon-sdk";
+} from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const disableUIBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
@@ -23,11 +25,12 @@ async () => {
   });
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await dAppClient.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    logger.log("Got error:", error.message);
   }
   /// END
 };
+export default disableUIBeacon;

@@ -6,10 +6,14 @@ import {
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
-} from "@airgap/beacon-sdk";
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
+} from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const overrideAlertAbortedBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
@@ -21,9 +25,12 @@ async () => {
         handler: async (data: {
           p2pPeerInfo: () => Promise<P2PPairingRequest>;
           postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
-          preferredNetwork: NetworkType;
+          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          networkType: NetworkType;
           abortedHandler?(): void;
           disclaimerText?: string;
+          analytics: AnalyticsInterface;
+          featuredWallets?: string[];
         }): Promise<void> => {
           // If you want to attach your own "on alert closed" handler
           // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -34,22 +41,23 @@ async () => {
               oldHandler();
             }
             // Add your own logic here
-            console.log("My logic");
+            logger.log("My logic");
           };
           data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
           await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
-          console.log("syncInfo", data);
+          logger.log("syncInfo", data);
         },
       },
     },
   });
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await dAppClient.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    logger.log("Got error:", error.message);
   }
   /// END
 };
+export default overrideAlertAbortedBeacon;

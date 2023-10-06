@@ -35,19 +35,17 @@ Temple is a web extension for your browser, easy-to-use browser extension wallet
 
 Umami is a Tezos desktop wallet that combines best-in-class features to deliver a smooth user experience for both beginner and advanced users.
 
-
-
 ## Can I use all features of Beacon with all wallets?
 
 Wallets are encouraged to support all features that Beacon offers. Please refer to the following matrix to check which features are supported in major wallets.
 
-|                           | AirGap | Altme  | Autonomy  | Galleon| Kukai  | Spire  | Temple  | Umami  | 
-| ------------------------- | ------ | ------ | ------    | ------ | ------ | ------ | ------  | ------ |
-| permissionRequest         | ✅     | ✅     | ✅        | ✅     | ✅     | ✅     | ✅      | ✅     | 
-| operationRequest          | ✅     | ✅     | ✅        | ✅     | ✅     | ✅     | ✅      | ✅     | 
-| signRequest (RAW)         | ✅     | ✅     | ✅        | ❌     | ❌ *** | ✅     | ✅      | ✅     | 
-| signRequest (MICHELINE)   | ✅     | ✅     | ✅        | ❌     | ✅     | ✅     | ✅      | ✅     | 
-| signRequest (TRANSACTION) | ✅     | ✅     | ✅        | ❌     | ✅     | ✅     | ✅      | ✅     | 
-| broadcastRequest          | ✅     | ✅     | ❌        | ❓     | ❌     | ✅     | ✅      | ❌     | 
+|                           | AirGap | Altme | Autonomy | Galleon | Kukai     | Spire | Temple | Umami |
+| ------------------------- | ------ | ----- | -------- | ------- | --------- | ----- | ------ | ----- |
+| permissionRequest         | ✅     | ✅    | ✅       | ✅      | ✅        | ✅    | ✅     | ✅    |
+| operationRequest          | ✅     | ✅    | ✅       | ✅      | ✅        | ✅    | ✅     | ✅    |
+| signRequest (RAW)         | ✅     | ✅    | ✅       | ❌      | ❌ \*\*\* | ✅    | ✅     | ✅    |
+| signRequest (MICHELINE)   | ✅     | ✅    | ✅       | ❌      | ✅        | ✅    | ✅     | ✅    |
+| signRequest (TRANSACTION) | ✅     | ✅    | ✅       | ❌      | ✅        | ✅    | ✅     | ✅    |
+| broadcastRequest          | ✅     | ✅    | ❌       | ❓      | ❌        | ✅    | ✅     | ❌    |
 
 ` *** 05 or 03 prefixed operations only`

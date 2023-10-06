@@ -3,15 +3,18 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import {
   BeaconEvent,
-  DAppClient,
   defaultEventCallbacks,
   P2PPairingRequest,
   PostMessagePairingRequest,
   NetworkType,
-} from "@airgap/beacon-sdk";
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
+} from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const overrideDefaultEventTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({
@@ -25,14 +28,17 @@ async () => {
           data: {
             p2pPeerInfo: () => Promise<P2PPairingRequest>;
             postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
-            preferredNetwork: NetworkType;
+            walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+            networkType: NetworkType;
             abortedHandler?(): void;
             disclaimerText?: string;
+            analytics: AnalyticsInterface;
+            featuredWallets?: string[];
           },
-          eventCallback?: any[] | undefined
+          eventCallback?: any[] | undefined,
         ): Promise<void> => {
           await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
-          console.log("syncInfo", data, eventCallback);
+          logger.log("syncInfo", data, eventCallback);
         },
       },
     },
@@ -41,11 +47,12 @@ async () => {
   Tezos.setWalletProvider(wallet);
 
   try {
-    console.log("Requesting permissions...");
+    logger.log("Requesting permissions...");
     const permissions = await wallet.client.requestPermissions();
-    console.log("Got permissions:", permissions.address);
+    logger.log("Got permissions:", permissions.address);
   } catch (error) {
-    console.log("Got error:", error);
+    logger.log("Got error:", error.message);
   }
   /// END
 };
+export default overrideDefaultEventTaquito;

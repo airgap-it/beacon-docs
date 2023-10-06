@@ -21,7 +21,7 @@ See the docs about the individual packages for more information about the messag
 
 In the Beacon protocol, every message is wrapped in the following wrapper.
 
-```typescript
+```ts
 export interface BeaconMessageWrapper<T extends BeaconBaseMessage> {
   id: string; // ID of the message. The same ID is used in the request and response
   version: string;
@@ -34,7 +34,7 @@ export interface BeaconMessageWrapper<T extends BeaconBaseMessage> {
 
 The layout for the basic message is the same for all blockchains.
 
-```typescript
+```ts
 export interface BlockchainMessage<T extends string = string> {
   blockchainIdentifier: T;
   type: unknown;
@@ -50,7 +50,7 @@ For this reason, there are two messages, `PermissionRequest` and `PermissionResp
 
 Those messages are handled differently from the generic `BlockchainRequest` and `BlockchainResponse` messages because they have to be completed first before any other action can take place.
 
-```typescript
+```ts
 export interface PermissionRequestV3<T extends string = string>
   extends BlockchainMessage<T> {
   blockchainIdentifier: T;
@@ -58,11 +58,11 @@ export interface PermissionRequestV3<T extends string = string>
   blockchainData: {
     appMetadata: AppMetadata; // Some additional information about the DApp
     scopes: string[];
-  };
+
 }
 ```
 
-```typescript
+```ts
 export interface PermissionResponseV3<T extends string = string>
   extends BlockchainMessage<T> {
   blockchainIdentifier: T;
@@ -70,7 +70,7 @@ export interface PermissionResponseV3<T extends string = string>
   blockchainData: {
     appMetadata: AppMetadata; // Some additional information about the Wallet
     scopes: string[]; // Permissions that have been granted for this specific address / account
-  };
+
 }
 ```
 
@@ -80,7 +80,7 @@ Following are the generic messages of the Beacon Protocol. They can be extended 
 
 Please see the docs about the specific blockchain messages for examples.
 
-```typescript
+```ts
 export interface BlockchainRequestV3<T extends string = string>
   extends BlockchainMessage<T> {
   blockchainIdentifier: T;
@@ -89,11 +89,11 @@ export interface BlockchainRequestV3<T extends string = string>
   blockchainData: {
     type: string;
     scope: string;
-  };
+
 }
 ```
 
-```typescript
+```ts
 export interface BlockchainResponseV3<T extends string = string>
   extends BlockchainMessage<T> {
   blockchainIdentifier: T;

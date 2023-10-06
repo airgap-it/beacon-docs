@@ -1,9 +1,11 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const disconnectWalletTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -17,10 +19,11 @@ async () => {
 
   try {
     const account = await wallet.getPKH();
-    console.log("Active Account", account);
+    logger.log("Active Account", account);
   } catch {
-    console.log("No wallet connected");
+    logger.log("No wallet connected");
   }
 
   /// END
 };
+export default disconnectWalletTaquito;

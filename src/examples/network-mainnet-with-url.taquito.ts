@@ -1,10 +1,12 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { NetworkType } from "@airgap/beacon-sdk";
+import { NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const networkMainnetWithUrlTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
@@ -12,11 +14,17 @@ async () => {
   Tezos.setWalletProvider(wallet);
 
   // Mainnet with different rpcUrl
-  const result = await wallet.client.requestPermissions({
-    network: {
-      type: NetworkType.MAINNET,
-      rpcUrl: "https://mainnet-tezos.giganode.io/",
-    },
-  });
+  try {
+    const result = await wallet.client.requestPermissions({
+      network: {
+        type: NetworkType.MAINNET,
+        rpcUrl: "https://mainnet-tezos.giganode.io/",
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
+export default networkMainnetWithUrlTaquito;

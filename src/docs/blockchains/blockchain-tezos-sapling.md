@@ -9,7 +9,7 @@ The `Tezos Sapling` package enables messages related to the Sapling implementati
 
 The following permission scopes are available in the Tezos Sapling package.
 
-```typescript
+```ts
 export enum TezosSaplingPermissionScope {
   /**
    * The "viewing_key" permission is used to signal to the wallet that a dApp requests access to the viewing key. Sharing the viewing key will give up ALL privacy advantages of sapling, so this permission should only be granted in very specific cases.
@@ -26,7 +26,7 @@ export enum TezosSaplingPermissionScope {
 
 At the moment, only simple transfers are supported. At a later stage, this package will be extended to include shield and unshield operations, as well as shielded contract calls.
 
-```typescript
+```ts
 export enum TezosSaplingMessageType {
   /**
    * This message type is used for transfers from one sapling address to another.
@@ -42,7 +42,7 @@ export enum TezosSaplingMessageType {
 
 This message is used to request permissions to use an account.
 
-```typescript
+```ts
 export interface TezosSaplingPermissionRequest
   extends PermissionRequestV3<"tezos-sapling"> {
   blockchainData: {
@@ -53,8 +53,8 @@ export interface TezosSaplingPermissionRequest
       type: NetworkType;
       name?: string;
       rpcUrl?: string;
-    };
-  };
+
+
 }
 ```
 
@@ -62,7 +62,7 @@ export interface TezosSaplingPermissionRequest
 
 This message is used to share information about an account with a dApp.
 
-```typescript
+```ts
 export interface TezosSaplingPermissionResponse
   extends PermissionResponseV3<"tezos-sapling"> {
   blockchainData: {
@@ -77,9 +77,9 @@ export interface TezosSaplingPermissionResponse
         type: NetworkType;
         name?: string;
         rpcUrl?: string;
-      };
+
     }[];
-  };
+
 }
 ```
 
@@ -87,7 +87,7 @@ export interface TezosSaplingPermissionResponse
 
 This message is used to initiate a transfer between two accounts.
 
-```typescript
+```ts
 export interface TezosSaplingTransferRequest
   extends BlockchainMessage<"tezos-sapling"> {
   blockchainData: {
@@ -98,7 +98,7 @@ export interface TezosSaplingTransferRequest
     recipient: string;
     // No network required because we can get it from account id
     mode: "submit" | "submit-and-return" | "return"; // TODO: Wording
-  };
+
 }
 ```
 
@@ -106,7 +106,7 @@ export interface TezosSaplingTransferRequest
 
 This message is used to share information about a requested operation with the dApp.
 
-```typescript
+```ts
 export type TezosSaplingTransferResponse =
   | {
       transactionHash: string;
@@ -119,5 +119,5 @@ export type TezosSaplingTransferResponse =
   | {
       signature: string;
       payload?: string;
-    };
+
 ```

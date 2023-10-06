@@ -1,10 +1,16 @@
 /// START
-import { BEACON_VERSION, SDK_VERSION } from "@airgap/beacon-sdk";
+import {
+  BEACON_VERSION,
+  SDK_VERSION,
+} from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const infoVersionTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
-  console.log("SDK Version", SDK_VERSION);
-  console.log("Beacon Version", BEACON_VERSION);
+  logger.log("SDK Version", SDK_VERSION);
+  logger.log("Beacon Version", BEACON_VERSION);
   /// END
 };
+export default infoVersionTaquito;

@@ -9,7 +9,7 @@ import DynamicImage from "@site/src/components/DynamicImage";
 
 :::caution
 We strongly recommend keeping the default UI Elements.
-Consistent UI helps users to interact with different dApps more easily.
+Consistent UI helps users to interact with different DApps more easily.
 :::
 
 The default UI elements have been designed with all wallets and user setups in mind.
@@ -99,43 +99,209 @@ On Android, there is one link for all mobile apps because the device lets you ch
 
 You can overwrite all of the default UI elements by doing the following.
 
-import { RunnableCode } from "@site/src/components/RunnableCode";
+<Tabs
+  groupId="beaconOrTaquitoUE1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<RunnableCode>
+```ts live
+// beacon disable ui
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+} from "@airgap/beacon-sdk";
 
-<!-- embedme disable-all-ui.beacon.ts -->
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+  disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
+  eventHandlers: {
+    // To keep the pairing alert, we have to add the following default event handlers back
+    [BeaconEvent.PAIR_INIT]: {
+      handler: defaultEventCallbacks.PAIR_INIT,
+    },
+    [BeaconEvent.PAIR_SUCCESS]: {
+      handler: defaultEventCallbacks.PAIR_SUCCESS,
+    },
+  },
+});
 
-```ts
-// TODO
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
-<!-- embedme disable-all-ui.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito disable ui
+import { BeaconEvent, defaultEventCallbacks } from "@airgap/beacon-sdk";
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({
+  name: "Beacon Docs Taquito",
+  disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
+  eventHandlers: {
+    // To keep the pairing alert, we have to add the following default event handlers back
+    [BeaconEvent.PAIR_INIT]: {
+      handler: defaultEventCallbacks.PAIR_INIT,
+    },
+    [BeaconEvent.PAIR_SUCCESS]: {
+      handler: defaultEventCallbacks.PAIR_SUCCESS,
+    },
+  },
+});
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  await wallet.requestPermissions();
+  const address = await wallet.getPKH();
+  console.log("Got permissions:", address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>
 
 You can also add your own logic to specific events and still keep the original behaviour.
 
 The same can be achieved without overwriting the default event handler by [subscribing to an event](/guides/subscribe-to-event). This method is preferred, if possible.
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquitoUE2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme override-default-event.beacon.ts -->
+```ts live
+// beacon request permission events
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+  P2PPairingRequest,
+  PostMessagePairingRequest,
+  NetworkType,
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
+} from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+  eventHandlers: {
+    [BeaconEvent.PAIR_INIT]: {
+      // Every BeaconEvent can be overriden by passing a handler here.
+      // The default will not be executed anymore. To keep the default,
+      // you will have to call it again.
+      handler: async (
+        data: {
+          p2pPeerInfo: () => Promise<P2PPairingRequest>;
+          postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
+          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          networkType: NetworkType;
+          abortedHandler?(): void;
+          disclaimerText?: string;
+          analytics: AnalyticsInterface;
+          featuredWallets?: string[];
+        },
+        eventCallback?: any[] | undefined,
+      ): Promise<void> => {
+        await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+        console.log("syncInfo", data, eventCallback);
+      },
+    },
+  },
+});
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
-<!-- embedme override-default-event.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito request permission events
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+  P2PPairingRequest,
+  PostMessagePairingRequest,
+  NetworkType,
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
+} from "@airgap/beacon-sdk";
+
+const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const wallet = new BeaconWallet({
+  name: "Beacon Docs Taquito",
+  eventHandlers: {
+    [BeaconEvent.PAIR_INIT]: {
+      // Every BeaconEvent can be overriden by passing a handler here.
+      // The default will not be executed anymore. To keep the default,
+      // you will have to call it again.
+      handler: async (
+        data: {
+          p2pPeerInfo: () => Promise<P2PPairingRequest>;
+          postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
+          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          networkType: NetworkType;
+          abortedHandler?(): void;
+          disclaimerText?: string;
+          analytics: AnalyticsInterface;
+          featuredWallets?: string[];
+        },
+        eventCallback?: any[] | undefined,
+      ): Promise<void> => {
+        await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+        console.log("syncInfo", data, eventCallback);
+      },
+    },
+  },
+});
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await wallet.client.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>
 
 The closing of the pairing alert can not be listened to by default. The reason for this is the delay in the P2P connections.
 It is possible that a user scans the pairing QR code with his wallet and then closes the alert while waiting for the connection to be established.
@@ -143,18 +309,144 @@ If the dApp interprets the "closing" of the alert as an abort, and a few seconds
 
 If you still want to be notified of the closing of the pairing window, you can do it in the following way, while keeping the default behaviour.
 
-<RunnableCode>
+<Tabs
+  groupId="beaconOrTaquitoUE3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
-<!-- embedme override-alert-aborted-handler.beacon.ts -->
+```ts live
+// beacon request permission alert
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+  P2PPairingRequest,
+  PostMessagePairingRequest,
+  NetworkType,
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
+} from "@airgap/beacon-sdk";
 
-```ts
-// TODO
+
+  const dAppClient = new DAppClient({
+    name: "Beacon Docs",
+    eventHandlers: {
+      [BeaconEvent.PAIR_INIT]: {
+        // Every BeaconEvent can be overriden by passing a handler here.
+        // The default will not be executed anymore. To keep the default,
+        // you will have to call it again.
+        handler: async (data: {
+          p2pPeerInfo: () => Promise<P2PPairingRequest>;
+          postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
+          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          networkType: NetworkType;
+          abortedHandler?(): void;
+          disclaimerText?: string;
+          analytics: AnalyticsInterface;
+          featuredWallets?: string[];
+        }): Promise<void> => {
+          // If you want to attach your own "on alert closed" handler
+          // eslint-disable-next-line @typescript-eslint/unbound-method
+          const oldHandler = data.abortedHandler;
+          const newHandler = (): void => {
+            if (oldHandler) {
+              // Make sure to call the internal abortedHandler
+              oldHandler();
+            }
+            // Add your own logic here
+            console.log("My logic");
+
+          data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
+          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+          console.log("syncInfo", data);
+        },
+      },
+    },
+  });
+
+  try {
+    console.log("Requesting permissions...");
+    const permissions = await dAppClient.requestPermissions();
+    console.log("Got permissions:", permissions.address);
+  } catch (error) {
+    console.error("Got error:", error);
+  }
+
 ```
 
-<!-- embedme override-alert-aborted-handler.taquito.ts -->
+</TabItem>
 
-```ts
-// TODO
+<TabItem value="taquito">
+
+```ts live
+// taquito request permission alert
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import {
+  BeaconEvent,
+  DAppClient,
+  defaultEventCallbacks,
+  P2PPairingRequest,
+  PostMessagePairingRequest,
+  NetworkType,
+  WalletConnectPairingRequest,
+  AnalyticsInterface,
+} from "@airgap/beacon-sdk";
+
+
+  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const wallet = new BeaconWallet({
+    name: "Beacon Docs Taquito",
+    eventHandlers: {
+      [BeaconEvent.PAIR_INIT]: {
+        // Every BeaconEvent can be overriden by passing a handler here.
+        // The default will not be executed anymore. To keep the default,
+        // you will have to call it again.
+        handler: async (data: {
+          p2pPeerInfo: () => Promise<P2PPairingRequest>;
+          postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
+          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          networkType: NetworkType;
+          abortedHandler?(): void;
+          disclaimerText?: string;
+          analytics: AnalyticsInterface;
+          featuredWallets?: string[];
+        }): Promise<void> => {
+          // If you want to attach your own "on alert closed" handler
+          // eslint-disable-next-line @typescript-eslint/unbound-method
+          const oldHandler = data.abortedHandler;
+          const newHandler = (): void => {
+            if (oldHandler) {
+              // Make sure to call the internal abortedHandler
+              oldHandler();
+            }
+            // Add your own logic here
+            console.log("My logic");
+
+          data.abortedHandler = newHandler; // Replace the internal abortedHandler with the new one
+          await defaultEventCallbacks.PAIR_INIT(data); // Add this if you want to keep the default behaviour.
+          console.log("syncInfo", data);
+        },
+      },
+    },
+  });
+
+  Tezos.setWalletProvider(wallet);
+
+  try {
+    console.log("Requesting permissions...");
+    const permissions = await wallet.client.requestPermissions();
+    console.log("Got permissions:", permissions.address);
+  } catch (error) {
+    console.error("Got error:", error);
+  }
+
 ```
 
-</RunnableCode>
+</TabItem>
+</Tabs>

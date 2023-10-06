@@ -1,8 +1,13 @@
 /// START
-import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
+import Logger from "../Logger";
+import {
+  DAppClient,
+  TezosOperationType,
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
-async () => {
+const exampleSimpleBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -13,11 +18,11 @@ async () => {
   if (activeAccount) {
     // If defined, the user is connected to a wallet.
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
+    logger.log("Already connected:", activeAccount.address);
     myAddress = activeAccount.address;
   } else {
     const permissions = await dAppClient.requestPermissions();
-    console.log("New connection:", permissions.address);
+    logger.log("New connection:", permissions.address);
     myAddress = permissions.address;
   }
 
@@ -33,6 +38,7 @@ async () => {
     ],
   });
 
-  console.log("Operation Hash: ", response.transactionHash);
+  logger.log("Operation Hash: ", response.transactionHash);
   /// END
 };
+export default exampleSimpleBeacon;

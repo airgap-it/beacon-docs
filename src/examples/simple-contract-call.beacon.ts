@@ -1,8 +1,13 @@
 /// START
-import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
+import Logger from "../Logger";
+import {
+  DAppClient,
+  TezosOperationType,
+} from "../node_modules/beacon-sdk/dist/cjs";
 /// END
 
-async () => {
+const simpleContractCallBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   // Create a new DAppClient instance
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
@@ -11,10 +16,10 @@ async () => {
   if (activeAccount) {
     // User already has account connected, everything is ready
     // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log("Already connected:", activeAccount.address);
+    logger.log("Already connected:", activeAccount.address);
   } else {
     const permissions = await dAppClient.requestPermissions();
-    console.log("New connection:", permissions.address);
+    logger.log("New connection:", permissions.address);
   }
 
   const TZ_BUTTON_COLORS_CONTRACT = "KT1RPW5kTX6WFxg8JK34rGEU24gqEEudyfvz";
@@ -39,13 +44,14 @@ async () => {
       ],
     });
 
-    console.log(result);
+    logger.log("Result: ", result);
   } catch (error) {
-    console.log(
+    logger.log(
       `The contract call failed and the following error was returned:`,
-      error?.data[1]?.with?.string
+      error?.data[1]?.with?.string,
     );
   }
 
   /// END
 };
+export default simpleContractCallBeacon;

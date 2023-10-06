@@ -1,8 +1,10 @@
 /// START
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
+import { DAppClient, NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const networkEdonetBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
@@ -10,10 +12,16 @@ async () => {
   });
 
   // Edonet with default rpcUrl
-  const result = await dAppClient.requestPermissions({
-    network: {
-      type: NetworkType.EDONET,
-    },
-  });
+  try {
+    const result = await dAppClient.requestPermissions({
+      network: {
+        type: NetworkType.EDONET,
+      },
+    });
+    logger.log("Permissions: ", result);
+  } catch (error) {
+    logger.log("Error: ", error.message);
+  }
   /// END
 };
+export default networkEdonetBeacon;

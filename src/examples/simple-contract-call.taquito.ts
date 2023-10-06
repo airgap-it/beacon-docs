@@ -1,9 +1,11 @@
 /// START
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const simpleContractCallTaquito = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
 
   const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
@@ -24,11 +26,13 @@ async () => {
 
   try {
     const result = await contract.methods.set_color(tokenId).send();
+    logger.log("Result: ", result);
   } catch (error) {
-    console.log(
+    logger.log(
       `The contract call failed and the following error was returned:`,
-      error?.data[1]?.with?.string
+      error?.data[1]?.with?.string,
     );
   }
   /// END
 };
+export default simpleContractCallTaquito;

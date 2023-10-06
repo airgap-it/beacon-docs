@@ -5,7 +5,7 @@ title: High Performance
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-There are a few best practices dApp developers can follow to make their dApps more performant. We will go into a few of those here. Which ones are relevant to your dApp is always depending on the type of dApp. If you need help, feel free to reach out to us on [Discord](https://discord.gg/vuf4Gtnqh7) in the #beacon channel.
+There are a few best practices dApp developers can follow to make their DApps more performant. We will go into a few of those here. Which ones are relevant to your dApp is always depending on the type of dApp. If you need help, feel free to reach out to us on [Discord](https://discord.gg/vuf4Gtnqh7) in the #beacon channel.
 
 ## Make sure beacon-sdk is up to date
 
@@ -17,10 +17,22 @@ This one is a basic concept of Beacon, but still very important.
 
 Every time a user connects their wallet and shares permission to use an account, that account is persisted on the dApp side. At this point, the UI should reflect that the user is connected and display the address that was shared. The "Connect" or "Sync" button should be replaced by a "Disconnect" or "Unsync" button. Even when the user refreshes, the account is still present and can be retrieved by calling `dAppClient.getActiveAccount()`.
 
-<!-- embedme getting-started-active-account.beacon.ts -->
-
 ```ts
+import { DAppClient } from "@airgap/beacon-sdk";
 
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+// The following code should always be run during pageload if you want to show if the user is connected.
+const activeAccount = await dAppClient.getActiveAccount();
+if (activeAccount) {
+  // User already has account connected, everything is ready
+  // You can now do an operation request, sign request, or send another permission request to switch wallet
+  console.log("Already connected:", activeAccount.address);
+  return activeAccount;
+} else {
+  // The user is not connected. A button should be displayed where the user can connect to his wallet.
+  console.error("Not connected!");
+}
 ```
 
 ## Connect to multiple RPCs
@@ -29,20 +41,41 @@ If a high number of users are using your dApp at the same time, the load on the 
 
 An even better approach is to add a node selection to your dApp, including a way for users to provide their own RPC.
 
-<!-- embedme example-high-performance-multiple-nodes.ts -->
-
 ```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
 
+// Define an array of nodes
+const RPCs = [
+  "https://mainnet-tezos.giganode.io",
+  "https://mainnet.api.tez.ie",
+];
+
+// Select random node from array
+const randomRpc = RPCs[Math.floor(RPCs.length * Math.random())];
+
+const Tezos = new TezosToolkit(randomRpc);
+const wallet = new BeaconWallet({ name: "Beacon Docs" }); // Takes the same arguments as the DAppClient constructor
+
+Tezos.setWalletProvider(wallet);
 ```
 
 ## Allow users to connect their Wallet early on
 
 In case your dApp is focussed around a specific time (eg. NFT drop or a countdown of some sorts), you should already provide a way for users to pair their wallet with the dApp. This will reduce the load on the Beacon Network once the countdown hits 0.
 
-<!-- embedme getting-started-permission-request.beacon.ts -->
-
 ```ts
+import { DAppClient } from "@airgap/beacon-sdk";
 
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
+}
 ```
 
 ## Reduce number of requests made to RPCs

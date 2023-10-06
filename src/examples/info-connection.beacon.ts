@@ -1,35 +1,38 @@
 /// START
-import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
+import { DAppClient, NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
+import Logger from "../Logger";
 /// END
 
-async () => {
+const infoConnectionBeacon = async (loggerFun: Function) => {
+  const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
   const addressLink = await dAppClient.blockExplorer.getAddressLink(
     "tz1MJx9vhaNRSimcuXPK2rW4fLccQnDAnVKJ",
-    { type: NetworkType.MAINNET }
+    { type: NetworkType.MAINNET },
   );
-  console.log("Address Link", addressLink);
+  logger.log("Address Link", addressLink);
 
   const txLink = await dAppClient.blockExplorer.getTransactionLink(
     "onzCRJhQ9zPC38TLGhBTghCW7WAJpfUJ2NpwbbQKbW6LeEL8RfK",
-    { type: NetworkType.MAINNET }
+    { type: NetworkType.MAINNET },
   );
-  console.log("Transaction Link", txLink);
+  logger.log("Transaction Link", txLink);
 
-  console.log("\n\nConnection Info:\n");
-  console.log("Status:", dAppClient.connectionStatus);
+  logger.log("\n\nConnection Info:\n");
+  logger.log("Status:", dAppClient.connectionStatus);
   const accounts = await dAppClient.getAccounts();
-  console.log("Accounts:", accounts);
+  logger.log("Accounts:", accounts);
   const peers = await dAppClient.getPeers();
-  console.log("Peers:", peers);
+  logger.log("Peers:", peers);
 
-  console.log("\n\nDebug:\n");
-  console.log("Local Beacon ID:", await dAppClient.beaconId);
+  logger.log("\n\nDebug:\n");
+  logger.log("Local Beacon ID:", await dAppClient.beaconId);
   const colorMode = await dAppClient.getColorMode();
-  console.log("Color Mode:", colorMode);
+  logger.log("Color Mode:", colorMode);
   const ownMetadata = await dAppClient.getOwnAppMetadata();
-  console.log("Own Metadata:", ownMetadata);
+  logger.log("Own Metadata:", ownMetadata);
   /// END
 };
+export default infoConnectionBeacon;
