@@ -28,4 +28,7 @@ fs.writeFileSync(
   }
 );
 
-fs.rmdirSync("./node_modules/@airgap/beacon-sdk/dist/esm", { recursive: true });
+try {
+  // remove if exists
+  fs.rmdirSync("./node_modules/@airgap/beacon-sdk/dist/esm", { recursive: true });
+} catch(_) {} 
