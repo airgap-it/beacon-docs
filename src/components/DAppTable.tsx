@@ -28,8 +28,10 @@ const isGreater = (a: any, b: any) => {
 const DAppTable = () => {
   const sdkVersions = {
     recommended: [
+      "4.0.12",
       "4.0.10-beta.2",
       "4.0.10-beta.1",
+      "4.0.10",
       "4.0.6",
       "4.0.4",
       "4.0.2",
