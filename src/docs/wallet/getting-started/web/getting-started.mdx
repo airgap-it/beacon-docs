@@ -11,12 +11,12 @@ After that you need to import the Beacon SDK in your code and initialize the Wal
 The `beacon-sdk` will automatically establish a connection and listen to all Beacon messages.
 
 :::caution
-The RPC URL that is provided by the DApp can be an insecure http:// connection. The reason for this is because it allows for easy development with a local node, without setting up a local SSL certificate.
+The RPC URL that is provided by the dApp can be an insecure http:// connection. The reason for this is because it allows for easy development with a local node, without setting up a local SSL certificate.
 
 Especially the wallet should care about this and potentially show a warning to the user if the RPC URL is not a secure https:// URL.
 :::
 
-```ts live
+```ts
 import {
   WalletClient,
   BeaconMessageType,
@@ -122,7 +122,7 @@ const connectApp = async (): Promise<void> => {
 connectApp().catch((error) => console.error("connect error", error));
 ```
 
-By adding the code above, our app is now ready to receive messages. Now all that is left for us to do is connecting to a DApp.
+By adding the code above, our app is now ready to receive messages. Now all that is left for us to do is connecting to a dApp.
 
 To establish a connection over the P2P network, a handshake message has to be given from the dApp to the wallet. How this is done depends on the platform.
 It can be through QR scanning, Deeplinks or Copy-Pasting the handshake message. Once the handshake is received, the new peer has to be added:
@@ -150,6 +150,6 @@ if (isBeaconMessage(deserialized)) {
 
 That's it, now the dApp and the Wallet are connected.
 
-There are some additional features that the `WalletClient` provides, such as `client.getPermissions()` or `client.getPeers()` to listing all the connected peers and permissions that were granted to DApps.
+There are some additional features that the `WalletClient` provides, such as `client.getPermissions()` or `client.getPeers()` to listing all the connected peers and permissions that were granted to dApps.
 
 Using `client.removePeer(peer)` the wallet can disconnect from a peer. If this is done, the dApp will receive a message that the wallet has disconnected.

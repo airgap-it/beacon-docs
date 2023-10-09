@@ -75,7 +75,7 @@ const DAppTable = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>DApp</th>
+                    <th>dApp</th>
                     <th>SDK Version</th>
                     <th>Last Updated</th>
                     <th>Source Code</th>

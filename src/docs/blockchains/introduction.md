@@ -56,7 +56,7 @@ export interface PermissionRequestV3<T extends string = string>
   blockchainIdentifier: T;
   type: BeaconMessageType.PermissionRequest;
   blockchainData: {
-    appMetadata: AppMetadata; // Some additional information about the DApp
+    appMetadata: AppMetadata; // Some additional information about the dApp
     scopes: string[];
 
 }

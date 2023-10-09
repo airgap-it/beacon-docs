@@ -10,7 +10,7 @@ import { DAppClient } from "@airgap/beacon-dapp";
 import { SubstrateBlockchain } from "@airgap/beacon-blockchain-substrate";
 
 const client = new DAppClient({
-  name: "Example DApp",
+  name: "Example dApp",
 });
 
 const substrateBlockchain = new SubstrateBlockchain();
@@ -60,7 +60,7 @@ client.connect(async (message) => {
         throw new Error("Only KSM supported");
       }
       console.log("SUBSTRATE MESSAGE");
-      // Show a UI to the user where he can confirm sharing an account with the DApp
+      // Show a UI to the user where he can confirm sharing an account with the dApp
 
       const response = {
         id: message.id,
@@ -82,7 +82,7 @@ client.connect(async (message) => {
         },
 
 
-      // Send response back to DApp
+      // Send response back to dApp
       client.respond(response);
     }
   }

@@ -89,7 +89,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     // An active account has been set, update the dApp UI
     console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
-  }
+  },
 );
 
 try {
@@ -176,7 +176,7 @@ if (activeAccount) {
 </Tabs>
 The `beacon-sdk` is now fully set up and ready to receive operation requests.
 
-> If you want to add reactivity to your DApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
+> If you want to add reactivity to your dApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
 
 <Tabs
   groupId="beaconOrTaquito4"
@@ -410,7 +410,7 @@ wallet.client.subscribeToEvent(
     ]);
 
     console.log(response);
-  }
+  },
 );
 
 // Check if we are connected. If not, do a permission request first.
