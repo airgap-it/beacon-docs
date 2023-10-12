@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 import { ExecutionState } from "../ExecutionState";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import ErrorBoundary from "@docusaurus/ErrorBoundary";
 
 const defaultCode = `import { DAppClient } from "@airgap/beacon-sdk";
 
@@ -135,27 +136,38 @@ function Playground() {
             </div>
 
             <div className={classnames(styles.row)}>
-              <Monaco
-                {...(windowSize.width > 600
-                  ? editorLayout.lg
-                  : editorLayout.xs)}
-                language="typescript"
-                value={input}
-                onChange={inputChanged}
-                options={{ minimap: { enabled: false }, wordWrap: "on" }}
-              />
-              <Monaco
-                {...(windowSize.width > 600
-                  ? outputLayout.lg
-                  : outputLayout.xs)}
-                language="shell"
-                value={output}
-                options={{
-                  readOnly: true,
-                  minimap: { enabled: false },
-                  wordWrap: "on",
-                }}
-              />
+              <ErrorBoundary
+                fallback={({ error, tryAgain }) => (
+                  <div>
+                    <p>
+                      This editor crashed because of error: {error.message}.
+                    </p>
+                    <button onClick={tryAgain}>Try Again!</button>
+                  </div>
+                )}
+              >
+                <Monaco
+                  {...(windowSize.width > 600
+                    ? editorLayout.lg
+                    : editorLayout.xs)}
+                  language="typescript"
+                  value={input}
+                  onChange={inputChanged}
+                  options={{ minimap: { enabled: false }, wordWrap: "on" }}
+                />
+                <Monaco
+                  {...(windowSize.width > 600
+                    ? outputLayout.lg
+                    : outputLayout.xs)}
+                  language="shell"
+                  value={output}
+                  options={{
+                    readOnly: true,
+                    minimap: { enabled: false },
+                    wordWrap: "on",
+                  }}
+                />
+              </ErrorBoundary>
             </div>
           </Layout>
         );
