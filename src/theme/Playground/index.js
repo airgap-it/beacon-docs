@@ -110,6 +110,7 @@ export default function Playground({ children, transformCode, ...props }) {
           noInline={noInline}
           transformCode={transformCode ?? ((code) => `${code};`)}
           theme={prismTheme}
+          disabled={true}
           {...props}
         >
           {playgroundPosition === "top" ? (
