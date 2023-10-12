@@ -148,7 +148,7 @@ function Playground() {
                 {...(windowSize.width > 600
                   ? outputLayout.lg
                   : outputLayout.xs)}
-                language="bash"
+                language="shell"
                 value={output}
                 options={{
                   readOnly: true,

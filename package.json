@@ -17,9 +17,10 @@
     "prettier": "npx prettier --write './sidebars.js' 'docusaurus.config.js' && npm run pretty-source",
     "pretty-source": "npx prettier --ignore-unknown --write 'src/**/*'",
     "pretty-docs": "npx prettier --ignore-unknown --write 'docs/**/*'",
+    "generate-monaco-types": "node scripts/generate-monaco-types.js",
     "remove-folders": "rm -rf build-docs && rm -rf docs",
     "clear-folders": "npm run remove-folders && mkdir build-docs && mkdir docs",
-    "embed-code": "npm run prettier && tsc --module es2015 --target es2015 --moduleResolution node --esModuleInterop true src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && rm -r docs && mv build-docs docs && npm run pretty-docs"
+    "embed-code": "npm run generate-monaco-types && npm run prettier && tsc --module es2015 --target es2015 --moduleResolution node --esModuleInterop true src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
     "@airgap/beacon-sdk": "4.0.10",

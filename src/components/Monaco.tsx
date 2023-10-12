@@ -44,18 +44,17 @@ function Monaco(props) {
     editor.setModel(
       monacoRef.editor.createModel(
         props.value,
-        "typescript",
-        monacoRef.Uri.parse(`file:///main-${Math.random()}.ts`),
-      ),
+        props.language,
+        monacoRef.Uri.parse(`file:///main-${Math.random()}.ts`)
+      )
     );
   }
 
   return (
     <Suspense fallback={<div>Loading</div>}>
       <Editor
-        height="90vh"
+        {...props}
         defaultLanguage="typescript"
-        defaultValue="// some comment"
         beforeMount={onEditorWillMount}
         onMount={onEditorDidMount}
         theme={colorMode === "dark" ? "vs-dark" : "light"}
