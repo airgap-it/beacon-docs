@@ -2,7 +2,7 @@ const fs = require("fs");
 const getFilesRecursively = require("./get-files-in-folder");
 
 const files = getFilesRecursively(
-  "./node_modules/@airgap/beacon-sdk/dist/cjs/"
+  "./node_modules/@airgap/"
 ).filter((file) => file.endsWith(".d.ts"));
 files.push(
   ...getFilesRecursively("./node_modules/@taquito/").filter((file) =>

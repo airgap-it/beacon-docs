@@ -45,8 +45,8 @@ function Monaco(props) {
       monacoRef.editor.createModel(
         props.value,
         "typescript",
-        monacoRef.Uri.parse(`file:///main-${Math.random()}.ts`)
-      )
+        monacoRef.Uri.parse(`file:///main-${Math.random()}.ts`),
+      ),
     );
   }
 
