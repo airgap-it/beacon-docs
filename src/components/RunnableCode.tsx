@@ -1,17 +1,20 @@
-import { DAppClient } from "@airgap/beacon-sdk";
-
 import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import BrowserWindow from "./BrowserWindow/BrowserWindow";
-import Monaco from "./Monaco";
 import LoadingAnimation from "./LoadingAnimation";
-import { copyShareUrl, runBeaconCode } from "../utils";
 import { ExecutionState } from "../ExecutionState";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 const Child = ({ code }) => {
+  const { DAppClient } = require("../node_modules/beacon-sdk/dist/cjs");
+
+  const Monaco = require("./Monaco");
+
+  const { copyShareUrl, runBeaconCode } = require("../utils");
+
   const [runnableCode, setRunnableCode] = useState<string>(
-    code.props.children.props.children
+    code.props.children.props.children,
   );
   const [executionState, setExecutionState] = useState(ExecutionState.INIT);
   const [output, setOutput] = useState("");
@@ -139,20 +142,24 @@ const Child = ({ code }) => {
 
 export const RunnableCode = ({ children, color, beacon, taquito }) => {
   return (
-    <Tabs
-      groupId="beaconOrTaquito"
-      defaultValue="beacon"
-      values={[
-        { label: "Beacon", value: "beacon" },
-        { label: "Taquito", value: "taquito" },
-      ]}
-    >
-      <TabItem value="beacon">
-        <Child code={children[0]} />
-      </TabItem>
-      <TabItem value="taquito">
-        <Child code={children[1]} />
-      </TabItem>
-    </Tabs>
+    <BrowserOnly fallback={<></>}>
+      {() => (
+        <Tabs
+          groupId="beaconOrTaquito"
+          defaultValue="beacon"
+          values={[
+            { label: "Beacon", value: "beacon" },
+            { label: "Taquito", value: "taquito" },
+          ]}
+        >
+          <TabItem value="beacon">
+            <Child code={children[0]} />
+          </TabItem>
+          <TabItem value="taquito">
+            <Child code={children[1]} />
+          </TabItem>
+        </Tabs>
+      )}
+    </BrowserOnly>
   );
 };
