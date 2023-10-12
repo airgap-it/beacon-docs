@@ -9,6 +9,7 @@ import { usePrismTheme } from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
+import ErrorBoundary from "@docusaurus/ErrorBoundary";
 
 function getCodeBody(code) {
   const lines = code.split("\n");
@@ -102,7 +103,14 @@ export default function Playground({ children, transformCode, ...props }) {
   };
 
   return (
-    <>
+    <ErrorBoundary
+      fallback={({ error, tryAgain }) => (
+        <div>
+          <p>This editor crashed because of error: {error.message}.</p>
+          <button onClick={tryAgain}>Try Again!</button>
+        </div>
+      )}
+    >
       <div className={styles.playgroundContainer}>
         {/* @ts-expect-error: type incompatibility with refs */}
         <LiveProvider
@@ -163,6 +171,6 @@ export default function Playground({ children, transformCode, ...props }) {
           );
         }}
       </BrowserOnly>
-    </>
+    </ErrorBoundary>
   );
 }
