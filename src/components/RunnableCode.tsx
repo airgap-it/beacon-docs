@@ -9,7 +9,7 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 const Child = ({ code }) => {
   const { DAppClient } = require("../node_modules/beacon-sdk/dist/cjs");
 
-  const Monaco = require("./Monaco");
+  const Monaco = require("./Monaco").default;
 
   const { copyShareUrl, runBeaconCode } = require("../utils");
 

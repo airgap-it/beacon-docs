@@ -74,7 +74,7 @@ function Playground() {
     <BrowserOnly fallback={<></>}>
       {() => {
         const { DAppClient } = require("@airgap/beacon-sdk");
-        const { Monaco } = require("@site/src/components/Monaco");
+        const Monaco = require("@site/src/components/Monaco").default;
         const { copyShareUrl, runBeaconCode } = require("../utils");
 
         const execute = async () => {

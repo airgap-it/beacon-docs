@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { useColorMode } from "@docusaurus/theme-common";
 import { libs } from "./monaco-types";
 
-const MonacoEditor = lazy(() => import("react-monaco-editor"));
+import Editor from "@monaco-editor/react";
 
 function Monaco(props) {
   let monacoRef;
@@ -45,18 +45,20 @@ function Monaco(props) {
       monacoRef.editor.createModel(
         props.value,
         "typescript",
-        monacoRef.Uri.parse(`file:///main-${Math.random()}.ts`),
-      ),
+        monacoRef.Uri.parse(`file:///main-${Math.random()}.ts`)
+      )
     );
   }
 
   return (
     <Suspense fallback={<div>Loading</div>}>
-      <MonacoEditor
-        {...props}
-        editorWillMount={onEditorWillMount}
-        editorDidMount={onEditorDidMount}
-        theme={colorMode === "dark" ? "vs-dark" : "vs-light"}
+      <Editor
+        height="90vh"
+        defaultLanguage="typescript"
+        defaultValue="// some comment"
+        beforeMount={onEditorWillMount}
+        onMount={onEditorDidMount}
+        theme={colorMode === "dark" ? "vs-dark" : "light"}
       />
     </Suspense>
   );

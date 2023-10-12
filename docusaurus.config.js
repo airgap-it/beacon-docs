@@ -90,11 +90,7 @@ const config = {
             docId: "wallet/getting-started/web/getting-started",
             label: "Wallets",
           },
-          {
-            href: "https://stackblitz.com/edit/vitejs-vite-71wsul?file=src%2Fmain.ts&terminal=dev",
-            label: "Playground",
-            position: "right",
-          },
+          { to: "playground/", label: "Playground", position: "right" },
           {
             href: "https://debug.walletbeacon.io",
             label: "Debug Wallet",
