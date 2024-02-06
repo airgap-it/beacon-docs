@@ -1,0 +1,43 @@
+# Migration Guide: Updating to Event Subscription
+
+This guide outlines the steps to migrate from using `dAppClient.getActiveAccount()` to the new event subscription method with `BeaconEvent.ACTIVE_ACCOUNT_SET` for handling active account changes.
+
+## Why Migrate?
+
+The shift to using the event subscription method is crucial for several reasons:
+
+- **Dynamic and Responsive**: This method allows your application to react in real-time to account changes, offering a more dynamic and responsive user experience.
+
+- **Avoiding Misbehaviors in dApps**: Previously, the `requestPermissions()` method returned the active account, which, coupled with the `session_event` from WalletConnect, could lead dApps to misbehave.
+  This was due to dApps referencing the old account, not the updated one received through `session_update`.
+  By migrating, you ensure that your dApp always references the current active account, enhancing reliability and functionality.
+
+## Step-by-Step Migration
+
+### 1. Update `requestPermissions` Usage
+
+Understand that the `requestPermissions()` method will no longer return the active account. Ensure that your dApp doesn't rely on this return value for functionality.
+
+```typescript
+// Old usage
+const activeAccount = await dAppClient.requestPermissions();
+
+// New usage
+await dAppClient.requestPermissions();
+```
+
+### 2. Set Up the Event Subscription
+
+Next, set up an event listener for BeaconEvent.ACTIVE_ACCOUNT_SET. This event triggers whenever an active account is set or changed.
+
+```typescript
+// New method
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
+```
+
+### 3. Handle the Active Account
+
+Within the event listener, implement the logic to handle the active account. This might involve updating the UI, fetching account-specific data, etc
