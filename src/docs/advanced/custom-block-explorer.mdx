@@ -5,6 +5,9 @@ title: Custom Block Explorer
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+The `Custom Block Explorer` feature in Beacon SDK allows developers to integrate a block explorer of their choice into their dApp.
+This is particularly useful for applications that require specific functionalities or presentation styles offered by certain block explorers, or for those who wish to provide a more seamless user experience by integrating a block explorer directly into the app interface.
+
 <Tabs
   groupId="beaconOrTaquitoCBE"
   defaultValue="beacon"
@@ -28,7 +31,7 @@ class TzStatsBlockExplorer extends BlockExplorer {
     public readonly rpcUrls: { [key in NetworkType]: string } = {
       [NetworkType.MAINNET]: "https://tzstats.com/",
       [NetworkType.GHOSTNET]: "https://ghost.tzstats.com/",
-      [NetworkType.MONDAYNET]: "https://monday.tzstats.com/",
+      [NetworkType.WEEKLYNET]: "https://monday.tzstats.com/",
       [NetworkType.DAILYNET]: "https://daily.tzstats.com/",
       [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
       [NetworkType.EDONET]: "https://edo.tzstats.com/",
@@ -86,7 +89,7 @@ class TzStatsBlockExplorer extends BlockExplorer {
     public readonly rpcUrls: { [key in NetworkType]: string } = {
       [NetworkType.MAINNET]: "https://tzstats.com/",
       [NetworkType.GHOSTNET]: "https://ghost.tzstats.com/",
-      [NetworkType.MONDAYNET]: "https://monday.tzstats.com/",
+      [NetworkType.WEEKLYNET]: "https://monday.tzstats.com/",
       [NetworkType.DAILYNET]: "https://daily.tzstats.com/",
       [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
       [NetworkType.EDONET]: "https://edo.tzstats.com/",
