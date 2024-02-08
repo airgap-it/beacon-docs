@@ -85,9 +85,6 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
     return;
   }
 
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   // If you want to "disconnect" a wallet, clear the active account.
   // This means the next time the active account is checked or a permission request is triggered, it will be like it's the users first interaction.
   await wallet.clearActiveAccount();

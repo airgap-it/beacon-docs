@@ -330,10 +330,9 @@ import {
   NetworkType,
   WalletConnectPairingRequest,
   AnalyticsInterface,
-} from "@airgap/beacon-sdk";
+} from "@airgap/beacon-sdk"; 
 
-
-  const dAppClient = new DAppClient({
+const dAppClient = new DAppClient({
     name: "Beacon Docs",
     eventHandlers: {
       [BeaconEvent.PAIR_INIT]: {
@@ -396,10 +395,9 @@ import {
   NetworkType,
   WalletConnectPairingRequest,
   AnalyticsInterface,
-} from "@airgap/beacon-sdk";
+} from "@airgap/beacon-sdk";  
 
-
-  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
     eventHandlers: {

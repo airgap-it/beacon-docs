@@ -12,6 +12,9 @@ const fs = require("fs");
 //   fs.writeFileSync("./node_modules/@airgap/beacon-sdk/package.json", newContent, {
 //     encoding: "utf8",
 //   });
+window.addEventListener('unhandledrejection', function (e) {
+  console.warn('Error occurred: ' + e.reason.message)
+})
 
 content = fs.readFileSync(
   "./node_modules/@airgap/beacon-sdk/dist/walletbeacon.min.js",

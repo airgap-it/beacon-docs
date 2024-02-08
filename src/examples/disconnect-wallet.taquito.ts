@@ -12,9 +12,6 @@ const disconnectWalletTaquito = async (loggerFun: Function) => {
 
   Tezos.setWalletProvider(wallet);
 
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   await wallet.clearActiveAccount();
 
   try {

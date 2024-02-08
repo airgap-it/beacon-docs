@@ -189,11 +189,8 @@ export interface SubstrateSignPayloadRequest
           isMutable: boolean;
           dataType: "bytes" | "payload";
           data: string;
-
-
-    mode: "submit" | "submit-and-return" | "return";
-
-}
+          mode: "submit" | "submit-and-return" | "return";
+        }
 ```
 
 ### Sign Payload Response
