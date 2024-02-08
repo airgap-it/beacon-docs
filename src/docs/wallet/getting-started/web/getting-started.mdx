@@ -111,7 +111,7 @@ const isBeaconMessage: (obj: unknown) => obj is P2PPairingRequest = (
     typeof (obj as P2PPairingRequest).publicKey === "string" &&
     typeof (obj as P2PPairingRequest).relayServer === "string"
   );
-  
+
 const handshakeMessage = ""; // This was received from the dApp, eg. through QR scanning or deeplink
 
 const deserialized = await new Serializer().deserialize(handshakeMessage);
