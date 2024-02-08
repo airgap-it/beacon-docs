@@ -5,66 +5,13 @@ title: Active Account
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-<Tabs
-  groupId="beaconOrTaquitoAA1"
-  defaultValue="beacon"
-  values={[
-    { label: "Beacon", value: "beacon" },
-    { label: "Taquito", value: "taquito" },
-  ]}
->
-  <TabItem value="beacon">
+The 'Active Account' feature in the Beacon SDK is crucial for your dApp to interact effectively with the user's wallet.
+Here's how it works:
 
-```ts live
-// beacon get active account
-import { DAppClient } from "@airgap/beacon-sdk";
+- `getActiveAccount`: This function returns the current active account. Use it to check the user's active account when they first start using your dApp.
+- Active Account Subscription: Beyond just checking the current account, Beacon SDK allows your dApp to subscribe to any changes in the active account (`BeaconEvent.ACTIVE_ACCOUNT_SET`): This includes when the user switches to a different account or disconnects an account from their wallet.
 
-const dAppClient = new DAppClient({ name: "Beacon Docs" });
-
-const activeAccount = await dAppClient.getActiveAccount();
-if (activeAccount) {
-  // User already has account connected, everything is ready
-  // You can now do an operation request, sign request, or send another permission request to switch wallet
-  console.log("Already connected:", activeAccount.address);
-  return activeAccount;
-} else {
-  const permissions = await dAppClient.requestPermissions();
-  console.log("New connection:", permissions.address);
-  return permissions;
-}
-```
-
-</TabItem>
-
-<TabItem value="taquito">
-
-```ts live
-// taquito get active account
-import { TezosToolkit } from "@taquito/taquito";
-import { BeaconWallet } from "@taquito/beacon-wallet";
-
-const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
-const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
-
-Tezos.setWalletProvider(wallet);
-
-const activeAccount = await wallet.client.getActiveAccount();
-if (activeAccount) {
-  // User already has account connected, everything is ready
-  // You can now do an operation request, sign request, or send another permission request to switch wallet
-  console.log("Already connected:", activeAccount.address);
-  return activeAccount;
-} else {
-  const permissions = await wallet.client.requestPermissions();
-  console.log("New connection:", permissions.address);
-  return permissions;
-}
-```
-
-</TabItem>
-</Tabs>
-
-> If you want to add reactivity to your dApp when an active account changes, then you have to subscribe to `BeaconEvent.ACTIVE_ACCOUNT_SET`.
+> It's important to implement this subscription so your dApp can react to account changes in real-time. This ensures your application always interacts with the correct account.
 
 <Tabs
   groupId="beaconOrTaquitoAA2"
