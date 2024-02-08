@@ -1,6 +1,12 @@
 ---
-title: Disconnecting a Wallet
+title: Disconnecting from a Wallet
 ---
+
+The follwing examples show how to properly disconnect from a wallet.
+
+:::warning
+If you are using the P2P transport, it is not recommended to manually disconnect from the transport. Doing so may interrupt the syncing process, resulting in an error message indicating "Syncing stopped manually."
+:::
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -17,14 +23,16 @@ import TabItem from "@theme/TabItem";
 
 ```ts live
 // beacon disconnect wallet
-import { DAppClient } from "@airgap/beacon-sdk";  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+import { DAppClient } from "@airgap/beacon-sdk";
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-  dAppClient.clearActiveAccount().then(
+dAppClient
+  .disconnect()
+  .then(() => {
     const account = await dAppClient.getActiveAccount();
-
     console.log("Active Account", account);
-  });
-
+  })
+  .catch((err) => console.error(err.message));
 ```
 
 </TabItem>
