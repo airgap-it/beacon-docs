@@ -55,7 +55,7 @@ const customBlockExplorerTaquito = async (loggerFun: Function) => {
     }
   }
 
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
     blockExplorer: new TzStatsBlockExplorer() as any,

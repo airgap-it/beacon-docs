@@ -7,7 +7,6 @@ async () => {
   /// START
   // Define an array of nodes
   const RPCs = [
-    "https://mainnet-tezos.giganode.io",
     "https://mainnet.api.tez.ie",
   ];
 

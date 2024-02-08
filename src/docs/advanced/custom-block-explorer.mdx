@@ -124,7 +124,7 @@ class TzStatsBlockExplorer extends BlockExplorer {
   }
 }
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs Taquito",
   blockExplorer: new TzStatsBlockExplorer(),

@@ -16,7 +16,7 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
   // Set the network (Mainnet is default)
   const network: Network = { type: NetworkType.MAINNET };
 
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs",
     preferredNetwork: network.type,

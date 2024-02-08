@@ -11,7 +11,7 @@ import Logger from "../Logger";
 const disableUITaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
     disableDefaultEvents: true, // Disable all events / UI. This also disables the pairing alert.
