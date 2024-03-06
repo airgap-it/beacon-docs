@@ -8,7 +8,7 @@ import Logger from "../Logger";
 const networkMainnetWithUrlTaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
   Tezos.setWalletProvider(wallet);
@@ -18,7 +18,7 @@ const networkMainnetWithUrlTaquito = async (loggerFun: Function) => {
     const result = await wallet.client.requestPermissions({
       network: {
         type: NetworkType.MAINNET,
-        rpcUrl: "https://mainnet-tezos.giganode.io/",
+        rpcUrl: "https://mainnet.api.tez.ie",
       },
     });
     logger.log("Permissions: ", result);

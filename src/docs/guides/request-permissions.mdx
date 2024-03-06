@@ -5,6 +5,9 @@ title: Request Permissions
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+`RequestPermissions` is a critical function in the Beacon SDK, used to establish connections between dApps and users' wallets.
+This process involves requesting and obtaining the user's consent to access certain features of their wallet, which is essential for any interaction that a dApp intends to perform with the user's blockchain account.
+
 <Tabs
   groupId="beaconOrTaquitoRP"
   defaultValue="beacon"
@@ -46,7 +49,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { PermissionScope } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);

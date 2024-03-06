@@ -41,6 +41,7 @@ module.exports = {
         "guides/contract-error-handling",
         "guides/subscribe-to-event",
         "guides/standalone-delegation",
+        "guides/migration-guide",
       ],
       collapsed: true,
     },

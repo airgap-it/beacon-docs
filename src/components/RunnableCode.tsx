@@ -32,7 +32,12 @@ const Child = ({ code }) => {
   const reset = async () => {
     clear();
     const dAppClient = new DAppClient({ name: "Cleanup" });
-    await dAppClient.destroy();
+    try {
+      await dAppClient.destroy();
+    } catch (err: any) {
+      console.error(err.message);
+    }
+    // location.reload()
   };
   const clear = async () => {
     setOutput("");

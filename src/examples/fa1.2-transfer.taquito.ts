@@ -7,7 +7,7 @@ import Logger from "../Logger";
 const fa12TransferTaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({ name: "Beacon Docs" });
 
   Tezos.setWalletProvider(wallet);

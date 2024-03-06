@@ -8,7 +8,7 @@ async () => {
   /// START
   // We set the preferred network to "EDONET"
   // The "preferred network" will make the connection is sent to the correct URL
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
     preferredNetwork: NetworkType.EDONET,

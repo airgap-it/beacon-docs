@@ -50,6 +50,8 @@ import subscribeToEventBeacon from "./examples/subscribe-to-event.beacon";
 import subscribeToEventTaquito from "./examples/subscribe-to-event.taquito";
 
 export class ExecuteExample {
+  private static wasHandlerInitialized = false;
+
   static async execute(code: string, updateLogs: Function) {
     try {
       await this.executeExample(code, updateLogs);
@@ -58,7 +60,28 @@ export class ExecuteExample {
     }
   }
 
+  private static setUpHandler() {
+    if (this.wasHandlerInitialized) {
+      return;
+    }
+
+    window.addEventListener("error", function (e) {
+      e.preventDefault();
+      console.error("Error occurred: " + e.error.message);
+      this.location.reload();
+    });
+
+    window.addEventListener("unhandledrejection", function (e) {
+      e.preventDefault();
+      console.error("Error occurred: " + e.reason.message);
+      this.location.reload();
+    });
+
+    this.wasHandlerInitialized = true;
+  }
+
   private static async executeExample(code: string, updateLogs: Function) {
+    this.setUpHandler();
     switch (code) {
       case "beacon permission request":
         await requestPermissionsBeacon(updateLogs);

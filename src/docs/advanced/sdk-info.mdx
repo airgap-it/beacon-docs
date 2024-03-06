@@ -5,6 +5,8 @@ title: Client Info
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+The following page lists all the different options in Beacon to retrieve and display information about the SDK.
+
 <Tabs
   groupId="beaconOrTaquitoSI1"
   defaultValue="beacon"
@@ -67,7 +69,7 @@ console.log(`Connected Peers:`, await dAppClient.getPeers());
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);
@@ -131,7 +133,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);

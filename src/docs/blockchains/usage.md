@@ -79,10 +79,7 @@ client.connect(async (message) => {
                 "3b92229274683b338cf8b040cf91ac0f8e19e410f06eda5537ef077e718e0024",
             },
           ],
-        },
-
-
-      // Send response back to dApp
+        },      // Send response back to dApp
       client.respond(response);
     }
   }

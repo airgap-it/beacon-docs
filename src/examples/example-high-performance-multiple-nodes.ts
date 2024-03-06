@@ -6,10 +6,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 async () => {
   /// START
   // Define an array of nodes
-  const RPCs = [
-    "https://mainnet-tezos.giganode.io",
-    "https://mainnet.api.tez.ie",
-  ];
+  const RPCs = ["https://mainnet.api.tez.ie"];
 
   // Select random node from array
   const randomRpc = RPCs[Math.floor(RPCs.length * Math.random())];

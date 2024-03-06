@@ -53,9 +53,7 @@ export interface TezosSaplingPermissionRequest
       type: NetworkType;
       name?: string;
       rpcUrl?: string;
-
-
-}
+    }
 ```
 
 ### Permission Response

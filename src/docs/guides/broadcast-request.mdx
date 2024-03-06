@@ -5,6 +5,8 @@ title: Broadcast Request
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+Broadcast Request is a feature in Beacon SDK that enables applications to send transaction requests to the blockchain. This is primarily used for broadcasting signed transactions to the network.
+
 <Tabs
   groupId="beaconOrTaquitoBR"
   defaultValue="beacon"
@@ -38,7 +40,7 @@ console.log("transaction hash", response.transactionHash);
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);

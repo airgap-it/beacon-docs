@@ -17,7 +17,7 @@ const customBlockExplorerTaquito = async (loggerFun: Function) => {
       public readonly rpcUrls: { [key in NetworkType]: string } = {
         [NetworkType.MAINNET]: "https://tzstats.com/",
         [NetworkType.GHOSTNET]: "https://ghost.tzstats.com/",
-        [NetworkType.MONDAYNET]: "https://monday.tzstats.com/",
+        [NetworkType.WEEKLYNET]: "https://monday.tzstats.com/",
         [NetworkType.DAILYNET]: "https://daily.tzstats.com/",
         [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
         [NetworkType.EDONET]: "https://edo.tzstats.com/",
@@ -55,10 +55,10 @@ const customBlockExplorerTaquito = async (loggerFun: Function) => {
     }
   }
 
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
-    blockExplorer: new TzStatsBlockExplorer(),
+    blockExplorer: new TzStatsBlockExplorer() as any,
   });
 
   try {

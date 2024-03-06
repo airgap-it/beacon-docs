@@ -2,6 +2,9 @@
 title: Network
 ---
 
+The Network configuration in Beacon SDK allows developers to specify the blockchain network their application will interact with.
+This includes using predefined networks like Mainnet or Testnet, as well as defining custom networks and RPC endpoints.
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -27,7 +30,7 @@ const dAppClient = new DAppClient({ name: "Beacon Docs" });
 const result = await dAppClient.requestPermissions({
   network: {
     type: NetworkType.MAINNET,
-    rpcUrl: "https://mainnet-tezos.giganode.io/",
+    rpcUrl: "https://mainnet.api.tez.ie",
   },
 });
 ```
@@ -42,7 +45,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);
@@ -51,7 +54,7 @@ Tezos.setWalletProvider(wallet);
 const result = await wallet.client.requestPermissions({
   network: {
     type: NetworkType.MAINNET,
-    rpcUrl: "https://mainnet-tezos.giganode.io/",
+    rpcUrl: "https://mainnet.api.tez.ie",
   },
 });
 ```
@@ -98,7 +101,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs",
   preferredNetwork: NetworkType.EDONET,
@@ -157,7 +160,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs",
   preferredNetwork: NetworkType.EDONET,
@@ -218,7 +221,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs Taquito",
   preferredNetwork: NetworkType.CUSTOM,

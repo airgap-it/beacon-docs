@@ -10,9 +10,6 @@ const subscribeToEventBeacon = async (loggerFun: Function) => {
     name: "Beacon Docs",
   });
 
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   await dAppClient.clearActiveAccount();
 
   logger.log("Active account: ", await dAppClient.getActiveAccount());

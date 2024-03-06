@@ -8,20 +8,22 @@ import { ExecutionState } from "../ExecutionState";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ErrorBoundary from "@docusaurus/ErrorBoundary";
 
-const defaultCode = `import { DAppClient } from "@airgap/beacon-sdk";
+const defaultCode = `import { DAppClient, BeaconEvent } from "@airgap/beacon-sdk";
 
-const dAppClient = new DAppClient({ name: 'Beacon Docs' })
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
-const activeAccount = await dAppClient.getActiveAccount()
-if (activeAccount) {
-    // User already has account connected, everything is ready
-    // You can now do an operation request, sign request, or send another permission request to switch wallet
-    console.log('Already connected:', activeAccount.address)
-    return activeAccount
-} else {
-    const permissions = await dAppClient.requestPermissions()
-    console.log('New connection:', permissions.address)
-    return permissions
+// Listen for all the active account changes
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(BeaconEvent.ACTIVE_ACCOUNT_SET, "triggered:", account);
+});
+
+try {
+  console.log("Requesting permissions...");
+  const permissions = await dAppClient.requestPermissions();
+  console.log("Got permissions:", permissions.address);
+} catch (error) {
+  console.error("Got error:", error);
 }`;
 
 function Playground() {
