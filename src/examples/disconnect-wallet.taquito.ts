@@ -7,13 +7,10 @@ import Logger from "../Logger";
 const disconnectWalletTaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
   Tezos.setWalletProvider(wallet);
-
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   await wallet.clearActiveAccount();
 

@@ -16,7 +16,7 @@ const customBlockExplorerBeacon = async (loggerFun: Function) => {
       public readonly rpcUrls: { [key in NetworkType]: string } = {
         [NetworkType.MAINNET]: "https://tzstats.com/",
         [NetworkType.GHOSTNET]: "https://ghost.tzstats.com/",
-        [NetworkType.MONDAYNET]: "https://monday.tzstats.com/",
+        [NetworkType.WEEKLYNET]: "https://monday.tzstats.com/",
         [NetworkType.DAILYNET]: "https://daily.tzstats.com/",
         [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
         [NetworkType.EDONET]: "https://edo.tzstats.com/",

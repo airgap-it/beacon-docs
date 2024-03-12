@@ -5,6 +5,9 @@ title: Sign Payload
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+The `SignPayload` functionality in Beacon allows developers to sign various types of payloads.
+This page provides some examples for signing payloads in different formats: HEX Prefixed with 05, HEX Prefixed with 03, and RAW.
+
 ## HEX Prefixed With 05
 
 <Tabs
@@ -43,7 +46,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);
@@ -97,7 +100,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);
@@ -153,7 +156,7 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { SigningType } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);

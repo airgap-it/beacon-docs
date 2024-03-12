@@ -13,7 +13,7 @@ const networkMainnetWithUrlBeacon = async (loggerFun: Function) => {
     const result = await dAppClient.requestPermissions({
       network: {
         type: NetworkType.MAINNET,
-        rpcUrl: "https://mainnet-tezos.giganode.io/",
+        rpcUrl: "https://mainnet.api.tez.ie",
       },
     });
     logger.log("Permissions: ", result);

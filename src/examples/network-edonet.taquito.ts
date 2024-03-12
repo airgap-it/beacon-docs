@@ -8,7 +8,7 @@ import Logger from "../Logger";
 const networkEdonetTaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs",
     preferredNetwork: NetworkType.EDONET,

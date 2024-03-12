@@ -93,8 +93,8 @@ const DAppTable = () => {
                         sdkVersions.recommended.includes(dApp.sdkVersion)
                           ? "✅"
                           : sdkVersions.outdated.includes(dApp.sdkVersion)
-                          ? "❌"
-                          : ""}
+                            ? "❌"
+                            : ""}
                       </td>
                       <td>{getDate(dApp.lastUpdate)}</td>
                       <td>

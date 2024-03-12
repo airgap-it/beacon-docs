@@ -5,6 +5,44 @@ title: Subscribe To Event
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+In Beacon SDK, various events are emitted to signal different states and actions in the application's lifecycle. <br />
+These events provide developers with hooks to respond to changes, errors, user interactions, and other significant occurrences in the application flow.<br />
+
+### Events
+
+The list below showcases all the events that are currently available for subscription.
+
+1. `PERMISSION_REQUEST_SENT`: Fired when a permission request is sent to the user.
+2. `PERMISSION_REQUEST_SUCCESS`: Triggered when a permission request is successfully granted by the user.
+3. `PERMISSION_REQUEST_ERROR`: Occurs when there is an error in the permission request process.
+4. `PROOF_OF_EVENT_CHALLENGE_REQUEST_SENT`: Emitted when a request for a proof of event challenge is sent.
+5. `PROOF_OF_EVENT_CHALLENGE_REQUEST_SUCCESS`: Triggered when a proof of event challenge request is successfully completed.
+6. `PROOF_OF_EVENT_CHALLENGE_REQUEST_ERROR`: Occurs when there is an error in the proof of event challenge request process.
+7. `OPERATION_REQUEST_SENT`: Fired when an operation request (like a transaction) is sent.
+8. `OPERATION_REQUEST_SUCCESS`: Triggered when an operation request is successfully processed.
+9. `OPERATION_REQUEST_ERROR`: Occurs when there is an error in processing an operation request.
+10. `SIGN_REQUEST_SENT`: Emitted when a request to sign a payload is sent.
+11. `SIGN_REQUEST_SUCCESS`: Triggered when a sign request is successfully completed.
+12. `SIGN_REQUEST_ERROR`: Occurs when there is an error in the sign request process.
+13. `BROADCAST_REQUEST_SENT`: Fired when a request to broadcast a transaction to the network is sent.
+14. `BROADCAST_REQUEST_SUCCESS`: Triggered when a broadcast request is successfully completed.
+15. `BROADCAST_REQUEST_ERROR`: Occurs when there is an error in the broadcast request process.
+16. `ACKNOWLEDGE_RECEIVED`: Emitted when an acknowledgement from the user is received.
+17. `LOCAL_RATE_LIMIT_REACHED`: Triggered when a local rate limit is reached.
+18. `NO_PERMISSIONS`: Occurs when no permissions are granted for the requested operation.
+19. `ACTIVE_ACCOUNT_SET`: Fired when an active account is set in the application.
+20. `ACTIVE_TRANSPORT_SET`: Triggered when an active transport layer is set.
+21. `SHOW_PREPARE`: Emitted when the UI is being prepared to show some content or process.
+22. `HIDE_UI`: Occurs when the UI is hidden.
+23. `INVALID_ACTIVE_ACCOUNT_STATE`: Fired when there's an invalid state in the active account.
+24. `PAIR_INIT`: Emitted at the initiation of a pairing process.
+25. `PAIR_SUCCESS`: Triggered when a pairing process completes successfully.
+26. `CHANNEL_CLOSED`: Occurs when a communication channel is closed.
+27. `INTERNAL_ERROR`: Fired when an internal error occurs within the SDK.
+28. `UNKNOWN`: Triggered for any unknown events.
+
+### Example
+
 <Tabs
   groupId="beaconOrTaquitoSTE"
   defaultValue="beacon"
@@ -22,9 +60,6 @@ import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 const dAppClient = new DAppClient({
   name: "Beacon Docs",
 });
-
-// TODO: Remove temporary workaround in sandbox
-await new Promise((resolve) => setTimeout(resolve, 1000));
 
 await dAppClient.clearActiveAccount();
 
@@ -47,13 +82,10 @@ import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { BeaconEvent } from "@airgap/beacon-sdk";
 
-const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 
 Tezos.setWalletProvider(wallet);
-
-// TODO: Remove temporary workaround in sandbox
-await new Promise((resolve) => setTimeout(resolve, 1000));
 
 await wallet.clearActiveAccount();
 

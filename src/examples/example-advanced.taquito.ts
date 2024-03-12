@@ -16,7 +16,7 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
   // Set the network (Mainnet is default)
   const network: Network = { type: NetworkType.MAINNET };
 
-  const Tezos = new TezosToolkit("https://mainnet-tezos.giganode.io");
+  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs",
     preferredNetwork: network.type,
@@ -84,9 +84,6 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
     logger.log("Result: ", error.message);
     return;
   }
-
-  // TODO: Remove temporary workaround in sandbox
-  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // If you want to "disconnect" a wallet, clear the active account.
   // This means the next time the active account is checked or a permission request is triggered, it will be like it's the users first interaction.
