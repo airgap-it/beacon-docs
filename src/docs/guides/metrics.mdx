@@ -1,0 +1,54 @@
+# Performance Metrics
+
+:::warning
+Participation in this program requires dApp developers to share the [origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin) of their dApp with us.
+:::
+
+## Overview
+
+In Beacon, we have implemented a system to monitor the performance of requests made to the wallet. This system helps identifying issues related to wallet interactions. This document details the structure and purpose of the performance metrics feature.
+
+## Enabling Performance Metrics
+
+To activate performance metrics in your DApp, you need to set the `enableMetrics` parameter to `true` in the DAppClientOptions. Here's an example of how to enable it:
+
+```ts
+const client = new DAppClient({
+  name: "Beacon Docs", // Name of the DApp
+  enableMetrics: true, // Activating performance metrics
+});
+```
+
+Your DApp will now start collecting and transmitting data on every wallet requests.
+
+## Performance Metrics Object
+
+For each request sent to the wallet, we record and send two key pieces of data to our backend: the initial request and the outcome of the request (successful, error, or aborted). The object transmitted contains the following fields:
+
+```ts
+{
+    userId: string, // The unique identifier of the user making the request
+    os: string, // The operating system of the user's device.
+    walletName: string, // The name of the wallet being used.
+    walletType: string, // The type of wallet being interacted with, categorized as "extension", "mobile", "web", or "desktop".
+    sdkVersion: string, // The version of the SDK being used for the wallet interaction.
+    transport: string, // The method used for connecting to the wallet. Options include "extension", "p2p" (peer-to-peer), "walletconnect", or "website".
+    time: Date, // The timestamp when the request was made.
+    action: string, // The type of action being performed, such as "connect", "message", or "disconnect".
+    status: string // The status of the request, which can be "start", "abort", "success", or "error".
+}
+```
+
+## Use of Performance Metrics
+
+These performance metrics are critical for several reasons:
+
+- They enable real-time monitoring of wallet interactions, helping identify patterns or issues in user experience.
+- Understanding how different wallet types and transports behave under various conditions helps in optimizing the application for better user experience.
+
+## Data Collection Process
+
+To collect these metrics, the application automatically wraps every wallet request with the necessary data logging. This process is run:
+
+1. When a user initiates an action with the wallet, the application logs the start of the request with the user's details and action information.
+2. When an outcome is received (success, error, or aborted).
