@@ -1,7 +1,7 @@
 # Performance Metrics
 
 :::warning
-Participation in this program requires dApp developers to share the [origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin) of their dApp with us.
+Participation in this program requires dApp developers to share the [origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin) of their dApp with our team.
 :::
 
 ## Overview
@@ -44,6 +44,10 @@ For each request sent to the wallet, we record and send two key pieces of data t
     status: string // The status of the request, which can be "start", "abort", "success", or "error".
 }
 ```
+
+:::note
+userId is a UUID generated during the first initialization, not on page refresh.
+:::
 
 ## Use of Performance Metrics
 
