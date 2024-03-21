@@ -15,6 +15,7 @@ To activate performance metrics in your DApp, you need to set the `enableMetrics
 ```ts
 const client = new DAppClient({
   name: "Beacon Docs", // Name of the DApp
+  // ...
   enableMetrics: true, // Activating performance metrics
 });
 ```
@@ -46,7 +47,7 @@ For each request sent to the wallet, we record and send two key pieces of data t
 ```
 
 :::note
-userId is a UUID generated during the first initialization, not on page refresh.
+userId is a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) generated when instantiating `DAppClient`, not on page refresh.
 :::
 
 ## Use of Performance Metrics
