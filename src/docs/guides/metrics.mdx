@@ -1,9 +1,5 @@
 # Performance Metrics
 
-:::warning
-Participation in this program requires dApp developers to share the [origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin) of their dApp with our team.
-:::
-
 ## Overview
 
 In Beacon, we have implemented a system to monitor the performance of requests made to the wallet. This system helps identifying issues related to wallet interactions. This document details the structure and purpose of the performance metrics feature.
@@ -20,7 +16,7 @@ const client = new DAppClient({
 });
 ```
 
-Your DApp will now start collecting and transmitting data on every wallet requests.
+Your DApp will now start collecting and transmitting data on every wallet requests
 
 :::important
 When `enableMetrics` is set to `true`, an initial request is sent to our backend.
