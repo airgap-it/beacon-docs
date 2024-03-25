@@ -1,0 +1,41 @@
+import DynamicImage from "@site/src/components/DynamicImage";
+
+# Bug Reporting
+
+:::warning
+To enable this feature, please refer to the [performance metrics page](/guides/metrics).
+:::
+
+## Overview
+
+Beacon includes a bug reporting feature, designed to gather and transmit user generated issue. This document outlines the structure and usage of the bug reporting system.
+
+<DynamicImage src="/img/bug_report_alert.png" alt="Beacon Pairing" />
+
+## Bug Report Object
+
+When a user encounters a bug, they can submit a report which is sent to our backend for analysis.
+Here is an overview of each field in the bug report object sent:
+
+```ts
+{
+    userId: string, // A unique identifier for the user submitting the report. This helps in tracking bugs specific to user accounts or in following up with the user if needed.
+    sdkVersion: string, // The version of the SDK.
+    title: string, // [User generated] A brief, descriptive title of the bug. This should be concise yet informative enough to give an overview of the issue.
+    description: string, // [User generated] A detailed description of the bug. It should include what the user expected to happen and what actually happened. This field can contain error messages, observations, and any relevant details about the bug's behavior.
+    steps: string, // [User generated] A step-by-step guide on how to reproduce the bug. This is crucial for developers to understand and fix the issue. Clear and precise steps can significantly speed up the debugging process.
+    os: string, // The operating system of the user's device. This information is vital as some bugs are OS-specific.
+    browser: string, // The browser on which the bug was encountered. Browser-specific bugs are common, and this information helps in pinpointing such issues.
+    localStorage: string, // A stringified version of the user's Beacon local storage data. Beacon's local storage often contains user settings and other information that could be relevant in understanding the bug.
+    wcStorage: string // A stringified version of the user's WalletConnect storage data.
+}
+```
+
+## Snapshot of Broken State
+
+Beacon creates a copy of the user's storage data at the moment of disconnection. This snapshot includes a copy of local and WalletConnect storage data at the time of disconnection.
+These snapshots provide us with a clear picture of the application's state at the time of the bug, which is crucial for understanding and rectifying the issue.
+
+## Data Privacy
+
+Sensitive information should not be included in bug reports unless it's crucial for the issue resolution. User-specific data is not transmitted.
