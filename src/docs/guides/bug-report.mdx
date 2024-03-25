@@ -20,6 +20,7 @@ Here is an overview of each field in the bug report object sent:
 ```ts
 {
     userId: string, // A unique identifier for the user submitting the report. This helps in tracking bugs specific to user accounts or in following up with the user if needed.
+    sdkVersion: string, // The version of the SDK.
     title: string, // [User generated] A brief, descriptive title of the bug. This should be concise yet informative enough to give an overview of the issue.
     description: string, // [User generated] A detailed description of the bug. It should include what the user expected to happen and what actually happened. This field can contain error messages, observations, and any relevant details about the bug's behavior.
     steps: string, // [User generated] A step-by-step guide on how to reproduce the bug. This is crucial for developers to understand and fix the issue. Clear and precise steps can significantly speed up the debugging process.
