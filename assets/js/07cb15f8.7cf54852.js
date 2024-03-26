@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbeacon_docs=self.webpackChunkbeacon_docs||[]).push([[8724],{2080:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"default"}')}}]);
