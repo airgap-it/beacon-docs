@@ -40,6 +40,7 @@ module.exports = {
         "guides/fa2-transfer",
         "guides/contract-error-handling",
         "guides/subscribe-to-event",
+        "guides/WC-events",
         "guides/standalone-delegation",
         "guides/metrics",
         "guides/bug-report",
