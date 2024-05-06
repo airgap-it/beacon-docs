@@ -2,24 +2,23 @@
 title: Disconnecting from a Wallet
 ---
 
-The follwing examples show how to properly disconnect from a wallet.
+This section explains all the available ways to disconnect a dApp in Beacon.
 
-:::warning
-If you are using the P2P transport, it is not recommended to manually disconnect from the transport. Doing so may interrupt the syncing process, resulting in an error message indicating "Syncing stopped manually."
-:::
+## Disconnect
+
+`disconnect` will only work while connected to a wallet, otherwise appropriate errors are thrown.
+It clears all transport references ensuring a clean and complete disconnection from the wallet.
+
+### Errors
+
+Namely there are 3 errors that `disconnect` can throw which are:
+
+- `"Syncing stopped manually."`: This happens while disconnecting a P2P connection
+- `"No transport available."`: This happens when the transport hasn't resolved yet (likely because your dApp is not connected yet to a wallet)
+- `"Not connected."`: This error is thrown to prevent dApps from disconnecting multiple times.
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="beaconOrTaquitoDAW"
-  defaultValue="beacon"
-  values={[
-    { label: "Beacon", value: "beacon" },
-    { label: "Taquito", value: "taquito" },
-  ]}
->
-  <TabItem value="beacon">
 
 ```ts live
 // beacon disconnect wallet
@@ -29,6 +28,40 @@ const dAppClient = new DAppClient({ name: "Beacon Docs" });
 dAppClient
   .disconnect()
   .then(() => {
+    console.log("Disconnected.");
+  })
+  .catch((err) => console.error(err.message));
+```
+
+## ClearActiveAccount
+
+`clearActiveAccount` manages the process of clearing the currently active account and only its associated active transport.
+This method ensures that all data linked to the active account is removed, and the active transport connection is terminated.
+
+`clearActiveAccount` gets also invoked when calling:
+
+1. `removeAccount`: if the argument `accountIdentifier` matches the active account
+2. `removeAllAccounts`: always
+
+> Note: Only for WalletConnect, `clearActiveAccount` will also resets all transport refreneces behaving similarly to `disconnect`
+
+<Tabs
+  groupId="beaconOrTaquitoDAW"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+<TabItem value="beacon">
+
+```ts live
+// beacon disconnect wallet
+import { DAppClient } from "@airgap/beacon-sdk";
+const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+dAppClient
+  .clearActiveAccount(() => {
     const account = await dAppClient.getActiveAccount();
     console.log("Active Account", account);
   })

@@ -1,0 +1,36 @@
+---
+title: WalletConnect events
+---
+
+#### Overview
+
+In Beacon we use [signClient](https://www.npmjs.com/package/@walletconnect/sign-client) to manage all WalletConnect's connections.
+
+`signClient` manages the lifecycle and communication of sessions between a dApp and
+a wallet.
+
+This page outlines the various events that Beacon handles through `signClient`.
+
+#### Session Events
+
+1. **session_event**: Triggered by any significant occurrence within a session not explicitly covered by more specific events. It can be used for logging, debugging, or extending functionality.
+
+   In Beacon we use this event to acknowledge requests sent to a wallet.
+
+2. **session_update**: Occurs when a session's state changes, such as updating permissions, accounts, or chain information. This is crucial for dApps to adjust their state in response to changes in the session parameters.
+
+3. **session_expire**: Fired when a session reaches its expiry time and is no longer valid. This event is critical for managing session lifecycle and ensuring that expired sessions are refreshed or terminated as needed.
+
+4. **session_delete**: This event is fired when a session is terminated either by the user, the dApp, or due to external factors leading to a disconnection.
+
+# Pairing Events
+
+1. **pairing_delete**: This event is triggered when a pairing is intentionally deleted, either by user action or programmatically by the dApp or wallet. This is used to manage the list of available pairings, ensuring that only valid or required pairings are maintained.
+
+2. **pairing_expire**: Occurs when a pairing reaches its defined expiry time. Since pairings are typically temporary connections before establishing a full session, this event handles the automatic cleanup of these temporary states.
+
+### References
+
+1. [Session Events](https://specs.walletconnect.com/2.0/specs/clients/sign/session-events): This document outlines the various session events that can be handled by WalletConnect's `signClient`, providing details on each event's significance and usage.
+
+2. [Pairing API](https://docs.walletconnect.com/api/core/pairing): A guide to understanding the pairing process within WalletConnect, explaining how dApps can establish preliminary connections with wallets before initiating a full session.
