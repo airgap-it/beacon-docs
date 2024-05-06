@@ -38,6 +38,11 @@ dAppClient
 `clearActiveAccount` manages the process of clearing the currently active account and only its associated active transport.
 This method ensures that all data linked to the active account is removed, and the active transport connection is terminated.
 
+`clearActiveAccount` gets also invoked when calling:
+
+1. `removeAccount`: if the argument `accountIdentifier` matches the active account
+2. `removeAllAccounts`: always
+
 > Note: Only for WalletConnect, `clearActiveAccount` will also resets all transport refreneces behaving similarly to `disconnect`
 
 <Tabs
