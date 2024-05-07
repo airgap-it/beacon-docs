@@ -4,6 +4,8 @@ import differentNodeBeacon from "./examples/different-node.beacon";
 import differentNodeTaquito from "./examples/different-node.taquito";
 import disableUIBeacon from "./examples/disable-all-ui.beacon";
 import disableUITaquito from "./examples/disable-all-ui.taquito";
+import disconnectWalletBeacon2 from "./examples/disconnect-wallet-2.beacon";
+import disconnectWalletTaquito2 from "./examples/disconnect-wallet-2.taquito";
 import disconnectWalletBeacon from "./examples/disconnect-wallet.beacon";
 import disconnectWalletTaquito from "./examples/disconnect-wallet.taquito";
 import exampleAdvancedBeacon from "./examples/example-advanced.beacon";
@@ -130,6 +132,12 @@ export class ExecuteExample {
         break;
       case "taquito disconnect wallet":
         await disconnectWalletTaquito(updateLogs);
+        break;
+      case "beacon disconnect wallet 2":
+        await disconnectWalletBeacon2(updateLogs);
+        break;
+      case "taquito disconnect wallet 2":
+        await disconnectWalletTaquito2(updateLogs);
         break;
       case "beacon broadcast request":
         await broadcastRequestBeacon(updateLogs);

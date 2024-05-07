@@ -20,8 +20,18 @@ Namely there are 3 errors that `disconnect` can throw which are:
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+<Tabs
+  groupId="beaconOrTaquitoDAW2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+<TabItem value="beacon">
+
 ```ts live
-// beacon disconnect wallet
+// beacon disconnect wallet 2
 import { DAppClient } from "@airgap/beacon-sdk";
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
@@ -32,6 +42,29 @@ dAppClient
   })
   .catch((err) => console.error(err.message));
 ```
+
+</TabItem>
+<TabItem value="taquito">
+
+```ts live
+// taquito disconnect wallet 2
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+import Logger from "../Logger";
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+try {
+  await wallet.client.disconnect();
+} catch (err: any) {
+  logger.log("Error: ", err.message);
+}
+```
+
+</TabItem>
+</Tabs>
 
 ## ClearActiveAccount
 
@@ -46,7 +79,7 @@ This method ensures that all data linked to the active account is removed, and t
 > Note: Only for WalletConnect, `clearActiveAccount` will also resets all transport references behaving similarly to `disconnect`
 
 <Tabs
-  groupId="beaconOrTaquitoDAW"
+  groupId="beaconOrTaquitoDAW2"
   defaultValue="beacon"
   values={[
     { label: "Beacon", value: "beacon" },
