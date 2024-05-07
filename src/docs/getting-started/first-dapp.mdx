@@ -228,7 +228,7 @@ if (!activeAccount) {
 
 </TabItem>
 
- <TabItem value="taquito">
+<TabItem value="taquito">
 
 ```ts live
 // taquito request operation with events
@@ -290,8 +290,6 @@ The destroy function is used to clean up resources and remove all Beacon values 
 
 Once this function is executed, the current instance of `dAppClient` becomes unusable.
 
-> Note: The destroy function should be used strictly as the last operation performed by `dAppClient`. It is not meant to be a method for disconnecting.
-
 <Tabs
   groupId="beaconOrTaquito7"
   defaultValue="beacon"
@@ -334,13 +332,11 @@ Once this function is executed, the current instance of `dAppClient` becomes unu
     } catch (err: any) {
       logger.log("Error: ", err.message);
     }
+    ```
 
-```
-
-</TabItem>
+  </TabItem>
 </Tabs>
 
 ## User Interaction Best Practice
 
 Take a look a the [best practice](/getting-started/best-practices) for recommendations on Beacon user interface components.
-```
