@@ -72,11 +72,11 @@ Next, implement an event listener for BeaconEvent.ACTIVE_ACCOUNT_SET. This event
   </TabItem>
   <TabItem value="taquito">
     ```typescript
-    await wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (data) => {
+    // New method
+    wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (data) => {
       // An active account has been set, update the dApp UI
       console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
     });
-    await wallet.requestPermissions();
     ```
   </TabItem>
 </Tabs>
@@ -104,12 +104,12 @@ import { BeaconEvent, DAppClient } from "@airgap/beacon-sdk";
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
 // Listen for all the active account changes
-dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
   // An active account has been set, update the dApp UI
   console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
 });
 
-dAppClient.requestPermissions();
+const permissions = await dAppClient.requestPermissions();
 ```
 
 </TabItem>

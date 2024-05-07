@@ -55,7 +55,7 @@ import { DAppClient } from "@airgap/beacon-sdk";
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
 // Listen for all the active account changes
-dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
   // An active account has been set, update the dApp UI
   console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
 });
@@ -84,13 +84,10 @@ const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
 Tezos.setWalletProvider(wallet);
 
 // Listen for all the active account changes
-wallet.client.subscribeToEvent(
-  BeaconEvent.ACTIVE_ACCOUNT_SET,
-  async (account) => {
-    // An active account has been set, update the dApp UI
-    console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
-  },
-);
+wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
 
 try {
   console.log("Requesting permissions...");
