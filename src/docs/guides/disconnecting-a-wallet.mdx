@@ -61,7 +61,8 @@ import { DAppClient } from "@airgap/beacon-sdk";
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
 
 dAppClient
-  .clearActiveAccount(() => {
+  .clearActiveAccount()
+  .then(() => {
     const account = await dAppClient.getActiveAccount();
     console.log("Active Account", account);
   })
