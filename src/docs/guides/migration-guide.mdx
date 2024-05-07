@@ -1,3 +1,6 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 # Migration Guide: Updating to Event Subscription
 
 :::warning Mandatory Subscription
@@ -20,28 +23,79 @@ The shift to using the event subscription method is crucial for several reasons:
 
 `requestPermissions()` still returns an active account. However, be aware that it might not capture subsequent account changes made in the wallet.
 
-```typescript
-// Old usage
-const activeAccount = await dAppClient.requestPermissions();
-```
+<Tabs
+  groupId="beaconOrTaquitoMigration1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
+
+    ```typescript
+    // Old usage
+    const permissions = await dAppClient.requestPermissions();
+    ```
+
+  </TabItem>
+  <TabItem value="taquito">
+
+    ```typescript
+    // Old usage
+    const permissions = await wallet.client.requestPermissions();
+    ```
+
+  </TabItem>
+</Tabs>
 
 ### 2. Set Up the Event Subscription
 
 Next, implement an event listener for BeaconEvent.ACTIVE_ACCOUNT_SET. This event is triggered whenever there is a change in the active account, allowing your dApp to stay updated.
 
-```typescript
-// New method
-dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
-  // An active account has been set, update the dApp UI
-  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
-});
-```
+<Tabs
+  groupId="beaconOrTaquitoMigration2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
+    ```typescript
+    // New method
+    dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
+      // An active account has been set, update the dApp UI
+      console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+    });
+    ```
+  </TabItem>
+  <TabItem value="taquito">
+    ```typescript
+    await wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (data) => {
+      // An active account has been set, update the dApp UI
+      console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+    });
+    await wallet.requestPermissions();
+    ```
+  </TabItem>
+</Tabs>
 
 ### 3. Handle the Active Account
 
 Adapt your dApp's logic to handle updates from both requestPermissions() and the event subscription. This ensures your dApp remains synchronized with the current active account.
 
 The end result should look something like this:
+
+<Tabs
+  groupId="beaconOrTaquitoMigration3"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
 
 ```ts live
 // beacon get active account with events
@@ -57,3 +111,31 @@ dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
 
 dAppClient.requestPermissions();
 ```
+
+</TabItem>
+  <TabItem value="taquito">
+
+```ts live
+// taquito permission request
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+Tezos.setWalletProvider(wallet);
+
+// Listen for all the active account changes
+wallet.client.subscribeToEvent(
+  BeaconEvent.ACTIVE_ACCOUNT_SET,
+  async (account) => {
+    // An active account has been set, update the dApp UI
+    console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+  },
+);
+
+const permissions = await wallet.client.requestPermissions();
+```
+
+  </TabItem>
+</Tabs>
