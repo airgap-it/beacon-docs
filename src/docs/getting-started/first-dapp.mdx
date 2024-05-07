@@ -280,6 +280,67 @@ if (!activeAccount) {
 
 Please refer to our dedicated [page](/guides/disconnecting-a-wallet) on how to disconnect your dApp based on your needs.
 
+## Destroy
+
+`destroy` needs to be implemented to ensure proper lifecycle management of `dAppClient`.
+
+This function is designed to be called as the final action of `dAppClient` when it is no longer needed.
+
+The destroy function is used to clean up resources and remove all Beacon values from storage.
+
+Once this function is executed, the current instance of `dAppClient` becomes unusable.
+
+> Note: The destroy function should be used strictly as the last operation performed by `dAppClient`. It is not meant to be a method for disconnecting.
+
+<Tabs
+  groupId="beaconOrTaquito7"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+  <TabItem value="beacon">
+
+    ```ts live
+    // beacon destroy
+    import { DAppClient } from "@airgap/beacon-sdk";
+
+    const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+    dAppClient
+      .destroy()
+      .then(() => {
+        logger.log("Instance destroyed.");
+      })
+      .catch((err) => logger.log("Error: ", err.message));
+    ```
+
+  </TabItem>
+  <TabItem value="taquito">
+  
+    ```ts live
+    // taquito destroy
+    import { TezosToolkit } from "@taquito/taquito";
+    import { BeaconWallet } from "@taquito/beacon-wallet";
+    
+    const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+    const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+
+    Tezos.setWalletProvider(wallet);
+
+    try {
+      await wallet.disconnect();
+    } catch (err: any) {
+      logger.log("Error: ", err.message);
+    }
+
+```
+
+</TabItem>
+</Tabs>
+
 ## User Interaction Best Practice
 
 Take a look a the [best practice](/getting-started/best-practices) for recommendations on Beacon user interface components.
+```

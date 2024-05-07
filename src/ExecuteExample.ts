@@ -1,5 +1,7 @@
 import broadcastRequestBeacon from "./examples/broadcast-request.beacon";
 import broadcastRequestTaquito from "./examples/broadcast-request.taquito";
+import destroyBeacon from "./examples/destroy.beacon";
+import destroyTaquito from "./examples/destroy.taquito";
 import differentNodeBeacon from "./examples/different-node.beacon";
 import differentNodeTaquito from "./examples/different-node.taquito";
 import disableUIBeacon from "./examples/disable-all-ui.beacon";
@@ -132,6 +134,12 @@ export class ExecuteExample {
         break;
       case "taquito disconnect wallet":
         await disconnectWalletTaquito(updateLogs);
+        break;
+      case "beacon destroy":
+        await destroyBeacon(updateLogs);
+        break;
+      case "taquito destroy":
+        await destroyTaquito(updateLogs);
         break;
       case "beacon disconnect wallet 2":
         await disconnectWalletBeacon2(updateLogs);
