@@ -1,5 +1,9 @@
 # Migration Guide: Updating to Event Subscription
 
+:::warning Mandatory Subscription
+Since version 4.2.0, it is mandatory to subscribe to `ACTIVE_ACCOUNT_SET`.
+:::
+
 This guide outlines the steps to migrate from using `dAppClient.getActiveAccount()` to the new event subscription method with `BeaconEvent.ACTIVE_ACCOUNT_SET` for handling active account changes.
 
 ## Why Migrate?
