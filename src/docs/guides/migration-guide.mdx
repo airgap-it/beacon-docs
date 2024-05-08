@@ -73,7 +73,7 @@ Next, implement an event listener for BeaconEvent.ACTIVE_ACCOUNT_SET. This event
   <TabItem value="taquito">
     ```typescript
     // New method
-    wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (data) => {
+    wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
       // An active account has been set, update the dApp UI
       console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
     });
@@ -83,7 +83,7 @@ Next, implement an event listener for BeaconEvent.ACTIVE_ACCOUNT_SET. This event
 
 ### 3. Handle the Active Account
 
-Adapt your dApp's logic to handle updates from both requestPermissions() and the event subscription. This ensures your dApp remains synchronized with the current active account.
+Adapt your dApp's logic to handle updates from both `requestPermissions` and the event subscription. This ensures your dApp remains synchronized with the current active account.
 
 The end result should look something like this:
 
