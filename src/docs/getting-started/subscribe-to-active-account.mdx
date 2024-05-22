@@ -177,7 +177,7 @@ yarn add broadcast-channel
 The main idea is to elect a tab as the Leader so that only this tab will send a request to the wallet. First, set up a channel.
 
 ```ts
-const channel = new BroadcastChannel("beacon-channel");
+const channel = new BroadcastChannel("beacon-channel"); // "beacon-channel" is an example, you can choose any name you want
 const elector = createLeaderElection(channel);
 ```
 
