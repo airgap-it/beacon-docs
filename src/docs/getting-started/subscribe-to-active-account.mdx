@@ -80,7 +80,7 @@ Sometimes `requestPermissions` may not be enough, and you want to ensure the use
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address
+    account?.address,
   );
 
   if (!account) {
@@ -108,7 +108,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address
+      account?.address,
     );
 
     if (!account) {
@@ -124,7 +124,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  }
+  },
 );
 ```
 
@@ -182,6 +182,7 @@ const elector = createLeaderElection(channel);
 ```
 
 Check if a leader already exists, otherwise request leadership.
+We also need to handle the case in which the Leader tab gets closed and therefore we need to transfer the leadership to another tab.
 
 ```ts
 elector.hasLeader().then(async (hasLeader) => {
@@ -189,6 +190,19 @@ elector.hasLeader().then(async (hasLeader) => {
     await elector.awaitLeadership();
   }
 });
+
+window.onbeforeunload = async () => {
+  if (elector.isLeader) {
+    await elector.die();
+    channel.postMessage("LEADER_DEAD");
+  }
+};
+
+channel.onmessage = async (message: any) => {
+  if (message === "LEADER_DEAD") {
+    await elector.awaitLeadership();
+  }
+};
 ```
 
 ### Step 3: Update the Handler
@@ -209,7 +223,7 @@ Now, inside the handler, check whether the current tab has the leadership. If no
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address
+    account?.address,
   );
 
   if (!account || !elector.isLeader) {
@@ -237,7 +251,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address
+      account?.address,
     );
 
     if (!account || !elector.isLeader) {
@@ -253,7 +267,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  }
+  },
 );
 ```
 
@@ -288,6 +302,19 @@ elector.hasLeader().then(async (hasLeader) => {
   }
 });
 
+window.onbeforeunload = async () => {
+  if (elector.isLeader) {
+    await elector.die();
+    channel.postMessage("LEADER_DEAD");
+  }
+};
+
+channel.onmessage = async (message: any) => {
+  if (message === "LEADER_DEAD") {
+    await elector.awaitLeadership();
+  }
+};
+
 const dAppClient = new DAppClient({
   name: "Beacon Docs",
   network: {
@@ -298,7 +325,7 @@ const dAppClient = new DAppClient({
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address
+    account?.address,
   );
 
   if (!account || !elector.isLeader) {
@@ -333,6 +360,19 @@ elector.hasLeader().then(async (hasLeader) => {
   }
 });
 
+window.onbeforeunload = async () => {
+  if (elector.isLeader) {
+    await elector.die();
+    channel.postMessage("LEADER_DEAD");
+  }
+};
+
+channel.onmessage = async (message: any) => {
+  if (message === "LEADER_DEAD") {
+    await elector.awaitLeadership();
+  }
+};
+
 const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs" });
 
@@ -343,7 +383,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address
+      account?.address,
     );
 
     if (!account || !elector.isLeader) {
@@ -359,7 +399,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  }
+  },
 );
 ```
 
