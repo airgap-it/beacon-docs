@@ -342,6 +342,8 @@ dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
     // handle disconnection
   }
 });
+
+dAppClient.requestPermissions();
 ```
 
 </TabItem>
@@ -401,6 +403,8 @@ wallet.client.subscribeToEvent(
     }
   },
 );
+
+wallet.client.requestPermissions();
 ```
 
 </TabItem>
