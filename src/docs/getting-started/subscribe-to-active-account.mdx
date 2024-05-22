@@ -8,7 +8,7 @@ Beacon provides developers the ability to subscribe to its internal state, as sh
 
 ## Before Starting
 
-Be aware that calling one of the functions listed below will also trigger `ACTIVE_ACCOUNT_SET`. Be careful when calling such functions inside the handler to avoid causing your dApp to enter an endless loop.
+Be aware that calling one of the functions listed below will also trigger `ACTIVE_ACCOUNT_SET`. <mark>Be careful when calling such functions inside the handler to avoid causing your dApp to enter an endless loop.</mark>
 
 **List of functions:**
 
@@ -70,6 +70,10 @@ dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
 While the example above works for single-page dApps, it may become problematic in a multi-tab setup. Beacon emits an event to keep each tab synced with the internal state. Therefore, if your dApp needs multiple tabs support, the above approach may cause issues. Each tab will send a **sign_payload** request to the wallet, which is not intended and may lead to request rejection if a certain threshold is reached.
 
 To address this, we need to implement multi-tab synchronization. There are multiple ways to achieve this; for simplicity, we use `broadcast-channel`.
+
+:::note
+The following example is designed to help developers kickstart synchronization in their dApp. Please note that not all edge cases are covered.
+:::
 
 ### Step 1: Install `broadcast-channel`
 
