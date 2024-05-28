@@ -191,6 +191,8 @@ elector.hasLeader().then(async (hasLeader) => {
   }
 });
 
+// NOTE: If you are using a JS framework, do not call window.onbeforeunload directly.
+// Refer to your framework's guidelines for handling this scenario.
 window.onbeforeunload = async () => {
   if (elector.isLeader) {
     await elector.die();
