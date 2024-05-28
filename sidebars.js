@@ -21,6 +21,7 @@ module.exports = {
         "getting-started/best-practices",
         "getting-started/simple-example",
         "getting-started/advanced-example",
+        "getting-started/subscribe-to-active-account",
         "getting-started/high-performance",
       ],
       collapsed: false,

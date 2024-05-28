@@ -1,0 +1,417 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Subscribe to `ACTIVE_ACCOUNT_SET` Advanced Example
+
+Beacon provides developers the ability to subscribe to its internal state, as shown on the dedicated page. Since version 4.2.0, subscribing to `ACTIVE_ACCOUNT_SET` has become mandatory. This page provides a custom example with user validation by requesting the wallet to sign a payload.
+
+## Before Starting
+
+Be aware that calling one of the functions listed below will also trigger `ACTIVE_ACCOUNT_SET`. <mark>Be careful when calling such functions inside the handler to avoid causing your dApp to enter an endless loop.</mark>
+
+**List of functions:**
+
+- `requestPermissions`
+- `setActiveAccount`
+- `clearActiveAccount`
+- `disconnect`
+- `removeAccount`
+- `removeAllAccounts`
+- `destroy`
+
+## Example
+
+After initializing your `dAppClient` instance, you need to subscribe to `ACTIVE_ACCOUNT_SET` as shown below:
+
+<Tabs
+  groupId="beaconOrTaquitoSAAE1"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+
+<TabItem value="beacon">
+
+```ts
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+});
+
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
+```
+
+</TabItem>
+<TabItem value="taquito">
+
+```ts
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+const wallet = new BeaconWallet({ name: "Beacon Docs" });
+
+wallet.client.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, (account) => {
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
+```
+
+</TabItem>
+</Tabs>
+
+The handler should be as concise as possible. Ideally, it should just globally update your active account on your dApp. However, in some cases, adding extra lines of code may be necessary.
+
+## Adding `requestSignPayload`
+
+Sometimes `requestPermissions` may not be enough, and you want to ensure the user who has synced with the wallet is authorized. A common way to accomplish this is by sending a _sign_payload_ request to the wallet.
+
+<Tabs
+  groupId="beaconOrTaquitoSAAE2"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+
+<TabItem value="beacon">
+
+```ts
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  console.log(
+    `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
+    account?.address,
+  );
+
+  if (!account) {
+    return;
+  }
+
+  try {
+    await dAppClient.requestSignPayload({
+      payload:
+        "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64",
+    });
+  } catch (err: any) {
+    // The request was rejected
+    // handle disconnection
+  }
+});
+```
+
+</TabItem>
+<TabItem value="taquito">
+
+```ts
+wallet.client.subscribeToEvent(
+  BeaconEvent.ACTIVE_ACCOUNT_SET,
+  async (account) => {
+    console.log(
+      `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
+      account?.address,
+    );
+
+    if (!account) {
+      return;
+    }
+
+    try {
+      await dAppClient.requestSignPayload({
+        payload:
+          "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64",
+      });
+    } catch (err: any) {
+      // The request was rejected
+      // handle disconnection
+    }
+  },
+);
+```
+
+</TabItem>
+</Tabs>
+
+> **Note:** `ACTIVE_ACCOUNT_SET` gets triggered both when setting a new account and resetting the current one. Make sure not to send a **sign_payload** request without an account.
+
+## Multi-tab Synchronization
+
+While the example above works for single-page dApps, it may become problematic in a multi-tab setup. Beacon emits an event to keep each tab synced with the internal state. Therefore, if your dApp needs multiple tabs support, the above approach may cause issues. Each tab will send a **sign_payload** request to the wallet, which is not intended and may lead to request rejection if a certain threshold is reached.
+
+To address this, we need to implement multi-tab synchronization. There are multiple ways to achieve this; for simplicity, we use `broadcast-channel`.
+
+:::note
+The following example is designed to be as simple as possible to help developers kickstart synchronization in their dApp. Please note that not all edge cases are covered.
+:::
+
+### Step 1: Install `broadcast-channel`
+
+Run the following command:
+
+<Tabs
+  groupId="beaconOrTaquitoSAAE3"
+  defaultValue="npm"
+  values={[
+    { label: "NPM", value: "npm" },
+    { label: "Yarn", value: "yarn" },
+  ]}
+>
+
+<TabItem value="npm">
+
+```bash
+npm install --save broadcast-channel
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add broadcast-channel
+```
+
+</TabItem>
+</Tabs>
+
+### Step 2: Set Up the Channel
+
+The main idea is to elect a tab as the Leader so that only this tab will send a request to the wallet. First, set up a channel.
+
+```ts
+const channel = new BroadcastChannel("beacon-channel"); // "beacon-channel" is an example, you can choose any name you want
+const elector = createLeaderElection(channel);
+```
+
+Check if a leader already exists, otherwise request leadership.
+We also need to handle the case in which the Leader tab gets closed and therefore we need to transfer the leadership to another tab.
+
+```ts
+elector.hasLeader().then(async (hasLeader) => {
+  if (!hasLeader) {
+    await elector.awaitLeadership();
+  }
+});
+
+// NOTE: If you are using a JS framework, do not call window.onbeforeunload directly.
+// Refer to your framework's guidelines for handling this scenario.
+window.onbeforeunload = async () => {
+  if (elector.isLeader) {
+    await elector.die();
+    channel.postMessage("LEADER_DEAD");
+  }
+};
+
+channel.onmessage = async (message: any) => {
+  if (message === "LEADER_DEAD") {
+    await elector.awaitLeadership();
+  }
+};
+```
+
+### Step 3: Update the Handler
+
+Now, inside the handler, check whether the current tab has the leadership. If not, do not send a `sign_payload` request.
+
+<Tabs
+  groupId="beaconOrTaquitoSAAE4"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+<TabItem value="beacon">
+
+```ts
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  console.log(
+    `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
+    account?.address,
+  );
+
+  if (!account || !elector.isLeader) {
+    return;
+  }
+
+  try {
+    await dAppClient.requestSignPayload({
+      payload:
+        "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64",
+    });
+  } catch (err: any) {
+    // The request was rejected
+    // handle disconnection
+  }
+});
+```
+
+</TabItem>
+<TabItem value="taquito">
+
+```ts
+wallet.client.subscribeToEvent(
+  BeaconEvent.ACTIVE_ACCOUNT_SET,
+  async (account) => {
+    console.log(
+      `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
+      account?.address,
+    );
+
+    if (!account || !elector.isLeader) {
+      return;
+    }
+
+    try {
+      await dAppClient.requestSignPayload({
+        payload:
+          "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64",
+      });
+    } catch (err: any) {
+      // The request was rejected
+      // handle disconnection
+    }
+  },
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Conclusion
+
+The end result should look like this:
+
+<Tabs
+  groupId="beaconOrTaquitoSAAE5"
+  defaultValue="beacon"
+  values={[
+    { label: "Beacon", value: "beacon" },
+    { label: "Taquito", value: "taquito" },
+  ]}
+>
+<TabItem value="beacon">
+
+```ts
+import { DAppClient, BeaconEvent } from "@airgap/beacon-dapp";
+import { NetworkType } from "@airgap/beacon-types";
+import { BroadcastChannel, createLeaderElection } from "broadcast-channel";
+
+const channel = new BroadcastChannel("beacon-test");
+const elector = createLeaderElection(channel);
+
+elector.hasLeader().then(async (hasLeader) => {
+  if (!hasLeader) {
+    await elector.awaitLeadership();
+  }
+});
+
+window.onbeforeunload = async () => {
+  if (elector.isLeader) {
+    await elector.die();
+    channel.postMessage("LEADER_DEAD");
+  }
+};
+
+channel.onmessage = async (message: any) => {
+  if (message === "LEADER_DEAD") {
+    await elector.awaitLeadership();
+  }
+};
+
+const dAppClient = new DAppClient({
+  name: "Beacon Docs",
+  network: {
+    type: NetworkType.GHOSTNET,
+  },
+});
+
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  console.log(
+    `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
+    account?.address,
+  );
+
+  if (!account || !elector.isLeader) {
+    return;
+  }
+
+  try {
+    await dAppClient.requestSignPayload({
+      payload:
+        "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6f20576f726c64",
+    });
+  } catch (err: any) {
+    // The request was rejected
+    // handle disconnection
+  }
+});
+
+dAppClient.requestPermissions();
+```
+
+</TabItem>
+<TabItem value="taquito">
+
+```ts
+import { TezosToolkit } from "@taquito/taquito";
+import { BeaconWallet } from "@taquito/beacon-wallet";
+
+const channel = new BroadcastChannel("beacon-test");
+const elector = createLeaderElection(channel);
+
+elector.hasLeader().then(async (hasLeader) => {
+  if (!hasLeader) {
+    await elector.awaitLeadership();
+  }
+});
+
+window.onbeforeunload = async () => {
+  if (elector.isLeader) {
+    await elector.die();
+    channel.postMessage("LEADER_DEAD");
+  }
+};
+
+channel.onmessage = async (message: any) => {
+  if (message === "LEADER_DEAD") {
+    await elector.awaitLeadership();
+  }
+};
+
+const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+const wallet = new BeaconWallet({ name: "Beacon Docs" });
+
+Tezos.setWalletProvider(wallet);
+
+wallet.client.subscribeToEvent(
+  BeaconEvent.ACTIVE_ACCOUNT_SET,
+  async (account) => {
+    console.log(
+      `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
+      account?.address,
+    );
+
+    if (!account || !elector.isLeader) {
+      return;
+    }
+
+    try {
+      await dAppClient.requestSignPayload({
+        payload:
+          "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6f20576f726c64",
+      });
+    } catch (err: any) {
+      // The request was rejected
+      // handle disconnection
+    }
+  },
+);
+
+wallet.client.requestPermissions();
+```
+
+</TabItem>
+</Tabs>
+
+## References
+
+1. [BroadcastChannel](https://github.com/pubkey/broadcast-channel?tab=readme-ov-file#readme): Documentation and usage examples for the `broadcast-channel` library.
