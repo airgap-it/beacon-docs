@@ -179,6 +179,9 @@ The main idea is to elect a tab as the Leader so that only this tab will send a 
 ```ts
 const channel = new BroadcastChannel("beacon-channel"); // "beacon-channel" is an example, you can choose any name you want
 const elector = createLeaderElection(channel);
+// Auxiliary variable needed for handling beforeUnload.
+// Closing a tab causes the elector to be killed immediately
+let wasLeader: boolean = false;
 ```
 
 Check if a leader already exists, otherwise request leadership.
@@ -188,13 +191,14 @@ We also need to handle the case in which the Leader tab gets closed and therefor
 elector.hasLeader().then(async (hasLeader) => {
   if (!hasLeader) {
     await elector.awaitLeadership();
+    wasLeader = elector.isLeader;
   }
 });
 
 // NOTE: If you are using a JS framework, do not call window.onbeforeunload directly.
 // Refer to your framework's guidelines for handling this scenario.
 window.onbeforeunload = async () => {
-  if (elector.isLeader) {
+  if (wasLeader) {
     await elector.die();
     channel.postMessage("LEADER_DEAD");
   }
@@ -297,15 +301,17 @@ import { BroadcastChannel, createLeaderElection } from "broadcast-channel";
 
 const channel = new BroadcastChannel("beacon-test");
 const elector = createLeaderElection(channel);
+let wasLeader: boolean = false;
 
 elector.hasLeader().then(async (hasLeader) => {
   if (!hasLeader) {
     await elector.awaitLeadership();
+    wasLeader = elector.isLeader;
   }
 });
 
 window.onbeforeunload = async () => {
-  if (elector.isLeader) {
+  if (wasLeader) {
     await elector.die();
     channel.postMessage("LEADER_DEAD");
   }
@@ -354,18 +360,21 @@ dAppClient.requestPermissions();
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import { BroadcastChannel, createLeaderElection } from "broadcast-channel";
 
 const channel = new BroadcastChannel("beacon-test");
 const elector = createLeaderElection(channel);
+let wasLeader: boolean = false;
 
 elector.hasLeader().then(async (hasLeader) => {
   if (!hasLeader) {
     await elector.awaitLeadership();
+    wasLeader = elector.isLeader;
   }
 });
 
 window.onbeforeunload = async () => {
-  if (elector.isLeader) {
+  if (wasLeader) {
     await elector.die();
     channel.postMessage("LEADER_DEAD");
   }
