@@ -80,7 +80,7 @@ Sometimes `requestPermissions` may not be enough, and you want to ensure the use
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address,
+    account?.address
   );
 
   if (!account) {
@@ -108,7 +108,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address,
+      account?.address
     );
 
     if (!account) {
@@ -116,7 +116,7 @@ wallet.client.subscribeToEvent(
     }
 
     try {
-      await dAppClient.requestSignPayload({
+      await wallet.client.requestSignPayload({
         payload:
           "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64",
       });
@@ -124,7 +124,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  },
+  }
 );
 ```
 
@@ -229,7 +229,7 @@ Now, inside the handler, check whether the current tab has the leadership. If no
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address,
+    account?.address
   );
 
   if (!account || !elector.isLeader) {
@@ -257,7 +257,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address,
+      account?.address
     );
 
     if (!account || !elector.isLeader) {
@@ -265,7 +265,7 @@ wallet.client.subscribeToEvent(
     }
 
     try {
-      await dAppClient.requestSignPayload({
+      await wallet.client.requestSignPayload({
         payload:
           "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64",
       });
@@ -273,7 +273,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  },
+  }
 );
 ```
 
@@ -333,7 +333,7 @@ const dAppClient = new DAppClient({
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address,
+    account?.address
   );
 
   if (!account || !elector.isLeader) {
@@ -360,6 +360,7 @@ dAppClient.requestPermissions();
 ```ts
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import { BeaconEvent } from "@airgap/beacon-dapp";}
 import { BroadcastChannel, createLeaderElection } from "broadcast-channel";
 
 const channel = new BroadcastChannel("beacon-test");
@@ -396,7 +397,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address,
+      account?.address
     );
 
     if (!account || !elector.isLeader) {
@@ -404,7 +405,7 @@ wallet.client.subscribeToEvent(
     }
 
     try {
-      await dAppClient.requestSignPayload({
+      await wallet.client.requestSignPayload({
         payload:
           "05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6f20576f726c64",
       });
@@ -412,7 +413,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  },
+  }
 );
 
 wallet.client.requestPermissions();
