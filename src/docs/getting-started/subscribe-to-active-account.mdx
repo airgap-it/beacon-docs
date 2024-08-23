@@ -80,7 +80,7 @@ Sometimes `requestPermissions` may not be enough, and you want to ensure the use
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address
+    account?.address,
   );
 
   if (!account) {
@@ -108,7 +108,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address
+      account?.address,
     );
 
     if (!account) {
@@ -124,7 +124,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  }
+  },
 );
 ```
 
@@ -229,7 +229,7 @@ Now, inside the handler, check whether the current tab has the leadership. If no
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address
+    account?.address,
   );
 
   if (!account || !elector.isLeader) {
@@ -257,7 +257,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address
+      account?.address,
     );
 
     if (!account || !elector.isLeader) {
@@ -273,7 +273,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  }
+  },
 );
 ```
 
@@ -333,7 +333,7 @@ const dAppClient = new DAppClient({
 dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
   console.log(
     `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-    account?.address
+    account?.address,
   );
 
   if (!account || !elector.isLeader) {
