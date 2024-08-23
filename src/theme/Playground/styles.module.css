@@ -31,3 +31,29 @@
   padding: 1rem;
   background-color: var(--ifm-pre-background);
 }
+
+.copyButtonIconWrapper {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.copyButtonIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: currentColor;
+  opacity: inherit;
+  width: inherit;
+  height: inherit;
+  transition: all var(--ifm-transition-fast) ease;
+}
+
+.copyButton {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
