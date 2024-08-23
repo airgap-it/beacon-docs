@@ -6,6 +6,7 @@ import Translate from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import { usePrismTheme } from "@docusaurus/theme-common";
+import CopyButton from "./components/copy-button";
 
 import styles from "./styles.module.css";
 import BrowserWindow from "@site/src/components/BrowserWindow/BrowserWindow";
@@ -21,7 +22,18 @@ function getSnippetId(code) {
 }
 
 function Header({ children }) {
-  return <div className={clsx(styles.playgroundHeader)}>{children}</div>;
+  return (
+    <div
+      className={clsx(styles.playgroundHeader)}
+      style={{
+        display: "flex",
+        alignItems: "start",
+        justifyContent: "space-between",
+      }}
+    >
+      {children}
+    </div>
+  );
 }
 function LivePreviewLoader() {
   // Is it worth improving/translating?
@@ -66,7 +78,7 @@ function ThemedLiveEditor() {
     />
   );
 }
-function EditorWithHeader() {
+function EditorWithHeader({ code }) {
   return (
     <>
       <Header>
@@ -74,8 +86,9 @@ function EditorWithHeader() {
           id="theme.Playground.liveEditor"
           description="The live editor label of the live codeblocks"
         >
-          Live Editor
+          Example
         </Translate>
+        <CopyButton text={code} />
       </Header>
       <ThemedLiveEditor />
     </>
@@ -118,11 +131,11 @@ export default function Playground({ children, transformCode, ...props }) {
               {isEditorEnabled && (
                 <ResultWithHeader snippetId={getSnippetId(children)} />
               )}
-              <EditorWithHeader />
+              <EditorWithHeader code={children} />
             </>
           ) : (
             <>
-              <EditorWithHeader />
+              <EditorWithHeader code={children} />
               {isEditorEnabled && (
                 <ResultWithHeader snippetId={getSnippetId(children)} />
               )}

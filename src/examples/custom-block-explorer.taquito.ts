@@ -32,6 +32,7 @@ const customBlockExplorerTaquito = async (loggerFun: Function) => {
         [NetworkType.NAIROBINET]: "https://nairobi.tzstats.com/",
         [NetworkType.OXFORDNET]: "https://oxford.tzstats.com/",
         [NetworkType.CUSTOM]: "https://custom.tzstats.com/",
+        [NetworkType.PARISNET]: "https://paris.tzstats.com",
       },
     ) {
       super(rpcUrls);
