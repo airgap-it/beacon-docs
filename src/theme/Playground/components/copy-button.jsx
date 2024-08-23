@@ -10,8 +10,7 @@ const CopyButton = ({ text }) => {
     <>
       <button
         type="button"
-        aria-label="Copy code to clipboard"
-        title="Copy"
+        title="Copy code to clipboard"
         style={{
           backgroundColor: "transparent",
           border: "none",
