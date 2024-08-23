@@ -131,11 +131,11 @@ export default function Playground({ children, transformCode, ...props }) {
               {isEditorEnabled && (
                 <ResultWithHeader snippetId={getSnippetId(children)} />
               )}
-              <EditorWithHeader code={children} />
+              <EditorWithHeader code={getCodeBody(children)} />
             </>
           ) : (
             <>
-              <EditorWithHeader code={children} />
+              <EditorWithHeader code={getCodeBody(children)} />
               {isEditorEnabled && (
                 <ResultWithHeader snippetId={getSnippetId(children)} />
               )}
