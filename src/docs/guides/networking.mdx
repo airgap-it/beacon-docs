@@ -1,0 +1,67 @@
+---
+title: Firewall & Networking Configuration
+sidebar_label: Firewalls
+---
+
+# Firewall Configuration Guide
+
+## Overview
+
+When using Beacon in corporate or enterprise environments, you may need to configure your firewall to allow communication with Beacon nodes. This guide covers all the necessary firewall configurations and enterprise solutions.
+
+## Required Domains
+
+The following Matrix nodes must be whitelisted in your firewall:
+
+```typescript
+const beaconNodes = [
+  "beacon-node-1.diamond.papers.tech",
+  "beacon-node-1.sky.papers.tech",
+  "beacon-node-2.sky.papers.tech",
+  "beacon-node-1.hope.papers.tech",
+  "beacon-node-1.hope-2.papers.tech",
+  "beacon-node-1.hope-3.papers.tech",
+  "beacon-node-1.hope-4.papers.tech",
+  "beacon-node-1.hope-5.papers.tech",
+  "beacon-node-1.beacon-server-1.papers.tech",
+  "beacon-node-1.beacon-server-2.papers.tech",
+  "beacon-node-1.beacon-server-3.papers.tech",
+  "beacon-node-1.beacon-server-4.papers.tech",
+];
+```
+
+## Required Ports & Protocols
+
+Your firewall must allow:
+
+- HTTPS (Port 443)
+
+### Additional Services
+
+If using WalletConnect transport (e.g., TrustWallet or Kukai Mobile):
+
+- wss://relay.walletconnect.com
+
+## Firewall Setup Steps
+
+1. Whitelist all Beacon node domains listed above
+2. Allow outbound connections on port 443
+3. For WalletConnect relay.walletconnect.com (443 and websocket)
+
+## Common Issues
+
+### CORS Errors
+
+If you encounter CORS errors, check:
+
+1. Firewall access to Beacon nodes
+2. SSL/TLS inspection settings
+3. Proxy configurations
+
+### Connection Timeouts
+
+If experiencing timeouts:
+
+1. Verify WSS traffic is allowed
+2. Check DNS resolution
+3. Validate proxy settings
