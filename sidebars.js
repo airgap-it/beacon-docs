@@ -33,7 +33,7 @@ module.exports = {
         "guides/active-account",
         "guides/disconnecting-a-wallet",
         "guides/network",
-        "guides/firewalls",
+        "guides/networking",
         "guides/request-permissions",
         "guides/sign-payload",
         "guides/broadcast-request",
