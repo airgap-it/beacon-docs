@@ -33,12 +33,12 @@ The beacon-network hosts 12 nodes. Those nodes are located in different regions.
 
 **Action Items:**
 
-| Action Item                                       | Owner   | State       |
-| ------------------------------------------------- | ------- | ----------- |
-| Disable the retention policy (user deactivation)  | Andreas | COMPLETE    |
-| Re-enable all deactivated users on affected nodes | Andreas | COMPLETE    |
-| Update the beacon-sdk to handle the behaviour     | Isacco  | IN PROGRESS |
-| Update all beacon nodes to the same version       | Lukas   | IN PROGRESS |
+| Action Item                                       | Owner   | State                                                                   |
+| ------------------------------------------------- | ------- | ----------------------------------------------------------------------- |
+| Disable the retention policy (user deactivation)  | Andreas | COMPLETE                                                                |
+| Re-enable all deactivated users on affected nodes | Andreas | COMPLETE                                                                |
+| Update the beacon-sdk to handle the behaviour     | Isacco  | [COMPLETE](https://github.com/airgap-it/beacon-sdk/releases/tag/v4.3.3) |
+| Update all beacon nodes to the same version       | Lukas   | IN PROGRESS                                                             |
 
 ## Conclusion
 
