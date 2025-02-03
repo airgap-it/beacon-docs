@@ -1,0 +1,113 @@
+# Integrate Beacon SDK with Next.js (SSR)
+
+:::warning Version Requirement
+This guide is valid only for version 4.5.0 and later.
+:::
+
+In this guide, you'll learn how to integrate the [Beacon SDK](https://docs.airgap.it/beacon-sdk) into your Next.js project.
+We assume that you already have a basic Next.js setup.
+We'll show you how to configure the project for SSR and add a simple page that uses Beacon SDK to request permissions.
+
+## 1. Install Dependencies
+
+First, ensure you have installed the Beacon SDK:
+
+```bash
+npm install @airgap/beacon-sdk
+```
+
+Additionally, if you haven't already, install `webpack-node-externals` which is used in the Next.js configuration:
+
+```bash
+npm install webpack-node-externals
+```
+
+## 2. Configure Next.js for Beacon SDK
+
+Update your `next.config.js` file to modify the webpack configuration. This ensures that certain Node modules are excluded during the server build, and provides fallbacks for browser environments.
+
+```js
+// next.config.js
+
+/** @type {import('next').NextConfig} */
+const nodeExternals = require("webpack-node-externals");
+
+const nextConfig = {
+  reactStrictMode: false,
+};
+
+module.exports = {
+  ...nextConfig,
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
+  ) => {
+    // Modify the config only for the server-side build.
+    if (isServer) {
+      config.externals.push({
+        bufferutil: "bufferutil",
+        "utf-8-validate": "utf-8-validate",
+        encoding: "encoding",
+        "pino-pretty": "pino-pretty",
+      });
+    }
+    // Provide a fallback for the "fs" module (not available in browsers).
+    config.resolve.fallback = { fs: false };
+    return config;
+  },
+};
+```
+
+## 3. Create or Update Your Page
+
+Create a new page (or update an existing one, e.g. `page.tsx`) with the following code.
+This code sets up a Beacon SDK client and adds a button that, when clicked, requests permissions.
+
+```tsx
+// page.tsx
+"use client";
+import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [client, setClient] = useState<DAppClient>();
+
+  useEffect(() => {
+    // Initialize the Beacon SDK DAppClient with a name and network type.
+    setClient(
+      new DAppClient({
+        name: "test",
+        network: { type: NetworkType.GHOSTNET },
+      }),
+    );
+  }, []);
+
+  return (
+    <main>
+      <h1>Hello World</h1>
+      <button
+        onClick={() => client?.requestPermissions()}
+        style={{
+          color: "black",
+          backgroundColor: "white",
+          padding: "5px",
+          borderRadius: "5px",
+        }}
+      >
+        Request Permissions
+      </button>
+    </main>
+  );
+}
+```
+
+## 4. Running Your Project
+
+After updating the configuration and page, run your Next.js development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to the page you modified (e.g., [http://localhost:3000](http://localhost:3000)).
+You should see a "Hello World" message with a button labeled "Request Permissions." Clicking the button will invoke Beacon SDK's permission request.
