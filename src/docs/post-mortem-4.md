@@ -1,6 +1,6 @@
 ---
 title: Postmortem Incident 4
-slug: /post-mortem-dns-outage
+slug: /post-mortem-4
 ---
 
 **Date:** 2025-02-05
