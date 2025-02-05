@@ -97,7 +97,7 @@ module.exports = {
     {
       type: "category",
       label: "Post Mortem",
-      items: ["post-mortem", "post-mortem-2", "post-mortem-3"],
+      items: ["post-mortem", "post-mortem-2", "post-mortem-3", "post-mortem-4"],
       collapsed: true,
     },
     {
