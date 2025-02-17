@@ -47,6 +47,7 @@ module.exports = {
         "guides/metrics",
         "guides/bug-report",
         "guides/migration-guide",
+        "guides/ssr",
       ],
       collapsed: true,
     },

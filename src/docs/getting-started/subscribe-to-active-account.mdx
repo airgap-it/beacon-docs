@@ -397,7 +397,7 @@ wallet.client.subscribeToEvent(
   async (account) => {
     console.log(
       `${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `,
-      account?.address
+      account?.address,
     );
 
     if (!account || !elector.isLeader) {
@@ -413,7 +413,7 @@ wallet.client.subscribeToEvent(
       // The request was rejected
       // handle disconnection
     }
-  }
+  },
 );
 
 wallet.client.requestPermissions();
