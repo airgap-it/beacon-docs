@@ -7,6 +7,7 @@ import { ExecutionState } from "../ExecutionState";
 
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import ErrorBoundary from "@docusaurus/ErrorBoundary";
+import DOMPurify from "dompurify";
 
 const defaultCode = `import { DAppClient, BeaconEvent } from "@airgap/beacon-sdk";
 
@@ -32,9 +33,10 @@ function Playground() {
   }
 
   const urlParams = new URLSearchParams(window.location.search);
-  const initialCode = urlParams.has("code")
-    ? atob(urlParams.get("code"))
-    : defaultCode;
+  const initialCode = DOMPurify.sanitize(
+    urlParams.has("code") ? atob(urlParams.get("code")) : defaultCode,
+    { USE_PROFILES: { html: true } },
+  );
 
   const [input, setInput] = useState(initialCode);
   const [output, setOutput] = useState("");
