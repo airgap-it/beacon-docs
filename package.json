@@ -23,7 +23,7 @@
     "embed-code": "npm run generate-monaco-types && npm run prettier && tsc --module es2015 --target es2015 --moduleResolution node --esModuleInterop true src/examples/*.ts && node scripts/copy-examples.js && npm run clear-folders && cp -r src/docs/* build-docs/ && rm -r docs && mv build-docs docs && npm run pretty-docs"
   },
   "dependencies": {
-    "@airgap/beacon-sdk": "^4.2.2",
+    "@airgap/beacon-sdk": "^4.4.0",
     "@docusaurus/core": "3.5.2",
     "@docusaurus/plugin-client-redirects": "^3.5.2",
     "@docusaurus/preset-classic": "3.5.2",

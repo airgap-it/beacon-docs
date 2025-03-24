@@ -32,6 +32,7 @@ const customBlockExplorerBeacon = async (loggerFun: Function) => {
         [NetworkType.OXFORDNET]: "https://oxford.tzstats.com/",
         [NetworkType.CUSTOM]: "https://custom.tzstats.com/",
         [NetworkType.PARISNET]: "https://paris.tzstats.com/",
+        [NetworkType.QUEBECNET]: "https://quebec.tzstats.com/",
       },
     ) {
       super(rpcUrls);

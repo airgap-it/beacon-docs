@@ -19,7 +19,7 @@ const isGreater = (a: any, b: any) => {
     undefined,
     {
       numeric: true,
-    },
+    }
   ) === 1
     ? -1
     : 1;
@@ -27,16 +27,7 @@ const isGreater = (a: any, b: any) => {
 
 const DAppTable = () => {
   const sdkVersions = {
-    recommended: [
-      "4.0.12",
-      "4.0.10-beta.2",
-      "4.0.10-beta.1",
-      "4.0.10",
-      "4.0.6",
-      "4.0.4",
-      "4.0.2",
-      "4.0.0",
-    ],
+    recommended: ["4.4.0"],
     outdated: [
       "2.3.13",
       "2.3.12",
@@ -93,8 +84,8 @@ const DAppTable = () => {
                         sdkVersions.recommended.includes(dApp.sdkVersion)
                           ? "✅"
                           : sdkVersions.outdated.includes(dApp.sdkVersion)
-                            ? "❌"
-                            : ""}
+                          ? "❌"
+                          : ""}
                       </td>
                       <td>{getDate(dApp.lastUpdate)}</td>
                       <td>
