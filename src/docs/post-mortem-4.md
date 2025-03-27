@@ -47,7 +47,6 @@ The issue was first detected at 04:34 via our monitoring system, which flagged D
 | Action Item                                                               | Owner  | State       |
 | ------------------------------------------------------------------------- | ------ | ----------- |
 | Implement dual DNS provider configuration                                 | Lukas  | IN PROGRESS |
-| Update SDK to allow for dynamic DNS failover configurations               | Isacco | IN PROGRESS |
 | Develop a public status page for real-time outage information             | Lukas  | PLANNED     |
 | Review and improve internal escalation procedures for third-party outages | Lukas  | COMPLETE    |
 
@@ -59,9 +58,6 @@ This incident demonstrated that reliance on a single DNS provider can bring down
 
 - **Redundancy is Key:**  
   Relying on a single DNS provider creates a single point of failure. We must implement dual DNS provider support to ensure continuous service availability even if one provider fails.
-
-- **SDK and Failover Mechanisms:**  
-  Future updates should include dynamic failover logic in our SDK, so that even if one provider fails, the system can automatically switch to an alternate DNS service with minimal disruption.
 
 ## Timeline
 
