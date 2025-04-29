@@ -1,0 +1,78 @@
+---
+title: Failed to Connect to Relayer error
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Overview
+
+If you encounter the WalletConnect error:
+
+```
+Failed to connect to relayer
+```
+
+it usually means your network connection is blocking or throttling the WebSocket relay service that WalletConnect uses. Using a VPN can help bypass these network restrictions.
+This guide walks you through installing and activating NordVPN, one of the most reliable VPN services, on your desktop or mobile device.
+
+## Prerequisites
+
+- A valid NordVPN subscription. If you don't have one yet, sign up at [NordVPN](https://nordvpn.com).
+- Administrative rights on your computer or device.
+
+## 1. Download NordVPN
+
+<Tabs>
+  <TabItem value="desktop" label="Desktop (Windows/macOS/Linux)">
+
+1. Visit the [NordVPN Downloads page](https://nordvpn.com/download/) and choose your operating system.
+2. Click **Download**.
+
+</TabItem>
+  <TabItem value="mobile" label="Mobile (iOS/Android)">
+
+1. Open the App Store (iOS) or Google Play Store (Android).
+2. Search for **NordVPN**.
+3. Tap **Install**.
+
+</TabItem>
+</Tabs>
+
+## 2. Install NordVPN
+
+### Windows/macOS/Linux
+
+1. Locate the downloaded installer file (`.exe` on Windows, `.dmg` on macOS, or package manager instructions on Linux).
+2. Run the installer and follow the on-screen prompts.
+3. Once installed, launch the **NordVPN** application.
+
+### iOS/Android
+
+1. The app installs automatically after download.
+2. Open the **NordVPN** app from your home screen.
+
+## 3. Activate NordVPN
+
+1. On the first launch, you will see a login screen.
+2. Enter your NordVPN account email and password.
+3. Complete any two-factor authentication (2FA) if you have it enabled.
+4. Upon successful login, you'll see the NordVPN dashboard.
+
+## 4. Connect to a VPN Server
+
+1. In the NordVPN dashboard, click **Quick Connect** to connect to the fastest available server.
+2. Alternatively, choose a specific country or specialty server from the server list.
+3. Wait until the status changes to **Connected** and displays a new IP address.
+
+> **Tip:** For the best WalletConnect performance, choose a server location near your region to minimize latency.
+
+## 5. Retry WalletConnect
+
+1. Return to your dApp.
+2. Attempt to connect your wallet again.
+3. The VPN-encrypted tunnel should now allow the WebSocket connection to the relayer.
+
+---
+
+**Note:** While this guide uses NordVPN as an example, you can use any reputable VPN provider to resolve WalletConnect connection issues.

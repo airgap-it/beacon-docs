@@ -44,11 +44,11 @@ The issue was first detected at 04:34 via our monitoring system, which flagged D
 
 **Action Items:**
 
-| Action Item                                                               | Owner  | State       |
-| ------------------------------------------------------------------------- | ------ | ----------- |
-| Implement dual DNS provider configuration                                 | Lukas  | IN PROGRESS |
-| Develop a public status page for real-time outage information             | Lukas  | PLANNED     |
-| Review and improve internal escalation procedures for third-party outages | Lukas  | COMPLETE    |
+| Action Item                                                               | Owner | State       |
+| ------------------------------------------------------------------------- | ----- | ----------- |
+| Implement dual DNS provider configuration                                 | Lukas | IN PROGRESS |
+| Develop a public status page for real-time outage information             | Lukas | PLANNED     |
+| Review and improve internal escalation procedures for third-party outages | Lukas | COMPLETE    |
 
 ## Conclusion
 
