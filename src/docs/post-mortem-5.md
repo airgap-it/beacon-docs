@@ -47,11 +47,11 @@ The issue was initially identified by SDK users who reported connectivity issues
 
 **Action Items:**
 
-| Action Item                                                    | Owner  | State       |
-| -------------------------------------------------------------- | ------ | ----------- |
-| Update node selection algorithm for parallel latency detection | Isacco | IN PROGRESS |
-| Configure monitoring to perform checks every 10 minutes        | Lukas  | COMPLETE    |
-| Integrate Synapse instance monitoring                          | Lukas  | COMPLETE    |
+| Action Item                                                                      | Owner  | State       |
+| -------------------------------------------------------------------------------- | ------ | ----------- |
+| Update node selection algorithm for parallel latency detection                   | Isacco | IN PROGRESS |
+| Configure monitoring to trigger pager duty incidents repeatedly every 10 minutes | Lukas  | COMPLETE    |
+| Integrate Synapse instance monitoring                                            | Lukas  | COMPLETE    |
 
 ## Conclusion
 
@@ -67,12 +67,9 @@ This incident highlighted two critical issues: the necessity for proper procedur
 
 ## Timeline
 
-- **09:30:** Node restart executed improperly; Synapse enters partially operational state.
-- **09:35:** SDK begins routing US-based users to the faulty node due to latency detection flaw.
-- **09:50:** Initial user reports of connectivity problems begin surfacing.
-- **10:00:** Monitoring systems confirm the Synapse instance operational issue.
-- **10:15:** Team identifies root cause related to improper node restart.
-- **10:30:** Node properly restarted, restoring normal operations.
-- **11:00:** Monitoring intervals adjusted to 10-minute checks.
-- **11:30:** Algorithm changes initiated for parallel latency detection.
-- **12:00:** Synapse instance added to comprehensive monitoring.
+- 08:56 - Node restart due to maintenance
+- 08:57 - Pager Duty call dismissed as expected due to restart
+- 08:58 - Node uptime check (Synapse): beacon-node-1.beacon-server-1.papers.tech returns 200 OK
+- 20:47 - Kukai Team notifies beacon team in slack about an increase in user reports
+- 00:16 - Kukai Team notices the Matrix part of the node is not working properly
+- 08:00 - Service recovered
