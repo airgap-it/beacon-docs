@@ -62,7 +62,7 @@ This incident highlighted two critical issues: the necessity for proper procedur
 - **Parallelization in Node Selection:**
   Implementing parallel node latency checks ensures faster, more reliable network selection, minimizing the impact of node-specific outages.
 
-- **Recurring pager duty alerts:** the event was unnoticed because the initial trigger was expected due to the maintenace restart but the resulting downtime was not noticed caused by this. Recurring pager duty calls in case of service interruption will avoid this scenario in the future.
+- **Recurring pager duty alerts:** The event was unnoticed because the initial trigger was expected due to the maintenace restart but the resulting downtime was not noticed caused by this. Recurring pager duty calls in case of service interruption will avoid this scenario in the future.
 
 ## Timeline
 
