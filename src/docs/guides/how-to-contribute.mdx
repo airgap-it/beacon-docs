@@ -1,0 +1,359 @@
+---
+title: How to Contribute to Beacon
+slug: /guides/how-to-contribute
+---
+
+# How to Contribute to Beacon
+
+We welcome contributions from the community! Whether you're fixing bugs, adding features, improving documentation, or adding wallet support, this guide will help you get started with contributing to the Beacon SDK ecosystem.
+
+## Overview
+
+The Beacon SDK consists of multiple repositories:
+
+- **[beacon-sdk](https://github.com/airgap-it/beacon-sdk)** - The main TypeScript SDK for web developers
+- **[beacon-android-sdk](https://github.com/airgap-it/beacon-android-sdk)** - SDK for Android developers
+- **[beacon-ios-sdk](https://github.com/airgap-it/beacon-ios-sdk)** - SDK for iOS developers
+- **[beacon-docs](https://github.com/airgap-it/beacon-docs)** - Documentation website
+
+## Prerequisites
+
+Before you start contributing, make sure you have the following installed:
+
+- **Node.js**: Version 18 or higher (check with `node --version`)
+- **npm**: Package manager (comes with Node.js)
+- **Git**: For version control
+
+For mobile development:
+
+- **Android Studio** (for Android SDK contributions)
+- **Xcode** (for iOS SDK contributions)
+
+## Cloning/Forking the Project
+
+### 1. Fork the Repository
+
+1. Navigate to the repository you want to contribute to (e.g., [beacon-sdk](https://github.com/airgap-it/beacon-sdk))
+2. Click the **"Fork"** button in the top right corner
+3. Select your GitHub account to create the fork
+
+### 2. Clone Your Fork
+
+```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/beacon-sdk.git
+cd beacon-sdk
+
+# Add the original repository as upstream
+git remote add upstream https://github.com/airgap-it/beacon-sdk.git
+
+# Verify remotes
+git remote -v
+```
+
+### 3. Create a Feature Branch
+
+```bash
+# Create and switch to a new branch
+git checkout -b feature/your-feature-name
+
+# Or for bug fixes
+git checkout -b fix/your-bug-fix-name
+```
+
+## Running the Project Locally
+
+### Main Beacon SDK (TypeScript)
+
+1. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+2. **Build the Project**
+
+   ```bash
+   npm run build
+   ```
+
+3. **Test with Examples**
+
+   After building, you can test the SDK with the example files by serving them locally:
+
+   ```bash
+   # Start a local web server in the examples directory
+   cd examples
+   python -m http.server 8000
+   # or use any other static file server
+   ```
+
+   Then open:
+
+   - `http://localhost:8000/example-dapp.html` - Test dApp functionality
+   - `http://localhost:8000/example-wallet.html` - Test wallet functionality
+
+   :::tip
+   Use different browsers for dApp and wallet examples to avoid localStorage conflicts.
+   :::
+
+### Documentation Website
+
+1. **Clone the Documentation Repository**
+
+   ```bash
+   git clone https://github.com/airgap-it/beacon-docs.git
+   cd beacon-docs
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start Development Server**
+
+   ```bash
+   npm run start
+   ```
+
+### Android SDK
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/airgap-it/beacon-android-sdk.git
+   cd beacon-android-sdk
+   ```
+
+2. **Open in Android Studio**
+
+   - Open Android Studio
+   - Select "Open an existing Android Studio project"
+   - Navigate to the cloned directory
+
+3. **Build the Project**
+   ```bash
+   ./gradlew build
+   ```
+
+### iOS SDK
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/airgap-it/beacon-ios-sdk.git
+   cd beacon-ios-sdk
+   ```
+
+2. **Open in Xcode**
+   - Open the `.xcodeproj` file in Xcode
+   - Build the project using Cmd+B
+
+## Running Unit Tests
+
+### TypeScript SDK
+
+```bash
+# Run all tests across the monorepo
+npm test
+
+# Run tests with coverage reporting
+npm run test-ci
+
+# Run end-to-end tests
+npm run e2e
+
+# Run specific test file (within individual packages)
+npm test path/to/test-file.spec.ts
+```
+
+### Android SDK
+
+```bash
+# Run unit tests
+./gradlew test
+
+# Run specific test
+./gradlew :module-name:test
+```
+
+### iOS SDK
+
+In Xcode:
+
+- Press `Cmd+U` to run tests
+- Or use `Product > Test` from the menu
+
+## Adding a New Wallet
+
+Adding your wallet to the Beacon SDK ecosystem makes it discoverable by dApps and increases adoption. Here's how to add support for your wallet:
+
+### 1. Implement Beacon Support in Your Wallet
+
+First, your wallet needs to implement the [TZIP-10](https://gitlab.com/tzip/tzip/-/blob/master/proposals/tzip-10/tzip-10.md) standard. You can use one of our SDKs:
+
+#### Web Wallets
+
+Use the TypeScript SDK:
+
+```bash
+npm install @airgap/beacon-sdk
+```
+
+See our [wallet integration guide](/wallet/getting-started/web/getting-started) for implementation details.
+
+#### Mobile Wallets
+
+**Android:**
+
+```groovy
+implementation "com.github.airgap-it:beacon-android-sdk:$beacon_version"
+```
+
+**iOS:**
+Add the Beacon iOS SDK to your project via Swift Package Manager or CocoaPods.
+
+#### Custom URL Scheme (iOS Wallets)
+
+For same-device functionality, iOS wallets must define a custom URL scheme in their `Info.plist`:
+
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLName</key>
+        <string>your-wallet-name</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>your-wallet-scheme</string>
+        </array>
+    </dict>
+</array>
+```
+
+### 2. Add Your Wallet to the Wallet List
+
+1. **Fork the beacon-sdk repository**
+
+2. **Locate the wallet list file**
+
+   ```bash
+   cd beacon-sdk
+   open scripts/generate-wallet-list.ts
+   ```
+
+3. **Add your wallet information**
+
+   Add your wallet to the appropriate array in `generate-wallet-list.ts`:
+
+   ```typescript
+   {
+     key: 'your-wallet-key',
+     name: 'Your Wallet Name',
+     shortName: 'YourWallet',
+     color: '#your-brand-color',
+     logo: 'data:image/svg+xml;base64,YOUR_BASE64_ENCODED_LOGO',
+     universalLink: 'https://your-wallet.app',
+     deepLink: 'your-wallet-scheme://',
+     downloadUrls: {
+       ios: 'https://apps.apple.com/app/your-wallet/id123456789',
+       android: 'https://play.google.com/store/apps/details?id=com.yourwallet.app',
+       chrome: 'https://chrome.google.com/webstore/detail/your-wallet/extension-id',
+       firefox: 'https://addons.mozilla.org/firefox/addon/your-wallet/',
+       web: 'https://your-wallet.app'
+     }
+   }
+   ```
+
+4. **Create a Pull Request**
+
+   Submit your changes via pull request with:
+
+   - Clear description of your wallet
+   - Links to your wallet's website and stores
+   - Evidence that your wallet implements TZIP-10 correctly
+
+### 3. Wallet Information Requirements
+
+Your wallet entry should include:
+
+- **Name**: Full name of your wallet
+- **Logo**: SVG format, base64 encoded, preferably square
+- **Color**: Primary brand color (hex format)
+- **Download URLs**: Links to all platforms where your wallet is available
+- **Deep Link**: Custom URL scheme for your wallet
+- **Universal Link**: Web fallback URL
+
+### 4. Testing Your Wallet Integration
+
+Before submitting your PR, test your wallet with:
+
+1. **Beacon Playground**: https://www.walletbeacon.io/
+2. **Example dApps**: Use the examples in the beacon-sdk repository
+3. **Real dApps**: Test with actual Tezos dApps that use Beacon
+
+Ensure your wallet can handle:
+
+- Permission requests
+- Operation signing
+- Payload signing
+- Error handling
+- Disconnection
+
+## Contributing Guidelines
+
+### Code Style
+
+We use Prettier and ESLint for code formatting:
+
+```bash
+# Format code
+npm run prettier
+
+# Lint code
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+```
+
+### Commit Messages
+
+Use conventional commit format:
+
+```
+type(scope): description
+
+Examples:
+feat(sdk): add new wallet connection method
+fix(android): resolve connection timeout issue
+docs(guide): update installation instructions
+```
+
+### Pull Request Process
+
+1. **Update Documentation**: Ensure any new features are documented
+2. **Add Tests**: Include tests for new functionality
+3. **Update Changelog**: Add entries for breaking changes
+4. **Describe Changes**: Provide a clear description in your PR
+
+### Code Review
+
+All contributions go through code review:
+
+- Automated tests must pass
+- At least one maintainer approval required
+- Address all feedback before merging
+
+## Getting Help
+
+If you need help with your contribution:
+
+- **Discord**: Join our [Discord server](https://discord.gg/beacon)
+- **GitHub Issues**: Open an issue for bugs or feature requests
+- **Telegram**: [Beacon Telegram group](https://t.me/beacon_support)
+- **Documentation**: Check our [full documentation](https://docs.walletbeacon.io/)
+
+Thank you for contributing to the Beacon ecosystem! Your efforts help make Tezos more accessible to developers and users worldwide.
