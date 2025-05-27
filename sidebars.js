@@ -49,6 +49,7 @@ module.exports = {
         "guides/migration-guide",
         "guides/ssr",
         "guides/failed-to-connect",
+        "guides/how-to-contribute",
       ],
       collapsed: true,
     },
