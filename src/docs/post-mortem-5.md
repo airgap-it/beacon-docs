@@ -47,11 +47,11 @@ The issue was initially identified by SDK users who reported connectivity issues
 
 **Action Items:**
 
-| Action Item                                                                      | Owner  | State       |
-| -------------------------------------------------------------------------------- | ------ | ----------- |
-| Update node selection algorithm for parallel latency detection                   | Isacco | IN PROGRESS |
-| Configure monitoring to trigger pager duty incidents repeatedly every 10 minutes | Lukas  | COMPLETE    |
-| Integrate Synapse instance monitoring                                            | Lukas  | COMPLETE    |
+| Action Item                                                                      | Owner  | State                                                                   |
+| -------------------------------------------------------------------------------- | ------ | ----------------------------------------------------------------------- |
+| Update node selection algorithm for parallel latency detection                   | Isacco | [COMPLETE](https://github.com/airgap-it/beacon-sdk/releases/tag/v4.6.0) |
+| Configure monitoring to trigger pager duty incidents repeatedly every 10 minutes | Lukas  | COMPLETE                                                                |
+| Integrate Synapse instance monitoring                                            | Lukas  | COMPLETE                                                                |
 
 ## Conclusion
 
