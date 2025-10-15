@@ -15,7 +15,9 @@ const exampleSimpleTaquito = async (loggerFun: Function) => {
 
   let myAddress: string | undefined;
 
-  // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
+  // Check if user already has an active connection from a previous session.
+  // This should be called on page load to restore the connection state.
+  // Note: For handling real-time connection changes, you can also subscribe to BeaconEvent.ACTIVE_ACCOUNT_SET
   const activeAccount = await wallet.client.getActiveAccount();
   if (activeAccount) {
     // If defined, the user is connected to a wallet.

@@ -75,18 +75,18 @@ const result = await wallet.client.requestPermissions({
   <TabItem value="beacon">
 
 ```ts live
-// beacon edonet network
+// beacon seoulnet network
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
   name: "Beacon Docs",
-  preferredNetwork: NetworkType.EDONET,
+  network: { type: NetworkType.SEOULNET },
 });
 
-// Edonet with default rpcUrl
+// Seoulnet with default rpcUrl
 const result = await dAppClient.requestPermissions({
   network: {
-    type: NetworkType.EDONET,
+    type: NetworkType.SEOULNET,
   },
 });
 ```
@@ -96,7 +96,7 @@ const result = await dAppClient.requestPermissions({
 <TabItem value="taquito">
 
 ```ts live
-// taquito edonet network
+// taquito seoulnet network
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -104,15 +104,15 @@ import { NetworkType } from "@airgap/beacon-sdk";
 const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs",
-  preferredNetwork: NetworkType.EDONET,
+  network: { type: NetworkType.SEOULNET },
 });
 
 Tezos.setWalletProvider(wallet);
 
-// Edonet with default rpcUrl
+// Seoulnet with default rpcUrl
 const result = await wallet.client.requestPermissions({
   network: {
-    type: NetworkType.EDONET,
+    type: NetworkType.SEOULNET,
   },
 });
 ```
@@ -133,18 +133,18 @@ const result = await wallet.client.requestPermissions({
   <TabItem value="beacon">
 
 ```ts live
-// beacon edonet network with RPC
+// beacon seoulnet network with RPC
 import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
   name: "Beacon Docs",
-  preferredNetwork: NetworkType.EDONET,
+  network: { type: NetworkType.SEOULNET },
 });
 
-// Edonet with different rpcUrl
+// Seoulnet with different rpcUrl
 const result = await dAppClient.requestPermissions({
   network: {
-    type: NetworkType.EDONET,
+    type: NetworkType.SEOULNET,
     rpcUrl: "https://testnet-tezos.giganode.io/",
   },
 });
@@ -155,7 +155,7 @@ const result = await dAppClient.requestPermissions({
 <TabItem value="taquito">
 
 ```ts live
-// taquito edonet network with RPC
+// taquito seoulnet network with RPC
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { NetworkType } from "@airgap/beacon-sdk";
@@ -163,15 +163,15 @@ import { NetworkType } from "@airgap/beacon-sdk";
 const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs",
-  preferredNetwork: NetworkType.EDONET,
+  network: { type: NetworkType.SEOULNET },
 });
 
 Tezos.setWalletProvider(wallet);
 
-// Edonet with different rpcUrl
+// Seoulnet with different rpcUrl
 const result = await wallet.client.requestPermissions({
   network: {
-    type: NetworkType.EDONET,
+    type: NetworkType.SEOULNET,
     rpcUrl: "https://testnet-tezos.giganode.io/",
   },
 });
@@ -198,7 +198,7 @@ import { DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({
   name: "Beacon Docs",
-  preferredNetwork: NetworkType.CUSTOM,
+  network: { type: NetworkType.CUSTOM },
 });
 
 // Custom network (eg. local development or latest testnet)
@@ -224,7 +224,7 @@ import { NetworkType } from "@airgap/beacon-sdk";
 const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs Taquito",
-  preferredNetwork: NetworkType.CUSTOM,
+  network: { type: NetworkType.CUSTOM },
 });
 
 Tezos.setWalletProvider(wallet);

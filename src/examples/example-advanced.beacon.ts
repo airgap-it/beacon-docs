@@ -18,7 +18,7 @@ const exampleAdvancedBeacon = async (loggerFun: Function) => {
   // Create a new DAppClient instance
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
-    preferredNetwork: network.type,
+    network: network,
   });
 
   let myAddress: string | undefined;
@@ -30,7 +30,9 @@ const exampleAdvancedBeacon = async (loggerFun: Function) => {
     theme === "dark" ? ColorMode.DARK : ColorMode.LIGHT,
   );
 
-  // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
+  // Check if user already has an active connection from a previous session.
+  // This should be called on page load to restore the connection state.
+  // Note: For handling real-time connection changes, you can also subscribe to BeaconEvent.ACTIVE_ACCOUNT_SET
   const activeAccount = await dAppClient.getActiveAccount();
   if (activeAccount) {
     // If defined, the user is connected to a wallet.
@@ -46,9 +48,7 @@ const exampleAdvancedBeacon = async (loggerFun: Function) => {
     // it should be triggered when the user clicks on a "connect" button on your page.
     // This will trigger the pairing alert UI where the user can select which wallet to pair.
     try {
-      const permissions = await dAppClient.requestPermissions({
-        network: network,
-      });
+      const permissions = await dAppClient.requestPermissions();
       logger.log("New connection: ", permissions.address);
       myAddress = permissions.address;
     } catch (error) {

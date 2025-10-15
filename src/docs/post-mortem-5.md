@@ -30,15 +30,12 @@ The incident originated from an improper restart of the node `beacon-node-1.beac
 Immediate corrective steps involved:
 
 1. **Node Restart:**
-
    - Properly restarted the node to restore complete operational status.
 
 2. **Algorithm Update:**
-
    - Initiated modifications to the node-selection algorithm, changing its strategy from sequential latency checks to parallel checks.
 
 3. **Enhanced Monitoring:**
-
    - Implemented monitoring checks on the Synapse instance.
    - Adjusted monitoring intervals to every 10 minutes for proactive detection.
 

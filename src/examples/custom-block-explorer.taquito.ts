@@ -19,20 +19,25 @@ const customBlockExplorerTaquito = async (loggerFun: Function) => {
         [NetworkType.GHOSTNET]: "https://ghost.tzstats.com/",
         [NetworkType.WEEKLYNET]: "https://monday.tzstats.com/",
         [NetworkType.DAILYNET]: "https://daily.tzstats.com/",
-        [NetworkType.DELPHINET]: "https://delphi.tzstats.com/",
-        [NetworkType.EDONET]: "https://edo.tzstats.com/",
-        [NetworkType.FLORENCENET]: "https://florence.tzstats.com/",
-        [NetworkType.GRANADANET]: "https://granada.tzstats.com/",
-        [NetworkType.HANGZHOUNET]: "https://hangzhounet.tzstats.com/",
-        [NetworkType.ITHACANET]: "https://ithaca.tzstats.com/",
-        [NetworkType.JAKARTANET]: "https://jakara.tzstats.com/",
-        [NetworkType.KATHMANDUNET]: "https://kathmandu.tzstats.com/",
-        [NetworkType.LIMANET]: "https://lima.tzstats.com/",
-        [NetworkType.MUMBAINET]: "https://mumbai.tzstats.com/",
-        [NetworkType.NAIROBINET]: "https://nairobi.tzstats.com/",
-        [NetworkType.OXFORDNET]: "https://oxford.tzstats.com/",
+        [NetworkType.SEOULNET]: "https://seoul.tzstats.com/",
+        [NetworkType.PARISNET]: "https://paris.tzstats.com/",
+        [NetworkType.QUEBECNET]: "https://quebec.tzstats.com/",
         [NetworkType.CUSTOM]: "https://custom.tzstats.com/",
-        [NetworkType.PARISNET]: "https://paris.tzstats.com",
+        // Deprecated networks (no longer active)
+        [NetworkType.DELPHINET]: "https://tzstats.com/",
+        [NetworkType.EDONET]: "https://tzstats.com/",
+        [NetworkType.FLORENCENET]: "https://tzstats.com/",
+        [NetworkType.GRANADANET]: "https://tzstats.com/",
+        [NetworkType.HANGZHOUNET]: "https://tzstats.com/",
+        [NetworkType.ITHACANET]: "https://tzstats.com/",
+        [NetworkType.JAKARTANET]: "https://tzstats.com/",
+        [NetworkType.KATHMANDUNET]: "https://tzstats.com/",
+        [NetworkType.LIMANET]: "https://tzstats.com/",
+        [NetworkType.MUMBAINET]: "https://tzstats.com/",
+        [NetworkType.NAIROBINET]: "https://tzstats.com/",
+        [NetworkType.OXFORDNET]: "https://tzstats.com/",
+        [NetworkType.RIONET]: "https://tzstats.com/",
+        [NetworkType.SHADOWNET]: "https://tzstats.com/",
       },
     ) {
       super(rpcUrls);
@@ -59,7 +64,7 @@ const customBlockExplorerTaquito = async (loggerFun: Function) => {
   const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
-    blockExplorer: new TzStatsBlockExplorer() as any,
+    blockExplorer: new TzStatsBlockExplorer(),
   });
 
   try {

@@ -9,18 +9,19 @@ const networkMainnetWithUrlTaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
   const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
-  const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" });
+  const wallet = new BeaconWallet({
+    name: "Beacon Docs Taquito",
+    network: {
+      type: NetworkType.MAINNET,
+      rpcUrl: "https://mainnet.api.tez.ie",
+    },
+  });
 
   Tezos.setWalletProvider(wallet);
 
   // Mainnet with different rpcUrl
   try {
-    const result = await wallet.client.requestPermissions({
-      network: {
-        type: NetworkType.MAINNET,
-        rpcUrl: "https://mainnet.api.tez.ie",
-      },
-    });
+    const result = await wallet.client.requestPermissions();
     logger.log("Permissions: ", result);
   } catch (error) {
     logger.log("Error: ", error.message);

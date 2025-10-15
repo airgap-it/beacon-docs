@@ -30,7 +30,6 @@ The incident began when the first node experienced DNS resolution problems at 04
 Two separate remediation steps were implemented:
 
 1. **Immediate Escalation and Monitoring:**
-
    - At 04:34, the DNS resolution issue was detected and pager duty was activated.
    - Continuous calls to the hotline and monitoring of the provider’s status page helped confirm that the provider was facing a widespread outage.
 

@@ -19,7 +19,7 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
   const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs",
-    preferredNetwork: network.type,
+    network: network,
   }); // Takes the same arguments as the DAppClient constructor
 
   Tezos.setWalletProvider(wallet);
@@ -33,7 +33,9 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
     theme === "dark" ? ColorMode.DARK : ColorMode.LIGHT,
   );
 
-  // This code should be called every time the page is loaded or refreshed to see if the user has already connected to a wallet.
+  // Check if user already has an active connection from a previous session.
+  // This should be called on page load to restore the connection state.
+  // Note: For handling real-time connection changes, you can also subscribe to BeaconEvent.ACTIVE_ACCOUNT_SET
   const activeAccount = await wallet.client.getActiveAccount();
   if (activeAccount) {
     // If defined, the user is connected to a wallet.
@@ -49,9 +51,7 @@ const exampleAdvancedTaquito = async (loggerFun: Function) => {
     // it should be triggered when the user clicks on a "connect" button on your page.
     // This will trigger the pairing alert UI where the user can select which wallet to pair.
     try {
-      wallet.requestPermissions({
-        network: network,
-      });
+      wallet.requestPermissions();
       myAddress = await wallet.getPKH();
       logger.log("New connection: ", myAddress);
     } catch (error) {

@@ -32,10 +32,10 @@ import infoVersionBeacon from "./examples/info-version.beacon";
 import infoVersionTaquito from "./examples/info-version.taquito";
 import networkCustomBeacon from "./examples/network-custom-network.beacon";
 import networkCustomTaquito from "./examples/network-custom-network.taquito";
-import networkEdonetWithRpcBeacon from "./examples/network-edonet-with-url.beacon";
-import networkEdonetWithRpcTaquito from "./examples/network-edonet-with-url.taquito";
-import networkEdonetBeacon from "./examples/network-edonet.beacon";
-import networkEdonetTaquito from "./examples/network-edonet.taquito";
+import networkSeoulnetWithRpcBeacon from "./examples/network-seoulnet-with-url.beacon";
+import networkSeoulnetWithRpcTaquito from "./examples/network-seoulnet-with-url.taquito";
+import networkSeoulnetBeacon from "./examples/network-seoulnet.beacon";
+import networkSeoulnetTaquito from "./examples/network-seoulnet.taquito";
 import networkMainnetWithUrlBeacon from "./examples/network-mainnet-with-url.beacon";
 import networkMainnetWithUrlTaquito from "./examples/network-mainnet-with-url.taquito";
 import overrideAlertAbortedBeacon from "./examples/override-alert-aborted-handler.beacon";
@@ -177,17 +177,17 @@ export class ExecuteExample {
       case "taquito mainnet network":
         await networkMainnetWithUrlTaquito(updateLogs);
         break;
-      case "beacon edonet network":
-        await networkEdonetBeacon(updateLogs);
+      case "beacon seoulnet network":
+        await networkSeoulnetBeacon(updateLogs);
         break;
-      case "taquito edonet network":
-        await networkEdonetTaquito(updateLogs);
+      case "taquito seoulnet network":
+        await networkSeoulnetTaquito(updateLogs);
         break;
-      case "beacon edonet network with RPC":
-        await networkEdonetWithRpcBeacon(updateLogs);
+      case "beacon seoulnet network with RPC":
+        await networkSeoulnetWithRpcBeacon(updateLogs);
         break;
-      case "taquito edonet network with RPC":
-        await networkEdonetWithRpcTaquito(updateLogs);
+      case "taquito seoulnet network with RPC":
+        await networkSeoulnetWithRpcTaquito(updateLogs);
         break;
       case "beacon custom network":
         await networkCustomBeacon(updateLogs);

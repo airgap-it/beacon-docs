@@ -23,9 +23,19 @@ The following example will show:
 
 ```ts live
 // beacon simple example
-import { DAppClient, TezosOperationType } from "@airgap/beacon-sdk";
+import {
+  BeaconEvent,
+  DAppClient,
+  TezosOperationType,
+} from "@airgap/beacon-sdk";
 
 const dAppClient = new DAppClient({ name: "Beacon Docs" });
+
+// Listen for all the active account changes
+dAppClient.subscribeToEvent(BeaconEvent.ACTIVE_ACCOUNT_SET, async (account) => {
+  // An active account has been set, update the dApp UI
+  console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+});
 
 let myAddress: string | undefined;
 
@@ -65,12 +75,21 @@ console.log("Operation Hash: ", response.transactionHash);
 // taquito simple example
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { TezosOperationType } from "@airgap/beacon-sdk";
+import { BeaconEvent, TezosOperationType } from "@airgap/beacon-sdk";
 
 const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({ name: "Beacon Docs Taquito" }); // Takes the same arguments as the DAppClient constructor
 
 Tezos.setWalletProvider(wallet);
+
+// Listen for all the active account changes
+wallet.client.subscribeToEvent(
+  BeaconEvent.ACTIVE_ACCOUNT_SET,
+  async (account) => {
+    // An active account has been set, update the dApp UI
+    console.log(`${BeaconEvent.ACTIVE_ACCOUNT_SET} triggered: `, account);
+  },
+);
 
 let myAddress: string | undefined;
 

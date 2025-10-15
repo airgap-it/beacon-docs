@@ -6,16 +6,17 @@ import Logger from "../Logger";
 const networkMainnetWithUrlBeacon = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const dAppClient = new DAppClient({ name: "Beacon Docs" });
+  const dAppClient = new DAppClient({
+    name: "Beacon Docs",
+    network: {
+      type: NetworkType.MAINNET,
+      rpcUrl: "https://mainnet.api.tez.ie",
+    },
+  });
 
   // Mainnet with different rpcUrl
   try {
-    const result = await dAppClient.requestPermissions({
-      network: {
-        type: NetworkType.MAINNET,
-        rpcUrl: "https://mainnet.api.tez.ie",
-      },
-    });
+    const result = await dAppClient.requestPermissions();
     logger.log("Permissions: ", result);
   } catch (error) {
     logger.log("Error: ", error.message);

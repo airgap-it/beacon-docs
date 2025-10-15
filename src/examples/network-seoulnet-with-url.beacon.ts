@@ -3,26 +3,21 @@ import { DAppClient, NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
 import Logger from "../Logger";
 /// END
 
-const networkEdonetWithRpcBeacon = async (loggerFun: Function) => {
+const networkSeoulnetWithRpcBeacon = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
   const dAppClient = new DAppClient({
     name: "Beacon Docs",
-    preferredNetwork: NetworkType.EDONET,
+    network: { type: NetworkType.SEOULNET },
   });
 
-  // Edonet with different rpcUrl
+  // Seoulnet with different rpcUrl
   try {
-    const result = await dAppClient.requestPermissions({
-      network: {
-        type: NetworkType.EDONET,
-        rpcUrl: "https://testnet-tezos.giganode.io/",
-      },
-    });
+    const result = await dAppClient.requestPermissions();
     logger.log("Permissions: ", result);
   } catch (error) {
     logger.log("Result: ", error.message);
   }
   /// END
 };
-export default networkEdonetWithRpcBeacon;
+export default networkSeoulnetWithRpcBeacon;

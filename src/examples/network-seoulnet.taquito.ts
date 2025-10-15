@@ -5,28 +5,24 @@ import { NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
 import Logger from "../Logger";
 /// END
 
-const networkEdonetTaquito = async (loggerFun: Function) => {
+const networkSeoulnetTaquito = async (loggerFun: Function) => {
   const logger = new Logger(loggerFun);
   /// START
-  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+  const Tezos = new TezosToolkit("https://rpc.seoulnet.teztnets.com");
   const wallet = new BeaconWallet({
     name: "Beacon Docs",
-    preferredNetwork: NetworkType.EDONET,
+    network: { type: NetworkType.SEOULNET },
   });
 
   Tezos.setWalletProvider(wallet);
 
-  // Edonet with default rpcUrl
+  // Seoulnet with default rpcUrl
   try {
-    const result = await wallet.client.requestPermissions({
-      network: {
-        type: NetworkType.EDONET,
-      },
-    });
+    const result = await wallet.client.requestPermissions();
     logger.log("Permissions: ", result);
   } catch (error) {
     logger.log("Error: ", error.message);
   }
   /// END
 };
-export default networkEdonetTaquito;
+export default networkSeoulnetTaquito;

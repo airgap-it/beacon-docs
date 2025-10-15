@@ -11,20 +11,18 @@ const networkCustomTaquito = async (loggerFun: Function) => {
   const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
-    preferredNetwork: NetworkType.CUSTOM,
+    network: {
+      type: NetworkType.CUSTOM,
+      name: "Local Node",
+      rpcUrl: "http://localhost:8732/",
+    },
   });
 
   Tezos.setWalletProvider(wallet);
 
   // Custom network (eg. local development or latest testnet)
   try {
-    const result = await wallet.client.requestPermissions({
-      network: {
-        type: NetworkType.CUSTOM,
-        name: "Local Node",
-        rpcUrl: "http://localhost:8732/",
-      },
-    });
+    const result = await wallet.client.requestPermissions();
     logger.log("Permissions: ", result);
   } catch (error) {
     logger.log("Error: ", error.message);

@@ -39,7 +39,7 @@ const network: Network = { type: NetworkType.MAINNET };
 // Create a new DAppClient instance
 const dAppClient = new DAppClient({
   name: "Beacon Docs",
-  preferredNetwork: network.type,
+  network: network,
 });
 
 let myAddress: string | undefined;
@@ -121,7 +121,7 @@ const network: Network = { type: NetworkType.MAINNET };
 const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
 const wallet = new BeaconWallet({
   name: "Beacon Docs",
-  preferredNetwork: network.type,
+  network: network,
 }); // Takes the same arguments as the DAppClient constructor
 
 Tezos.setWalletProvider(wallet);

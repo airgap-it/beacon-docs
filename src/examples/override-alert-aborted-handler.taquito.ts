@@ -25,14 +25,15 @@ const overrideAlertAbortedTaquito = async (loggerFun: Function) => {
         // The default will not be executed anymore. To keep the default,
         // you will have to call it again.
         handler: async (data: {
-          p2pPeerInfo: () => Promise<P2PPairingRequest>;
-          postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
-          walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+          p2pPeerInfo: Promise<string>;
+          postmessagePeerInfo: Promise<string>;
+          walletConnectPeerInfo: Promise<string>;
           networkType: NetworkType;
           abortedHandler?(): void;
           disclaimerText?: string;
           analytics: AnalyticsInterface;
           featuredWallets?: string[];
+          substratePairing?: boolean;
         }): Promise<void> => {
           // If you want to attach your own "on alert closed" handler
           // eslint-disable-next-line @typescript-eslint/unbound-method

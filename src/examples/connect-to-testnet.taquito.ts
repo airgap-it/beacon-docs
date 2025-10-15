@@ -6,21 +6,20 @@ import { NetworkType } from "../node_modules/beacon-sdk/dist/cjs";
 
 async () => {
   /// START
-  // We set the preferred network to "EDONET"
-  // The "preferred network" will make the connection is sent to the correct URL
-  const Tezos = new TezosToolkit("https://mainnet.api.tez.ie");
+  // We set the network to "SEOULNET"
+  // The network configuration will make the connection is sent to the correct URL
+  const Tezos = new TezosToolkit("https://rpc.seoulnet.teztnets.com");
   const wallet = new BeaconWallet({
     name: "Beacon Docs Taquito",
-    preferredNetwork: NetworkType.EDONET,
+    network: {
+      type: NetworkType.SEOULNET,
+      rpcUrl: "https://rpc.seoulnet.teztnets.com",
+    },
   });
 
   Tezos.setWalletProvider(wallet);
 
-  const result = await wallet.client.requestPermissions({
-    network: {
-      type: NetworkType.EDONET, // Try: NetworkType.DELPHINET
-    },
-  });
+  const result = await wallet.client.requestPermissions();
 
   console.log(`Connected to ${result.address} on ${result.network.type}`);
   /// END

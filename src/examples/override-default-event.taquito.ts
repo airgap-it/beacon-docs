@@ -26,14 +26,15 @@ const overrideDefaultEventTaquito = async (loggerFun: Function) => {
         // you will have to call it again.
         handler: async (
           data: {
-            p2pPeerInfo: () => Promise<P2PPairingRequest>;
-            postmessagePeerInfo: () => Promise<PostMessagePairingRequest>;
-            walletConnectPeerInfo: () => Promise<WalletConnectPairingRequest>;
+            p2pPeerInfo: Promise<string>;
+            postmessagePeerInfo: Promise<string>;
+            walletConnectPeerInfo: Promise<string>;
             networkType: NetworkType;
             abortedHandler?(): void;
             disclaimerText?: string;
             analytics: AnalyticsInterface;
             featuredWallets?: string[];
+            substratePairing?: boolean;
           },
           eventCallback?: any[] | undefined,
         ): Promise<void> => {
