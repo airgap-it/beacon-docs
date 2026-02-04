@@ -1,18 +1,18 @@
-# Integrate Beacon SDK with Next.js (SSR)
+# Integrate octez.connect SDK with Next.js (SSR)
 
 :::warning Version Requirement
 This guide is valid only for version 4.5.0 and later.
 :::
 
-In this guide, you'll learn how to integrate Beacon SDK into your Next.js project.
+In this guide, you'll learn how to integrate octez.connect SDK into your Next.js project.
 
 We assume that you already have a basic Next.js setup.
 
-We'll show you how to configure the project for SSR and add a simple page that uses Beacon SDK to request permissions.
+We'll show you how to configure the project for SSR and add a simple page that uses octez.connect SDK to request permissions.
 
 ## 1. Install Dependencies
 
-First, ensure you have installed the Beacon SDK:
+First, ensure you have installed the octez.connect SDK:
 
 ```bash
 npm install @tezos-x/octez.connect-sdk
@@ -24,7 +24,7 @@ Additionally, if you haven't already, install `webpack-node-externals` which is 
 npm install webpack-node-externals
 ```
 
-## 2. Configure Next.js for Beacon SDK
+## 2. Configure Next.js for octez.connect SDK
 
 Update your `next.config.js` file to modify the webpack configuration. This ensures that certain Node modules are excluded during the server build, and provides fallbacks for browser environments.
 
@@ -63,7 +63,7 @@ module.exports = {
 ## 3. Create or Update Your Page
 
 Create a new page (or update an existing one, e.g. `page.tsx`) with the following code.
-This code sets up a Beacon SDK client and adds a button that, when clicked, requests permissions.
+This code sets up a octez.connect SDK client and adds a button that, when clicked, requests permissions.
 
 ```tsx
 // page.tsx
@@ -76,7 +76,7 @@ export default function Home() {
   const [client, setClient] = useState<DAppClient>();
 
   useEffect(() => {
-    // Initialize the Beacon SDK DAppClient with a name and network type.
+    // Initialize the octez.connect SDK DAppClient with a name and network type.
     setClient(
       new DAppClient({
         name: "test",
@@ -115,4 +115,4 @@ npm run dev
 Open your browser and navigate to the page you modified (e.g., http://localhost:3000).
 You should see a "Hello World" message with a button labeled "Request Permissions."
 
-Clicking the button will invoke Beacon SDK's permission request.
+Clicking the button will invoke octez.connect SDK's permission request.

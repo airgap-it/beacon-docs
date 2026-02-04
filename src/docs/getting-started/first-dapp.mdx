@@ -35,7 +35,7 @@ npm install --save @tezos-x/octez.js @tezos-x/octez.js-dapp-wallet
 
 ## Setup
 
-You can then import the `beacon-sdk` package and create a `DAppClient` instance. This instance will be used throughout your dApp to interact with the users wallet.
+You can then import the `octez.connect` package and create a `DAppClient` instance. This instance will be used throughout your dApp to interact with the users wallet.
 Once created, you can send a permission request to prompt the user to connect to his wallet.
 
 <Tabs
@@ -172,7 +172,7 @@ if (activeAccount) {
 
 </TabItem>
 </Tabs>
-The `beacon-sdk` is now fully set up and ready to receive operation requests.
+`octez.connect` is now fully set up and ready to receive operation requests.
 
 ## Operation Request
 
@@ -340,4 +340,4 @@ Once this function is executed, the current instance of `dAppClient` becomes unu
 
 ## User Interaction Best Practice
 
-Take a look a the [best practice](/getting-started/best-practices) for recommendations on Beacon user interface components.
+Take a look a the [best practice](/getting-started/best-practices) for recommendations on octez.connect user interface components.

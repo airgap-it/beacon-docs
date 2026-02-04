@@ -24,13 +24,13 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Beacon is the implementation of the [tzip-10 proposal](https://gitlab.com/tzip/tzip/tree/master/proposals/tzip-10), which describes an interaction standard between a wallet and a dApp.
 
-A dApp implementing the [beacon-sdk](https://github.com/airgap-it/beacon-sdk) can build up a channel and send messages over a peer to peer communication layer to a wallet. This allows for a communication for example of a mobile wallet with a desktop application. The requests of the dApp are sent to the wallet, signed and returned to the application. The `beacon-sdk` can also communicate to chrome extensions if compatible ones are installed.
+A dApp implementing the [octez.connect](https://github.com/trilitech/octez.connect) can build up a channel and send messages over a peer to peer communication layer to a wallet. This allows for a communication for example of a mobile wallet with a desktop application. The requests of the dApp are sent to the wallet, signed and returned to the application. `octez.connect` can also communicate to chrome extensions if compatible ones are installed.
 
-The `beacon-sdk` should allow developers to integrate this functionality with minimal coding, but still be customizable to support more complex flows.
+`octez.connect` should allow developers to integrate this functionality with minimal coding, but still be customizable to support more complex flows.
 
 ### Design Principles
 
-The `beacon-sdk` handles almost everything for you, but is still customizable if needed.
+`octez.connect` handles almost everything for you, but is still customizable if needed.
 It detects whether or not a browser extension is installed, tracks what connections have been established and the accounts that have been shared with the dApp.
 
 Generally, you only have to initialize a DAppClient instance (see [Getting Started](/getting-started/simple-example)), the rest should be handled for you.
@@ -56,6 +56,6 @@ To see all error types, please refer to the [typedocs](https://typedocs.walletbe
 
 ### Default UI Elements
 
-The `beacon-sdk` includes default UI elements for pairing wallets and show the status of a request.
+`octez.connect` includes default UI elements for pairing wallets and show the status of a request.
 **We highly discourage the overwriting of the default UI elements.**
 You can read more details about this in the [UI Elements](/advanced/ui-elements) section.

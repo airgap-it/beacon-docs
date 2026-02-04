@@ -3,7 +3,7 @@ title: Introduction
 slug: /blockchains/introduction
 ---
 
-Since the release of `beacon-sdk` version 3.0, Beacon supports multiple blockchains.
+Since the release of `beacon-sdk` version 3.0, octez.connect supports multiple blockchains.
 
 Currently, 3 separate blockchain packages are available:
 
@@ -13,13 +13,13 @@ Currently, 3 separate blockchain packages are available:
 
 ### Structure
 
-Every blockchain can define their own messages. Those messages are then wrapped in a message with additional metadata from the beacon protocol.
+Every blockchain can define their own messages. Those messages are then wrapped in a message with additional metadata from the octez.connect protocol.
 
 See the docs about the individual packages for more information about the messages specific to certain blockchains.
 
 #### Wrapper
 
-In the Beacon protocol, every message is wrapped in the following wrapper.
+In the octez.connect protocol, every message is wrapped in the following wrapper.
 
 ```ts
 export interface BeaconMessageWrapper<T extends BeaconBaseMessage> {
@@ -76,7 +76,7 @@ export interface PermissionResponseV3<T extends string = string>
 
 #### Request / Response
 
-Following are the generic messages of the Beacon Protocol. They can be extended by every blockchain to add blockchain specific data and behaviour.
+Following are the generic messages of the octez.connect Protocol. They can be extended by every blockchain to add blockchain specific data and behaviour.
 
 Please see the docs about the specific blockchain messages for examples.
 

@@ -3,7 +3,7 @@ import TabItem from "@theme/TabItem";
 
 # Subscribe to `ACTIVE_ACCOUNT_SET` Advanced Example
 
-Beacon provides developers the ability to subscribe to its internal state, as shown on the dedicated page. Since version 4.2.0, subscribing to `ACTIVE_ACCOUNT_SET` has become mandatory. This page provides a custom example with user validation by requesting the wallet to sign a payload.
+octez.connect provides developers the ability to subscribe to its internal state, as shown on the dedicated page. Since version 4.2.0, subscribing to `ACTIVE_ACCOUNT_SET` has become mandatory. This page provides a custom example with user validation by requesting the wallet to sign a payload.
 
 ## Before Starting
 
@@ -135,7 +135,7 @@ wallet.client.subscribeToEvent(
 
 ## Multi-tab Synchronization
 
-While the example above works for single-page dApps, it may become problematic in a multi-tab setup. Beacon emits an event to keep each tab synced with the internal state. Therefore, if your dApp needs multiple tabs support, the above approach may cause issues. Each tab will send a **sign_payload** request to the wallet, which is not intended and may lead to request rejection if a certain threshold is reached.
+While the example above works for single-page dApps, it may become problematic in a multi-tab setup. octez.connect emits an event to keep each tab synced with the internal state. Therefore, if your dApp needs multiple tabs support, the above approach may cause issues. Each tab will send a **sign_payload** request to the wallet, which is not intended and may lead to request rejection if a certain threshold is reached.
 
 To address this, we need to implement multi-tab synchronization. There are multiple ways to achieve this; for simplicity, we use `broadcast-channel`.
 

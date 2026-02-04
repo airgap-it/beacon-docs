@@ -2,7 +2,7 @@
 
 ## Overview
 
-In Beacon, we have implemented a system to monitor the performance of requests made to the wallet. This system helps identifying issues related to wallet interactions. This document details the structure and purpose of the performance metrics feature.
+In octez.connect, we have implemented a system to monitor the performance of requests made to the wallet. This system helps identifying issues related to wallet interactions. This document details the structure and purpose of the performance metrics feature.
 
 ## Enabling Performance Metrics
 
@@ -21,7 +21,7 @@ Your dApp will now start collecting and transmitting data on every wallet reques
 :::important
 When `enableMetrics` is set to `true`, an initial request is sent to our backend.
 This serves two key purposes: verifying if the dApp is authorized to send metrics to our system and preemptively checking for any potential network issues.
-It's crucial to note that if this initial request fails because of a Netwrok error, Beacon will automatically disable all metrics collection to prevent any operational disruptions and reliability of the metrics collection process.
+It's crucial to note that if this initial request fails because of a Netwrok error, octez.connect will automatically disable all metrics collection to prevent any operational disruptions and reliability of the metrics collection process.
 :::
 
 ## Performance Metrics Object

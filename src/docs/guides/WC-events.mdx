@@ -4,18 +4,18 @@ title: WalletConnect events
 
 #### Overview
 
-In Beacon we use [signClient](https://www.npmjs.com/package/@walletconnect/sign-client) to manage all WalletConnect's connections.
+In octez.connect we use [signClient](https://www.npmjs.com/package/@walletconnect/sign-client) to manage all WalletConnect's connections.
 
 `signClient` manages the lifecycle and communication of sessions between a dApp and
 a wallet.
 
-This page outlines the various events that Beacon handles through `signClient`.
+This page outlines the various events that octez.connect handles through `signClient`.
 
 #### Session Events
 
 1. **session_event**: Triggered by any significant occurrence within a session not explicitly covered by more specific events. It can be used for logging, debugging, or extending functionality.
 
-   In Beacon we use this event to acknowledge requests sent to a wallet.
+   In octez.connect we use this event to acknowledge requests sent to a wallet.
 
 2. **session_update**: Occurs when a session's state changes, such as updating permissions, accounts, or chain information. This is crucial for dApps to adjust their state in response to changes in the session parameters.
 

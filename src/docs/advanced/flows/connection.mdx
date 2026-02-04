@@ -8,7 +8,7 @@ import Mermaid from "@theme/Mermaid";
   chart={`
 graph LR
     Z[dApp] --> Y{Extension installed?}
-    subgraph Beacon SDK
+    subgraph octez.connect SDK
       Y -- No --> B[Wallet/P2P]
     end
     subgraph Extension

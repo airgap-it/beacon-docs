@@ -1,20 +1,20 @@
 ---
-title: How to Contribute to Beacon
+title: How to Contribute to octez.connect
 slug: /guides/how-to-contribute
 ---
 
-# How to Contribute to Beacon
+# How to Contribute to octez.connect
 
-We welcome contributions from the community! Whether you're fixing bugs, adding features, improving documentation, or adding wallet support, this guide will help you get started with contributing to the Beacon SDK ecosystem.
+We welcome contributions from the community! Whether you're fixing bugs, adding features, improving documentation, or adding wallet support, this guide will help you get started with contributing to the octez.connect SDK ecosystem.
 
 ## Overview
 
-The Beacon SDK consists of multiple repositories:
+The octez.connect SDK consists of multiple repositories:
 
-- **[beacon-sdk](https://github.com/airgap-it/beacon-sdk)** - The main TypeScript SDK for web developers
+- **[octez.connect](https://github.com/trilitech/octez.connect)** - The main TypeScript SDK for web developers
 - **[beacon-android-sdk](https://github.com/airgap-it/beacon-android-sdk)** - SDK for Android developers
 - **[beacon-ios-sdk](https://github.com/airgap-it/beacon-ios-sdk)** - SDK for iOS developers
-- **[beacon-docs](https://github.com/airgap-it/beacon-docs)** - Documentation website
+- **[octez.connect-docs](https://github.com/trilitech/octez.connect-docs)** - Documentation website
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ For mobile development:
 
 ### 1. Fork the Repository
 
-1. Navigate to the repository you want to contribute to (e.g., [beacon-sdk](https://github.com/airgap-it/beacon-sdk))
+1. Navigate to the repository you want to contribute to (e.g., [octez.connect](https://github.com/trilitech/octez.connect))
 2. Click the **"Fork"** button in the top right corner
 3. Select your GitHub account to create the fork
 
@@ -41,11 +41,11 @@ For mobile development:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/beacon-sdk.git
-cd beacon-sdk
+git clone https://github.com/trilitech/octez.connect.git
+cd octez.connect
 
 # Add the original repository as upstream
-git remote add upstream https://github.com/airgap-it/beacon-sdk.git
+git remote add upstream https://github.com/trilitech/octez.connect.git
 
 # Verify remotes
 git remote -v
@@ -63,7 +63,7 @@ git checkout -b fix/your-bug-fix-name
 
 ## Running the Project Locally
 
-### Main Beacon SDK (TypeScript)
+### Main octez.connect SDK (TypeScript)
 
 1. **Install Dependencies**
 
@@ -101,8 +101,8 @@ git checkout -b fix/your-bug-fix-name
 1. **Clone the Documentation Repository**
 
    ```bash
-   git clone https://github.com/airgap-it/beacon-docs.git
-   cd beacon-docs
+   git clone https://github.com/trilitech/octez.connect-docs.git
+   cd octez.connect-docs
    ```
 
 2. **Install Dependencies**
@@ -186,9 +186,9 @@ In Xcode:
 
 ## Adding a New Wallet
 
-Adding your wallet to the Beacon SDK ecosystem makes it discoverable by dApps and increases adoption. Here's how to add support for your wallet:
+Adding your wallet to the octez.connect SDK ecosystem makes it discoverable by dApps and increases adoption. Here's how to add support for your wallet:
 
-### 1. Implement Beacon Support in Your Wallet
+### 1. Implement octez.connect Support in Your Wallet
 
 First, your wallet needs to implement the [TZIP-10](https://gitlab.com/tzip/tzip/-/blob/master/proposals/tzip-10/tzip-10.md) standard. You can use one of our SDKs:
 
@@ -233,12 +233,12 @@ For same-device functionality, iOS wallets must define a custom URL scheme in th
 
 ### 2. Add Your Wallet to the Wallet List
 
-1. **Fork the beacon-sdk repository**
+1. **Fork the octez.connect repository**
 
 2. **Locate the wallet list file**
 
    ```bash
-   cd beacon-sdk
+   cd octez.connect
    open scripts/generate-wallet-list.ts
    ```
 
@@ -287,8 +287,8 @@ Your wallet entry should include:
 
 Before submitting your PR, test your wallet with:
 
-1. **Example dApps**: Use the examples in the beacon-sdk repository
-2. **Real dApps**: Test with actual Tezos dApps that use Beacon
+1. **Example dApps**: Use the examples in the octez.connect repository
+2. **Real dApps**: Test with actual Tezos dApps that use octez.connect
 
 Ensure your wallet can handle:
 
@@ -351,4 +351,4 @@ If you need help with your contribution:
 - **GitHub Issues**: Open an issue for bugs or feature requests
 - **Telegram**: [Beacon Telegram group](https://t.me/AirGap)
 
-Thank you for contributing to the Beacon ecosystem! Your efforts help make Tezos more accessible to developers and users worldwide.
+Thank you for contributing to the octez.connect ecosystem! Your efforts help make Tezos more accessible to developers and users worldwide.
